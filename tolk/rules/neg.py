@@ -6,7 +6,7 @@ from tolk import lf
 from tolk.sem import EP, Reading
 
 if TYPE_CHECKING:
-    from tolk.compile import Ctx
+    from tolk.rules.ctx import Ctx
 
 def labels(r: Reading) -> set[str]:
     return {r.qeq.get(ep.args["ARG1"], ep.args["ARG1"]) for ep in r.eps if ep.pred == "neg"}

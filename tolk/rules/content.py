@@ -8,7 +8,7 @@ from tolk.lf import Atom
 from tolk.sem import EP
 
 if TYPE_CHECKING:
-    from tolk.compile import Ctx
+    from tolk.rules.ctx import Ctx
 
 ROLES = ("ARG0", "ARG1", "ARG2")
 CONJUNCTION = re.compile(r"_[^_]+_c(_[^_]+)?")

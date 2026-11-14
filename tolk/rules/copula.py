@@ -7,7 +7,7 @@ from tolk.sem import EP
 from tolk.rules import quant
 
 if TYPE_CHECKING:
-    from tolk.compile import Ctx
+    from tolk.rules.ctx import Ctx
 
 def is_copula(ep: EP) -> bool:
     return ep.pred.endswith("_v_id")

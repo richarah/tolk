@@ -6,7 +6,7 @@ from tolk import lf
 from tolk.sem import EP, Reading
 
 if TYPE_CHECKING:
-    from tolk.compile import Ctx
+    from tolk.rules.ctx import Ctx
 
 def plan(r: Reading) -> dict[str, str]:
     consts = {ep.args["ARG0"]: ep.args["CARG"].lower() for ep in r.eps if ep.pred == "named"}

@@ -6,7 +6,7 @@ from tolk import lf
 from tolk.sem import EP
 
 if TYPE_CHECKING:
-    from tolk.compile import Ctx
+    from tolk.rules.ctx import Ctx
 
 UNIVERSAL = ("_every_q", "udef_q", "_no_q")
 INDEF = "_a_q"

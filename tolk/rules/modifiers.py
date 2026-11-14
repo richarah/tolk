@@ -7,7 +7,7 @@ from tolk.lf import Atom
 from tolk.sem import EP
 
 if TYPE_CHECKING:
-    from tolk.compile import Ctx
+    from tolk.rules.ctx import Ctx
 
 # A where-question asks about any locative preposition, so it matches on the sense suffix.
 ANY_LOCATIVE = "_*_p_[ls]*"
