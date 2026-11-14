@@ -25,8 +25,6 @@ def unconsumed(ctx: Ctx, quants: list[EP], out: lf.LF, mode: str) -> lf.Refusal 
     atoms = atoms_of(out)
     terms = {t for a in atoms for t in a.args}
     if mode == "ask":
-        if any(not a.positive for a in atoms):
-            return lf.Refusal("NEGATED_QUESTION", "absence of a fact cannot answer a negated question")
         positive = {t for a in atoms if a.positive for t in a.args}
         loose = [v.key for v in out.wanted if v not in positive]
         if loose:

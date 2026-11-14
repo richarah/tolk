@@ -16,7 +16,6 @@ FINAL = {
     "DEFINITE_MATCHES": ([], "The dog barks."),
     "IDENTITY_NOT_YET": ([], "Every robin is Tweety."),
     "NEGATED_INDEFINITE": ([], "If Kim does not own a dog, Kim is happy."),
-    "NEGATED_QUESTION": ([], "Does Kim not like Nemo?"),
     "NO_EVENT_READING": ([], "Kim"),
     "SCOPE_AMBIGUOUS": ([], "Every dog does not bark."),
     "UNCONSTRAINED_WANTED": ([], "Who is who?"),

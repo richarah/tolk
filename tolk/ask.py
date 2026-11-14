@@ -50,9 +50,12 @@ def answer(db: sqlite3.Connection, q: lf.Ask, ctx: str = "world") -> Answer:
 
 
 def _answer(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
-    pos = _solutions(db, q, True, ctx)
+    """What the question claims is matched against facts of the polarity it states; the opposite against the other kind.
+    A negated question claims negative facts, and its opposite is the positive ones, so Yes and No swap."""
+    claim, against = _polarities(q)
+    pos = _solutions(db, q, claim, ctx)
     if not q.wanted:
-        neg = _solutions(db, q, False, ctx)
+        neg = _solutions(db, q, against, ctx)
         if pos and neg:
             return Answer(CONFLICT, (), (pos[()], neg[()]))
         if pos:
@@ -66,9 +69,18 @@ def _answer(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     return Answer(YES, tuple(solutions), tuple(pos[s] for s in solutions))
 
 
-def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: bool, ctx: str) -> dict[tuple[str, ...], tuple[Proof, ...]]:
-    """For each distinct value of the wanted variables, one proof per positive body atom of the first matching row."""
-    m = engine.Match(q.body, ctx, None, None, polarity)
+def _polarities(q: lf.Ask) -> tuple[tuple[int, ...], tuple[int, ...]]:
+    """Per atom, the kind of fact that supports the question and the kind that opposes it."""
+    claim = tuple(int(a.positive) for a in q.body)
+    if all(claim):
+        return claim, (0,) * len(claim)
+    return claim, (1,) * len(claim)
+
+
+def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: tuple[int, ...], ctx: str) -> dict[tuple[str, ...], tuple[Proof, ...]]:
+    """For each distinct value of the wanted variables, one proof per body atom of the first matching row."""
+    flat = tuple(Atom(a.pred, a.args) for a in q.body)
+    m = engine.Match(flat, ctx, None, None, polarity)
     wanted = [m.column(v) for v in q.wanted]
     rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {m.src} ORDER BY {m.ids()}", m.params).fetchall()
     n = len(wanted)

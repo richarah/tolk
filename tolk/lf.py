@@ -91,7 +91,7 @@ REFUSALS = {
     "UNBOUND_VARIABLE": "reading", "UNCONSUMED": "reading", "UNEXPRESSED_OBJECT": "reading",
     "UNEXPRESSED_SUBJECT": "reading", "WH_BOUND_TO_CONSTANT": "reading",
     "CONTRADICTS": "final", "COORDINATION": "final", "DEFINITE_MATCHES": "final", "DEFINITE_NEEDS_STORE": "final",
-    "IDENTITY_NOT_YET": "final", "NEGATED_INDEFINITE": "final", "NEGATED_QUESTION": "final", "NO_EVENT_READING": "final", "SCOPE_AMBIGUOUS": "final",
+    "IDENTITY_NOT_YET": "final", "NEGATED_INDEFINITE": "final", "NO_EVENT_READING": "final", "SCOPE_AMBIGUOUS": "final",
     "UNCONSTRAINED_WANTED": "final", "UNIVERSAL_QUESTION": "final", "UNKNOWN_WORD": "final", "UNSAFE_NEGATION": "final",
     "NEGATION_CYCLE": "final", "UNSUPPORTED_ASPECT": "final", "UNSUPPORTED_FORCE": "final",
     "UNSUPPORTED_PREDICATE": "final", "UNSUPPORTED_QUANTIFIER": "final", "UNSUPPORTED_TENSE": "final",

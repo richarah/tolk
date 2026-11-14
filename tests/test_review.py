@@ -22,7 +22,8 @@ def refused(r, code: str) -> bool:
 def test_a_refusal_for_a_meaning_is_not_overridden_by_a_lower_reading(mind: Mind) -> None:
     # Reading 2 of "Nobody flies." is the real one, and it is unsupported; reading 3 reads Nobody as a name.
     assert refused(mind.tell("Nobody flies."), "UNSUPPORTED_PREDICATE")
-    assert refused(mind.tell("Which dog does not bark?"), "NEGATED_QUESTION")
+    # Phase 12 lifted the negated-question refusal; what matters is that the question is read as a question about dogs.
+    assert mind.tell("Which dog does not bark?").printed == "ask X  _dog_n_1(X), not _bark_v_1(E, X)"
     assert mind.db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] == 0
 
 

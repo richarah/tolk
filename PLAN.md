@@ -178,3 +178,5 @@ Phase 9: eight debts, in the order of SPEC2, one commit each. Done.
 Phase 10: Describe(entity). Fixtures for Who is / What is read first: the wh variable has only an abstract restriction (person, thing), and the copula takes it in either argument slot.
 
 Phase 11: read the three fixtures first (consequent is ARG1, antecedent ARG2 of the if-then predication). Rule family conditional.py, scope.clause, no new reading rules otherwise.
+
+Phase 12: verify the statement half (already built); negated questions via per-atom polarity in ask and Match.

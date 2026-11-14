@@ -112,14 +112,17 @@ class Match:
     Positive atoms match facts of the given polarity. A negative body atom is negation as failure: no
     positive fact matches it, with its local variables free."""
 
-    def __init__(self, body: tuple[Atom, ...], ctx: str, guard: int | None, delta: int | None, polarity: bool = True) -> None:
+    def __init__(self, body: tuple[Atom, ...], ctx: str, guard: int | None, delta: int | None,
+                 polarity: bool | tuple[int, ...] = True) -> None:
+        # One polarity for every atom, or one per atom in order: which kind of stored fact each positive atom matches.
+        pol = polarity if isinstance(polarity, tuple) else (int(polarity),) * len(body)
         self.first: dict[Var, tuple[int, int]] = {}
         froms, conds, params = [], [], []
         positives = [(i, a) for i, a in enumerate(body) if a.positive]
         for i, atom in positives:
             froms.append(f"fact AS f{i}")
             conds += [f"f{i}.pred {_pred_op(atom.pred)} ?", f"f{i}.positive = ?", f"f{i}.ctx IN ('world', ?)"]
-            params += [atom.pred, int(polarity), ctx]
+            params += [atom.pred, pol[i], ctx]
             for k in range(3):
                 col = f"f{i}.a{k}"
                 if k >= len(atom.args):

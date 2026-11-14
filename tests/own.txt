@@ -10,3 +10,9 @@ Who is Zed?
 Who is Bo?
 What is Rio?
 Rio hums if Rio is a sparrow.
+# phase 12, own words
+Ada does not like cats.
+Does Ada not like Tom?
+Is Kim not a robin?
+Bo owns no dog.
+Does Bo not own Rex?

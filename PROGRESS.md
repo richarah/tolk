@@ -514,3 +514,12 @@ Rules for 'If A, B.' and 'B if A.'; ten own-word cases in tests/test_phase11.py.
 $ .venv/bin/pytest -q
 276 passed in 9.72s
 ```
+
+## Phase 12: negation over nouns, negated questions
+
+The statement half was verified against the dialogue, not rebuilt. Negated questions invert Yes and No; absence stays Unknown. Three earlier tests that expected NEGATED_QUESTION were updated to the new behaviour (SPEC2 lifts that refusal).
+
+```
+$ .venv/bin/pytest -q
+290 passed in 10.43s
+```

@@ -57,13 +57,16 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     ]
     if cond is not None and (sf == "ques" or universal_top):
         return lf.Refusal("UNSUPPORTED_PREDICATE", cond.pred)
+    # Under negation an indefinite object has narrow scope: no X is V-ed is every X is not V-ed.
+    narrow = [
+        q for q in quants
+        if bound[q.args["ARG0"]] == quant.INDEF and q.args["ARG0"] not in alias and q.args["ARG0"] not in subjects
+        and any(ep.label in negated and q.args["ARG0"] in ep.args.values() for ep in r.eps)
+    ]
+    if sf == "ques" and narrow:
+        return lf.Refusal("UNIVERSAL_QUESTION", "a negated question over a bare or indefinite noun asks about every such thing")
     if sf == "prop" and cond is None:
-        # Under negation an indefinite object has narrow scope: no X is V-ed is every X is not V-ed.
-        universal_top += [
-            q for q in quants
-            if bound[q.args["ARG0"]] == quant.INDEF and q.args["ARG0"] not in alias and q.args["ARG0"] not in subjects
-            and any(ep.label in negated and q.args["ARG0"] in ep.args.values() for ep in r.eps)
-        ]
+        universal_top += narrow
     if sf == "ques" and any(q.pred in quant.UNIVERSAL and bound[q.args["ARG0"]] == q.pred for q in quants):
         return lf.Refusal("UNIVERSAL_QUESTION", "a question over every or no thing would be answered as a question over some")
     body = scope.restricted(r, quants, universal_top)
