@@ -12,7 +12,7 @@ UNIVERSAL = ("_every_q", "udef_q", "_no_q")
 INDEF = "_a_q"
 DEFINITE = "_the_q"
 WH = ("which_q", "_which_q")
-QUANTS = (*UNIVERSAL, INDEF, DEFINITE, "proper_q", *WH)
+QUANTS = (*UNIVERSAL, INDEF, DEFINITE, "proper_q", "pronoun_q", *WH)
 
 def is_quantifier(ep: EP) -> bool:
     return "RSTR" in ep.args

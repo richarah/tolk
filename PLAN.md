@@ -180,3 +180,5 @@ Phase 10: Describe(entity). Fixtures for Who is / What is read first: the wh var
 Phase 11: read the three fixtures first (consequent is ARG1, antecedent ARG2 of the if-then predication). Rule family conditional.py, scope.clause, no new reading rules otherwise.
 
 Phase 12: verify the statement half (already built); negated questions via per-atom polarity in ask and Match.
+
+Phase 13: fixtures read (pron/pronoun_q, PERS NUM GEND on the variable). pronouns.py, mention table, notes on logical forms, Mind records mentions.

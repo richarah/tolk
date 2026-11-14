@@ -51,7 +51,7 @@ TIER_B_AND_C = [
 LEMMA = re.compile(r"^_([a-z]+)_[nva](?:_|\d|$)")
 # Determiners and auxiliaries the grammar names as ordinary predicates. Quantifier names
 # are allowed in rules by SPEC rule 3, and the copula is recognised by its sense suffix.
-FUNCTION_LEMMAS = {"do", "does", "doe", "every", "is", "no", "a", "an", "the", "be"}
+FUNCTION_LEMMAS = {"do", "does", "doe", "every", "is", "no", "a", "an", "the", "be", "i"}
 
 
 def compiled(text: str) -> str:

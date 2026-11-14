@@ -523,3 +523,12 @@ The statement half was verified against the dialogue, not rebuilt. Negated quest
 $ .venv/bin/pytest -q
 290 passed in 10.43s
 ```
+
+## Phase 13: pronouns
+
+Built rules/pronouns.py, the mention table, notes on logical forms, 'you'/'I' wording. Dialogue and ten own-word cases in tests/test_phase13.py. SPEC2 changes 'She swims.' from UNSUPPORTED_PREDICATE to NO_ANTECEDENT; the refusal test uses 'Kim can sing.' for the former.
+
+```
+$ .venv/bin/pytest -q
+312 passed in 10.15s
+```

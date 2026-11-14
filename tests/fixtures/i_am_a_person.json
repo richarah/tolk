@@ -1,0 +1,90 @@
+{
+  "text": "I am a person.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]  [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _be_v_id<2:4> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<5:6> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ _person_n_1<7:14> LBL: h12 ARG0: x8 ] > HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pron",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_person_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "1",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h6": {},
+          "h7": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h12": {},
+          "h5": {},
+          "h9": {}
+        }
+      }
+    }
+  ]
+}

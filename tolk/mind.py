@@ -37,7 +37,7 @@ class Mind:
 
     def _hear(self, text: str) -> Result:
         readings = [sem.read(raw) for raw in erg.parse(text)]
-        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup)
+        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
         printed = lf.show(x)
         head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):
@@ -55,6 +55,7 @@ class Mind:
                 return Result(*head, outcome="refused: identity inside a supposition is not stored yet")
             sid = store.add_sentence(self.db, text, printed, self.ctx)
             store.merge(self.db, x.a, x.b, sid)
+            store.add_mentions(self.db, sid, [(0, x.a.id, "sg"), (1, x.b.id, "sg")])
             engine.run(self.db)
             return Result(*head, outcome=f"one thing: {x.a.id} and {x.b.id}")
         if isinstance(x, lf.Rule):
@@ -65,13 +66,17 @@ class Mind:
                 return Result(*head, outcome=lf.show(refusal))
             sid = store.add_sentence(self.db, text, printed, self.ctx)
             store.add_rule(self.db, x, sid)
+            store.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
             engine.run(self.db)
             return Result(*head, outcome="rule stored")
         sid = store.add_sentence(self.db, text, printed, self.ctx)
+        anon_before = store.fresh_of_kind(self.db, "anon")
         stored = store.tell(self.db, x, sid, self.ctx)
         if isinstance(stored, lf.Refusal):
             opposite = prove(self.db, int(stored.detail))
             return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")
+        new = store.fresh_of_kind(self.db, "anon")[len(anon_before):]
+        store.add_mentions(self.db, sid, [(pos, new[int(i[2:]) - 1] if i.startswith("~") else i, num) for pos, i, num in x.mentions])
         engine.run(self.db, self.ctx)
         return Result(*head, outcome=f"stored, {len(stored)} new fact(s)")
 
@@ -141,6 +146,9 @@ class Mind:
             source = f'told: "{self.db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()[0]}"' if told and p.sentence else f"by rule {p.rule}"
             lines.append(f"{say.fact_text(self.db, fid)}  ({source})")
         return "\n".join(lines)
+
+    def _history(self) -> list[tuple[int, str, str]]:
+        return store.recent_mentions(self.db)
 
     def _lookup(self, pred: str) -> set[str]:
         return store.things_with(self.db, pred, self.ctx)

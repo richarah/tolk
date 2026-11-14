@@ -1,14 +1,15 @@
 """Reading to logical form, and the choice among readings. The families in tolk/rules each map one predicate."""
 
+import dataclasses
 from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, conditional, content, copula, describe, modifiers, names, neg, quant, scope
+from tolk.rules import check, conditional, content, copula, describe, modifiers, names, neg, pronouns, quant, scope
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
-FAMILIES = (names, quant, neg, copula, conditional, modifiers, content)
+FAMILIES = (names, pronouns, quant, neg, copula, conditional, modifiers, content)
 
 
 def eventive(r: Reading) -> bool:
@@ -16,7 +17,7 @@ def eventive(r: Reading) -> bool:
     return any(ep.args.get("ARG0") == r.index and ep.pred != "unknown" for ep in r.eps)
 
 
-def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
+def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.History | None = None) -> lf.LF:
     sf = r.props[r.index].get("SF")
     if sf not in ("prop", "ques"):
         return lf.Refusal("UNSUPPORTED_FORCE", str(sf))
@@ -35,6 +36,11 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
             bound[v] = quant.INDEF
     alias = copula.plan(r.eps, bound)
     const = names.plan(r)
+    resolved = pronouns.plan(r, const, history)
+    if isinstance(resolved, lf.Refusal):
+        return resolved
+    const.update(resolved[0])
+    notes = resolved[1]
     for q in quants:
         if q.pred == quant.DEFINITE:
             resolved = scope.definite(r, q, lookup)
@@ -101,17 +107,19 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         if not tail:
             # A universal over a named thing has nothing to range over; the name reading of a bare plural lands here.
             return lf.Refusal("EMPTY_RULE_BODY", "the restriction has no atom")
-        out = lf.Rule(head, tail)
+        out = lf.Rule(head, tail, notes=notes)
     else:
         atoms = _map(ctx, r.eps)
         if isinstance(atoms, lf.Refusal):
             return atoms
-        out = lf.Tell(atoms) if mode == "tell" else lf.Ask(atoms, wanted)
+        out = lf.Tell(atoms, notes=notes) if mode == "tell" else lf.Ask(atoms, wanted, notes)
     unconsumed = check.unconsumed(ctx, quants, out, mode)
     if unconsumed:
         return unconsumed
+    if isinstance(out, (lf.Tell, lf.Rule)):
+        out = dataclasses.replace(out, mentions=_mentions(r, ctx, quants, out))
     if mode == "tell" and r.props[r.index].get("TENSE") == "past":
-        out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
+        out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),), notes=notes)
     unbound = check.unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
 
@@ -138,7 +146,19 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
     return tuple(atoms)
 
 
-def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None = None) -> tuple[int, lf.LF]:
+def _mentions(r: Reading, ctx: Ctx, quants: list[EP], out: lf.LF) -> tuple[tuple[int, str, str], ...]:
+    """Things this sentence mentions, by position, for pronouns in later sentences. A thing the sentence creates is marked with ~ and its local id, until the store numbers it."""
+    used = {t for a in check.atoms_of(out) for t in a.args}
+    found = []
+    for q in quants:
+        t = ctx.term(q.args["ARG0"])
+        if isinstance(t, Const) and t.kind in ("named", "anon") and t.id not in (pronouns.USER, pronouns.TOLK) and (t in used or t.kind == "named"):
+            found.append((q.cfrom, ("~" if t.kind == "anon" else "") + t.id, r.props.get(q.args["ARG0"], {}).get("NUM", "sg")))
+    return tuple(sorted(found))
+
+
+def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None = None,
+           history: pronouns.History | None = None) -> tuple[int, lf.LF]:
     """Choose one reading. The order of criteria is numbered in DECISIONS.md ("Reading choice") and is applied here and nowhere else.
 
     0. Only eventive readings are candidates.
@@ -148,7 +168,7 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     3. Swallowed words: the fewest words that most compiled readings span and this one leaves out.
     4. Parser order.
     """
-    cands = [(i, compile_reading(r, lookup)) for i, r in enumerate(readings) if eventive(r)]
+    cands = [(i, compile_reading(r, lookup, history)) for i, r in enumerate(readings) if eventive(r)]
     if not cands:
         return 0, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event")
     ok = []

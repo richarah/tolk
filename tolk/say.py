@@ -4,10 +4,15 @@ import sqlite3
 from tolk.ask import Answer, Proof
 
 
+# The user is spoken to as "you" and tolk speaks as "I".
+SPEAKERS = {"user": "you", "tolk": "I"}
+COPULA = {"you": "are", "I": "am"}
+
+
 def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
-    pred, a0, a1, a2, positive = db.execute(
+    pred, a0, a1, a2, positive = (SPEAKERS.get(v, v) for v in db.execute(
         "SELECT pred, a0, a1, a2, positive FROM fact WHERE id = ?", (fact_id,)
-    ).fetchone()
+    ).fetchone())
     neg = "" if positive else "not "
     if not pred.startswith("_"):
         return f"{neg}{pred}({', '.join(a for a in (a0, a1, a2) if a)})"
@@ -16,7 +21,7 @@ def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
         things = [a for a in (a0, a1, a2) if a]
         if len(things) == 1 and positive:
             article = "an" if lemma[0] in "aeiou" else "a"
-            return f"{things[0]} is {article} {lemma}"
+            return f"{things[0]} {COPULA.get(things[0], 'is')} {article} {lemma}"
         return f"{neg}{lemma}({', '.join(things)})"
     # Verbs, adjectives and prepositions take their event first; the event is not shown.
     things = [a for a in (a1, a2) if a]
@@ -43,7 +48,7 @@ def answer_text(db: sqlite3.Connection, a: Answer) -> str:
 
 
 def _name(value: str) -> str:
-    return value.replace("_", " ").title()
+    return SPEAKERS.get(value) or value.replace("_", " ").title()
 
 
 def proposal_text(p_pred: str, q_pred: str) -> str:

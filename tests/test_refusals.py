@@ -23,7 +23,9 @@ FINAL = {
     "UNKNOWN_WORD": ([], "Pip is a blorp."),
     "UNSUPPORTED_ASPECT": ([], "Kim is singing."),
     "UNSUPPORTED_FORCE": ([], "Sing!"),
-    "UNSUPPORTED_PREDICATE": ([], "She swims."),
+    "UNSUPPORTED_PREDICATE": ([], "Kim can sing."),
+    "NO_ANTECEDENT": ([], "She swims."),
+    "AMBIGUOUS_PRONOUN": (["Kim likes Sandy."], "She is happy."),
     "UNSUPPORTED_QUANTIFIER": ([], "Most cats purr."),
     "UNSUPPORTED_TENSE": ([], "Kim will sing."),
 }

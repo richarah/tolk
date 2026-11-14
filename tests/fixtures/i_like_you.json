@@ -1,0 +1,290 @@
+{
+  "text": "I like you.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]  [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _like_v_1<2:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 2 IND: + PT: std ] ]  [ pron<7:11> LBL: h9 ARG0: x8 ]  [ pronoun_q<7:11> LBL: h10 ARG0: x8 RSTR: h11 BODY: h12 ] > HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h9 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pron",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_like_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "pron",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h11": "h9"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "1",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h6": {},
+          "h7": {},
+          "x8": {
+            "PERS": "2",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h9": {},
+          "h5": {},
+          "h10": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:11> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ generic_entity<0:1> LBL: h5 ARG0: x4 ]  [ udef_q<0:1> LBL: h6 ARG0: x4 RSTR: h7 BODY: h8 ]  [ card<0:1> LBL: h5 CARG: \"I\" ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x4 ]  [ _like_p<2:6> LBL: h5 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x12 [ x PERS: 2 IND: + PT: std ] ]  [ pron<7:11> LBL: h13 ARG0: x12 ]  [ pronoun_q<7:11> LBL: h14 ARG0: x12 RSTR: h15 BODY: h16 ] > HCONS: < h0 qeq h1 h7 qeq h5 h15 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h5",
+            "args": {
+              "CARG": "I",
+              "ARG0": "e10",
+              "ARG1": "x4"
+            }
+          },
+          {
+            "pred": "_like_p",
+            "label": "h5",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "x4",
+              "ARG2": "x12"
+            }
+          },
+          {
+            "pred": "pron",
+            "label": "h13",
+            "args": {
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h5",
+          "h15": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h7": {},
+          "h8": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x12": {
+            "PERS": "2",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h15": {},
+          "h16": {},
+          "h0": {},
+          "h1": {},
+          "h5": {},
+          "h13": {},
+          "h6": {},
+          "h14": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: untensed MOOD: indicative ] RELS: < [ unknown<0:11> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:1> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ named<0:1> LBL: h8 CARG: \"I\" ARG0: x4 ]  [ _like_p<2:6> LBL: h1 ARG0: e2 ARG1: u10 ARG2: x11 [ x PERS: 2 IND: + PT: std ] ]  [ pron<7:11> LBL: h12 ARG0: x11 ]  [ pronoun_q<7:11> LBL: h13 ARG0: x11 RSTR: h14 BODY: h15 ] > HCONS: < h0 qeq h1 h6 qeq h8 h14 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "I",
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "_like_p",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "u10",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "pron",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h14": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "u10": {},
+          "x11": {
+            "PERS": "2",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h12": {},
+          "h5": {},
+          "h13": {}
+        }
+      }
+    }
+  ]
+}

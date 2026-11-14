@@ -49,3 +49,9 @@ Who is Tweety?
 If Kim owns a dog, Kim is happy.
 Tweety flies if Tweety is a bird.
 If a robin sings, Kim is happy.
+# phase 13
+I am a person.
+Am I a person?
+Are you a cat?
+It sings.
+She is happy.

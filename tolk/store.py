@@ -28,6 +28,9 @@ CREATE TABLE rule(
 );
 CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER NOT NULL);
 CREATE TABLE conflict(positive_fact INTEGER NOT NULL, negative_fact INTEGER NOT NULL);
+CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
+INSERT INTO entity(id, kind) VALUES ('user', 'named'), ('tolk', 'named');
+INSERT INTO name(entity, text) VALUES ('user', 'user'), ('tolk', 'tolk');
 """
 
 
@@ -146,6 +149,7 @@ def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
         "DELETE FROM sentence WHERE id NOT IN (SELECT sentence FROM why WHERE sentence IS NOT NULL "
         "UNION SELECT sentence FROM rule UNION SELECT sentence FROM merge)"
     )
+    db.execute("DELETE FROM mention WHERE sentence NOT IN (SELECT id FROM sentence)")
     db.execute(
         "DELETE FROM entity WHERE kind IN ('event', 'anon', 'skolem') AND id NOT IN ("
         "SELECT a0 FROM fact UNION SELECT a1 FROM fact UNION SELECT a2 FROM fact)"
@@ -222,3 +226,18 @@ def mentioning(db: sqlite3.Connection, entity: str, ctx: str = "world") -> list[
         (ctx, ident, ident),
     ).fetchall()
     return [(fid, bool(told)) for fid, told in rows]
+
+
+def add_mentions(db: sqlite3.Connection, sentence: int, mentions: list[tuple[int, str, str]]) -> None:
+    db.executemany("INSERT INTO mention(sentence, position, entity, number) VALUES (?, ?, ?, ?)",
+                   [(sentence, pos, ident, num) for pos, ident, num in mentions])
+
+
+def recent_mentions(db: sqlite3.Connection) -> list[tuple[int, str, str]]:
+    """(sentence, thing, number) of every mention, most recent first, with merged names followed to the thing they became."""
+    rows = db.execute("SELECT sentence, entity, number FROM mention ORDER BY sentence DESC, position DESC").fetchall()
+    return [(sent, canon(db, ident), num) for sent, ident, num in rows]
+
+
+def fresh_of_kind(db: sqlite3.Connection, kind: str) -> list[str]:
+    return [i for (i,) in db.execute("SELECT id FROM entity WHERE kind = ? ORDER BY rowid", (kind,))]

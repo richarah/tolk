@@ -40,12 +40,16 @@ class Atom:
 @dataclass(frozen=True)
 class Tell:
     atoms: tuple[Atom, ...]
+    mentions: tuple[tuple[int, str, str], ...] = ()  # (position in the sentence, thing, number), for later pronouns
+    notes: tuple[str, ...] = ()  # pronoun resolutions, shown before anything is stored
 
 
 @dataclass(frozen=True)
 class Rule:
     head: tuple[Atom, ...]
     body: tuple[Atom, ...]
+    mentions: tuple[tuple[int, str, str], ...] = ()
+    notes: tuple[str, ...] = ()
 
     @property
     def creates(self) -> tuple[Var, ...]:
@@ -63,6 +67,7 @@ class Rule:
 class Ask:
     body: tuple[Atom, ...]
     wanted: tuple[Var, ...]
+    notes: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -93,7 +98,7 @@ REFUSALS = {
     "CONTRADICTS": "final", "COORDINATION": "final", "DEFINITE_MATCHES": "final", "DEFINITE_NEEDS_STORE": "final",
     "IDENTITY_NOT_YET": "final", "NEGATED_INDEFINITE": "final", "NO_EVENT_READING": "final", "SCOPE_AMBIGUOUS": "final",
     "UNCONSTRAINED_WANTED": "final", "UNIVERSAL_QUESTION": "final", "UNKNOWN_WORD": "final", "UNSAFE_NEGATION": "final",
-    "NEGATION_CYCLE": "final", "UNSUPPORTED_ASPECT": "final", "UNSUPPORTED_FORCE": "final",
+    "NEGATION_CYCLE": "final", "AMBIGUOUS_PRONOUN": "final", "NO_ANTECEDENT": "final", "UNSUPPORTED_ASPECT": "final", "UNSUPPORTED_FORCE": "final",
     "UNSUPPORTED_PREDICATE": "final", "UNSUPPORTED_QUANTIFIER": "final", "UNSUPPORTED_TENSE": "final",
 }
 
@@ -105,6 +110,12 @@ THING_NAMES = ("X", "Y", "Z", "U", "V", "W")
 
 
 def show(x: LF) -> str:
+    text = _show(x)
+    notes = getattr(x, "notes", ())
+    return "\n".join([text] + [f"{'note':<6} {n}" for n in notes])
+
+
+def _show(x: LF) -> str:
     if isinstance(x, Refusal):
         return f"refuse {x.code}: {x.detail}"
     if isinstance(x, Same):
