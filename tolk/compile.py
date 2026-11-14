@@ -224,7 +224,7 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     if not ok:
         return cands[0][0], _blame_unknown_word(readings, cands[0][1])
     voters = [readings[i] for i, _ in ok]
-    return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -_swallowed(readings[t[0]], voters), -t[0]))
+    return max(ok, key=lambda t: (_overlap(t[1], store_preds), -_swallowed(readings[t[0]], voters), -t[0]))
 
 
 def _blame_unknown_word(readings: list[Reading], refusal: lf.Refusal) -> lf.Refusal:
@@ -244,6 +244,11 @@ def _swallowed(r: Reading, voters: list[Reading]) -> int:
     mine = {p for ep in r.eps if ep.cfrom >= 0 for p in range(ep.cfrom, ep.cto)}
     gone = sorted(p for p in set().union(*spans) - mine if 2 * sum(p in s for s in spans) > len(voters))
     return sum(1 for n, p in enumerate(gone) if n == 0 or p - gone[n - 1] > 1)
+
+
+def _overlap(x: lf.LF, known: set) -> int:
+    """Predicates shared with what is known. Known may hold (predicate, arity) pairs, or bare predicate names that match any arity."""
+    return sum(1 for p in _preds(x) if p in known or p[0] in known)
 
 
 def _preds(x: lf.LF) -> set[tuple[str, int]]:

@@ -563,3 +563,12 @@ Unknown nouns, adjectives and verbs in statements are treated like known predica
 $ .venv/bin/pytest -q
 389 passed, 1 xfailed in 11.63s
 ```
+
+## Phase 17: a public interface
+
+tolk/__init__.py exposes exactly read, printed, Mind and the logical form types. Ten own-word cases in tests/test_phase17.py.
+
+```
+$ .venv/bin/pytest -q
+404 passed, 1 xfailed in 12.24s
+```

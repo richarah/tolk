@@ -43,3 +43,15 @@ Every zorp is floopy.
 Pip glorbs.
 Who glorbs?
 Does Pip glorb?
+# phase 17, own words
+Rio is a sparrow.
+Every sparrow is a finch.
+Does Rio swim?
+Who admires Bo?
+Is Rio a finch?
+Bruce Wayne is Batman.
+Who is Rio?
+How many cats does Ada own?
+Ada does not like cats.
+If Rio hums, Ada is calm.
+Sam works in Paris.
