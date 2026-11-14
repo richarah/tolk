@@ -83,3 +83,16 @@ def test_negated_question_is_refused_not_answered_from_absence(mind: Mind) -> No
     for q in ("Does Kim not like fish?", "Does Kim not like Nemo?", "Is Kim not a robin?"):
         r = mind.ask(q)
         assert r.outcome == "refused" and "NEGATED_QUESTION" in r.printed, q
+
+
+def test_an_auxiliary_is_not_a_swallowed_word(mind: Mind) -> None:
+    # Reading 4 of this sentence makes "does" the main verb; the plain negation must still win.
+    assert mind.tell("Kim does not like Sandy.").printed == "tell   not _like_v_1(_, kim, sandy)"
+
+
+def test_a_bare_plural_read_as_a_name_gives_no_empty_rule(mind: Mind) -> None:
+    r = mind.tell("Fish do not fly.")
+    assert r.printed == "rule   not _fly_v_1(_, X) :- _fish_n_1(X)"
+    raws = __import__("json").loads(fixture_path("Fish do not fly.").read_text())["readings"]
+    x = comp.compile_reading(sem.read(raws[0]["simplemrs"]))
+    assert isinstance(x, lf.Refusal) and x.code == "EMPTY_RULE_BODY"

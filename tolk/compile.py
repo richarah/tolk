@@ -110,6 +110,9 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         tail = _map(ctx, [ep for i, ep in enumerate(r.eps) if i in body])
         if isinstance(tail, lf.Refusal):
             return tail
+        if not tail:
+            # A universal over a named thing has nothing to range over; the name reading of a bare plural lands here.
+            return lf.Refusal("EMPTY_RULE_BODY", "the restriction has no atom")
         out = lf.Rule(head, tail)
     else:
         atoms = _map(ctx, r.eps)
@@ -242,17 +245,17 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     ok = [(i, x) for i, x in cands if not isinstance(x, lf.Refusal)]
     if not ok:
         return cands[0]
-    return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -_gaps(readings[t[0]]), -t[0]))
+    voters = [readings[i] for i, _ in ok]
+    return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -_swallowed(readings[t[0]], voters), -t[0]))
 
 
-def _gaps(r: Reading) -> int:
-    """Stretches of the sentence, more than one character wide, that no predication spans. A word the reading swallowed leaves one."""
-    spans = sorted((ep.cfrom, ep.cto) for ep in r.eps if ep.cfrom >= 0)
-    gaps, end = 0, 0
-    for start, stop in spans:
-        gaps += start - end > 1
-        end = max(end, stop)
-    return gaps
+def _swallowed(r: Reading, voters: list[Reading]) -> int:
+    """Words that most voting readings give a predication to and r leaves out. Auxiliaries are spanned by few readings, so they do not count.
+    Only readings that compile vote: a refused one may span a word with a predicate nothing can use, such as an ellipsis."""
+    spans = [{p for ep in v.eps if ep.cfrom >= 0 for p in range(ep.cfrom, ep.cto)} for v in voters]
+    mine = {p for ep in r.eps if ep.cfrom >= 0 for p in range(ep.cfrom, ep.cto)}
+    gone = sorted(p for p in set().union(*spans) - mine if 2 * sum(p in s for s in spans) > len(voters))
+    return sum(1 for n, p in enumerate(gone) if n == 0 or p - gone[n - 1] > 1)
 
 
 def _preds(x: lf.LF) -> set[tuple[str, int]]:
