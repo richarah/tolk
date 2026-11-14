@@ -68,3 +68,9 @@
 - Merge rewrites premises: when a moved fact has a twin and is deleted, `why` rows that listed it as a premise now list the twin. A proof must never name a fact that is gone.
 - Drop restores the state: it also deletes the supposition's sentence rows that nothing refers to, and `Mind` puts back each rule's `ran` round as it was when the supposition began.
 - SPEC2 phase 9.4: `lf.REFUSALS` is the one table that classifies every refusal code as `final` or `reading`. This replaces the words "among those that are not refusals" in SPEC.md's "Choosing a reading", and replaces the `MALFORMED` set in compile.py. A final refusal means the sentence was understood and the store cannot hold it; the search ends there. A reading refusal means this reading is unusable and the next is tried. A test checks that every code in the source is in the table and that every final code has its motivating sentence.
+- SPEC2 phase 9.5, reading choice. The order of criteria, applied in `compile.choose` and nowhere else. This replaces SPEC.md's "Choosing a reading".
+  0. Only eventive readings are candidates (a predicate other than the unknown-word fallback takes the sentence event).
+  1. Refusals, in parser order. A reading refusal (see `lf.REFUSALS`) is skipped. A final refusal ends the search: if no reading compiled before it, the sentence is refused with it; otherwise only the readings before it compete. If every candidate is a reading refusal, the first candidate's refusal is returned.
+  2. Store overlap: the reading with the most (predicate, arity) pairs already in the store.
+  3. Swallowed words: the reading that leaves out the fewest words that most of the compiled readings span (character spans from the parser).
+  4. Parser order.

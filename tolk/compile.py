@@ -119,12 +119,18 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
 
 
 def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None = None) -> tuple[int, lf.LF]:
-    """The eventive reading whose predicates overlap the store most; ties go to the parser's order."""
+    """Choose one reading. The order of criteria is numbered in DECISIONS.md ("Reading choice") and is applied here and nowhere else.
+
+    0. Only eventive readings are candidates.
+    1. Refusals, in parser order: a reading refusal is skipped; a final refusal ends the search. If no reading compiled
+       before it, the sentence is refused with it; otherwise only the readings before it compete.
+    2. Store overlap: the most (predicate, arity) pairs already in the store.
+    3. Swallowed words: the fewest words that most compiled readings span and this one leaves out.
+    4. Parser order.
+    """
     cands = [(i, compile_reading(r, lookup)) for i, r in enumerate(readings) if eventive(r)]
     if not cands:
         return 0, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event")
-    # A refusal for a meaning the store cannot hold ends the search: a reading ranked below it would store something else.
-    # A malformed reading, such as a name reading of a bare plural, is skipped.
     ok = []
     for i, x in cands:
         if not isinstance(x, lf.Refusal):
