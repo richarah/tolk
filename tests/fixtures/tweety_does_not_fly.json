@@ -4,6 +4,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ neg<12:15> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _fly_v_1<16:20> LBL: h11 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -79,6 +80,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ udef_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<0:11> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]  [ compound<0:11> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:6> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<0:6> LBL: h18 CARG: \"Tweety\" ARG0: x14 ]  [ _doe_n_1<7:11> LBL: h12 ARG0: x9 ]  [ udef_q<12:20> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ _not_c<12:15> LBL: h24 ARG0: x4 ARG1: x9 ARG2: x21 ]  [ _fly_n_1<16:20> LBL: h25 ARG0: x21 ] > HCONS: < h0 qeq h1 h6 qeq h24 h10 qeq h12 h16 qeq h18 h22 qeq h25 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -227,6 +229,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ neg<12:15> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _fly_v_1<16:20> LBL: h11 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -302,6 +305,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ udef_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:20> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:6> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:6> LBL: h14 CARG: \"Tweety\" ARG0: x10 ]  [ udef_q<7:11> LBL: h16 ARG0: x17 [ x PERS: 3 NUM: pl IND: + ] RSTR: h18 BODY: h19 ]  [ _doe_n_1<7:11> LBL: h20 ARG0: x17 ]  [ udef_q<12:20> LBL: h21 ARG0: x22 [ x PERS: 3 NUM: sg IND: + ] RSTR: h23 BODY: h24 ]  [ _not_c<12:15> LBL: h8 ARG0: x4 ARG1: x17 ARG2: x22 ]  [ _fly_n_1<16:20> LBL: h25 ARG0: x22 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h23 qeq h25 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {

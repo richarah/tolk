@@ -4,6 +4,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _dog_n_1<6:9> LBL: h7 ARG0: x3 ]  [ _have_v_1<10:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<14:16> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ _owner_n_of<17:23> LBL: h12 ARG0: x8 ARG1: i13 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h12 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {

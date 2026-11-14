@@ -12,6 +12,7 @@ class EP:
 
 @dataclass(frozen=True)
 class Reading:
+    top: str
     index: str
     eps: tuple[EP, ...]
     qeq: dict[str, str]
@@ -28,11 +29,12 @@ def read(simplemrs_text: str) -> Reading:
         eps.append(EP(ep.predicate, ep.label, args))
     qeq = {hc.hi: hc.lo for hc in m.hcons}
     props = {v: dict(p) for v, p in m.variables.items()}
-    return Reading(m.index, tuple(eps), qeq, props)
+    return Reading(m.top, m.index, tuple(eps), qeq, props)
 
 
 def to_dict(r: Reading) -> dict:
     return {
+        "top": r.top,
         "index": r.index,
         "eps": [{"pred": e.pred, "label": e.label, "args": e.args} for e in r.eps],
         "qeq": r.qeq,

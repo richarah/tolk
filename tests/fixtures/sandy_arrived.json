@@ -4,6 +4,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _arrive_v_1<6:14> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {

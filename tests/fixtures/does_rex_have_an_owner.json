@@ -4,6 +4,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Rex\" ARG0: x3 ]  [ _have_v_1<9:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<14:16> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _owner_n_of<17:23> LBL: h13 ARG0: x9 ARG1: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -90,6 +91,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:8> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:4> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:4> LBL: h9 CARG: \"Does\" ARG0: x3 ]  [ proper_q<5:8> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ named<5:8> LBL: h14 CARG: \"Rex\" ARG0: x5 ]  [ _have_v_1<9:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<14:16> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _owner_n_of<17:23> LBL: h20 ARG0: x16 ARG1: i21 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {

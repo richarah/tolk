@@ -84,3 +84,18 @@ First reading of three fixtures, pasted from `tests/fixtures/*.json`:
 ```
 [ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ proper_q<9:12> LBL: h9 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ named<9:12> LBL: h12 CARG: "Kim" ARG0: x3 ]  [ _like_v_1<13:18> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x5 ] > HCONS: < h0 qeq h1 h7 qeq h4 h10 qeq h12 > ICONS: < > ]
 ```
+
+## Phase 1: logical form and core mapping (tier A)
+
+Built `tolk/lf.py`, `tolk/compile.py`, `tolk/rules/{names,quant,copula,content}.py`. Every family exposes `map_ep(ctx, ep)` returning atoms, `None` (not mine), or a refusal. `compile.py` tries the families in one fixed order.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q tests/test_compile.py tests/test_lf.py
+28 passed in 0.06s
+$ .venv/bin/pytest -q
+108 passed in 0.15s
+```
+
+All 23 tier A sentences compile to the expected printed form (table at the top of `tests/test_compile.py`). The lemma scan passes after the function-word exemption described in DECISIONS.md.

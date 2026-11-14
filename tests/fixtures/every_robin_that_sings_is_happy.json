@@ -4,6 +4,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _robin_n_1<6:11> LBL: h7 ARG0: x3 ]  [ _sing_v_1<17:22> LBL: h7 ARG0: e8 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i9 ]  [ _happy_a_with<26:32> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i10 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -79,6 +80,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:32> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ _every_q<0:5> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ _robin_n_1<6:11> LBL: h8 ARG0: x4 ]  [ generic_entity<12:16> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<12:16> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _sing_v_1<17:22> LBL: h8 ARG0: e14 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: h15 ]  [ _happy_a_with<26:32> LBL: h16 ARG0: e17 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: i18 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h9 h15 qeq h16 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -193,6 +195,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _robin_n_1<6:11> LBL: h7 ARG0: x3 ]  [ generic_entity<12:16> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<12:16> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _sing_v_1<17:22> LBL: h7 ARG0: e13 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x3 ]  [ _happy_a_with<26:32> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h8 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -293,6 +296,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ _robin_n_1<6:11> LBL: h8 ARG0: x5 ]  [ generic_entity<12:16> LBL: h9 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<12:16> LBL: h10 ARG0: x3 RSTR: h11 BODY: h12 ]  [ _sing_v_1<17:22> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h13 ]  [ _happy_a_with<26:32> LBL: h14 ARG0: e15 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: i16 ] > HCONS: < h0 qeq h1 h6 qeq h8 h11 qeq h9 h13 qeq h14 > ICONS: < e2 focus x5 > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
@@ -396,6 +400,7 @@
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<6:11> LBL: h7 CARG: \"Robin\" ARG0: x3 ]  [ _sing_v_1<17:22> LBL: h7 ARG0: e9 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i10 ]  [ _happy_a_with<26:32> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i11 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
       "neutral": {
+        "top": "h0",
         "index": "e2",
         "eps": [
           {
