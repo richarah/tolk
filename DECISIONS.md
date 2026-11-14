@@ -15,3 +15,9 @@
 - Lemma scan exemption: `every`, `no`, `do`, `does`, `is`, `a`, `an`, `the`, `be` come from determiner and auxiliary predicates. The scan ignores them. Quantifier names are allowed in rules by SPEC rule 3. The copula is recognised by its sense suffix, not its lemma.
 - Ask mode: every indefinite and every wh variable is a variable. Events are variables. Tell mode: events and indefinites become fresh constants \`e1..\`, \`a1..\`.
 - `Reading` gained `top` (the LTOP handle). It is needed to find the main clause.
+- Store schema deviations: `rule` has two columns the spec does not list. `lf` holds the rule as JSON so the engine can run it again, and `ran` is the round in which the rule last ran (NULL before its first run). `why` has a unique index over `IFNULL(sentence, 0)` and `IFNULL(rule, 0)` because SQLite treats NULLs as distinct. The spec does not say so, but a unique row per premise set is what keeps a second run from adding why rows.
+- Fresh constants: compile gives local ids `e1`, `a1`. The store renames each to an id no earlier sentence used, so `e1` in one sentence never means the same event as `e1` in another.
+- Repeated statements: a sentence whose text is already stored adds no facts. Two sentences with different wording that mean the same thing still add facts, because each gets fresh events. Open: identity of events by content.
+- Round semantics: told facts take round max+1. A rule's first run has no round constraint. Later runs require at least one body atom from the previous round, as the spec says. Stopping: a round that adds nothing ends the run.
+- Skolem guard: a body binding whose value starts with `sk:<rule id>:` blocks the match, so a rule never reuses its own skolems.
+- `tests/helpers.tell_text` tells one sentence through compile and store. It is test scaffolding and will be replaced by `Mind.tell` in phase 3, which removes it.

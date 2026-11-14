@@ -99,3 +99,19 @@ $ .venv/bin/pytest -q
 ```
 
 All 23 tier A sentences compile to the expected printed form (table at the top of `tests/test_compile.py`). The lemma scan passes after the function-word exemption described in DECISIONS.md.
+
+## Phase 2: store and engine
+
+Built `tolk/store.py` and `tolk/engine.py`. The engine compiles each rule to SQL, one `INSERT OR IGNORE ... SELECT` per head atom plus one skolem `entity` insert per created variable and one `why` insert per head atom. Every value is a bound parameter. Rounds are semi-naive as the spec describes.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q -s tests/test_engine.py
+fixpoint: 300000 derived facts in 1.29s
+5 passed in 2.71s
+$ .venv/bin/pytest -q
+1 failed, 112 passed in 2.97s
+```
+
+The 50,000-fact timing is the `fixpoint` line above (300,000 facts derived through six rules).

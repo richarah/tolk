@@ -28,9 +28,9 @@ class Ctx:
             return Const(self.const[var])
         if self.mode == "tell" and (Var(var).event or self.bound.get(var) == quant.INDEF):
             if var not in self.fresh:
-                prefix = "e" if Var(var).event else "a"
-                self.counts[prefix] += 1
-                self.fresh[var] = Const(f"{prefix}{self.counts[prefix]}")
+                kind = "event" if Var(var).event else "anon"
+                self.counts[kind] += 1
+                self.fresh[var] = Const(lf.fresh_id(kind, self.counts[kind]), kind)
             return self.fresh[var]
         return Var(var)
 

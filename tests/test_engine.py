@@ -1,0 +1,77 @@
+import time
+
+from helpers import tell_text
+from tolk import engine, lf, store
+from tolk.lf import Atom, Const, Var
+
+TIER_A_STATEMENTS = [
+    "Tweety is a robin.", "Every robin is a bird.", "Every bird flies.", "Birds are animals.",
+    "Tweety sings.", "Every robin that sings is happy.", "Kim is a person.", "Kim owns a dog.",
+    "Every person who owns a dog is happy.", "Kim likes Sandy.", "Rex is a dog.", "Every dog has an owner.",
+]
+
+
+def count(db, pred: str, value: str, column: str = "a0") -> int:
+    return db.execute(f"SELECT COUNT(*) FROM fact WHERE pred = ? AND {column} = ?", (pred, value)).fetchone()[0]
+
+
+def test_tier_a_statements_derive_expected_facts() -> None:
+    db = store.open_store()
+    for s in TIER_A_STATEMENTS:
+        tell_text(db, s)
+    engine.run(db)
+    assert count(db, "_bird_n_1", "tweety") == 1
+    assert count(db, "_animal_n_1", "tweety") == 1
+    assert count(db, "_fly_v_1", "tweety", "a1") == 1
+    assert count(db, "_happy_a_with", "tweety", "a1") == 1
+    assert count(db, "_happy_a_with", "kim", "a1") == 1
+    assert count(db, "_have_v_1", "rex", "a1") == 1
+    assert db.execute("SELECT COUNT(*) FROM entity WHERE kind = 'skolem'").fetchone()[0] >= 2
+
+
+def test_telling_the_same_statement_twice_adds_nothing() -> None:
+    db = store.open_store()
+    tell_text(db, "Kim likes Sandy.")
+    before = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0]
+    tell_text(db, "Kim likes Sandy.")
+    assert db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] == before
+
+
+def test_dog_owner_is_created_once_and_rerun_creates_none() -> None:
+    db = store.open_store()
+    tell_text(db, "Rex is a dog.")
+    tell_text(db, "Every dog has an owner.")
+    engine.run(db)
+    owners = db.execute("SELECT COUNT(*) FROM fact WHERE pred = '_owner_n_of'").fetchone()[0]
+    assert owners == 1
+    assert engine.run(db) == 0
+    assert db.execute("SELECT COUNT(*) FROM fact WHERE pred = '_owner_n_of'").fetchone()[0] == 1
+
+
+def test_recursion_through_skolem_terms_stops() -> None:
+    # Each person gets a new parent, and each parent is a person. Without the guard this never ends.
+    db = store.open_store()
+    sid = store.add_sentence(db, "synthetic")
+    store.tell(db, lf.Tell((Atom("person", (Const("kim"),)),)), sid)
+    store.add_rule(db, lf.Rule(
+        (Atom("has", (Var("e"), Var("x"), Var("p"))), Atom("parent", (Var("p"),))),
+        (Atom("person", (Var("x"),)),),
+    ), sid)
+    store.add_rule(db, lf.Rule((Atom("person", (Var("x"),)),), (Atom("parent", (Var("x"),)),)), sid)
+    engine.run(db)
+    assert db.execute("SELECT COUNT(*) FROM fact WHERE pred = 'parent'").fetchone()[0] == 1
+
+
+def test_fifty_thousand_facts_through_six_rules_reach_fixpoint() -> None:
+    db = store.open_store()
+    sid = store.add_sentence(db, "synthetic")
+    atoms = tuple(Atom("p0", (Const(f"c{i}"),)) for i in range(50_000))
+    store.tell(db, lf.Tell(atoms), sid)
+    for i in range(6):
+        store.add_rule(db, lf.Rule((Atom(f"p{i + 1}", (Var("x"),)),), (Atom(f"p{i}", (Var("x"),)),)), sid)
+    start = time.perf_counter()
+    added = engine.run(db)
+    elapsed = time.perf_counter() - start
+    print(f"\nfixpoint: {added} derived facts in {elapsed:.2f}s")
+    assert added == 6 * 50_000
+    assert engine.run(db) == 0

@@ -1,10 +1,19 @@
+import json
 from dataclasses import dataclass
 from itertools import chain, count
+
+# Kinds of constant that the store renames to fresh ids; the prefix is their one home.
+FRESH = {"event": "e", "anon": "a"}
+
+
+def fresh_id(kind: str, n: int) -> str:
+    return f"{FRESH[kind]}{n}"
 
 
 @dataclass(frozen=True)
 class Const:
     id: str
+    kind: str = "named"
 
 
 @dataclass(frozen=True)
@@ -132,3 +141,22 @@ def _atom(a: Atom, name, creates=(), marked: set[Var] | None = None) -> str:
             mark = "!"
         parts.append(name(t) + mark)
     return f"{a.pred}({', '.join(parts)})"
+
+
+def encode_rule(r: Rule) -> str:
+    return json.dumps({"head": [_enc(a) for a in r.head], "body": [_enc(a) for a in r.body]})
+
+
+def decode_rule(text: str) -> Rule:
+    data = json.loads(text)
+    return Rule(tuple(_dec(a) for a in data["head"]), tuple(_dec(a) for a in data["body"]))
+
+
+def _enc(a: Atom) -> list:
+    args = [["c", t.id, t.kind] if isinstance(t, Const) else ["v", t.key] for t in a.args]
+    return [a.pred, args]
+
+
+def _dec(a: list) -> Atom:
+    args = tuple(Const(t[1], t[2]) if t[0] == "c" else Var(t[1]) for t in a[1])
+    return Atom(a[0], args)
