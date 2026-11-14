@@ -32,6 +32,10 @@ class Mind:
         self._ran: list[tuple[int, int | None]] = []
 
     def hear(self, text: str) -> Result:
+        with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot leave a half-stored rule
+            return self._hear(text)
+
+    def _hear(self, text: str) -> Result:
         readings = [sem.read(raw) for raw in erg.parse(text)]
         k, x = comp.choose(readings, store.known_preds(self.db), self._lookup)
         printed = lf.show(x)

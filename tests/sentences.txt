@@ -45,3 +45,7 @@ Does Kim live in Bergen?
 Who is Kim?
 What is Kim?
 Who is Tweety?
+# phase 11
+If Kim owns a dog, Kim is happy.
+Tweety flies if Tweety is a bird.
+If a robin sings, Kim is happy.

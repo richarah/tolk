@@ -6,9 +6,9 @@ from tolk.rules.ctx import Lookup
 from tolk.sem import EP, Reading
 
 
-def main_labels(r: Reading) -> set[str]:
-    """The top clause, and any clause a neg at the top points at."""
-    labels = {r.qeq[r.top]}
+def main_labels(r: Reading, start: str | None = None) -> set[str]:
+    """The top clause, or the clause with label start, and any clause a neg at its top points at."""
+    labels = {start or r.qeq[r.top]}
     grew = True
     while grew:
         more = {r.qeq.get(ep.args["ARG1"], ep.args["ARG1"]) for ep in r.eps if ep.pred == "neg" and ep.label in labels}
@@ -42,20 +42,31 @@ def definite(r: Reading, q: EP, lookup: Lookup | None) -> str | lf.Refusal:
 
 def restricted(r: Reading, quants: list[EP], universal_top: list[EP]) -> set[int]:
     """Indices of predications inside a universal's restriction, including nested indefinites' restrictions."""
-
-    def restriction(q: EP) -> list[int]:
-        target = r.qeq.get(q.args["RSTR"])
-        return [i for i, ep in enumerate(r.eps) if ep.label == target]
-
     body: set[int] = set()
     for q in universal_top:
-        frontier = restriction(q)
-        while frontier:
-            i = frontier.pop()
-            if i in body:
-                continue
-            body.add(i)
-            for q2 in quants:
-                if q2.args["ARG0"] in r.eps[i].args.values():
-                    frontier += restriction(q2)
+        body |= expand(r, quants, _restriction(r, q))
     return body
+
+
+def clause(r: Reading, quants: list[EP], label: str) -> set[int]:
+    """Indices of the predications of a clause and of the restrictions of the quantifiers over its variables."""
+    labels = main_labels(r, label)
+    return expand(r, quants, [i for i, ep in enumerate(r.eps) if ep.label in labels])
+
+
+def _restriction(r: Reading, q: EP) -> list[int]:
+    target = r.qeq.get(q.args["RSTR"])
+    return [i for i, ep in enumerate(r.eps) if ep.label == target]
+
+
+def expand(r: Reading, quants: list[EP], frontier: list[int]) -> set[int]:
+    found: set[int] = set()
+    while frontier:
+        i = frontier.pop()
+        if i in found:
+            continue
+        found.add(i)
+        for q in quants:
+            if q.args["ARG0"] in r.eps[i].args.values():
+                frontier += _restriction(r, q)
+    return found

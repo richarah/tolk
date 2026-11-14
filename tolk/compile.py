@@ -4,11 +4,11 @@ from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, content, copula, describe, modifiers, names, neg, quant, scope
+from tolk.rules import check, conditional, content, copula, describe, modifiers, names, neg, quant, scope
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
-FAMILIES = (names, quant, neg, copula, modifiers, content)
+FAMILIES = (names, quant, neg, copula, conditional, modifiers, content)
 
 
 def eventive(r: Reading) -> bool:
@@ -48,13 +48,16 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     for ep in main:
         if copula.is_copula(ep) and ep.args["ARG1"] in const and ep.args["ARG2"] in const and sf == "prop":
             return lf.Same(Const(const[ep.args["ARG1"]], "named"), Const(const[ep.args["ARG2"]], "named"))
+    cond = conditional.find(r, main)
     negated = scope.negated(r, quants, alias, bound)
     universal_top = [
         q for q in quants
         if q.pred in quant.UNIVERSAL and q.args["ARG0"] in main_vars and q.args["ARG0"] not in alias
         and bound[q.args["ARG0"]] == q.pred
     ]
-    if sf == "prop":
+    if cond is not None and (sf == "ques" or universal_top):
+        return lf.Refusal("UNSUPPORTED_PREDICATE", cond.pred)
+    if sf == "prop" and cond is None:
         # Under negation an indefinite object has narrow scope: no X is V-ed is every X is not V-ed.
         universal_top += [
             q for q in quants
@@ -64,6 +67,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     if sf == "ques" and any(q.pred in quant.UNIVERSAL and bound[q.args["ARG0"]] == q.pred for q in quants):
         return lf.Refusal("UNIVERSAL_QUESTION", "a question over every or no thing would be answered as a question over some")
     body = scope.restricted(r, quants, universal_top)
+    if cond is not None:
+        body = scope.clause(r, quants, conditional.labels(r, cond)[0])
     if any(q.pred == "_every_q" and q in universal_top for q in quants) and any(
         ep.label in negated and ep.pred != "neg" for i, ep in enumerate(r.eps) if i not in body
     ):
@@ -71,7 +76,7 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     if any(q.pred == "_no_q" and q.args["ARG0"] in main_vars for q in quants):
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
-    mode = "ask" if sf == "ques" else "rule" if universal_top else "tell"
+    mode = "ask" if sf == "ques" else "rule" if universal_top or cond is not None else "tell"
     ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()))
     wanted = tuple(ctx.term(v) for v, p in bound.items() if p in quant.WH)
     if any(not isinstance(w, Var) for w in wanted):
@@ -85,6 +90,11 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         tail = _map(ctx, [ep for i, ep in enumerate(r.eps) if i in body])
         if isinstance(tail, lf.Refusal):
             return tail
+        if not head:
+            return lf.Refusal("UNCONSUMED", "a rule with no conclusion")
+        if any(not a.positive and any(isinstance(t, Var) and bound.get(t.key) == quant.INDEF for t in a.args) for a in tail):
+            # not (exists y: p(y) and q(y)) cannot be a negated body atom next to p(y): that would mean some y with not q(y).
+            return lf.Refusal("NEGATED_INDEFINITE", "a negated clause in a rule body introduces a new thing")
         if not tail:
             # A universal over a named thing has nothing to range over; the name reading of a bare plural lands here.
             return lf.Refusal("EMPTY_RULE_BODY", "the restriction has no atom")
@@ -106,6 +116,9 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
 def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
     atoms: list[Atom] = []
     for ep in eps:
+        if ep.pred == "unknown":
+            # The grammar's fallback for words it could not analyse in this reading; another reading may do better.
+            return lf.Refusal("FALLBACK_PARSE", "the grammar left a word unanalysed")
         if content.CONJUNCTION.fullmatch(ep.pred):
             # Checked before the families: the families would take a conjunction of two events for an event modifier.
             return lf.Refusal("COORDINATION", ep.pred)

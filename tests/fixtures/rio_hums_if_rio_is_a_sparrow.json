@@ -1,0 +1,807 @@
+{
+  "text": "Rio hums if Rio is a sparrow.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ unknown<0:29> LBL: h4 ARG0: e2 ARG: x5 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:8> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ compound<0:8> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: x11 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ named<0:3> LBL: h15 CARG: \"Rio\" ARG0: x11 ]  [ _hum_n_1<4:8> LBL: h9 ARG0: x5 ]  [ _if_x_then<9:11> LBL: h1 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h18 ARG2: h19 ]  [ proper_q<12:15> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<12:15> LBL: h24 CARG: \"Rio\" ARG0: x21 ]  [ _be_v_id<16:18> LBL: h26 ARG0: e2 ARG1: x21 ARG2: x27 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h28 ARG0: x27 RSTR: h29 BODY: h30 ]  [ _sparrow_n_1<21:29> LBL: h31 ARG0: x27 ] > HCONS: < h0 qeq h1 h7 qeq h9 h13 qeq h15 h18 qeq h4 h19 qeq h26 h22 qeq h24 h29 qeq h31 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h4",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x5"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h9",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "x5",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x11"
+            }
+          },
+          {
+            "pred": "_hum_n_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e17",
+              "ARG1": "h18",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h24",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h26",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x21",
+              "ARG2": "x27"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h28",
+            "args": {
+              "ARG0": "x27",
+              "RSTR": "h29",
+              "BODY": "h30"
+            }
+          },
+          {
+            "pred": "_sparrow_n_1",
+            "label": "h31",
+            "args": {
+              "ARG0": "x27"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h9",
+          "h13": "h15",
+          "h18": "h4",
+          "h19": "h26",
+          "h22": "h24",
+          "h29": "h31"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h7": {},
+          "h8": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h13": {},
+          "h14": {},
+          "e17": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h18": {},
+          "h19": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "x27": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h29": {},
+          "h30": {},
+          "h0": {},
+          "h1": {},
+          "h9": {},
+          "h15": {},
+          "h4": {},
+          "h26": {},
+          "h24": {},
+          "h31": {},
+          "h6": {},
+          "h12": {},
+          "h20": {},
+          "h28": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Rio\" ARG0: x3 ]  [ _hum_v_1<4:8> LBL: h9 ARG0: e2 ARG1: x3 ARG2: i10 ]  [ _if_x_then<9:11> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<12:15> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<12:15> LBL: h18 CARG: \"Rio\" ARG0: x15 ]  [ _be_v_id<16:18> LBL: h20 ARG0: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x15 ARG2: x22 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h23 ARG0: x22 RSTR: h24 BODY: h25 ]  [ _sparrow_n_1<21:29> LBL: h26 ARG0: x22 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 h24 qeq h26 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_hum_v_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i10"
+            }
+          },
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "h12",
+              "ARG2": "h13"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x15",
+              "ARG2": "x22"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h23",
+            "args": {
+              "ARG0": "x22",
+              "RSTR": "h24",
+              "BODY": "h25"
+            }
+          },
+          {
+            "pred": "_sparrow_n_1",
+            "label": "h26",
+            "args": {
+              "ARG0": "x22"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h9",
+          "h13": "h20",
+          "h16": "h18",
+          "h24": "h26"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i10": {},
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h12": {},
+          "h13": {},
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x22": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h24": {},
+          "h25": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h9": {},
+          "h20": {},
+          "h18": {},
+          "h26": {},
+          "h4": {},
+          "h14": {},
+          "h23": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Rio\" ARG0: x3 ]  [ _hum_v_1<4:8> LBL: h9 ARG0: e2 ARG1: x3 ARG2: i10 ]  [ _if_x_then<9:11> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<12:15> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<12:15> LBL: h18 CARG: \"Rio\" ARG0: x15 ]  [ _be_v_id<16:18> LBL: h20 ARG0: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x15 ARG2: x22 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h23 ARG0: x22 RSTR: h24 BODY: h25 ]  [ _sparrow_n_1<21:29> LBL: h26 ARG0: x22 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 h24 qeq h26 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_hum_v_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i10"
+            }
+          },
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "h12",
+              "ARG2": "h13"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x15",
+              "ARG2": "x22"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h23",
+            "args": {
+              "ARG0": "x22",
+              "RSTR": "h24",
+              "BODY": "h25"
+            }
+          },
+          {
+            "pred": "_sparrow_n_1",
+            "label": "h26",
+            "args": {
+              "ARG0": "x22"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h9",
+          "h13": "h20",
+          "h16": "h18",
+          "h24": "h26"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i10": {},
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h12": {},
+          "h13": {},
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x22": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h24": {},
+          "h25": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h9": {},
+          "h20": {},
+          "h18": {},
+          "h26": {},
+          "h4": {},
+          "h14": {},
+          "h23": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Rio\" ARG0: x3 ]  [ _hum_v_1<4:8> LBL: h9 ARG0: e2 ARG1: x3 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ _if_x_then<9:11> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<12:15> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<12:15> LBL: h18 CARG: \"Rio\" ARG0: x15 ]  [ ellipsis_ref<16:18> LBL: h20 ARG0: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x15 ]  [ _a_q<19:20> LBL: h22 ARG0: x10 RSTR: h23 BODY: h24 ]  [ _sparrow_n_1<21:29> LBL: h25 ARG0: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 h23 qeq h25 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_hum_v_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "h12",
+              "ARG2": "h13"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "ellipsis_ref",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x15"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h22",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h23",
+              "BODY": "h24"
+            }
+          },
+          {
+            "pred": "_sparrow_n_1",
+            "label": "h25",
+            "args": {
+              "ARG0": "x10"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h9",
+          "h13": "h20",
+          "h16": "h18",
+          "h23": "h25"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h12": {},
+          "h13": {},
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h23": {},
+          "h24": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h9": {},
+          "h20": {},
+          "h18": {},
+          "h25": {},
+          "h4": {},
+          "h14": {},
+          "h22": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Rio\" ARG0: x3 ]  [ _hum_v_1<4:8> LBL: h9 ARG0: e2 ARG1: x3 ARG2: i10 ]  [ _if_x_then<9:11> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<12:15> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<12:15> LBL: h18 CARG: \"Rio\" ARG0: x15 ]  [ ellipsis_ref<16:18> LBL: h20 ARG0: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x15 ]  [ mod<19:29> LBL: h1 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x23 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]  [ _sparrow_n_1<21:29> LBL: h27 ARG0: x23 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 h25 qeq h27 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_hum_v_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i10"
+            }
+          },
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "h12",
+              "ARG2": "h13"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "ellipsis_ref",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x15"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e22",
+              "ARG1": "e2",
+              "ARG2": "x23"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h24",
+            "args": {
+              "ARG0": "x23",
+              "RSTR": "h25",
+              "BODY": "h26"
+            }
+          },
+          {
+            "pred": "_sparrow_n_1",
+            "label": "h27",
+            "args": {
+              "ARG0": "x23"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h9",
+          "h13": "h20",
+          "h16": "h18",
+          "h25": "h27"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i10": {},
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h12": {},
+          "h13": {},
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e22": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x23": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h25": {},
+          "h26": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h9": {},
+          "h20": {},
+          "h18": {},
+          "h27": {},
+          "h4": {},
+          "h14": {},
+          "h24": {}
+        }
+      }
+    }
+  ]
+}

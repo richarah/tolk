@@ -72,6 +72,8 @@ def check(db: sqlite3.Connection, rule: lf.Rule) -> lf.Refusal | None:
         for t in a.args:
             if isinstance(t, Var) and not t.event and t not in positive_vars:
                 return lf.Refusal("UNSAFE_NEGATION", t.key)
+    if not any(a.positive for a in rule.body):
+        return lf.Refusal("UNSAFE_NEGATION", "nothing in the body is positive, so the rule would fire on ignorance alone")
     rules = [lf.decode_rule(text) for (text,) in db.execute("SELECT lf FROM rule")] + [rule]
     try:
         strata(rules)
@@ -143,7 +145,7 @@ class Match:
             if not atom.positive:
                 conds.append(self._absent(i, atom, ctx, params))
         self.ids_list = [f"f{i}.id" for i, _ in positives]
-        self.src = f"FROM {', '.join(froms)} WHERE {' AND '.join(conds)}" if froms else "FROM (SELECT 1) WHERE 1"
+        self.src = f"FROM {', '.join(froms) or '(SELECT 1)'} WHERE {' AND '.join(conds) or '1'}"
         self.params = tuple(params)
 
     def _absent(self, i: int, atom: Atom, ctx: str, params: list) -> str:

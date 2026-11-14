@@ -505,3 +505,12 @@ Built Describe(entity), rules/describe.py, store.mentioning, Mind._describe. Ten
 $ .venv/bin/pytest -q
 254 passed in 8.85s
 ```
+
+## Phase 11: conditionals
+
+Rules for 'If A, B.' and 'B if A.'; ten own-word cases in tests/test_phase11.py. Found and fixed on the way: a rule body of only a negated atom crashed the engine (SQL lost its conditions) and left the rule stored; each hear is now one transaction. The grammar's unknown fallback is a reading refusal.
+
+```
+$ .venv/bin/pytest -q
+276 passed in 9.72s
+```

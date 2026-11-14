@@ -51,3 +51,9 @@ def test_parser_order_decides_between_two_equal_readings() -> None:
 
 def test_parser_order_is_overridden_by_overlap() -> None:
     assert chosen("Kim lives in Oslo.", {("_in_p_state", 2)}) == 2
+
+
+def test_a_fallback_parse_is_a_reading_refusal_and_is_skipped() -> None:
+    # Reading 1 of this sentence leaves a word unanalysed; reading 2 is the sentence.
+    k, x = comp.choose(readings("Rio hums if Rio is a sparrow."), set())
+    assert k == 1 and not hasattr(x, "code")
