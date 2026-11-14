@@ -1,5 +1,6 @@
 """Prepositions that modify an event attach to that event. Their event argument is not used."""
 
+import re
 from typing import TYPE_CHECKING
 
 from tolk import lf
@@ -12,7 +13,13 @@ if TYPE_CHECKING:
 # A where-question asks about any locative preposition, so it matches on the sense suffix.
 ANY_LOCATIVE = "_*_p_[ls]*"
 
+# Durations and open-ended times belong nowhere in the store: it has years and orderings only.
+UNTIMED = re.compile(r"_(since|until|till|during)_p(_.*)?")
+
+
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
+    if UNTIMED.fullmatch(ep.pred):
+        return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
     if ep.pred == "loc_nonsp":
         if ctx.mode == "tell":
             return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)

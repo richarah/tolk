@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
 def plan(r: Reading) -> dict[str, str]:
-    consts = {ep.args["ARG0"]: ep.args["CARG"].lower() for ep in r.eps if ep.pred == "named"}
+    consts = {ep.args["ARG0"]: ep.args["CARG"].lower() for ep in r.eps if ep.pred in ("named", "yofc")}
     for ep in r.eps:
         if ep.pred == "compound":
             head, modifier = ep.args["ARG1"], ep.args["ARG2"]
@@ -20,6 +20,6 @@ def plan(r: Reading) -> dict[str, str]:
     return consts
 
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
-    if ep.pred in ("named", "compound"):
+    if ep.pred in ("named", "yofc", "compound"):
         return ()
     return None

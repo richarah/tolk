@@ -34,7 +34,9 @@ def proof_text(db: sqlite3.Connection, p: Proof, depth: int = 0) -> str:
         (text,) = db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()
         line = f'{pad}{fact_text(db, p.fact)}  (told: "{text}")'
     else:
-        line = f"{pad}{fact_text(db, p.fact)}  (by rule {p.rule})"
+        (source,) = db.execute("SELECT s.text FROM rule r JOIN sentence s ON s.id = r.sentence WHERE r.id = ?", (p.rule,)).fetchone()
+        by = f"by built-in axiom: {source[len('[axiom] '):]}" if source.startswith("[axiom] ") else f"by rule {p.rule}"
+        line = f"{pad}{fact_text(db, p.fact)}  ({by})"
     return "\n".join([line] + [proof_text(db, q, depth + 1) for q in p.premises])
 
 

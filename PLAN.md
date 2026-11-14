@@ -192,3 +192,5 @@ Phase 16: fixtures read (unknown words are _surface/TAG_u_unknown). content.know
 Phase 18: defaults, levels, defeat, policy, universal questions. defaults.py is new; engine rule_sql gets kind, level and bindings; Mind owns the policy setting.
 
 Phase 19: Mind.retract, diagnose, observe, auto_revise, Forget that S. store.retract, revision table.
+
+Phase 20: fixtures read (before/after predications, yofc, in_p_temp). rules/temporal.py, tense facts, Ask.tenses, built-in axioms, reuse_events.

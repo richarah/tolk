@@ -5,11 +5,14 @@ from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope
+from tolk.rules import check, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope, temporal
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
-FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, modifiers, content)
+# Predicates the grammar uses for bookkeeping of the grammar, seen only in readings that are not the sentence: ellipsis, an implied place, a
+# subordinator, a modifier of nothing, an apposition. A reading that has one is unusable; it is not a meaning the store cannot hold.
+ARTIFACTS = {"ellipsis_ref", "place_n", "subord", "mod", "appos", "id"}
+FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, modifiers, content)
 
 
 def eventive(r: Reading) -> bool:
@@ -93,6 +96,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     mode = "rule" if universal_top or cond is not None else "ask" if sf == "ques" else "tell"
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
         return lf.Refusal("COORDINATION", "a group or an or in a rule")
+    if mode == "rule" and temporal.find(r):
+        return lf.Refusal("UNSUPPORTED_PREDICATE", "before or after in a rule: the order of the events a rule makes is not stored")
     if cards and mode == "rule":
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card in a rule: the number of things a rule makes is not stored")
     if len(cards) > 1 and mode == "ask":
@@ -127,14 +132,17 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         atoms = _map(ctx, r.eps)
         if isinstance(atoms, lf.Refusal):
             return atoms
-        alts = coordination.distribute(ctx, _expand(ctx, atoms, cards) if mode == "tell" else atoms, conjs)
+        ordered = temporal.order(ctx, r)
+        if isinstance(ordered, lf.Refusal):
+            return ordered
+        alts = coordination.distribute(ctx, (_expand(ctx, atoms, cards) if mode == "tell" else atoms) + ordered, conjs)
         if isinstance(alts, lf.Refusal):
             return alts
         if mode == "tell":
             out = lf.Tell(alts[0], notes=notes)
         else:
             counted, at_least = (Var(many[0]), 0) if many else next(((Var(v), n) for v, n in cards.items()), (None, 0))
-            out = lf.Ask(alts[0], wanted, notes, counted, at_least, tuple(alts) if len(alts) > 1 else ())
+            out = lf.Ask(alts[0], wanted, notes, counted, at_least, alternatives=tuple(alts) if len(alts) > 1 else ())
     probe = lf.Ask(tuple(a for alt in out.alternatives for a in alt), out.wanted) if isinstance(out, lf.Ask) and out.alternatives else out
     groups = {c.group for c in conjs if c.nominal}
     unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1]) and q.args["ARG0"] not in groups], probe, mode)
@@ -142,8 +150,12 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         return unconsumed
     if isinstance(out, (lf.Tell, lf.Rule)):
         out = dataclasses.replace(out, mentions=_mentions(r, ctx, [q for q in quants if q.args["ARG0"] not in cards], out))
-    if mode == "tell" and r.props[r.index].get("TENSE") == "past":
-        out = dataclasses.replace(out, atoms=out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
+    if mode == "tell":
+        out = dataclasses.replace(out, atoms=out.atoms + _tenses(ctx, r, out.atoms))
+    elif isinstance(out, lf.Rule):
+        out = dataclasses.replace(out, head=out.head + _tenses(ctx, r, out.head))
+    elif isinstance(out, lf.Ask):
+        out = dataclasses.replace(out, tenses=_asked_tenses(ctx, r, out))
     unbound = check.unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
 
@@ -153,7 +165,7 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
     for ep in eps:
         if ep.pred == "unknown":
             # The grammar's fallback for words it could not analyse in this reading; another reading may do better.
-            return lf.Refusal("FALLBACK_PARSE", "the grammar left a word unanalysed")
+            return lf.Refusal("FALLBACK_PARSE", "a word was not analysed by the grammar")
         if coordination.CONJUNCTION.fullmatch(ep.pred):
             # Checked before the families, which would take a conjunction of two events for an event modifier.
             got = coordination.map_ep(ctx, ep)
@@ -168,8 +180,36 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
             atoms.extend(got)
             break
         else:
-            return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
+            return lf.Refusal("GRAMMAR_ARTIFACT" if ep.pred in ARTIFACTS else "UNSUPPORTED_PREDICATE", ep.pred)
     return tuple(atoms)
+
+
+def _tenses(ctx: Ctx, r: Reading, atoms: tuple[Atom, ...]) -> tuple[Atom, ...]:
+    """tense(event, past) for each past event that the atoms mention. Present is not stored: it is what an event is by default."""
+    used = {t for a in atoms for t in a.args}
+    found: list[Atom] = []
+    for ep in r.eps:
+        v = ep.args.get("ARG0", "")
+        if ep.pred.startswith("_") and v.startswith("e") and r.props.get(v, {}).get("TENSE") == "past":
+            t = ctx.term(v)
+            atom = Atom(lf.TENSE, (t, Const("past", "value")))
+            if t in used and atom not in found:
+                found.append(atom)
+    return tuple(found)
+
+
+def _asked_tenses(ctx: Ctx, r: Reading, out: lf.Ask) -> tuple[tuple[Var, str], ...]:
+    """The tense each event of the question must carry: a past question needs a past event, a present one an event that is not past."""
+    used = {t for alt in (out.alternatives or (out.body,)) for a in alt for t in a.args}
+    found: list[tuple[Var, str]] = []
+    for ep in r.eps:
+        v = ep.args.get("ARG0", "")
+        tense = r.props.get(v, {}).get("TENSE")
+        if ep.pred.startswith("_") and v.startswith("e") and tense in ("past", "pres"):
+            t = ctx.term(v)
+            if isinstance(t, Var) and t in used and (t, tense) not in found:
+                found.append((t, tense))
+    return tuple(found)
 
 
 def _expand(ctx: Ctx, atoms: tuple[Atom, ...], cards: dict[str, int]) -> tuple[Atom, ...]:

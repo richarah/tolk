@@ -73,3 +73,13 @@ Tweety is a blorp.
 Every blorp flibbers.
 Tweety is glorpy.
 Does Tweety flibber?
+# phase 20
+Kim lived in Oslo.
+Does Kim live in Oslo?
+Did Kim live in Oslo?
+Kim arrived before Sandy left.
+Sandy left before Lee sang.
+Did Kim arrive before Lee sang?
+Kim lived in Oslo in 2019.
+Where did Kim live in 2019?
+Kim arrived after Sandy left.

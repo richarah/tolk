@@ -9,8 +9,9 @@ from tolk.sem import EP, Reading
 if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
-# Part of speech x: a function word that relates two clauses. Its first clause is the consequent, its second the antecedent.
-CONDITIONAL = re.compile(r"_[^_]+_x_[^_]+")
+# The grammar's if-then: its first clause is the consequent, its second the antecedent. Other part-of-speech x words, before and
+# after, relate clauses in time and are the temporal family's.
+CONDITIONAL = re.compile(r"_if_x_then")
 
 
 def find(r: Reading, main: list[EP]) -> EP | None:

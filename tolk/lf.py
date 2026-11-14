@@ -8,6 +8,9 @@ FRESH = {"event": "e", "anon": "a"}
 # A word the grammar did not know is stored as _base_pos_unknown; this is the one home of that shape.
 UNKNOWN_SENSE = "unknown"
 UNKNOWN_PRED = re.compile(rf"_(.+)_([nav])_{UNKNOWN_SENSE}")
+# Built-in predicates the system itself states: the tense of an event, and the order of two events.
+TENSE = "tense"
+BEFORE = "before"
 # Constant standing for the missing event of a negated predication; its event column is empty.
 NO_EVENT = "empty"
 
@@ -75,6 +78,7 @@ class Ask:
     notes: tuple[str, ...] = ()
     count: Var | None = None  # count the distinct things this variable takes
     atleast: int = 0  # with count: 0 asks how many; n asks whether there are at least n
+    tenses: tuple[tuple[Var, str], ...] = ()  # events of the question that must be past, or present; a fact without an event is either
     alternatives: tuple[tuple[Atom, ...], ...] = ()  # an or: the question is answered by each alternative body, and any Yes wins
 
 
@@ -108,7 +112,7 @@ LF = Tell | Rule | Ask | Every | Same | Describe | Refusal
 # so the reading search ends. "reading": this reading is unusable, so the next one is tried.
 REFUSALS = {
     "ARGUMENT_GAP": "reading", "FALLBACK_PARSE": "reading", "EMPTY_RULE_BODY": "reading", "TOO_MANY_ARGUMENTS": "reading",
-    "UNBOUND_VARIABLE": "reading", "UNCONSTRAINED_WANTED": "reading", "UNCONSUMED": "reading", "UNEXPRESSED_OBJECT": "reading",
+    "UNBOUND_VARIABLE": "reading", "GRAMMAR_ARTIFACT": "reading", "UNCONSTRAINED_WANTED": "reading", "UNCONSUMED": "reading", "UNEXPRESSED_OBJECT": "reading",
     "UNEXPRESSED_SUBJECT": "reading", "WH_BOUND_TO_CONSTANT": "reading",
     "CONTRADICTS": "final", "COORDINATION": "final", "DEFINITE_MATCHES": "final", "DEFINITE_NEEDS_STORE": "final",
     "IDENTITY_NOT_YET": "final", "NEGATED_INDEFINITE": "final", "NO_EVENT_READING": "final", "SCOPE_AMBIGUOUS": "final",
@@ -148,6 +152,8 @@ def _show(x: LF) -> str:
         body = ", ".join(_atom(a, names) for a in x.body)
         return f"{x.kind if x.kind == 'default' else 'rule':<6} {head} :- {body}"
     body = " | ".join(", ".join(_atom(a, names) for a in alt) for alt in (x.alternatives or (x.body,)))
+    past = "".join(f"  [{names(v)} past]" for v, t in x.tenses if t == "past")
+    body += past
     if x.count is not None:
         kind = "count" if not x.atleast else f"ask >={x.atleast}"
         return f"{kind} {names(x.count)}  {body}"

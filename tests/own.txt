@@ -76,3 +76,11 @@ Forget that Rio is a finch.
 Every pet purrs.
 Tom is a pet.
 Every cat is a pet.
+# phase 20, own words
+Ada slept in 2019.
+Bo slept in 2021.
+Did Ada sleep before Bo slept?
+Every dog barked.
+Did Rex bark?
+Kim arrived after Sandy left.
+Did Sandy leave before Kim arrived?

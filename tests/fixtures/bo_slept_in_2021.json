@@ -1,0 +1,423 @@
+{
+  "text": "Bo slept in 2021.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ _sleep_v_1<3:8> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_temp<9:11> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<12:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ yofc<12:17> LBL: h14 CARG: \"2021\" ARG0: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_temp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "yofc",
+            "label": "h14",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x10"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h14"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h12": {},
+          "h13": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h4": {},
+          "h11": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ _sleep_v_1<3:8> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_state<9:11> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg ] ]  [ number_q<12:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ card<12:17> LBL: h14 CARG: \"2021\" ARG0: x10 ARG1: i16 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_state",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "number_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h14",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x10",
+              "ARG1": "i16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h14"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h12": {},
+          "h13": {},
+          "i16": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h4": {},
+          "h11": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ _sleep_v_in<3:8> LBL: h1 ARG0: e2 ARG1: x3 ]  [ loc_nonsp<12:17> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg ] ]  [ number_q<12:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ card<12:17> LBL: h14 CARG: \"2021\" ARG0: x10 ARG1: i16 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_sleep_v_in",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "number_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h14",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x10",
+              "ARG1": "i16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h14"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h12": {},
+          "h13": {},
+          "i16": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h4": {},
+          "h11": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ _sleep_v_1<3:8> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_state<9:11> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: pl ] ]  [ generic_entity<12:17> LBL: h11 ARG0: x10 ]  [ udef_q<12:17> LBL: h12 ARG0: x10 RSTR: h13 BODY: h14 ]  [ card<12:17> LBL: h11 CARG: \"2021\" ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h11 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_state",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h11",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "e16",
+              "ARG1": "x10"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h11"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "pl"
+          },
+          "h13": {},
+          "h14": {},
+          "e16": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h4": {},
+          "h12": {}
+        }
+      }
+    }
+  ]
+}

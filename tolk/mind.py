@@ -75,7 +75,7 @@ class Mind:
         return self.db.execute("SELECT value FROM meta WHERE key = 'auto_revise'").fetchone()[0] == "1"
 
     def hear(self, text: str, trust: int = 0, observation: bool = False) -> Result:
-        with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot leave a half-stored rule
+        with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot store half a rule
             before = self._conflicts()
             result = self._hear(text, trust, observation)
             fresh = self._conflicts() - before
@@ -204,6 +204,9 @@ class Mind:
             store.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
             self._derive()
             return Result(*head, outcome="rule stored")
+        if any(a.pred in (lf.BEFORE, "_in_p_temp") for a in x.atoms):
+            store.ensure_time_axioms(self.db)
+            x = store.reuse_events(self.db, x, self.ctx)
         sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
         anon_before = store.fresh_of_kind(self.db, "anon")
         stored = store.tell(self.db, x, sid, self.ctx, allow_conflict=observation)

@@ -60,7 +60,7 @@ def _widening(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     wide_atoms = tuple(_widen(a) for a in q.body)
     if exact.value != UNKNOWN or wide_atoms == q.body:
         return exact
-    got = _answer(db, lf.Ask(wide_atoms, q.wanted, q.notes, q.count, q.atleast), ctx)
+    got = _answer(db, dataclasses.replace(q, body=wide_atoms), ctx)
     if got.value == UNKNOWN:
         return exact
     asked = [a.pred for a, w in zip(q.body, wide_atoms) if a != w]
@@ -127,6 +127,9 @@ def _counted(db: sqlite3.Connection, q: lf.Ask, claim: tuple[int, ...], ctx: str
 def _polarities(q: lf.Ask) -> tuple[tuple[int, ...], tuple[int, ...]]:
     """Per atom, the kind of fact that supports the question and the kind that opposes it."""
     claim = tuple(int(a.positive) for a in q.body)
+    if any(a.pred == lf.BEFORE for a in q.body):
+        # The opposite of "A before B" is the reverse order, which is known if B is known to be before A; the events themselves are not negated.
+        return claim, tuple(0 if a.pred == lf.BEFORE else 1 for a in q.body)
     if all(claim):
         return claim, (0,) * len(claim)
     return claim, (1,) * len(claim)
@@ -136,8 +139,17 @@ def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: tuple[int, ...], ctx
     """For each distinct value of the wanted variables, one proof per body atom of the first matching row."""
     flat = tuple(Atom(a.pred, a.args) for a in q.body)
     m = engine.Match(flat, ctx, None, None, polarity)
+    src, params = m.src, m.params
+    for var, tense in q.tenses:
+        if var in m.first:
+            # A fact about an event matches a past question only if the event is past, and a present one only if it is not.
+            # A fact with no event is tenseless and matches either.
+            col = m.column(var)
+            past = f"EXISTS (SELECT 1 FROM fact t WHERE t.pred = '{lf.TENSE}' AND t.a0 = {col} AND t.a1 = 'past' AND t.ctx IN ('world', ?))"
+            src += f" AND ({col} = '' OR {'' if tense == 'past' else 'NOT '}{past})"
+            params += (ctx,)
     wanted = [m.column(v) for v in q.wanted]
-    rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {m.src} ORDER BY {m.ids()}", m.params).fetchall()
+    rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {src} ORDER BY {m.ids()}", params).fetchall()
     n = len(wanted)
     seen: dict[tuple[str, ...], tuple[Proof, ...]] = {}
     for row in rows:

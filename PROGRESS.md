@@ -610,3 +610,12 @@ retract, diagnose, observe, auto_revise and 'Forget that S.'. The dialogue and o
 $ .venv/bin/pytest -q
 435 passed, 1 xfailed in 14.97s
 ```
+
+## Phase 20: time
+
+Tense must agree between question and fact; before/after orderings with built-in axioms (transitive, asymmetric, years); a year is a modifier. The dialogue and own-word cases are in tests/test_phase20.py. The tier C line 'Sandy arrived. Does Sandy arrive?' is Unknown, as SPEC2 says.
+
+```
+$ .venv/bin/pytest -q
+471 passed, 1 xfailed in 18.70s
+```

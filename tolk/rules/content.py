@@ -40,7 +40,7 @@ def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
         return lf.Refusal("TOO_MANY_ARGUMENTS", ep.pred)
     values = [ep.args[k] for k in ROLES if k in ep.args]
     if any(v.startswith("h") for v in values):
-        # A scopal argument is a whole clause; no atom can hold one, so the predication is left over.
+        # A scopal argument is a whole clause; no atom can hold one, so the predication is unused.
         return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
     if not values:
         return lf.Refusal("ARGUMENT_GAP", ep.pred)

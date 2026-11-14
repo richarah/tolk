@@ -20,6 +20,7 @@ def run(db: sqlite3.Connection, ctx: str = "world", kinds: tuple[str, ...] = ("s
         while True:
             rnd += 1
             before = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0]
+            _year_order(db, ctx, rnd)
             for rid, rule in members:
                 ran = db.execute("SELECT ran FROM rule WHERE id = ?", (rid,)).fetchone()[0]
                 # Facts added later in the round the rule last ran in count as new too.
@@ -32,6 +33,22 @@ def run(db: sqlite3.Connection, ctx: str = "world", kinds: tuple[str, ...] = ("s
                 break
     record_conflicts(db)
     return total
+
+
+def _year_order(db: sqlite3.Connection, ctx: str, rnd: int) -> None:
+    """The built-in axiom that an event in an earlier year is before an event in a later one. A year is a number, which a rule cannot compare."""
+    row = db.execute("SELECT id FROM rule WHERE kind = 'axiom'").fetchone()
+    if row is None:
+        return
+    pairs = (f"FROM fact f JOIN fact g ON f.pred = ? AND g.pred = ? AND f.positive = 1 AND g.positive = 1 "
+             "AND f.a1 GLOB '[0-9]*' AND g.a1 GLOB '[0-9]*' AND CAST(f.a1 AS INTEGER) < CAST(g.a1 AS INTEGER) "
+             "AND f.ctx IN ('world', ?) AND g.ctx IN ('world', ?)")
+    marks = ("_in_p_temp", "_in_p_temp", ctx, ctx)
+    db.execute(f"INSERT OR IGNORE INTO fact(pred, a0, a1, a2, positive, ctx, round, level) "
+               f"SELECT '{lf.BEFORE}', f.a0, g.a0, '', 1, ?, ?, MAX(2, f.level, g.level) {pairs}", (ctx, rnd, *marks))
+    db.execute(f"INSERT OR IGNORE INTO why(fact, sentence, rule, premises, bindings) "
+               f"SELECT (SELECT id FROM fact WHERE pred = '{lf.BEFORE}' AND a0 = f.a0 AND a1 = g.a0 AND a2 = '' AND positive = 1 AND ctx = ?), "
+               f"NULL, ?, json_array(f.id, g.id), f.a1 || ',' || g.a1 {pairs}", (ctx, row[0], *marks))
 
 
 def strata(rules: list[lf.Rule]) -> list[int]:
