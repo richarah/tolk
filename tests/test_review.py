@@ -73,3 +73,9 @@ def test_dropping_a_supposition_restores_every_table(mind: Mind) -> None:
     mind.suppose("Tweety is a penguin.")
     mind.drop()
     assert dump() == before
+
+
+@pytest.mark.parametrize("text, pred", [("Kim can sing.", "_can_v_modal"), ("Kim must sing.", "_must_v_modal")])
+def test_a_modal_is_refused_by_name_not_as_a_variable(mind: Mind, text: str, pred: str) -> None:
+    r = mind.tell(text)
+    assert r.outcome == "refused" and r.printed == f"refuse UNSUPPORTED_PREDICATE: {pred}"

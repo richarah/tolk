@@ -21,6 +21,9 @@ def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if any(k.startswith("ARG") and k not in ROLES for k in ep.args):
         return lf.Refusal("TOO_MANY_ARGUMENTS", ep.pred)
     values = [ep.args[k] for k in ROLES if k in ep.args]
+    if any(v.startswith("h") for v in values):
+        # A scopal argument is a whole clause; no atom can hold one, so the predication is left over.
+        return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
     if not values:
         return lf.Refusal("ARGUMENT_GAP", ep.pred)
     # An unexpressed argument is an i-variable that nothing else mentions.

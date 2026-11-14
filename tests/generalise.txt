@@ -59,3 +59,6 @@ Kim has arrived.
 Every person who owned a dog is happy.
 Is every dog a mammal?
 Nobody flies.
+Kim can sing.
+Kim must sing.
+Ada wants to sleep.
