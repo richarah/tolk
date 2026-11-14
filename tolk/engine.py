@@ -70,6 +70,11 @@ def _reaches(rules: list[lf.Rule], start: str, targets: set[str]) -> bool:
     return False
 
 
+def _pred_op(pred: str) -> str:
+    """A predicate with a star names a family of predicates, such as any locative preposition."""
+    return "GLOB" if "*" in pred else "="
+
+
 class Match:
     """The FROM and WHERE of a conjunction of atoms over fact rows, with the column for each variable.
 
@@ -82,7 +87,7 @@ class Match:
         positives = [(i, a) for i, a in enumerate(body) if a.positive]
         for i, atom in positives:
             froms.append(f"fact AS f{i}")
-            conds += [f"f{i}.pred = ?", f"f{i}.positive = ?", f"f{i}.ctx IN ('world', ?)"]
+            conds += [f"f{i}.pred {_pred_op(atom.pred)} ?", f"f{i}.positive = ?", f"f{i}.ctx IN ('world', ?)"]
             params += [atom.pred, int(polarity), ctx]
             for k in range(3):
                 col = f"f{i}.a{k}"
@@ -115,7 +120,7 @@ class Match:
 
     def _absent(self, i: int, atom: Atom, ctx: str, params: list) -> str:
         local: dict[Var, str] = {}
-        conds = [f"n{i}.pred = ?", "n{0}.positive = 1".format(i), f"n{i}.ctx IN ('world', ?)"]
+        conds = [f"n{i}.pred {_pred_op(atom.pred)} ?", f"n{i}.positive = 1", f"n{i}.ctx IN ('world', ?)"]
         params += [atom.pred, ctx]
         for k in range(3):
             col = f"n{i}.a{k}"

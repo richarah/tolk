@@ -88,3 +88,16 @@ def test_source_has_no_content_lemma() -> None:
         words = set(re.split(r"[^a-z]+", path.read_text().lower()))
         offenders += [f"{path.relative_to(ROOT)}: {w}" for w in sorted(words & lemmas)]
     assert offenders == []
+
+
+TIER_C_FORMS = {
+    "Kim lives in Oslo.": "tell   _live_v_1(e1, kim)\ntell   _in_p_loc(e1, oslo)",
+    "Sandy arrived.": "tell   _arrive_v_1(e1, sandy)\ntell   tense(e1, past)",
+    "Who lives in Oslo?": "ask X  _live_v_1(E, X), _in_p_loc(E, oslo)",
+    "Where does Kim live?": "ask X  _*_p_loc(E, X), _live_v_1(E, kim)",
+}
+
+
+@pytest.mark.parametrize("text", list(TIER_C_FORMS))
+def test_tier_c_printed_form(text: str) -> None:
+    assert compiled(text) == TIER_C_FORMS[text]

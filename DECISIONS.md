@@ -37,3 +37,7 @@
 - Unbound variable: a variable that no quantifier binds and that is not an event is refused `UNBOUND_VARIABLE`, instead of being ignored.
 - Negation as failure is evaluated in rounds, so a negated predicate that an earlier round derives may be missed until the round that derives it. The spec's stratification check (no negated predicate depends on the rule's head) is enforced, but a full strata-by-strata evaluation is not built. Open.
 - `choose` takes a `lookup`, and `compile_reading` uses it only for definites.
+- Prepositions: `_in_p_loc(e9, e2, oslo)` becomes `in(e2, oslo)`. The preposition's own event argument is dropped, and its object attaches to the event it modifies.
+- Where: `loc_nonsp` in a question becomes the pattern `_*_p_loc`. A star in a predicate means GLOB in SQL. The pattern matches any locative preposition by sense suffix, so "Where does Kim live?" finds `_in_p_loc`. A statement that uses `loc_nonsp` is refused, since a pattern cannot be stored.
+- Tense: `tense(e, past)` only for a told past event. Its object is a constant of kind `value`, which is not an entity.
+- Reading overlap counts (predicate, arity) pairs, not predicate names. The arity of a stored fact excludes the empty event column.

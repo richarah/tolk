@@ -322,3 +322,55 @@ Tweety does not fly.
     tweety is a bird  (by rule 1)
       tweety is a robin  (told: "Tweety is a robin.")
 ```
+
+## Phase 5: modifiers and time (tier C)
+
+Built `rules/modifiers.py`: a locative preposition attaches to the event it modifies (its own event argument is not used). `loc_nonsp` in a question becomes the pattern `_*_p_loc`, which matches any locative preposition by its sense suffix. Tense: `tense(e, past)` for a told past event, not reasoned over.
+
+Also changed in this phase, from the fixtures: reading overlap now counts predicate and arity together. Without arity, "Where does Kim live?" took the three-place reading of "live", and the store matched it on name alone.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q tests/test_dialogue_c.py
+5 passed in 0.20s
+$ .venv/bin/pytest -q
+149 passed in 5.58s
+```
+
+The tier C dialogue through the repl:
+
+```
+Kim lives in Oslo.
+  reading 1 of 4
+  tell   _live_v_1(e1, kim)
+tell   _in_p_loc(e1, oslo)
+  stored, 2 new fact(s)
+Sandy arrived.
+  reading 1 of 1
+  tell   _arrive_v_1(e1, sandy)
+tell   tense(e1, past)
+  stored, 2 new fact(s)
+Who lives in Oslo?
+  reading 1 of 2
+  ask X  _live_v_1(E, X), _in_p_loc(E, oslo)
+  Kim
+live(kim)  (told: "Kim lives in Oslo.")
+in(oslo)  (told: "Kim lives in Oslo.")
+Where does Kim live?
+  reading 1 of 2
+  ask X  _*_p_loc(E, X), _live_v_1(E, kim)
+  Oslo
+in(oslo)  (told: "Kim lives in Oslo.")
+live(kim)  (told: "Kim lives in Oslo.")
+Does Kim live in Oslo?
+  reading 2 of 5
+  ask    _live_v_1(E, kim), _in_p_loc(E, oslo)
+  Yes
+live(kim)  (told: "Kim lives in Oslo.")
+in(oslo)  (told: "Kim lives in Oslo.")
+Does Kim live in Bergen?
+  reading 2 of 5
+  ask    _live_v_1(E, kim), _in_p_loc(E, bergen)
+  Unknown
+```

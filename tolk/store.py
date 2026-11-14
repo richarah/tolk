@@ -119,8 +119,10 @@ def add_rule(db: sqlite3.Connection, rule: lf.Rule, sentence: int) -> int:
     ).lastrowid
 
 
-def known_preds(db: sqlite3.Connection) -> set[str]:
-    return {row[0] for row in db.execute("SELECT DISTINCT pred FROM fact WHERE positive = 1")}
+def known_preds(db: sqlite3.Connection) -> set[tuple[str, int]]:
+    """Predicate and arity of each stored positive fact; the empty event column is not counted."""
+    return {(pred, n) for pred, n in db.execute(
+        "SELECT DISTINCT pred, (a0 != '') + (a1 != '') + (a2 != '') FROM fact WHERE positive = 1")}
 
 
 def _fresh_ids(db: sqlite3.Connection, t: lf.Tell) -> dict[str, str]:

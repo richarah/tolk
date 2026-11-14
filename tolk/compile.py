@@ -6,10 +6,10 @@ from typing import Callable
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import content, copula, names, neg, quant
+from tolk.rules import content, copula, modifiers, names, neg, quant
 from tolk.sem import EP, Reading
 
-FAMILIES = (names, quant, neg, copula, content)
+FAMILIES = (names, quant, neg, copula, modifiers, content)
 Lookup = Callable[[str], set[str]]
 
 
@@ -98,6 +98,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         if isinstance(atoms, lf.Refusal):
             return atoms
         out = lf.Tell(atoms) if mode == "tell" else lf.Ask(atoms, wanted)
+    if mode == "tell" and r.props[r.index].get("TENSE") == "past":
+        out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
     unbound = _unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
 
@@ -180,5 +182,6 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -t[0]))
 
 
-def _preds(x: lf.LF) -> set[str]:
-    return {a.pred for a in _atoms(x)}
+def _preds(x: lf.LF) -> set[tuple[str, int]]:
+    """Predicate and arity of each positive atom. Arity separates a verb's two-place use from its three-place use."""
+    return {(a.pred, len(a.args)) for a in _atoms(x) if a.positive}
