@@ -8,23 +8,46 @@ Statement = tuple[str, tuple]
 
 
 def run(db: sqlite3.Connection, ctx: str = "world") -> int:
-    """Run every rule until a round adds nothing. Returns the number of facts added."""
+    """Run the rules stratum by stratum, each to fixpoint. Returns the number of facts added."""
+    rules = [(rid, lf.decode_rule(text), ran) for rid, text, ran in db.execute("SELECT id, lf, ran FROM rule ORDER BY id")]
+    level = strata([r for _, r, _ in rules])
     total = 0
-    prev = store.current_round(db)
-    while True:
-        rnd = prev + 1
-        before = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0]
-        for rule_id, text, ran in db.execute("SELECT id, lf, ran FROM rule ORDER BY id").fetchall():
-            rule = lf.decode_rule(text)
-            for sql, params in rule_sql(rule, rule_id, ctx, prev if ran is not None else None, rnd):
-                db.execute(sql, params)
-            db.execute("UPDATE rule SET ran = ? WHERE id = ?", (rnd, rule_id))
-        added = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] - before
-        if added == 0:
-            record_conflicts(db)
-            return total
-        total += added
-        prev = rnd
+    rnd = store.current_round(db)
+    for stratum in sorted(set(level)):
+        members = [(rid, rule) for (rid, rule, _), lv in zip(rules, level) if lv == stratum]
+        while True:
+            rnd += 1
+            before = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0]
+            for rid, rule in members:
+                ran = db.execute("SELECT ran FROM rule WHERE id = ?", (rid,)).fetchone()[0]
+                # Facts added later in the round the rule last ran in count as new too.
+                for sql, params in rule_sql(rule, rid, ctx, ran, rnd):
+                    db.execute(sql, params)
+                db.execute("UPDATE rule SET ran = ? WHERE id = ?", (rnd, rid))
+            added = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] - before
+            total += added
+            if added == 0:
+                break
+    record_conflicts(db)
+    return total
+
+
+def strata(rules: list[lf.Rule]) -> list[int]:
+    """A stratum for each rule: above every rule that can derive an atom it negates, and not below one it reads.
+    Raises ValueError for a cycle through negation; check() refuses such a rule before it is stored."""
+    level = [0] * len(rules)
+    for _ in range(len(rules) + 1):
+        moved = False
+        for i, r in enumerate(rules):
+            for b in r.body:
+                for j, s in enumerate(rules):
+                    if any(h.pred == b.pred and h.positive for h in s.head):
+                        need = level[j] + (0 if b.positive else 1)
+                        if level[i] < need:
+                            level[i], moved = need, True
+        if not moved:
+            return level
+    raise ValueError("a cycle through negation")
 
 
 def record_conflicts(db: sqlite3.Connection) -> None:
@@ -50,9 +73,14 @@ def check(db: sqlite3.Connection, rule: lf.Rule) -> lf.Refusal | None:
             if isinstance(t, Var) and not t.event and t not in positive_vars:
                 return lf.Refusal("UNSAFE_NEGATION", t.key)
     rules = [lf.decode_rule(text) for (text,) in db.execute("SELECT lf FROM rule")] + [rule]
-    for a in rule.body:
-        if not a.positive and _reaches(rules, a.pred, {h.pred for h in rule.head}):
-            return lf.Refusal("UNSTRATIFIED", a.pred)
+    try:
+        strata(rules)
+    except ValueError:
+        for r in rules:
+            for a in r.body:
+                if not a.positive and _reaches(rules, a.pred, {h.pred for h in r.head}):
+                    return lf.Refusal("NEGATION_CYCLE", a.pred)
+        return lf.Refusal("NEGATION_CYCLE", "a cycle through negation")
     return None
 
 
@@ -109,7 +137,7 @@ class Match:
                 else:
                     self.first[t] = (i, k)
         if delta is not None and positives:
-            conds.append("(" + " OR ".join(f"f{i}.round = ?" for i, _ in positives) + ")")
+            conds.append("(" + " OR ".join(f"f{i}.round >= ?" for i, _ in positives) + ")")
             params += [delta] * len(positives)
         for i, atom in enumerate(body):
             if not atom.positive:
@@ -148,7 +176,7 @@ class Match:
 
 
 def rule_sql(rule: lf.Rule, rule_id: int, ctx: str, delta: int | None, rnd: int) -> list[Statement]:
-    """Statements for one rule in one round. delta limits matches to facts from that round, once the rule has run."""
+    """Statements for one rule in one round. delta limits matches to facts from that round on, once the rule has run."""
     if not rule.body:
         raise ValueError("a rule needs a body")
     m = Match(rule.body, ctx, rule_id, delta)

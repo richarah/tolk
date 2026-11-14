@@ -55,9 +55,9 @@ def test_final_code_has_its_sentence(code: str) -> None:
 
 def test_the_rest_of_the_final_codes_are_tested_where_they_arise() -> None:
     # Store and engine codes need no sentence of their own here: CONTRADICTS is tested in test_dialogue_b (Tweety does not fly),
-    # UNSAFE_NEGATION and UNSTRATIFIED in test_dialogue_b on rules, DEFINITE_NEEDS_STORE below.
+    # UNSAFE_NEGATION and NEGATION_CYCLE in test_dialogue_b on rules, DEFINITE_NEEDS_STORE below.
     assert {c for c, k in lf.REFUSALS.items() if k == "final"} - set(FINAL) == {
-        "CONTRADICTS", "DEFINITE_NEEDS_STORE", "UNSAFE_NEGATION", "UNSTRATIFIED"}
+        "CONTRADICTS", "DEFINITE_NEEDS_STORE", "UNSAFE_NEGATION", "NEGATION_CYCLE"}
 
 
 def test_a_definite_without_a_store_needs_one() -> None:

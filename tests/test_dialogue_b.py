@@ -105,4 +105,4 @@ def test_negation_through_its_own_head_is_refused() -> None:
     sid = store.add_sentence(db, "synthetic")
     rule = lf.Rule((Atom("p", (Var("x"),)),), (Atom("q", (Var("x"),)), Atom("p", (Var("x"),), positive=False)))
     store.add_rule(db, rule, sid)
-    assert engine.check(db, rule) == lf.Refusal("UNSTRATIFIED", "p")
+    assert engine.check(db, rule) == lf.Refusal("NEGATION_CYCLE", "p")

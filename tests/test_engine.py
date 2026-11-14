@@ -76,3 +76,26 @@ def test_fifty_thousand_facts_through_six_rules_reach_fixpoint() -> None:
     print(f"\nfixpoint: {added} derived facts in {elapsed:.2f}s")
     assert added == 6 * 50_000
     assert engine.run(db) == 0
+
+
+def test_a_negated_atom_derived_in_a_later_round_blocks_the_rule() -> None:
+    # r(x) :- s(x), not q2(x) is told first. q2 is only derived in round 2, through q1. Strata run the negated rule last.
+    db = store.open_store()
+    sid = store.add_sentence(db, "synthetic")
+    x = Var("x")
+    store.add_rule(db, lf.Rule((Atom("r", (x,)),), (Atom("s", (x,)), Atom("q2", (x,), positive=False))), sid)
+    store.add_rule(db, lf.Rule((Atom("q1", (x,)),), (Atom("p", (x,)),)), sid)
+    store.add_rule(db, lf.Rule((Atom("q2", (x,)),), (Atom("q1", (x,)),)), sid)
+    store.tell(db, lf.Tell((Atom("p", (Const("a"),)), Atom("s", (Const("a"),)), Atom("s", (Const("b"),)))), sid)
+    engine.run(db)
+    assert db.execute("SELECT a0 FROM fact WHERE pred = 'r'").fetchall() == [("b",)]
+    assert engine.run(db) == 0
+
+
+def test_a_cycle_through_negation_is_refused_when_the_rule_is_told() -> None:
+    db = store.open_store()
+    sid = store.add_sentence(db, "synthetic")
+    x = Var("x")
+    store.add_rule(db, lf.Rule((Atom("p", (x,)),), (Atom("q", (x,)), Atom("r", (x,), positive=False))), sid)
+    closing = lf.Rule((Atom("r", (x,)),), (Atom("p", (x,)),))
+    assert engine.check(db, closing).code == "NEGATION_CYCLE"
