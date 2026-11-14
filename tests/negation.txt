@@ -6,3 +6,5 @@ Dogs do not bark.
 A dog does not bark.
 Every dog does not bark.
 Nemo is a fish.
+Does Kim not like Nemo?
+Is Kim not a robin?

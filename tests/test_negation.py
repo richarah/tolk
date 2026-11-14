@@ -76,3 +76,10 @@ def test_a_reading_with_an_unused_quantified_variable_does_not_compile() -> None
     stripped = sem.Reading(r.top, r.index, tuple(e for e in r.eps if e.pred != "_like_v_1"), r.qeq, r.props)
     x = comp.compile_reading(stripped)
     assert isinstance(x, lf.Refusal)
+
+
+def test_negated_question_is_refused_not_answered_from_absence(mind: Mind) -> None:
+    mind.tell("Nemo is a fish.")
+    for q in ("Does Kim not like fish?", "Does Kim not like Nemo?", "Is Kim not a robin?"):
+        r = mind.ask(q)
+        assert r.outcome == "refused" and "NEGATED_QUESTION" in r.printed, q

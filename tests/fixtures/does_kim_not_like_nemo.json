@@ -1,0 +1,591 @@
+{
+  "text": "Does Kim not like Nemo?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _like_v_1<13:17> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ named<18:23> LBL: h16 CARG: \"Nemo\" ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_like_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x12"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h16",
+            "args": {
+              "CARG": "Nemo",
+              "ARG0": "x12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h16": {},
+          "h4": {},
+          "h13": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:4> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg ] ]  [ udef_q<5:23> LBL: h4 ARG0: x3 RSTR: h5 BODY: h6 ]  [ proper_q<5:8> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ named<5:8> LBL: h11 CARG: \"Kim\" ARG0: x8 ]  [ _not_c<9:12> LBL: h13 ARG0: x3 ARG1: x8 ARG2: x14 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<18:23> LBL: h18 CARG: \"Nemo\" ARG0: x14 ] > HCONS: < h0 qeq h1 h5 qeq h13 h9 qeq h11 h16 qeq h18 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "ellipsis_ref",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h11",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x8"
+            }
+          },
+          {
+            "pred": "_not_c",
+            "label": "h13",
+            "args": {
+              "ARG0": "x3",
+              "ARG1": "x8",
+              "ARG2": "x14"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h15",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Nemo",
+              "ARG0": "x14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h13",
+          "h9": "h11",
+          "h16": "h18"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "h0": {},
+          "h1": {},
+          "h13": {},
+          "h11": {},
+          "h18": {},
+          "h4": {},
+          "h7": {},
+          "h15": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _like_v_1<13:17> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ named<18:23> LBL: h16 CARG: \"Nemo\" ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_like_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x12"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h16",
+            "args": {
+              "CARG": "Nemo",
+              "ARG0": "x12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h16": {},
+          "h4": {},
+          "h13": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _do_v_1<0:4> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg ] ]  [ udef_q<5:23> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ proper_q<5:8> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ named<5:8> LBL: h12 CARG: \"Kim\" ARG0: x9 ]  [ _not_c<9:12> LBL: h14 ARG0: x4 ARG1: x9 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]  [ named<18:23> LBL: h19 CARG: \"Nemo\" ARG0: x15 ] > HCONS: < h0 qeq h1 h6 qeq h14 h10 qeq h12 h17 qeq h19 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_do_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i3",
+              "ARG2": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h8",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h12",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "_not_c",
+            "label": "h14",
+            "args": {
+              "ARG0": "x4",
+              "ARG1": "x9",
+              "ARG2": "x15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h17",
+              "BODY": "h18"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h19",
+            "args": {
+              "CARG": "Nemo",
+              "ARG0": "x15"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h14",
+          "h10": "h12",
+          "h17": "h19"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i3": {},
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h17": {},
+          "h18": {},
+          "h0": {},
+          "h1": {},
+          "h14": {},
+          "h12": {},
+          "h19": {},
+          "h5": {},
+          "h8": {},
+          "h16": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:23> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ udef_q<0:23> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ proper_q<0:8> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ compound<0:8> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<0:4> LBL: h18 CARG: \"Does\" ARG0: x14 ]  [ named<5:8> LBL: h12 CARG: \"Kim\" ARG0: x9 ]  [ _not_c<9:12> LBL: h21 ARG0: x4 ARG1: x9 ARG2: x22 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h23 ARG0: x22 RSTR: h24 BODY: h25 ]  [ named<18:23> LBL: h26 CARG: \"Nemo\" ARG0: x22 ] > HCONS: < h0 qeq h1 h6 qeq h21 h10 qeq h12 h16 qeq h18 h24 qeq h26 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h8",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h12",
+            "args": {
+              "ARG0": "e13",
+              "ARG1": "x9",
+              "ARG2": "x14"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h15",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Does",
+              "ARG0": "x14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h12",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "_not_c",
+            "label": "h21",
+            "args": {
+              "ARG0": "x4",
+              "ARG1": "x9",
+              "ARG2": "x22"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h23",
+            "args": {
+              "ARG0": "x22",
+              "RSTR": "h24",
+              "BODY": "h25"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h26",
+            "args": {
+              "CARG": "Nemo",
+              "ARG0": "x22"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h21",
+          "h10": "h12",
+          "h16": "h18",
+          "h24": "h26"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "e13": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h16": {},
+          "h17": {},
+          "x22": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h24": {},
+          "h25": {},
+          "h0": {},
+          "h1": {},
+          "h21": {},
+          "h12": {},
+          "h18": {},
+          "h26": {},
+          "h5": {},
+          "h8": {},
+          "h15": {},
+          "h23": {}
+        }
+      }
+    }
+  ]
+}

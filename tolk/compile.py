@@ -141,10 +141,14 @@ def _unconsumed(ctx: Ctx, quants: list[EP], out: lf.LF, mode: str) -> lf.Refusal
     atoms = _atoms(out)
     terms = {t for a in atoms for t in a.args}
     if mode == "ask":
+        if any(not a.positive for a in atoms):
+            return lf.Refusal("NEGATED_QUESTION", "absence of a fact cannot answer a negated question")
         positive = {t for a in atoms if a.positive for t in a.args}
         loose = [v.key for v in out.wanted if v not in positive]
         if loose:
             return lf.Refusal("UNCONSTRAINED_WANTED", ", ".join(loose) + " is wanted but no positive atom mentions it")
+        if not atoms:
+            return lf.Refusal("UNCONSUMED", "a question with no atom")
     if ctx.negated and all(a.positive for a in atoms):
         return lf.Refusal("UNCONSUMED", "a negation that negates no atom")
     dropped = [q.args["ARG0"] for q in quants if ctx.term(q.args["ARG0"]) not in terms]
