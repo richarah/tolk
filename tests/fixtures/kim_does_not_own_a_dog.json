@@ -1,0 +1,211 @@
+{
+  "text": "Kim does not own a dog.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _own_v_1<13:16> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<17:18> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ _dog_n_1<19:23> LBL: h16 ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_own_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h16",
+            "args": {
+              "ARG0": "x12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h16": {},
+          "h4": {},
+          "h13": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _own_v_1<13:16> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<17:18> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ _dog_n_1<19:23> LBL: h16 ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_own_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h16",
+            "args": {
+              "ARG0": "x12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h16": {},
+          "h4": {},
+          "h13": {}
+        }
+      }
+    }
+  ]
+}

@@ -55,8 +55,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     if sf not in ("prop", "ques"):
         return lf.Refusal("UNSUPPORTED_FORCE", str(sf))
     quants = [ep for ep in r.eps if quant.is_quantifier(ep)]
-    main_label = r.qeq[r.top]
-    main = [ep for ep in r.eps if ep.label == main_label]
+    main_labels = _main_labels(r)
+    main = [ep for ep in r.eps if ep.label in main_labels]
     main_vars = {v for ep in main for v in ep.args.values()}
     subjects = {ep.args["ARG1"] for ep in main if "ARG1" in ep.args}
     # A bare plural is universal only as a statement's subject; anywhere else it is an indefinite.
@@ -75,13 +75,24 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     for ep in main:
         if copula.is_copula(ep) and ep.args["ARG1"] in const and ep.args["ARG2"] in const and sf == "prop":
             return lf.Same(Const(const[ep.args["ARG1"]], "named"), Const(const[ep.args["ARG2"]], "named"))
+    negated = _negated(r, quants, alias, bound)
     universal_top = [
         q for q in quants
         if q.pred in quant.UNIVERSAL and q.args["ARG0"] in main_vars and q.args["ARG0"] not in alias
         and bound[q.args["ARG0"]] == q.pred
     ]
+    if sf == "prop":
+        # Under negation an indefinite object has narrow scope: no X is V-ed is every X is not V-ed.
+        universal_top += [
+            q for q in quants
+            if bound[q.args["ARG0"]] == quant.INDEF and q.args["ARG0"] not in alias and q.args["ARG0"] not in subjects
+            and any(ep.label in negated and q.args["ARG0"] in ep.args.values() for ep in r.eps)
+        ]
     body = _restricted(r, quants, universal_top)
-    negated = _negated(r, quants, alias, bound)
+    if any(q.pred == "_every_q" and q in universal_top for q in quants) and any(
+        ep.label in negated and ep.pred != "neg" for i, ep in enumerate(r.eps) if i not in body
+    ):
+        return lf.Refusal("SCOPE_AMBIGUOUS", "every under negation means all-not or not-all")
     if any(q.pred == "_no_q" and q.args["ARG0"] in main_vars for q in quants):
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
@@ -105,10 +116,41 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         if isinstance(atoms, lf.Refusal):
             return atoms
         out = lf.Tell(atoms) if mode == "tell" else lf.Ask(atoms, wanted)
+    unconsumed = _unconsumed(ctx, quants, out, mode)
+    if unconsumed:
+        return unconsumed
     if mode == "tell" and r.props[r.index].get("TENSE") == "past":
         out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
     unbound = _unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
+
+
+def _main_labels(r: Reading) -> set[str]:
+    """The top clause, and any clause a neg at the top points at."""
+    labels = {r.qeq[r.top]}
+    grew = True
+    while grew:
+        more = {r.qeq.get(ep.args["ARG1"], ep.args["ARG1"]) for ep in r.eps if ep.pred == "neg" and ep.label in labels}
+        grew = not more <= labels
+        labels |= more
+    return labels
+
+
+def _unconsumed(ctx: Ctx, quants: list[EP], out: lf.LF, mode: str) -> lf.Refusal | None:
+    """A reading compiles only if nothing in it was silently dropped."""
+    atoms = _atoms(out)
+    terms = {t for a in atoms for t in a.args}
+    if mode == "ask":
+        positive = {t for a in atoms if a.positive for t in a.args}
+        loose = [v.key for v in out.wanted if v not in positive]
+        if loose:
+            return lf.Refusal("UNCONSTRAINED_WANTED", ", ".join(loose) + " is wanted but no positive atom mentions it")
+    if ctx.negated and all(a.positive for a in atoms):
+        return lf.Refusal("UNCONSUMED", "a negation that negates no atom")
+    dropped = [q.args["ARG0"] for q in quants if ctx.term(q.args["ARG0"]) not in terms]
+    if dropped:
+        return lf.Refusal("UNCONSUMED", "no atom uses " + ", ".join(dropped))
+    return None
 
 
 def _negated(r: Reading, quants: list[EP], alias: dict[str, str], bound: dict[str, str]) -> set[str]:
@@ -196,7 +238,17 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     ok = [(i, x) for i, x in cands if not isinstance(x, lf.Refusal)]
     if not ok:
         return cands[0]
-    return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -t[0]))
+    return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -_gaps(readings[t[0]]), -t[0]))
+
+
+def _gaps(r: Reading) -> int:
+    """Stretches of the sentence, more than one character wide, that no predication spans. A word the reading swallowed leaves one."""
+    spans = sorted((ep.cfrom, ep.cto) for ep in r.eps if ep.cfrom >= 0)
+    gaps, end = 0, 0
+    for start, stop in spans:
+        gaps += start - end > 1
+        end = max(end, stop)
+    return gaps
 
 
 def _preds(x: lf.LF) -> set[tuple[str, int]]:
