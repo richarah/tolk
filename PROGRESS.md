@@ -550,3 +550,16 @@ And distributes over names, noun phrases and verb phrases; or is accepted in que
 $ .venv/bin/pytest -q
 375 passed in 11.25s
 ```
+
+### Phase 16, what the grammar does with unknown words (found from fixtures)
+
+Fixtures: `tests/fixtures/tweety_is_a_blorp.json`, `every_blorp_flibbers.json`, `tweety_is_glorpy.json`, `does_tweety_flibber.json`. A noun is `_blorp/nn_u_unknown`, an adjective `_glorpy/jj_u_unknown`, a verb `_glorbs/vbz_u_unknown`; the lemma is the surface form and the tag is a guess. "Every blorp flibbers." has no reading at all (open: listed in `tests/test_fixtures.py` as an expected failure). Questions with an unknown verb parse only as nonsense.
+
+## Phase 16: unknown words
+
+Unknown nouns, adjectives and verbs in statements are treated like known predicates; unknown verbs in questions and two unknown words are refused by name or have no reading. Ten own-word cases in tests/test_phase16.py. The result is a hybrid of the two accepted outcomes, explained in DECISIONS.md. One regression from phase 9 fixed (UNCONSTRAINED_WANTED is a reading refusal).
+
+```
+$ .venv/bin/pytest -q
+389 passed, 1 xfailed in 11.63s
+```

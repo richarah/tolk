@@ -1,5 +1,7 @@
 """Content predicates: a noun, verb, adjective or preposition, with its arguments in role order."""
 
+import dataclasses
+import re
 from typing import TYPE_CHECKING
 
 from tolk import lf
@@ -10,12 +12,30 @@ if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
 ROLES = ("ARG0", "ARG1", "ARG2")
+# A word the grammar does not know comes as _surface/TAG_u_unknown, TAG being a rough part of speech from the tagger it uses.
+UNKNOWN = re.compile(r"_(.+)/([a-z]+)_u_unknown")
+# TAG -> (part of speech, suffix to strip to reach the base form). Other tags are refused: their spelling changes are not simple.
+TAGS = {"nn": ("n", ""), "nns": ("n", "s"), "jj": ("a", ""), "vb": ("v", ""), "vbp": ("v", ""), "vbz": ("v", "s")}
+
+
+def known_as(pred: str) -> str | lf.Refusal:
+    """The predicate for an unknown word, in the shape of the grammar's predicates: _base_pos_unknown."""
+    m = UNKNOWN.fullmatch(pred)
+    if m is None or m.group(2) not in TAGS:
+        return lf.Refusal("UNKNOWN_WORD", pred)
+    lemma, (pos, suffix) = m.group(1), TAGS[m.group(2)]
+    if suffix and lemma.endswith(suffix):
+        lemma = lemma[: -2] if lemma.endswith(("ches", "shes", "sses", "xes", "zes")) else lemma[: -1]
+    return f"_{lemma}_{pos}_unknown"
 
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if not ep.pred.startswith("_"):
         return None
     if "/" in ep.pred:
-        return lf.Refusal("UNKNOWN_WORD", ep.pred)
+        renamed = known_as(ep.pred)
+        if isinstance(renamed, lf.Refusal):
+            return renamed
+        ep = dataclasses.replace(ep, pred=renamed)
     if any(k.startswith("ARG") and k not in ROLES for k in ep.args):
         return lf.Refusal("TOO_MANY_ARGUMENTS", ep.pred)
     values = [ep.args[k] for k in ROLES if k in ep.args]

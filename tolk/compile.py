@@ -212,19 +212,29 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     """
     cands = [(i, compile_reading(r, lookup, history)) for i, r in enumerate(readings) if eventive(r)]
     if not cands:
-        return 0, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event")
+        return 0, _blame_unknown_word(readings, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event"))
     ok = []
     for i, x in cands:
         if not isinstance(x, lf.Refusal):
             ok.append((i, x))
         elif lf.is_final(x):
             if not ok:
-                return i, x
+                return i, _blame_unknown_word(readings, x)
             break
     if not ok:
-        return cands[0]
+        return cands[0][0], _blame_unknown_word(readings, cands[0][1])
     voters = [readings[i] for i, _ in ok]
     return max(ok, key=lambda t: (len(_preds(t[1]) & store_preds), -_swallowed(readings[t[0]], voters), -t[0]))
+
+
+def _blame_unknown_word(readings: list[Reading], refusal: lf.Refusal) -> lf.Refusal:
+    """A sentence the grammar had to guess a word in, and that cannot be stored, is refused for that word."""
+    for r in readings:
+        for ep in r.eps:
+            m = content.UNKNOWN.fullmatch(ep.pred)
+            if m:
+                return lf.Refusal("UNKNOWN_WORD", m.group(1))
+    return refusal
 
 
 def _swallowed(r: Reading, voters: list[Reading]) -> int:

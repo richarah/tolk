@@ -35,3 +35,11 @@ Kim owns a dog.
 Does Kim own a cat or a dog?
 Who sings or dances?
 Every dog barks and sleeps.
+# phase 16, own words
+Pip is a zorp.
+Ada is floopy.
+Is Ada floopy?
+Every zorp is floopy.
+Pip glorbs.
+Who glorbs?
+Does Pip glorb?

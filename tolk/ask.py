@@ -7,7 +7,7 @@ import sqlite3
 from dataclasses import dataclass
 
 from tolk import engine, lf
-from tolk.lf import Atom
+from tolk.lf import Atom, Var
 
 YES, NO, UNKNOWN, CONFLICT = "Yes", "No", "Unknown", "Conflict"
 # For Conflict, proofs holds the positive proof set, then the negative one.
@@ -52,22 +52,42 @@ def _any(q: lf.Ask, parts: list[Answer]) -> Answer:
     return Answer(UNKNOWN, (), ())
 
 
+UNKNOWN_SENSE = re.compile(r"_(.+)_([na])_unknown")
+
+
 def _widening(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
-    """Answer exactly; only if that finds nothing, let a preposition match a stored sense of the same lemma."""
+    """Answer exactly; only if that finds nothing, let a preposition match a stored sense of the same lemma, and a word the grammar
+    did not know match the same word under its other guessed part of speech (noun for adjective, adjective for noun)."""
     exact = _answer(db, q, ctx)
-    if exact.value != UNKNOWN or not any(PREPOSITION.fullmatch(a.pred) for a in q.body):
+    wide_atoms = tuple(_widen(a) for a in q.body)
+    if exact.value != UNKNOWN or wide_atoms == q.body:
         return exact
-    wide = lf.Ask(tuple(
-        Atom(f"_{m.group(1)}_p_*", a.args, a.positive) if (m := PREPOSITION.fullmatch(a.pred)) else a for a in q.body
-    ), q.wanted)
-    got = _answer(db, wide, ctx)
+    got = _answer(db, lf.Ask(wide_atoms, q.wanted, q.notes, q.count, q.atleast), ctx)
     if got.value == UNKNOWN:
         return exact
-    asked = [a.pred for a in q.body if PREPOSITION.fullmatch(a.pred)]
+    asked = [a.pred for a, w in zip(q.body, wide_atoms) if a != w]
     stored = {db.execute("SELECT pred FROM fact WHERE id = ?", (p.fact,)).fetchone()[0] for sol in got.proofs for p in sol}
-    notes = tuple(f"{a} matched as {b}" for a in asked for b in sorted(stored)
-                  if b != a and b.startswith(a.rsplit("_", 1)[0] + "_"))
-    return Answer(got.value, got.solutions, got.proofs, notes)
+    notes = tuple(f"{a} matched as {b}" for a in asked for b in sorted(stored) if b != a and _same_word(a, b))
+    return Answer(got.value, got.solutions, got.proofs, notes, got.count)
+
+
+def _same_word(asked: str, stored: str) -> bool:
+    a, b = PREPOSITION.fullmatch(asked), PREPOSITION.fullmatch(stored)
+    if a and b:
+        return a.group(1) == b.group(1)
+    a, b = UNKNOWN_SENSE.fullmatch(asked), UNKNOWN_SENSE.fullmatch(stored)
+    return bool(a and b and a.group(1) == b.group(1))
+
+
+def _widen(a: Atom) -> Atom:
+    if m := PREPOSITION.fullmatch(a.pred):
+        return Atom(f"_{m.group(1)}_p_*", a.args, a.positive)
+    if m := UNKNOWN_SENSE.fullmatch(a.pred):
+        # An adjective takes an event, a noun does not, so the other part of speech has the other shape.
+        if m.group(2) == "n":
+            return Atom(f"_{m.group(1)}_a_unknown", (Var("ewiden"), *a.args), a.positive)
+        return Atom(f"_{m.group(1)}_n_unknown", a.args[1:], a.positive)
+    return a
 
 
 def _answer(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:

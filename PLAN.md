@@ -186,3 +186,5 @@ Phase 13: fixtures read (pron/pronoun_q, PERS NUM GEND on the variable). pronoun
 Phase 14: fixtures read (card with a digit CARG; how many is measure, much-many_a, abstr_deg, which_q). rules/numbers.py; Ask gets count and atleast.
 
 Phase 15: fixtures read (and/or as a group variable or as an event conjunction). rules/coordination.py, Ask.alternatives.
+
+Phase 16: fixtures read (unknown words are _surface/TAG_u_unknown). content.known_as, widening n/a for unknown words, UNKNOWN_WORD blames the word.

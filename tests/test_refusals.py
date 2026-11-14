@@ -18,9 +18,8 @@ FINAL = {
     "NEGATED_INDEFINITE": ([], "If Kim does not own a dog, Kim is happy."),
     "NO_EVENT_READING": ([], "Kim"),
     "SCOPE_AMBIGUOUS": ([], "Every dog does not bark."),
-    "UNCONSTRAINED_WANTED": ([], "Who is who?"),
     "UNIVERSAL_QUESTION": ([], "Is every dog a mammal?"),
-    "UNKNOWN_WORD": ([], "Pip is a blorp."),
+    "UNKNOWN_WORD": ([], "Does Pip glorb?"),
     "UNSUPPORTED_ASPECT": ([], "Kim is singing."),
     "UNSUPPORTED_FORCE": ([], "Sing!"),
     "UNSUPPORTED_PREDICATE": ([], "Kim can sing."),
@@ -68,3 +67,13 @@ def test_a_definite_without_a_store_needs_one() -> None:
     from tolk import sem
     raw = json.loads(fixture_path("The dog barks.").read_text())["readings"][0]["simplemrs"]
     assert comp.compile_reading(sem.read(raw)) == lf.Refusal("DEFINITE_NEEDS_STORE", "_the_q")
+
+
+def test_unconstrained_wanted_is_a_reading_refusal_so_who_is_a_bird_is_answered() -> None:
+    # Reading 1 of "Who is a bird?" has nothing to enumerate; reading 2 is the question. A final code would stop at reading 1.
+    assert lf.REFUSALS["UNCONSTRAINED_WANTED"] == "reading"
+    m = Mind()
+    m.tell("Tweety is a bird.")
+    assert m.ask("Who is a bird?").outcome.splitlines()[0] == "Tweety"
+    r = m.hear("Who is who?")
+    assert r.outcome == "refused" and "UNCONSTRAINED_WANTED" in r.printed

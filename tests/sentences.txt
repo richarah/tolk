@@ -68,3 +68,8 @@ Kim sings and dances.
 Kim owns a cat or a dog.
 Does Kim own a cat or a dog?
 Kim likes Sandy or Lee.
+# phase 16
+Tweety is a blorp.
+Every blorp flibbers.
+Tweety is glorpy.
+Does Tweety flibber?
