@@ -374,3 +374,20 @@ Does Kim live in Bergen?
   ask    _live_v_1(E, kim), _in_p_loc(E, bergen)
   Unknown
 ```
+
+## Phase 6: suppositions
+
+Built: `Mind.suppose(text)` stores a statement in a new context (`s1`, `s2`, ...) that inherits `world`. The engine derives inside that context, questions asked in it see both, and `Mind.drop()` removes the context's facts, their why and conflict rows, and the fresh entities nothing else uses.
+
+Resolution recorded in PLAN.md: the test tells "No penguin flies." in world first, because the tier B table never tells it, so suppose "Tweety is a penguin." has a negative consequence to conflict with.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q tests/test_suppose.py
+3 passed in 0.85s
+$ .venv/bin/pytest -q
+152 passed in 6.47s
+```
+
+Acceptance as stated in SPEC.md: inside the supposition, "Does Tweety fly?" is Conflict; outside it is Yes; after drop, the fact count equals the count before (`test_supposed_penguin_makes_tweety_conflict_inside_only`).

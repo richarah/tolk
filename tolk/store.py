@@ -46,9 +46,13 @@ def current_round(db: sqlite3.Connection) -> int:
 
 def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world") -> list[int] | lf.Refusal:
     """Store ground atoms. Returns the ids of the facts this call added, or a refusal if one contradicts a stored fact."""
-    if db.execute("SELECT 1 FROM sentence WHERE text = (SELECT text FROM sentence WHERE id = ?) AND id < ?",
-                  (sentence, sentence)).fetchone():
-        return []  # a sentence already stored adds nothing; its events would otherwise be fresh again
+    told_before = db.execute(
+        "SELECT 1 FROM why w JOIN fact f ON f.id = w.fact JOIN sentence s ON s.id = w.sentence "
+        "WHERE f.ctx = ? AND s.text = (SELECT text FROM sentence WHERE id = ?) AND s.id < ?",
+        (ctx, sentence, sentence),
+    ).fetchone()
+    if told_before:
+        return []  # a sentence already stored in this context adds nothing; its events would otherwise be fresh again
     ids = _fresh_ids(db, t)
     grounds = [_ground(db, atom, ids) for atom in t.atoms]
     for g in grounds:
@@ -106,10 +110,23 @@ def canon(db: sqlite3.Connection, ident: str) -> str:
     return canon(db, row[0]) if row else ident
 
 
-def things_with(db: sqlite3.Connection, pred: str) -> set[str]:
+def things_with(db: sqlite3.Connection, pred: str, ctx: str = "world") -> set[str]:
     """Known things with a positive fact of this predicate. A definite description matches these."""
     return {row[0] for row in db.execute(
-        "SELECT DISTINCT a0 FROM fact WHERE pred = ? AND positive = 1 AND ctx = 'world' AND a0 != ''", (pred,))}
+        "SELECT DISTINCT a0 FROM fact WHERE pred = ? AND positive = 1 AND ctx IN ('world', ?) AND a0 != ''",
+        (pred, ctx))}
+
+
+def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
+    """Remove a supposition's facts, their proofs and conflicts, and the fresh things nothing else uses."""
+    ids = "SELECT id FROM fact WHERE ctx = ?"
+    db.execute(f"DELETE FROM conflict WHERE positive_fact IN ({ids}) OR negative_fact IN ({ids})", (ctx, ctx))
+    db.execute(f"DELETE FROM why WHERE fact IN ({ids})", (ctx,))
+    db.execute("DELETE FROM fact WHERE ctx = ?", (ctx,))
+    db.execute(
+        "DELETE FROM entity WHERE kind IN ('event', 'anon', 'skolem') AND id NOT IN ("
+        "SELECT a0 FROM fact UNION SELECT a1 FROM fact UNION SELECT a2 FROM fact)"
+    )
 
 
 def add_rule(db: sqlite3.Connection, rule: lf.Rule, sentence: int) -> int:

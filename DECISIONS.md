@@ -41,3 +41,7 @@
 - Where: `loc_nonsp` in a question becomes the pattern `_*_p_loc`. A star in a predicate means GLOB in SQL. The pattern matches any locative preposition by sense suffix, so "Where does Kim live?" finds `_in_p_loc`. A statement that uses `loc_nonsp` is refused, since a pattern cannot be stored.
 - Tense: `tense(e, past)` only for a told past event. Its object is a constant of kind `value`, which is not an entity.
 - Reading overlap counts (predicate, arity) pairs, not predicate names. The arity of a stored fact excludes the empty event column.
+- Suppositions: one level only. Rules and identity merges are refused inside a supposition, because the store has no context on rules or merges and drop must remove exactly what the supposition added. Both are open items.
+- Drop removes orphan fresh entities (kinds event, anon, skolem) that no remaining fact mentions.
+- Definites inside a supposition see the world's things and the supposition's.
+- Sentence identity (a repeated statement adds nothing) is per context: the same sentence in another supposition is stored again.
