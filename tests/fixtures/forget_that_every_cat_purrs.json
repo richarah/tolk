@@ -1,0 +1,443 @@
+{
+  "text": "Forget that every cat purrs.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pronoun_q<0:28> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]  [ pron<0:28> LBL: h7 ARG0: x3 ]  [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ]  [ _every_q<12:17> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]  [ _cat_n_1<18:21> LBL: h13 ARG0: x10 ]  [ _purr_v_1<22:28> LBL: h14 ARG0: e15 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h8 qeq h14 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pronoun_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "pron",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_forget_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h8"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "_purr_v_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h8": "h14",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "comm",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "2",
+            "PT": "zero"
+          },
+          "h5": {},
+          "h6": {},
+          "h8": {},
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h13": {},
+          "h4": {},
+          "h9": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: - PERF: - ] RELS: < [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: i3 ARG2: h4 ]  [ _every_q<12:17> LBL: h5 ARG0: x6 [ x PERS: 3 NUM: sg IND: + ] RSTR: h7 BODY: h8 ]  [ _cat_n_1<18:21> LBL: h9 ARG0: x6 ]  [ _purr_v_1<22:28> LBL: h10 ARG0: e11 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x6 ] > HCONS: < h0 qeq h1 h4 qeq h10 h7 qeq h9 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_forget_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i3",
+              "ARG2": "h4"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x6",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "x6"
+            }
+          },
+          {
+            "pred": "_purr_v_1",
+            "label": "h10",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "x6"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h4": "h10",
+          "h7": "h9"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "tensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i3": {},
+          "h4": {},
+          "x6": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h7": {},
+          "h8": {},
+          "e11": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h10": {},
+          "h9": {},
+          "h5": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pronoun_q<0:28> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]  [ pron<0:28> LBL: h7 ARG0: x3 ]  [ relative_mod<0:28> LBL: h1 ARG0: i8 ARG1: x9 ARG2: h10 ]  [ udef_q<0:28> LBL: h11 ARG0: x9 RSTR: h12 BODY: h13 ]  [ generic_entity<0:28> LBL: h14 ARG0: x9 ]  [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i15 ]  [ loc_nonsp<7:11> LBL: h10 ARG0: i16 ARG1: e17 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG2: x9 ]  [ _every_q<12:17> LBL: h18 ARG0: x19 [ x PERS: 3 NUM: sg IND: + ] RSTR: h20 BODY: h21 ]  [ _cat_n_1<18:21> LBL: h22 ARG0: x19 ]  [ _purr_v_1<22:28> LBL: h10 ARG0: e17 ARG1: x19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h20 qeq h22 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pronoun_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "pron",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "relative_mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "i8",
+              "ARG1": "x9",
+              "ARG2": "h10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h14",
+            "args": {
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "_forget_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i15"
+            }
+          },
+          {
+            "pred": "loc_nonsp",
+            "label": "h10",
+            "args": {
+              "ARG0": "i16",
+              "ARG1": "e17",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h18",
+            "args": {
+              "ARG0": "x19",
+              "RSTR": "h20",
+              "BODY": "h21"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h22",
+            "args": {
+              "ARG0": "x19"
+            }
+          },
+          {
+            "pred": "_purr_v_1",
+            "label": "h10",
+            "args": {
+              "ARG0": "e17",
+              "ARG1": "x19"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h14",
+          "h20": "h22"
+        },
+        "props": {
+          "e2": {
+            "SF": "comm",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "2",
+            "PT": "zero"
+          },
+          "h5": {},
+          "h6": {},
+          "i8": {},
+          "x9": {},
+          "h10": {},
+          "h12": {},
+          "h13": {},
+          "i15": {},
+          "i16": {},
+          "e17": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x19": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h20": {},
+          "h21": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h22": {},
+          "h4": {},
+          "h11": {},
+          "h18": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: - PERF: - ] RELS: < [ relative_mod<0:28> LBL: h1 ARG0: i4 ARG1: x5 ARG2: h6 ]  [ udef_q<0:28> LBL: h7 ARG0: x5 RSTR: h8 BODY: h9 ]  [ generic_entity<0:28> LBL: h10 ARG0: x5 ]  [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: i3 ARG2: i11 ]  [ loc_nonsp<7:11> LBL: h6 ARG0: i12 ARG1: e13 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG2: x5 ]  [ _every_q<12:17> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ _cat_n_1<18:21> LBL: h18 ARG0: x15 ]  [ _purr_v_1<22:28> LBL: h6 ARG0: e13 ARG1: x15 ] > HCONS: < h0 qeq h1 h8 qeq h10 h16 qeq h18 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "relative_mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "i4",
+              "ARG1": "x5",
+              "ARG2": "h6"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h10",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_forget_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i3",
+              "ARG2": "i11"
+            }
+          },
+          {
+            "pred": "loc_nonsp",
+            "label": "h6",
+            "args": {
+              "ARG0": "i12",
+              "ARG1": "e13",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "_purr_v_1",
+            "label": "h6",
+            "args": {
+              "ARG0": "e13",
+              "ARG1": "x15"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h10",
+          "h16": "h18"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "tensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i4": {},
+          "x5": {},
+          "h6": {},
+          "h8": {},
+          "h9": {},
+          "i3": {},
+          "i11": {},
+          "i12": {},
+          "e13": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "h0": {},
+          "h1": {},
+          "h10": {},
+          "h18": {},
+          "h7": {},
+          "h14": {}
+        }
+      }
+    }
+  ]
+}

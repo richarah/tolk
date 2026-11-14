@@ -39,7 +39,9 @@ def test_does_pingu_fly_is_no(mind: Mind) -> None:
 
 
 def test_every_penguin_is_a_bird_records_a_conflict(mind: Mind) -> None:
-    assert mind.tell("Every penguin is a bird.").outcome == "rule stored"
+    # Phase 19 adds the report of the conflict and what could end it; the rule is stored as before.
+    outcome = mind.tell("Every penguin is a bird.").outcome
+    assert outcome.splitlines()[0] == "rule stored" and "conflict: fly(pingu) against not fly(pingu)" in outcome
     conflicts = mind.db.execute("SELECT COUNT(*) FROM conflict").fetchone()[0]
     assert conflicts == 1
 

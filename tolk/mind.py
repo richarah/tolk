@@ -1,5 +1,7 @@
 """The loop that ties parsing, choosing, storing, the engine and answering together."""
 
+import dataclasses
+import re
 from dataclasses import dataclass
 
 from tolk import compile as comp, defaults, engine, erg, lf, say, sem, store
@@ -15,6 +17,26 @@ class Proposal:
     support: tuple[str, ...]  # the things with P, which the rule would also give Q
 
 
+# A sentence told as an observation has this trust, the highest, and is never a candidate for removal.
+OBSERVED = 1_000_000
+FORGET = re.compile(r"forget that (.+?)\.?", re.IGNORECASE)
+KIND_ORDER = {"default": 0, "strict": 1, "told": 2}
+
+
+@dataclass(frozen=True)
+class Candidate:
+    sentence: int
+    text: str
+    kind: str  # default, strict or told: what the sentence contributed
+    trust: int
+
+
+@dataclass(frozen=True)
+class Diagnosis:
+    conflict: tuple[str, str]  # the two clashing facts, worded
+    candidates: tuple[Candidate, ...]  # weakest first
+
+
 @dataclass(frozen=True)
 class Result:
     reading: int  # 1-based reading that was chosen
@@ -25,9 +47,10 @@ class Result:
 
 
 class Mind:
-    def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",)) -> None:
+    def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",), auto_revise: bool = False) -> None:
         self.db = store.open_store(path)
         self.set_policy(policy)
+        self.db.execute("INSERT INTO meta(key, value) VALUES ('auto_revise', ?)", (str(int(auto_revise)),))
         self.ctx = "world"  # the current context: "world", or a supposition's name
         self._suppositions = 0
         self._ran: list[tuple[int, int | None]] = []
@@ -47,14 +70,103 @@ class Mind:
             if defaults.has_defaults(self.db):
                 defaults.rebuild(self.db, getattr(self, "ctx", "world"), policy)
 
-    def hear(self, text: str, trust: int = 0) -> Result:
+    @property
+    def auto_revise(self) -> bool:
+        return self.db.execute("SELECT value FROM meta WHERE key = 'auto_revise'").fetchone()[0] == "1"
+
+    def hear(self, text: str, trust: int = 0, observation: bool = False) -> Result:
         with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot leave a half-stored rule
-            return self._hear(text, trust)
+            before = self._conflicts()
+            result = self._hear(text, trust, observation)
+            fresh = self._conflicts() - before
+            if not fresh:
+                return result
+            if not self.auto_revise:
+                return dataclasses.replace(result, outcome=result.outcome + "\n" + self._report(fresh))
+            said = []
+            while fresh:
+                candidates = next((d.candidates for d in self.diagnose() if d.conflict in fresh), ())
+                if not candidates:
+                    said.append("conflict with nothing to retract: " + "; ".join(f"{a} against {b}" for a, b in sorted(fresh)))
+                    break
+                said.append(f'retracted "{candidates[0].text}" to end a conflict')
+                self._retract(candidates[0].sentence, "auto-revised")
+                fresh = self._conflicts() - before
+            return dataclasses.replace(result, outcome="\n".join([result.outcome] + said))
+
+    def observe(self, text: str) -> Result:
+        """A tell at the highest trust. An observation may contradict what is derived, and is never removed to end a conflict."""
+        return self.hear(text, OBSERVED, observation=True)
+
+    def retract(self, sentence_id: int, reason: str = "retracted") -> None:
+        """Remove what a sentence told, and rebuild what was derived from it. The sentence row stays, with the reason in revision."""
+        with self.db:
+            self._retract(sentence_id, reason)
+
+    def _retract(self, sentence_id: int, reason: str) -> None:
+        if self.db.execute("SELECT 1 FROM merge WHERE sentence = ?", (sentence_id,)).fetchone():
+            raise ValueError("an identity cannot be retracted: the facts it merged were rewritten onto one thing")
+        store.retract(self.db, sentence_id, reason)
+        defaults.rebuild(self.db, self.ctx, self.policy)
+
+    def _conflicts(self) -> set[tuple[str, str]]:
+        return {(say.fact_text(self.db, p), say.fact_text(self.db, n)) for p, n in self.db.execute("SELECT positive_fact, negative_fact FROM conflict")}
+
+    def diagnose(self) -> list[Diagnosis]:
+        """For each conflict, the sentences whose removal would end it, weakest first: defaults, then strict rules, then told facts,
+        then lower trust, then the more recent. An observation is never a candidate."""
+        out = []
+        for pos, neg in self.db.execute("SELECT positive_fact, negative_fact FROM conflict").fetchall():
+            found: dict[int, Candidate] = {}
+            for fid in (pos, neg):
+                self._sources(prove(self.db, fid), found)
+            ordered = sorted(found.values(), key=lambda c: (KIND_ORDER[c.kind], c.trust, -c.sentence))
+            out.append(Diagnosis((say.fact_text(self.db, pos), say.fact_text(self.db, neg)), tuple(ordered)))
+        return out
+
+    def _sources(self, p, found: dict[int, Candidate]) -> None:
+        if p.sentence is not None:
+            self._candidate(found, p.sentence, "told")
+        if p.rule is not None:
+            sentence, kind = self.db.execute("SELECT sentence, kind FROM rule WHERE id = ?", (p.rule,)).fetchone()
+            self._candidate(found, sentence, kind)
+        for q in p.premises:
+            self._sources(q, found)
+
+    def _candidate(self, found: dict[int, Candidate], sentence: int, kind: str) -> None:
+        text, trust, observation = self.db.execute("SELECT text, trust, observation FROM sentence WHERE id = ?", (sentence,)).fetchone()
+        if not observation and sentence not in found:
+            found[sentence] = Candidate(sentence, text, kind, trust)
+
+    def _report(self, fresh: set[tuple[str, str]]) -> str:
+        lines = []
+        for d in self.diagnose():
+            if d.conflict in fresh:
+                lines.append(f"conflict: {d.conflict[0]} against {d.conflict[1]}; could be ended by removing: "
+                             + "; ".join(f'"{c.text}" ({c.kind})' for c in d.candidates))
+        return "\n".join(lines)
+
+    def _forget(self, target: str) -> Result:
+        readings = [sem.read(raw) for raw in erg.parse(target)]
+        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
+        head = (k + 1, len(readings), lf.show(x))
+        if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every)):
+            return Result(*head, outcome="refused: only a statement can be forgotten")
+        found = store.latest_told(self.db, lf.show(x), self.ctx)
+        if found is None:
+            return Result(*head, outcome="nothing that was told means that")
+        if self.db.execute("SELECT 1 FROM merge WHERE sentence = ?", (found[0],)).fetchone():
+            return Result(*head, outcome="refused: an identity cannot be forgotten")
+        self._retract(found[0], f'forget that {target}')
+        return Result(*head, outcome=f'forgot "{found[1]}"')
 
     def _derive(self) -> None:
         defaults.refresh(self.db, self.ctx, self.policy)
 
-    def _hear(self, text: str, trust: int = 0) -> Result:
+    def _hear(self, text: str, trust: int = 0, observation: bool = False) -> Result:
+        forgetting = FORGET.fullmatch(text.strip())
+        if forgetting:
+            return self._forget(forgetting.group(1) + ".")
         readings = [sem.read(raw) for raw in erg.parse(text)]
         k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
         printed = lf.show(x)
@@ -76,7 +188,7 @@ class Mind:
         if isinstance(x, lf.Same):
             if self.ctx != "world":
                 return Result(*head, outcome="refused: identity inside a supposition is not stored yet")
-            sid = store.add_sentence(self.db, text, printed, self.ctx, trust)
+            sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
             store.merge(self.db, x.a, x.b, sid)
             store.add_mentions(self.db, sid, [(0, x.a.id, "sg"), (1, x.b.id, "sg")])
             self._derive()
@@ -87,14 +199,14 @@ class Mind:
             refusal = engine.check(self.db, x)
             if refusal is not None:
                 return Result(*head, outcome=lf.show(refusal))
-            sid = store.add_sentence(self.db, text, printed, self.ctx, trust)
+            sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
             store.add_rule(self.db, x, sid)
             store.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
             self._derive()
             return Result(*head, outcome="rule stored")
-        sid = store.add_sentence(self.db, text, printed, self.ctx, trust)
+        sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
         anon_before = store.fresh_of_kind(self.db, "anon")
-        stored = store.tell(self.db, x, sid, self.ctx)
+        stored = store.tell(self.db, x, sid, self.ctx, allow_conflict=observation)
         if isinstance(stored, lf.Refusal):
             opposite = prove(self.db, int(stored.detail))
             return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")

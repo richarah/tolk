@@ -27,9 +27,10 @@ def run(lines: Iterable[str], mind: Mind, out: TextIO, err: TextIO) -> None:
 
 
 def main() -> None:
-    # The repl is the only place that reads the environment. TOLK_POLICY is a comma-separated list from specific, trusted, recent.
+    # The repl is the only place that reads the environment. TOLK_POLICY is a comma-separated list from specific, trusted, recent; TOLK_AUTO_REVISE is 0 or 1.
     policy = tuple(p for p in os.environ.get("TOLK_POLICY", "specific").split(",") if p)
-    run(sys.stdin, Mind(policy=policy), sys.stdout, sys.stderr)
+    revise = os.environ.get("TOLK_AUTO_REVISE", "0") == "1"
+    run(sys.stdin, Mind(policy=policy, auto_revise=revise), sys.stdout, sys.stderr)
     erg.close()
 
 

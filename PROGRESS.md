@@ -601,3 +601,12 @@ Defaults, strength levels, defeat and the specific/trusted/recent policy; univer
 $ .venv/bin/pytest -q
 423 passed, 1 xfailed in 13.94s
 ```
+
+## Phase 19: revision
+
+retract, diagnose, observe, auto_revise and 'Forget that S.'. The dialogue and own-word cases are in tests/test_phase19.py. One earlier reply changes as SPEC2 says: a rule that creates a conflict now reports it with its candidates.
+
+```
+$ .venv/bin/pytest -q
+435 passed, 1 xfailed in 14.97s
+```

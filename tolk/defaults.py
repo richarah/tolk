@@ -44,6 +44,7 @@ def rebuild(db: sqlite3.Connection, ctx: str, policy: tuple[str, ...]) -> None:
     while True:
         db.execute("DELETE FROM why WHERE fact IN (SELECT id FROM fact WHERE level = 3)")
         db.execute("DELETE FROM fact WHERE level = 3 AND id NOT IN (SELECT fact FROM why)")
+        db.execute("DELETE FROM conflict")
         _reset(db)
         for c in contexts:
             engine.run(db, c, ("strict", "default"))

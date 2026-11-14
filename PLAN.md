@@ -190,3 +190,5 @@ Phase 15: fixtures read (and/or as a group variable or as an event conjunction).
 Phase 16: fixtures read (unknown words are _surface/TAG_u_unknown). content.known_as, widening n/a for unknown words, UNKNOWN_WORD blames the word.
 
 Phase 18: defaults, levels, defeat, policy, universal questions. defaults.py is new; engine rule_sql gets kind, level and bindings; Mind owns the policy setting.
+
+Phase 19: Mind.retract, diagnose, observe, auto_revise, Forget that S. store.retract, revision table.

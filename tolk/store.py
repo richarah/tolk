@@ -8,7 +8,7 @@ from tolk.lf import Atom, Const, Var
 
 SCHEMA = """
 CREATE TABLE sentence(id INTEGER PRIMARY KEY, text TEXT NOT NULL, printed TEXT NOT NULL DEFAULT '', ctx TEXT NOT NULL DEFAULT 'world',
-    trust INTEGER NOT NULL DEFAULT 0);
+    trust INTEGER NOT NULL DEFAULT 0, observation INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE entity(id TEXT PRIMARY KEY, kind TEXT NOT NULL);
 CREATE TABLE name(entity TEXT NOT NULL, text TEXT NOT NULL);
 CREATE UNIQUE INDEX name_u ON name(entity, text);
@@ -32,6 +32,7 @@ CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER N
 CREATE TABLE conflict(positive_fact INTEGER NOT NULL, negative_fact INTEGER NOT NULL);
 CREATE TABLE defeat(rule INTEGER NOT NULL, bindings TEXT NOT NULL, by_fact INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings);
+CREATE TABLE revision(sentence INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
 INSERT INTO entity(id, kind) VALUES ('user', 'named'), ('tolk', 'named');
@@ -45,8 +46,9 @@ def open_store(path: str = ":memory:") -> sqlite3.Connection:
     return db
 
 
-def add_sentence(db: sqlite3.Connection, text: str, printed: str = "", ctx: str = "world", trust: int = 0) -> int:
-    return db.execute("INSERT INTO sentence(text, printed, ctx, trust) VALUES (?, ?, ?, ?)", (text, printed, ctx, trust)).lastrowid
+def add_sentence(db: sqlite3.Connection, text: str, printed: str = "", ctx: str = "world", trust: int = 0, observation: bool = False) -> int:
+    return db.execute("INSERT INTO sentence(text, printed, ctx, trust, observation) VALUES (?, ?, ?, ?, ?)",
+                      (text, printed, ctx, trust, int(observation))).lastrowid
 
 
 def repeat_of(db: sqlite3.Connection, printed: str, ctx: str) -> tuple[int, str] | None:
@@ -64,13 +66,14 @@ def current_round(db: sqlite3.Connection) -> int:
     return db.execute("SELECT COALESCE(MAX(round), 0) FROM fact").fetchone()[0]
 
 
-def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world") -> list[int] | lf.Refusal:
-    """Store ground atoms. Returns the ids of the facts this call added, or a refusal if one contradicts a stored fact."""
+def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world", allow_conflict: bool = False) -> list[int] | lf.Refusal:
+    """Store ground atoms. Returns the ids of the facts this call added, or a refusal if one contradicts a stored fact.
+    An observation may contradict one: it is stored, and the clash is a conflict to resolve."""
     ids = _fresh_ids(db, t)
     grounds = [_ground(db, atom, ids) for atom in t.atoms]
     for g in grounds:
         opposite = _opposite(db, g, ctx)
-        if opposite is not None:
+        if opposite is not None and not allow_conflict:
             return lf.Refusal("CONTRADICTS", str(opposite))
     rnd = current_round(db) + 1
     added = []
@@ -249,3 +252,20 @@ def recent_mentions(db: sqlite3.Connection) -> list[tuple[int, str, str]]:
 
 def fresh_of_kind(db: sqlite3.Connection, kind: str) -> list[str]:
     return [i for (i,) in db.execute("SELECT id FROM entity WHERE kind = ? ORDER BY rowid", (kind,))]
+
+
+def retract(db: sqlite3.Connection, sentence: int, reason: str) -> None:
+    """Remove what a sentence told: its facts' told source and its rules. The sentence row stays. Derived facts are for the caller to rebuild."""
+    db.execute("DELETE FROM why WHERE sentence = ?", (sentence,))
+    db.execute("DELETE FROM rule WHERE sentence = ?", (sentence,))
+    db.execute("DELETE FROM mention WHERE sentence = ?", (sentence,))
+    db.execute("DELETE FROM fact WHERE id NOT IN (SELECT fact FROM why)")
+    db.execute("INSERT INTO revision(sentence, reason) VALUES (?, ?)", (sentence, reason))
+
+
+def latest_told(db: sqlite3.Connection, printed: str, ctx: str) -> tuple[int, str] | None:
+    """The most recent sentence still in force whose printed logical form is this one: its id and text."""
+    return db.execute(
+        "SELECT id, text FROM sentence WHERE printed = ? AND ctx IN ('world', ?) AND ("
+        "EXISTS (SELECT 1 FROM why WHERE sentence = sentence.id) OR EXISTS (SELECT 1 FROM rule WHERE sentence = sentence.id) "
+        "OR EXISTS (SELECT 1 FROM merge WHERE sentence = sentence.id)) ORDER BY id DESC LIMIT 1", (printed, ctx)).fetchone()

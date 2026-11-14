@@ -66,3 +66,13 @@ Is every penguin a bird?
 Does every bird fly?
 Do penguins fly?
 All cats purr.
+# phase 19, own words
+Tom is a cat.
+Every cat purrs.
+Tom does not purr.
+Forget that every cat purrs.
+Rio is a sparrow.
+Forget that Rio is a finch.
+Every pet purrs.
+Tom is a pet.
+Every cat is a pet.
