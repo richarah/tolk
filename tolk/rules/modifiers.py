@@ -1,13 +1,18 @@
 """Prepositions that modify an event attach to that event. Their event argument is not used."""
 
+from typing import TYPE_CHECKING
+
 from tolk import lf
 from tolk.lf import Atom
+from tolk.sem import EP
+
+if TYPE_CHECKING:
+    from tolk.compile import Ctx
 
 # A where-question asks about any locative preposition, so it matches on the sense suffix.
 ANY_LOCATIVE = "_*_p_[ls]*"
 
-
-def map_ep(ctx, ep) -> tuple | lf.Refusal | None:
+def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if ep.pred == "loc_nonsp":
         if ctx.mode == "tell":
             return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)

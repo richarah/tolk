@@ -6,7 +6,6 @@ predicate names in the fixtures, not from the output of compile.py.
 
 import json
 import re
-from pathlib import Path
 
 import pytest
 

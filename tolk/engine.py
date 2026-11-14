@@ -1,12 +1,13 @@
 """Rules to SQL, run to fixpoint. Identifiers are fixed column names and generated aliases; every value is a bound parameter."""
 
+import sqlite3
 from tolk import lf, store
 from tolk.lf import Atom, Const, Var
 
 Statement = tuple[str, tuple]
 
 
-def run(db, ctx: str = "world") -> int:
+def run(db: sqlite3.Connection, ctx: str = "world") -> int:
     """Run every rule until a round adds nothing. Returns the number of facts added."""
     total = 0
     prev = store.current_round(db)
@@ -26,7 +27,7 @@ def run(db, ctx: str = "world") -> int:
         prev = rnd
 
 
-def record_conflicts(db) -> None:
+def record_conflicts(db: sqlite3.Connection) -> None:
     """A positive and a negative fact that clash get a conflict row, once one of them was derived."""
     db.execute(
         "INSERT INTO conflict(positive_fact, negative_fact) "
@@ -39,7 +40,7 @@ def record_conflicts(db) -> None:
     )
 
 
-def check(db, rule: lf.Rule) -> lf.Refusal | None:
+def check(db: sqlite3.Connection, rule: lf.Rule) -> lf.Refusal | None:
     """A rule is stored only if its negated variables are bound by a positive atom and no negated predicate depends on its head."""
     positive_vars = {t for a in rule.body if a.positive for t in a.args if isinstance(t, Var)}
     for a in rule.body:
@@ -113,7 +114,6 @@ class Match:
         for i, atom in enumerate(body):
             if not atom.positive:
                 conds.append(self._absent(i, atom, ctx, params))
-        self.n = len(positives)
         self.ids_list = [f"f{i}.id" for i, _ in positives]
         self.src = f"FROM {', '.join(froms)} WHERE {' AND '.join(conds)}" if froms else "FROM (SELECT 1) WHERE 1"
         self.params = tuple(params)

@@ -1,6 +1,7 @@
 """Questions: an answer from the positive facts that match, with the proof of each matched fact."""
 
 import json
+import sqlite3
 from dataclasses import dataclass
 
 from tolk import engine, lf
@@ -24,7 +25,7 @@ class Answer:
     proofs: tuple[tuple[Proof, ...], ...]  # for each solution, one proof per body atom
 
 
-def answer(db, q: lf.Ask, ctx: str = "world") -> Answer:
+def answer(db: sqlite3.Connection, q: lf.Ask, ctx: str = "world") -> Answer:
     pos = _solutions(db, q, True, ctx)
     if not q.wanted:
         neg = _solutions(db, q, False, ctx)
@@ -41,7 +42,7 @@ def answer(db, q: lf.Ask, ctx: str = "world") -> Answer:
     return Answer(YES, tuple(solutions), tuple(pos[s] for s in solutions))
 
 
-def _solutions(db, q: lf.Ask, polarity: bool, ctx: str) -> dict[tuple[str, ...], tuple[Proof, ...]]:
+def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: bool, ctx: str) -> dict[tuple[str, ...], tuple[Proof, ...]]:
     """For each distinct value of the wanted variables, one proof per positive body atom of the first matching row."""
     m = engine.Match(q.body, ctx, None, None, polarity)
     wanted = [m.column(v) for v in q.wanted]
@@ -55,7 +56,7 @@ def _solutions(db, q: lf.Ask, polarity: bool, ctx: str) -> dict[tuple[str, ...],
     return seen
 
 
-def prove(db, fact_id: int) -> Proof:
+def prove(db: sqlite3.Connection, fact_id: int) -> Proof:
     sentence, rule, premises = db.execute(
         "SELECT sentence, rule, premises FROM why WHERE fact = ? ORDER BY rowid LIMIT 1", (fact_id,)
     ).fetchone()

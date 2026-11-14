@@ -1,9 +1,10 @@
 """Plain wording for facts and proofs. Stiff by design: a fact is shown as its predicate and arguments, never inflected."""
 
+import sqlite3
 from tolk.ask import Answer, Proof
 
 
-def fact_text(db, fact_id: int) -> str:
+def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
     pred, a0, a1, a2, positive = db.execute(
         "SELECT pred, a0, a1, a2, positive FROM fact WHERE id = ?", (fact_id,)
     ).fetchone()
@@ -20,7 +21,7 @@ def fact_text(db, fact_id: int) -> str:
     return f"{neg}{lemma}({', '.join(things)})"
 
 
-def proof_text(db, p: Proof, depth: int = 0) -> str:
+def proof_text(db: sqlite3.Connection, p: Proof, depth: int = 0) -> str:
     pad = "  " * depth
     if p.sentence is not None:
         (text,) = db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()
@@ -30,7 +31,7 @@ def proof_text(db, p: Proof, depth: int = 0) -> str:
     return "\n".join([line] + [proof_text(db, q, depth + 1) for q in p.premises])
 
 
-def answer_text(db, a: Answer) -> str:
+def answer_text(db: sqlite3.Connection, a: Answer) -> str:
     if a.value != "Yes" or not a.solutions:
         return a.value
     names = [_name(v) for solution in a.solutions for v in solution]
@@ -41,3 +42,11 @@ def answer_text(db, a: Answer) -> str:
 
 def _name(value: str) -> str:
     return value.replace("_", " ").title()
+
+
+def proposal_text(p_pred: str, q_pred: str) -> str:
+    return f"Is every {_lemma(p_pred)} a {_lemma(q_pred)}?"
+
+
+def _lemma(pred: str) -> str:
+    return pred.lstrip("_").split("_")[0]

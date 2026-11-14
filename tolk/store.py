@@ -110,6 +110,15 @@ def canon(db: sqlite3.Connection, ident: str) -> str:
     return canon(db, row[0]) if row else ident
 
 
+def derived_pairs(db: sqlite3.Connection) -> set[tuple[str, str]]:
+    """(body predicate, head predicate) for every stored rule. A rule that already links two predicates is not proposed again."""
+    pairs = set()
+    for (text,) in db.execute("SELECT lf FROM rule"):
+        r = lf.decode_rule(text)
+        pairs |= {(b.pred, h.pred) for h in r.head for b in r.body}
+    return pairs
+
+
 def things_with(db: sqlite3.Connection, pred: str, ctx: str = "world") -> set[str]:
     """Known things with a positive fact of this predicate. A definite description matches these."""
     return {row[0] for row in db.execute(

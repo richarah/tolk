@@ -1,12 +1,17 @@
 """Content predicates: a noun, verb, adjective or preposition, with its arguments in role order."""
 
+from typing import TYPE_CHECKING
+
 from tolk import lf
-from tolk.lf import Atom, Const
+from tolk.lf import Atom
+from tolk.sem import EP
+
+if TYPE_CHECKING:
+    from tolk.compile import Ctx
 
 ROLES = ("ARG0", "ARG1", "ARG2")
 
-
-def map_ep(ctx, ep) -> tuple | lf.Refusal | None:
+def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if not ep.pred.startswith("_"):
         return None
     if "/" in ep.pred:

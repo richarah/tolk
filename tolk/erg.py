@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 from delphin import ace

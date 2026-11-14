@@ -437,3 +437,49 @@ $ .venv/bin/pytest -q tests/test_widening.py
 $ .venv/bin/pytest -q
 163 passed in 6.61s
 ```
+
+## Phase 8: proposing rules
+
+Built `Mind.propose()` and `Mind.confirm(p)`. A proposal is a pair of one-place predicates P and Q (noun, or adjective with its thing argument) where at least three known things have P, every one of them has Q, Q has a thing P lacks, and no stored rule already links P to Q. The question is "Is every P a Q?". `confirm` stores the rule, with the confirmed question as its sentence. Nothing is stored before confirm.
+
+The spec's acceptance needs "four things sharing two predicates" to give exactly one proposal. Two predicates with the same extension would propose each other, so the "Q has a thing P lacks" condition is what makes the count one. Recorded in DECISIONS.md.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q tests/test_propose.py
+4 passed in 0.55s
+$ .venv/bin/pytest -q
+167 passed in 7.03s
+```
+
+## Summary
+
+What passes: all of SPEC.md's acceptance checks, phases 0 to 8. The test suite has 167 passed, covering the tier A and B dialogues and tier C, the printed forms of tier A and tier C sentences, the 50,000-fact fixpoint, suppositions, proposals, and the phase 7 regression set. `scripts/repl.py` prints the reading number, the printed form and the result for each input.
+
+What is refused, and why:
+
+- `DEFINITE_MATCHES 0 known things match` (11 in the corpus). A definite with no known referent in the store. Correct: it compiles once a referent is told (tested in `test_widening.py`).
+- `UNSUPPORTED_PREDICATE card` (4). Counting and numbers, which SPEC.md puts out of scope.
+- Rules and identity inside a supposition, refused with a message. The store cannot drop them cleanly yet (Open).
+
+Coverage, from `scripts/coverage.py` over `tests/sentences.txt`, `tests/extra.txt`, `tests/round1.txt` and `tests/round2.txt`, exact output:
+
+```
+compiled 71 of 86 (82.6%)
+  11  DEFINITE_MATCHES  0 known things match
+   4  UNSUPPORTED_PREDICATE  card
+```
+
+Spec points resolved myself (each is in DECISIONS.md or the resolutions at the top of PLAN.md): phase 6's conflict needs "No penguin flies." told first; conflict rows cover a clash once one side is derived; one INSERT per head atom; a lemma scan that exempts the grammar's function words; the reading choice counts only eventive readings and matches on predicate and arity; the store renames fresh constants; repeated statements add nothing per context; bare plurals are universal only as subject; "where" matches any locative or state preposition; the copula's identity keeps the older entity; propose needs a counterexample direction.
+
+## Open
+
+- Rules and identity merges inside a supposition are refused. The rule and merge tables have no context column, so `drop` cannot remove them yet.
+- Negation as failure is evaluated round by round. The stratification check is the spec's; a strata-by-strata evaluation is not built.
+- Parser senses: "Jo writes letters." reads `write_v_to`, and "Every pilot flies a plane." reads `fly_v_to`. The reading choice does not rank senses, so these stay as parsed.
+- A repeated statement adds nothing only when its text is identical. Two wordings of one meaning add facts.
+- Definite referents that are anonymous (`a1`) are recorded with kind `named`.
+- The lemma scan covers the lemmas of `tests/sentences.txt`, as the spec says. Extra sentences are not scanned.
+- `propose` returns the thing ids as support. Showing their wording would reuse `say.fact_text`, not done.
+- SQUID and libglot: not used. SQUID is named in SPEC.md, and its code was not read. The only idea taken is keeping the parser session open, recorded in DECISIONS.md.

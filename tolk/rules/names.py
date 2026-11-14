@@ -1,8 +1,12 @@
 """Names: a named predication gives its variable a constant, and two names in a compound are one constant."""
 
-from tolk import lf
-from tolk.sem import Reading
+from typing import TYPE_CHECKING
 
+from tolk import lf
+from tolk.sem import EP, Reading
+
+if TYPE_CHECKING:
+    from tolk.compile import Ctx
 
 def plan(r: Reading) -> dict[str, str]:
     consts = {ep.args["ARG0"]: ep.args["CARG"].lower() for ep in r.eps if ep.pred == "named"}
@@ -15,8 +19,7 @@ def plan(r: Reading) -> dict[str, str]:
                 consts[head] = consts[modifier] = joined
     return consts
 
-
-def map_ep(ctx, ep) -> tuple | lf.Refusal | None:
+def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if ep.pred in ("named", "compound"):
         return ()
     return None

@@ -4,6 +4,15 @@ from dataclasses import dataclass
 
 from tolk import compile as comp, engine, erg, lf, say, sem, store
 from tolk.ask import Answer, answer, prove
+from tolk.lf import Atom, Var
+
+
+@dataclass(frozen=True)
+class Proposal:
+    question: str
+    p_pred: str
+    q_pred: str
+    support: tuple[str, ...]  # the things with P, which the rule would also give Q
 
 
 @dataclass(frozen=True)
@@ -69,6 +78,39 @@ class Mind:
             raise ValueError("there is no supposition to drop")
         store.drop_ctx(self.db, self.ctx)
         self.ctx = "world"
+
+    def propose(self) -> list[Proposal]:
+        """Rules that the stored facts suggest, as yes-or-no questions. Nothing is stored."""
+        things: dict[str, set[str]] = {}
+        for pred, thing in self.db.execute(
+            "SELECT pred, a0 FROM fact WHERE positive = 1 AND ctx = 'world' AND pred GLOB '_*_n_*' "
+            "AND a0 != '' AND a1 = '' AND a2 = ''"
+        ):
+            things.setdefault(pred, set()).add(thing)
+        for pred, thing in self.db.execute(
+            "SELECT pred, a1 FROM fact WHERE positive = 1 AND ctx = 'world' AND pred GLOB '_*_a_*' "
+            "AND a1 != '' AND a2 = ''"
+        ):
+            things.setdefault(pred, set()).add(thing)
+        derived = store.derived_pairs(self.db)
+        out = []
+        for p, members in sorted(things.items()):
+            if len(members) < 3:
+                continue
+            for q, others in sorted(things.items()):
+                # Q must cover P and contain a thing P lacks, so the pair is not two predicates with one extension.
+                if q == p or (p, q) in derived or not members <= others or others <= members:
+                    continue
+                out.append(Proposal(say.proposal_text(p, q), p, q, tuple(sorted(members))))
+        return out
+
+    def confirm(self, proposal: Proposal) -> Result:
+        """Store the proposed rule, with the confirmed question as its source."""
+        sid = store.add_sentence(self.db, proposal.question + " (confirmed)")
+        rule = lf.Rule((Atom(proposal.q_pred, (Var("x"),)),), (Atom(proposal.p_pred, (Var("x"),)),))
+        store.add_rule(self.db, rule, sid)
+        engine.run(self.db)
+        return Result(0, 0, lf.show(rule), "rule stored")
 
     def tell(self, text: str) -> Result:
         return self.hear(text)

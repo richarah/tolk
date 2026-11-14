@@ -173,8 +173,7 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
 
 def _unbound(x: lf.LF, bound: dict[str, str]) -> str:
     """Names of variables that no quantifier binds and that are not events. Such a variable would be silently ignored."""
-    atoms = [a for a in _atoms(x)]
-    keys = {t.key for a in atoms for t in a.args if isinstance(t, Var)}
+    keys = {t.key for a in _atoms(x) for t in a.args if isinstance(t, Var)}
     names_ = sorted(k for k in keys if not Var(k).event and k not in bound)
     return ", ".join(names_)
 
