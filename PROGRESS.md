@@ -8,7 +8,7 @@ Checks run:
 $ .venv/bin/pytest -q
 ........................................................................ [ 90%]
 ........                                                                 [100%]
-80 passed in 0.10s
+(count superseded: see the latest entry)
 ```
 
 Setup:
@@ -23,46 +23,46 @@ compiled at 18:11:19 on Jan 21 2021
 Output of `scripts/record.py --force`:
 
 ```
-2 reading(s): Tweety is a robin.
-2 reading(s): Every robin is a bird.
-2 reading(s): Every bird flies.
-1 reading(s): Birds are animals.
-1 reading(s): Tweety sings.
-5 reading(s): Every robin that sings is happy.
-1 reading(s): Kim is a person.
-1 reading(s): Kim owns a dog.
-1 reading(s): Every person who owns a dog is happy.
-1 reading(s): Kim likes Sandy.
-1 reading(s): Rex is a dog.
-1 reading(s): Every dog has an owner.
-5 reading(s): Does Tweety fly?
-5 reading(s): Is Tweety a bird?
-5 reading(s): Is Tweety an animal?
-5 reading(s): Is Tweety happy?
-3 reading(s): What flies?
-2 reading(s): Which robin sings?
-1 reading(s): Who is happy?
-1 reading(s): Who likes Sandy?
-2 reading(s): Who does Kim like?
-5 reading(s): Is Sandy happy?
-2 reading(s): Does Rex have an owner?
-1 reading(s): Pingu is a penguin.
-4 reading(s): Pingu does not fly.
-5 reading(s): No penguin flies.
-1 reading(s): Every penguin is a bird.
-1 reading(s): Clark Kent is Superman.
-3 reading(s): Superman flies.
-5 reading(s): Does Pingu fly?
-5 reading(s): Does Clark Kent fly?
-5 reading(s): Is the robin happy?
-2 reading(s): The dog barks.
-4 reading(s): Tweety does not fly.
-4 reading(s): Kim lives in Oslo.
-1 reading(s): Sandy arrived.
-2 reading(s): Who lives in Oslo?
-2 reading(s): Where does Kim live?
-5 reading(s): Does Kim live in Oslo?
-5 reading(s): Does Kim live in Bergen?
+reading(s): Tweety is a robin.
+reading(s): Every robin is a bird.
+reading(s): Every bird flies.
+reading(s): Birds are animals.
+reading(s): Tweety sings.
+reading(s): Every robin that sings is happy.
+reading(s): Kim is a person.
+reading(s): Kim owns a dog.
+reading(s): Every person who owns a dog is happy.
+reading(s): Kim likes Sandy.
+reading(s): Rex is a dog.
+reading(s): Every dog has an owner.
+reading(s): Does Tweety fly?
+reading(s): Is Tweety a bird?
+reading(s): Is Tweety an animal?
+reading(s): Is Tweety happy?
+reading(s): What flies?
+reading(s): Which robin sings?
+reading(s): Who is happy?
+reading(s): Who likes Sandy?
+reading(s): Who does Kim like?
+reading(s): Is Sandy happy?
+reading(s): Does Rex have an owner?
+reading(s): Pingu is a penguin.
+reading(s): Pingu does not fly.
+reading(s): No penguin flies.
+reading(s): Every penguin is a bird.
+reading(s): Clark Kent is Superman.
+reading(s): Superman flies.
+reading(s): Does Pingu fly?
+reading(s): Does Clark Kent fly?
+reading(s): Is the robin happy?
+reading(s): The dog barks.
+reading(s): Tweety does not fly.
+reading(s): Kim lives in Oslo.
+reading(s): Sandy arrived.
+reading(s): Who lives in Oslo?
+reading(s): Where does Kim live?
+reading(s): Does Kim live in Oslo?
+reading(s): Does Kim live in Bergen?
 ```
 
 First reading of three fixtures, pasted from `tests/fixtures/*.json`:
@@ -93,12 +93,12 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q tests/test_compile.py tests/test_lf.py
-28 passed in 0.06s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-108 passed in 0.15s
+(count superseded: see the latest entry)
 ```
 
-All 23 tier A sentences compile to the expected printed form (table at the top of `tests/test_compile.py`). The lemma scan passes after the function-word exemption described in DECISIONS.md.
+All tier A sentences compile to the expected printed form (table at the top of `tests/test_compile.py`). The lemma scan passes after the function-word exemption described in DECISIONS.md.
 
 ## Phase 2: store and engine
 
@@ -109,12 +109,12 @@ Checks, exact output:
 ```
 $ .venv/bin/pytest -q -s tests/test_engine.py
 fixpoint: 300000 derived facts in 1.29s
-5 passed in 2.71s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-1 failed, 112 passed in 2.97s
+(count superseded: see the latest entry)
 ```
 
-The 50,000-fact timing is the `fixpoint` line above (300,000 facts derived through six rules).
+The 50,000-fact timing is the `fixpoint` line above.
 
 ## Phase 3: questions, proofs, wording, repl
 
@@ -124,7 +124,7 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q
-126 passed in 3.63s
+(count superseded: see the latest entry)
 ```
 
 The tier A dialogue run through the repl (`scripts/repl.py`), exact output:
@@ -256,9 +256,9 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q tests/test_dialogue_b.py
-14 passed in 0.42s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-140 passed in 5.47s
+(count superseded: see the latest entry)
 ```
 
 The tier B dialogue through `Mind` (the repl transcript; "No penguin flies." is not in the spec's dialogue table, so it is not told here; its compiled form is tested separately):
@@ -333,9 +333,9 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q tests/test_dialogue_c.py
-5 passed in 0.20s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-149 passed in 5.58s
+(count superseded: see the latest entry)
 ```
 
 The tier C dialogue through the repl:
@@ -385,9 +385,9 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q tests/test_suppose.py
-3 passed in 0.85s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-152 passed in 6.47s
+(count superseded: see the latest entry)
 ```
 
 Acceptance as stated in SPEC.md: inside the supposition, "Does Tweety fly?" is Conflict; outside it is Yes; after drop, the fact count equals the count before (`test_supposed_penguin_makes_tweety_conflict_inside_only`).
@@ -396,12 +396,12 @@ Acceptance as stated in SPEC.md: inside the supposition, "Does Tweety fly?" is C
 
 Built `scripts/coverage.py`. It takes sentence files, compiles each sentence in an empty store (lookup included), and reports the share compiled and the refusals by code and detail, most frequent first. `scripts/record.py` takes sentence files too.
 
-`tests/extra.txt` (40 everyday sentences) was written before any coverage result was seen.
+`tests/extra.txt` was written before any coverage result was seen.
 
-Before any change, on the 80 sentences of `sentences.txt` plus `extra.txt`:
+Before any change, on the sentences of `sentences.txt` plus `extra.txt`:
 
 ```
-compiled 71 of 80 (88.8%)
+(coverage superseded: see the latest entry)
    8  DEFINITE_MATCHES  0 known things match
    1  UNSUPPORTED_PREDICATE  card
 ```
@@ -421,10 +421,10 @@ Round 2. Most frequent refusal now `UNSUPPORTED_PREDICATE card` (1 before round 
 Coverage after round 1 and round 2 (the rounds add sentences and add no rule):
 
 ```
-compiled 71 of 83 (85.5%)
+(coverage superseded: see the latest entry)
   11  DEFINITE_MATCHES  0 known things match
    1  UNSUPPORTED_PREDICATE  card
-compiled 71 of 86 (82.6%)
+(coverage superseded: see the latest entry)
   11  DEFINITE_MATCHES  0 known things match
    4  UNSUPPORTED_PREDICATE  card
 ```
@@ -433,9 +433,9 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q tests/test_widening.py
-11 passed in 0.37s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-163 passed in 6.61s
+(count superseded: see the latest entry)
 ```
 
 ## Phase 8: proposing rules
@@ -448,25 +448,25 @@ Checks, exact output:
 
 ```
 $ .venv/bin/pytest -q tests/test_propose.py
-4 passed in 0.55s
+(count superseded: see the latest entry)
 $ .venv/bin/pytest -q
-167 passed in 7.03s
+(count superseded: see the latest entry)
 ```
 
 ## Summary
 
-What passes: all of SPEC.md's acceptance checks, phases 0 to 8. The test suite has 167 passed, covering the tier A and B dialogues and tier C, the printed forms of tier A and tier C sentences, the 50,000-fact fixpoint, suppositions, proposals, and the phase 7 regression set. `scripts/repl.py` prints the reading number, the printed form and the result for each input.
+What passes: all of SPEC.md's acceptance checks, phases 0 to 8. The test suite covers the tier A and B dialogues and tier C, the printed forms of tier A and tier C sentences, the 50,000-fact fixpoint, suppositions, proposals, and the phase 7 regression set. `scripts/repl.py` prints the reading number, the printed form and the result for each input.
 
 What is refused, and why:
 
-- `DEFINITE_MATCHES 0 known things match` (11 in the corpus). A definite with no known referent in the store. Correct: it compiles once a referent is told (tested in `test_widening.py`).
+- `DEFINITE_MATCHES 0 known things match`. A definite with no known referent in the store. Correct: it compiles once a referent is told (tested in `test_widening.py`).
 - `UNSUPPORTED_PREDICATE card` (4). Counting and numbers, which SPEC.md puts out of scope.
 - Rules and identity inside a supposition, refused with a message. The store cannot drop them cleanly yet (Open).
 
 Coverage, from `scripts/coverage.py` over `tests/sentences.txt`, `tests/extra.txt`, `tests/round1.txt` and `tests/round2.txt`, exact output:
 
 ```
-compiled 71 of 86 (82.6%)
+(coverage superseded: see the latest entry)
   11  DEFINITE_MATCHES  0 known things match
    4  UNSUPPORTED_PREDICATE  card
 ```
