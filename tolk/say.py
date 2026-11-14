@@ -39,6 +39,8 @@ def proof_text(db: sqlite3.Connection, p: Proof, depth: int = 0) -> str:
 
 
 def answer_text(db: sqlite3.Connection, a: Answer) -> str:
+    if a.count is not None:
+        return str(a.count)
     if a.value != "Yes" or not a.solutions:
         return a.value
     names = [_name(v) for solution in a.solutions for v in solution]

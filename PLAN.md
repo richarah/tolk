@@ -182,3 +182,5 @@ Phase 11: read the three fixtures first (consequent is ARG1, antecedent ARG2 of 
 Phase 12: verify the statement half (already built); negated questions via per-atom polarity in ask and Match.
 
 Phase 13: fixtures read (pron/pronoun_q, PERS NUM GEND on the variable). pronouns.py, mention table, notes on logical forms, Mind records mentions.
+
+Phase 14: fixtures read (card with a digit CARG; how many is measure, much-many_a, abstr_deg, which_q). rules/numbers.py; Ask gets count and atleast.

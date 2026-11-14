@@ -61,9 +61,10 @@ def test_definite_with_no_referent_is_refused(mind: Mind) -> None:
     assert "DEFINITE_MATCHES: 0 known things match" in r.printed
 
 
-def test_numbers_are_refused(mind: Mind) -> None:
-    r = mind.tell("Ana owns two cats.")
-    assert r.printed == "refuse UNSUPPORTED_PREDICATE: card"
+def test_numbers_in_a_statement_make_that_many_things_and_in_a_rule_are_refused(mind: Mind) -> None:
+    # Phase 14 stores cardinals in statements. A rule that would make a number of things is still not stored.
+    assert mind.tell("Ana owns two cats.").printed.count("_own_v_1") == 2
+    assert mind.tell("Every bike has three wheels.").printed.startswith("refuse UNSUPPORTED_PREDICATE: card")
 
 
 def test_negated_fact_answers_no_with_a_bare_plural_elsewhere(mind: Mind) -> None:

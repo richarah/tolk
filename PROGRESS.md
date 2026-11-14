@@ -532,3 +532,12 @@ Built rules/pronouns.py, the mention table, notes on logical forms, 'you'/'I' wo
 $ .venv/bin/pytest -q
 312 passed in 10.15s
 ```
+
+## Phase 14: numbers
+
+Cardinals in statements, How many, at-least questions. Dialogue and ten own-word cases in tests/test_phase14.py. SPEC2 changes two earlier refusal tests (Ana owns two cats; Ada keeps two cats).
+
+```
+$ .venv/bin/pytest -q
+337 passed in 10.26s
+```

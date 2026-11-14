@@ -55,3 +55,9 @@ Am I a person?
 Are you a cat?
 It sings.
 She is happy.
+# phase 14
+Kim owns two cats.
+How many cats does Kim own?
+Does Kim own two cats?
+Does Kim own three cats?
+Kim owns 3 dogs.

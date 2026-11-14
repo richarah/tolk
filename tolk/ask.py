@@ -26,6 +26,7 @@ class Answer:
     solutions: tuple[tuple[str, ...], ...]  # the wanted variables' constants, one tuple per solution
     proofs: tuple[tuple[Proof, ...], ...]  # for each solution, one proof per body atom
     widened: tuple[str, ...] = ()  # "asked matched as stored" for each preposition sense that was widened
+    count: int | None = None  # for how many: the number of distinct things found
 
 
 PREPOSITION = re.compile(r"_([^_]+)_p_[^_]+")
@@ -53,6 +54,8 @@ def _answer(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     """What the question claims is matched against facts of the polarity it states; the opposite against the other kind.
     A negated question claims negative facts, and its opposite is the positive ones, so Yes and No swap."""
     claim, against = _polarities(q)
+    if q.count is not None:
+        return _counted(db, q, claim, ctx)
     pos = _solutions(db, q, claim, ctx)
     if not q.wanted:
         neg = _solutions(db, q, against, ctx)
@@ -67,6 +70,19 @@ def _answer(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
         return Answer(UNKNOWN, (), ())
     solutions = sorted(pos)
     return Answer(YES, tuple(solutions), tuple(pos[s] for s in solutions))
+
+
+def _counted(db: sqlite3.Connection, q: lf.Ask, claim: tuple[int, ...], ctx: str) -> Answer:
+    """How many distinct things the known facts give; or, with atleast, whether there are at least that many."""
+    found = _solutions(db, lf.Ask(q.body, (q.count,)), claim, ctx)
+    n = len(found)
+    solutions = sorted(found)
+    proofs = tuple(found[v] for v in solutions)
+    if not q.atleast:
+        return Answer(YES, tuple(solutions), proofs, count=n)
+    if n >= q.atleast:
+        return Answer(YES, (), (tuple(p for ps in proofs[: q.atleast] for p in ps),))
+    return Answer(UNKNOWN, (), ())
 
 
 def _polarities(q: lf.Ask) -> tuple[tuple[int, ...], tuple[int, ...]]:

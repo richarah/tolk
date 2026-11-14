@@ -5,11 +5,11 @@ from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, conditional, content, copula, describe, modifiers, names, neg, pronouns, quant, scope
+from tolk.rules import check, conditional, content, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
-FAMILIES = (names, pronouns, quant, neg, copula, conditional, modifiers, content)
+FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, modifiers, content)
 
 
 def eventive(r: Reading) -> bool:
@@ -25,6 +25,10 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     if unsaid:
         return unsaid
     quants = [ep for ep in r.eps if quant.is_quantifier(ep)]
+    cards = numbers.cardinals(r)
+    if isinstance(cards, lf.Refusal):
+        return cards
+    many = numbers.how_many(r)
     main_labels = scope.main_labels(r)
     main = [ep for ep in r.eps if ep.label in main_labels]
     main_vars = {v for ep in main for v in ep.args.values()}
@@ -32,7 +36,7 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     # A bare plural is universal only as a statement's subject; anywhere else it is an indefinite.
     bound = {ep.args["ARG0"]: ep.pred for ep in quants}
     for v, p in bound.items():
-        if p == "udef_q" and v not in subjects:
+        if p == "udef_q" and (v not in subjects or v in cards or (many and v == many[0])):
             bound[v] = quant.INDEF
     alias = copula.plan(r.eps, bound)
     const = names.plan(r)
@@ -86,8 +90,12 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
     mode = "ask" if sf == "ques" else "rule" if universal_top or cond is not None else "tell"
+    if cards and mode == "rule":
+        return lf.Refusal("UNSUPPORTED_PREDICATE", "card in a rule: the number of things a rule makes is not stored")
+    if len(cards) > 1 and mode == "ask":
+        return lf.Refusal("UNSUPPORTED_PREDICATE", "card: one number per question")
     ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()))
-    wanted = tuple(ctx.term(v) for v, p in bound.items() if p in quant.WH)
+    wanted = tuple(ctx.term(v) for v, p in bound.items() if p in quant.WH and not (many and v == many[1]))
     if any(not isinstance(w, Var) for w in wanted):
         return lf.Refusal("WH_BOUND_TO_CONSTANT", str(wanted))
     if mode == "rule":
@@ -112,14 +120,18 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         atoms = _map(ctx, r.eps)
         if isinstance(atoms, lf.Refusal):
             return atoms
-        out = lf.Tell(atoms, notes=notes) if mode == "tell" else lf.Ask(atoms, wanted, notes)
-    unconsumed = check.unconsumed(ctx, quants, out, mode)
+        if mode == "tell":
+            out = lf.Tell(_expand(ctx, atoms, cards), notes=notes)
+        else:
+            counted, at_least = (Var(many[0]), 0) if many else next(((Var(v), n) for v, n in cards.items()), (None, 0))
+            out = lf.Ask(atoms, wanted, notes, counted, at_least)
+    unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1])], out, mode)
     if unconsumed:
         return unconsumed
     if isinstance(out, (lf.Tell, lf.Rule)):
-        out = dataclasses.replace(out, mentions=_mentions(r, ctx, quants, out))
+        out = dataclasses.replace(out, mentions=_mentions(r, ctx, [q for q in quants if q.args["ARG0"] not in cards], out))
     if mode == "tell" and r.props[r.index].get("TENSE") == "past":
-        out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),), notes=notes)
+        out = dataclasses.replace(out, atoms=out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
     unbound = check.unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
 
@@ -144,6 +156,23 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
         else:
             return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
     return tuple(atoms)
+
+
+def _expand(ctx: Ctx, atoms: tuple[Atom, ...], cards: dict[str, int]) -> tuple[Atom, ...]:
+    """A cardinal makes that many distinct things: each atom about the thing is repeated for each of them."""
+    for var, n in cards.items():
+        t = ctx.term(var)
+        if not isinstance(t, Const) or t.kind != "anon":
+            continue
+        copies = [t]
+        for _ in range(n - 1):
+            ctx.counts["anon"] += 1
+            copies.append(Const(lf.fresh_id("anon", ctx.counts["anon"]), "anon"))
+        atoms = tuple(
+            b for a in atoms for b in (
+                [Atom(a.pred, tuple(c if x == t else x for x in a.args), a.positive) for c in copies] if t in a.args else [a])
+        )
+    return atoms
 
 
 def _mentions(r: Reading, ctx: Ctx, quants: list[EP], out: lf.LF) -> tuple[tuple[int, str, str], ...]:

@@ -179,7 +179,7 @@ def _fresh_ids(db: sqlite3.Connection, t: lf.Tell) -> dict[str, str]:
                 while True:
                     n += 1
                     cand = lf.fresh_id(c.kind, n)
-                    if not db.execute("SELECT 1 FROM entity WHERE id = ?", (cand,)).fetchone():
+                    if cand not in ids.values() and not db.execute("SELECT 1 FROM entity WHERE id = ?", (cand,)).fetchone():
                         break
                 ids[c.id] = cand
     return ids

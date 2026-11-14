@@ -16,3 +16,11 @@ Does Ada not like Tom?
 Is Kim not a robin?
 Bo owns no dog.
 Does Bo not own Rex?
+Bo admires two teachers.
+How many teachers does Bo admire?
+Ada owns 4 cats.
+Tom owns one dog.
+Two cats sleep.
+How many cats sleep?
+Kim owns more than two cats.
+Kim owns half of the cats.

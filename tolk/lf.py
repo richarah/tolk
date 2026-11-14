@@ -68,6 +68,8 @@ class Ask:
     body: tuple[Atom, ...]
     wanted: tuple[Var, ...]
     notes: tuple[str, ...] = ()
+    count: Var | None = None  # count the distinct things this variable takes
+    atleast: int = 0  # with count: 0 asks how many; n asks whether there are at least n
 
 
 @dataclass(frozen=True)
@@ -131,6 +133,9 @@ def _show(x: LF) -> str:
         body = ", ".join(_atom(a, names) for a in x.body)
         return f"{'rule':<6} {head} :- {body}"
     body = ", ".join(_atom(a, names) for a in x.body)
+    if x.count is not None:
+        kind = "count" if not x.atleast else f"ask >={x.atleast}"
+        return f"{kind} {names(x.count)}  {body}"
     column = " ".join(names(v) for v in x.wanted) + "  " if x.wanted else "   "
     return f"ask {column}{body}"
 
@@ -157,7 +162,7 @@ def _namer(x: LF):
 
 def _order(x: LF) -> list[Var]:
     if isinstance(x, Ask):
-        atoms, lead = x.body, list(x.wanted)
+        atoms, lead = x.body, list(x.wanted) + ([x.count] if x.count is not None else [])
     elif isinstance(x, Rule):
         atoms, lead = x.head + x.body, []
     elif isinstance(x, Tell):
