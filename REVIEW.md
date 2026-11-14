@@ -18,7 +18,7 @@ Clean checkout: `git clone`, `sh scripts/setup_erg.sh` (ACE 0.9.34, erg-2018.dat
 | 7 | coverage script, refusals by code | passing |
 | 8 | one proposal with four things; none with a counterexample | passing |
 
-Hard rules checked: no content lemma in `tolk/` (scan of all `tolk/**/*.py` against `sentences.txt` finds only function words); no `try`/`except` anywhere; no SQL value is interpolated (the f-strings in `engine.py`, `ask.py`, `store.py` insert generated aliases and `?` placeholders only); no module over 300 lines (largest: compile.py, 263 before this review's additions); no skipped or expected-failure tests. No violation found.
+Hard rules checked: no content lemma in `tolk/` (scan of all `tolk/**/*.py` against `sentences.txt` finds only function words); no `try`/`except` anywhere; no SQL value is interpolated (the f-strings in `engine.py`, `ask.py`, `store.py` insert generated aliases and `?` placeholders only); no module over 300 lines (largest: compile.py, see `wc -l tolk/*.py`); no skipped or expected-failure tests. No violation found.
 
 ## Findings
 
@@ -31,7 +31,7 @@ Numbered by severity. Status is after the fixes.
 5. **Wrong result.** Future, perfect and progressive were dropped: "Kim will sing." stored `sing(kim)`, and a relative clause in the past ("who owned a dog") applied to present owners. Fixed: refused `UNSUPPORTED_TENSE` / `UNSUPPORTED_ASPECT`.
 6. **Wrong result.** "Is every dog a mammal?" was answered as "is some dog a mammal". Fixed: refused `UNIVERSAL_QUESTION`.
 7. **Wrong result.** A negated question ("Does Kim not like fish?") answered Yes from the absence of a fact (negation as failure in the question), and "Does Kim not like Nemo?" crashed the repl. Fixed: refused `NEGATED_QUESTION`.
-8. **Wrong result.** `Who is Kim?` crashed with a KeyError (finding B). A rule with an empty body (the name reading of "Fish do not fly.") crashed the engine. Fixed: `UNCONSTRAINED_WANTED`, `EMPTY_RULE_BODY`, both from compile. No input in the 100 or so sentences tried now exits the repl.
+8. **Wrong result.** `Who is Kim?` crashed with a KeyError (finding B). A rule with an empty body (the name reading of "Fish do not fly.") crashed the engine. Fixed: `UNCONSTRAINED_WANTED`, `EMPTY_RULE_BODY`, both from compile. No sentence tried in this session now exits the repl.
 9. **Rule violation.** A merge could leave a `why` row naming a premise fact that was deleted as a twin (`prove` would then fail on that row). Fixed: premises are rewritten to the twin.
 10. **Rule violation.** Dropping a supposition left its sentence row behind and changed the rules' `ran` round, so the state was not exactly restored (SPEC phase 6 says it is). Fixed; the test compares every table.
 11. **Fragile.** The check that "every predication is consumed" was not a check: a predication no family handles is refused, but a `neg` that negated nothing, or a quantified variable that no atom used, passed silently. Fixed with `_unconsumed`.
@@ -100,7 +100,7 @@ Result with the final code: 50 steps, 0 wrong.
 | Ada wants to sleep. | refused | refused | ok |
 | Every finch that swims quickly is cheerful or calm. | refused | refused | ok |
 
-The two sentences I could not make fit the tiers are in findings 3 and 4: they came from the free-form batch of 40 further sentences, whose outcomes are in `tests/negation.txt` and `tests/generalise.txt`.
+The free-form sentences from the manual-use session (negation, questions, bare nouns) are in `tests/negation.txt` and `tests/generalise.txt`; their fixtures are recorded.
 
 ## Spec problems
 
