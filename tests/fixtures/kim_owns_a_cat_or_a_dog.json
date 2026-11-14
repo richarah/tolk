@@ -1,0 +1,140 @@
+{
+  "text": "Kim owns a cat or a dog.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _own_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 ]  [ udef_q<9:24> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _a_q<9:10> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ _cat_n_1<11:14> LBL: h17 ARG0: x14 ]  [ _or_c<15:17> LBL: h18 ARG0: x9 ARG1: x14 ARG2: x19 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<18:19> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]  [ _dog_n_1<20:24> LBL: h23 ARG0: x19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h18 h15 qeq h17 h21 qeq h23 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_own_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "x14"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h18",
+            "args": {
+              "ARG0": "x9",
+              "ARG1": "x14",
+              "ARG2": "x19"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x19",
+              "RSTR": "h21",
+              "BODY": "h22"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h23",
+            "args": {
+              "ARG0": "x19"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h18",
+          "h15": "h17",
+          "h21": "h23"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {},
+          "h11": {},
+          "h12": {},
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "x19": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h21": {},
+          "h22": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h18": {},
+          "h17": {},
+          "h23": {},
+          "h4": {},
+          "h10": {},
+          "h13": {},
+          "h20": {}
+        }
+      }
+    }
+  ]
+}

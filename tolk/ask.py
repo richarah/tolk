@@ -1,5 +1,6 @@
 """Questions: an answer from the positive facts that match, with the proof of each matched fact."""
 
+import dataclasses
 import json
 import re
 import sqlite3
@@ -33,6 +34,25 @@ PREPOSITION = re.compile(r"_([^_]+)_p_[^_]+")
 
 
 def answer(db: sqlite3.Connection, q: lf.Ask, ctx: str = "world") -> Answer:
+    if q.alternatives:
+        return _any(q, [_widening(db, dataclasses.replace(q, body=alt, alternatives=()), ctx) for alt in q.alternatives])
+    return _widening(db, q, ctx)
+
+
+def _any(q: lf.Ask, parts: list[Answer]) -> Answer:
+    """An or: Yes if either side is, with that side's proof. Otherwise No if every side is No, else Unknown."""
+    yes = [p for p in parts if p.value == YES]
+    if yes:
+        if q.wanted:
+            solutions = tuple(sorted({s for p in yes for s in p.solutions}))
+            return Answer(YES, solutions, tuple(pr for p in yes for pr in p.proofs), tuple(w for p in yes for w in p.widened))
+        return yes[0]
+    if all(p.value == NO for p in parts):
+        return parts[0]
+    return Answer(UNKNOWN, (), ())
+
+
+def _widening(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     """Answer exactly; only if that finds nothing, let a preposition match a stored sense of the same lemma."""
     exact = _answer(db, q, ctx)
     if exact.value != UNKNOWN or not any(PREPOSITION.fullmatch(a.pred) for a in q.body):

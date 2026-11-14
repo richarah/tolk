@@ -70,6 +70,7 @@ class Ask:
     notes: tuple[str, ...] = ()
     count: Var | None = None  # count the distinct things this variable takes
     atleast: int = 0  # with count: 0 asks how many; n asks whether there are at least n
+    alternatives: tuple[tuple[Atom, ...], ...] = ()  # an or: the question is answered by each alternative body, and any Yes wins
 
 
 @dataclass(frozen=True)
@@ -132,7 +133,7 @@ def _show(x: LF) -> str:
         head = ", ".join(_atom(a, names, x.creates, marked) for a in x.head)
         body = ", ".join(_atom(a, names) for a in x.body)
         return f"{'rule':<6} {head} :- {body}"
-    body = ", ".join(_atom(a, names) for a in x.body)
+    body = " | ".join(", ".join(_atom(a, names) for a in alt) for alt in (x.alternatives or (x.body,)))
     if x.count is not None:
         kind = "count" if not x.atleast else f"ask >={x.atleast}"
         return f"{kind} {names(x.count)}  {body}"

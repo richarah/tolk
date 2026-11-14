@@ -24,3 +24,14 @@ Two cats sleep.
 How many cats sleep?
 Kim owns more than two cats.
 Kim owns half of the cats.
+# phase 15, own words
+Kim and Sandy are happy.
+Kim sings and dances.
+Does Rio hum or sing?
+Kim likes Sandy and Lee.
+Do Kim and Sandy sing?
+Kim owns a cat and a bird.
+Kim owns a dog.
+Does Kim own a cat or a dog?
+Who sings or dances?
+Every dog barks and sleeps.

@@ -184,3 +184,5 @@ Phase 12: verify the statement half (already built); negated questions via per-a
 Phase 13: fixtures read (pron/pronoun_q, PERS NUM GEND on the variable). pronouns.py, mention table, notes on logical forms, Mind records mentions.
 
 Phase 14: fixtures read (card with a digit CARG; how many is measure, much-many_a, abstr_deg, which_q). rules/numbers.py; Ask gets count and atleast.
+
+Phase 15: fixtures read (and/or as a group variable or as an event conjunction). rules/coordination.py, Ask.alternatives.

@@ -1,6 +1,5 @@
 """Content predicates: a noun, verb, adjective or preposition, with its arguments in role order."""
 
-import re
 from typing import TYPE_CHECKING
 
 from tolk import lf
@@ -11,7 +10,6 @@ if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
 ROLES = ("ARG0", "ARG1", "ARG2")
-CONJUNCTION = re.compile(r"_[^_]+_c(_[^_]+)?")
 
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if not ep.pred.startswith("_"):

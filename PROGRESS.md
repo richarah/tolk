@@ -541,3 +541,12 @@ Cardinals in statements, How many, at-least questions. Dialogue and ten own-word
 $ .venv/bin/pytest -q
 337 passed in 10.26s
 ```
+
+## Phase 15: coordination
+
+And distributes over names, noun phrases and verb phrases; or is accepted in questions only. Ten or more own-word cases in tests/test_phase15.py. SPEC2 changes the earlier refusals of 'and'; the COORDINATION test now uses 'or' in a statement.
+
+```
+$ .venv/bin/pytest -q
+375 passed in 11.25s
+```

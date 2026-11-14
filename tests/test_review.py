@@ -32,9 +32,10 @@ def test_or_is_not_stored_as_and(mind: Mind) -> None:
     assert mind.db.execute("SELECT COUNT(*) FROM rule").fetchone()[0] == 0
 
 
-def test_and_between_clauses_is_refused_not_stored_as_a_fact_about_events(mind: Mind) -> None:
-    assert refused(mind.tell("Kim sings and dances."), "COORDINATION")
-    assert mind.db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] == 0
+def test_and_between_clauses_stores_each_clause_and_no_fact_about_events(mind: Mind) -> None:
+    # Phase 15 replaced the refusal: each clause is stored on its own event, and the connective is not a fact.
+    mind.tell("Kim sings and dances.")
+    assert {p for (p,) in mind.db.execute("SELECT pred FROM fact")} == {"_sing_v_1", "_dance_v_1"}
 
 
 @pytest.mark.parametrize("text", ["Kim will sing.", "Kim is singing.", "Kim has arrived."])

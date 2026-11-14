@@ -61,3 +61,10 @@ How many cats does Kim own?
 Does Kim own two cats?
 Does Kim own three cats?
 Kim owns 3 dogs.
+# phase 15
+Kim and Sandy are happy.
+Kim sings and Sandy dances.
+Kim sings and dances.
+Kim owns a cat or a dog.
+Does Kim own a cat or a dog?
+Kim likes Sandy or Lee.

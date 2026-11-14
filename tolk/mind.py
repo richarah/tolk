@@ -76,7 +76,11 @@ class Mind:
             opposite = prove(self.db, int(stored.detail))
             return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")
         new = store.fresh_of_kind(self.db, "anon")[len(anon_before):]
-        store.add_mentions(self.db, sid, [(pos, new[int(i[2:]) - 1] if i.startswith("~") else i, num) for pos, i, num in x.mentions])
+        # The store numbers new things in the order the atoms first mention them.
+        local = list(dict.fromkeys(t.id for a in x.atoms for t in a.args if isinstance(t, lf.Const) and t.kind == "anon"))
+        stored_id = dict(zip(local, new))
+        store.add_mentions(self.db, sid, [(pos, stored_id.get(i[1:], i) if i.startswith("~") else i, num) for pos, i, num in x.mentions
+                                          if not i.startswith("~") or i[1:] in stored_id])
         engine.run(self.db, self.ctx)
         return Result(*head, outcome=f"stored, {len(stored)} new fact(s)")
 

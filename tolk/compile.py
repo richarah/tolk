@@ -5,11 +5,11 @@ from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, conditional, content, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope
+from tolk.rules import check, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
-FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, modifiers, content)
+FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, modifiers, content)
 
 
 def eventive(r: Reading) -> bool:
@@ -38,6 +38,10 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     for v, p in bound.items():
         if p == "udef_q" and (v not in subjects or v in cards or (many and v == many[0])):
             bound[v] = quant.INDEF
+    conjs = coordination.find(r)
+    for c in conjs:
+        if c.nominal:
+            bound[c.group] = quant.INDEF  # a group of things is not a generic: it stands for its members
     alias = copula.plan(r.eps, bound)
     const = names.plan(r)
     resolved = pronouns.plan(r, const, history)
@@ -90,6 +94,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
     mode = "ask" if sf == "ques" else "rule" if universal_top or cond is not None else "tell"
+    if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
+        return lf.Refusal("COORDINATION", "a group or an or in a rule")
     if cards and mode == "rule":
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card in a rule: the number of things a rule makes is not stored")
     if len(cards) > 1 and mode == "ask":
@@ -120,12 +126,17 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         atoms = _map(ctx, r.eps)
         if isinstance(atoms, lf.Refusal):
             return atoms
+        alts = coordination.distribute(ctx, _expand(ctx, atoms, cards) if mode == "tell" else atoms, conjs)
+        if isinstance(alts, lf.Refusal):
+            return alts
         if mode == "tell":
-            out = lf.Tell(_expand(ctx, atoms, cards), notes=notes)
+            out = lf.Tell(alts[0], notes=notes)
         else:
             counted, at_least = (Var(many[0]), 0) if many else next(((Var(v), n) for v, n in cards.items()), (None, 0))
-            out = lf.Ask(atoms, wanted, notes, counted, at_least)
-    unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1])], out, mode)
+            out = lf.Ask(alts[0], wanted, notes, counted, at_least, tuple(alts) if len(alts) > 1 else ())
+    probe = lf.Ask(tuple(a for alt in out.alternatives for a in alt), out.wanted) if isinstance(out, lf.Ask) and out.alternatives else out
+    groups = {c.group for c in conjs if c.nominal}
+    unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1]) and q.args["ARG0"] not in groups], probe, mode)
     if unconsumed:
         return unconsumed
     if isinstance(out, (lf.Tell, lf.Rule)):
@@ -142,9 +153,11 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
         if ep.pred == "unknown":
             # The grammar's fallback for words it could not analyse in this reading; another reading may do better.
             return lf.Refusal("FALLBACK_PARSE", "the grammar left a word unanalysed")
-        if content.CONJUNCTION.fullmatch(ep.pred):
-            # Checked before the families: the families would take a conjunction of two events for an event modifier.
-            return lf.Refusal("COORDINATION", ep.pred)
+        if coordination.CONJUNCTION.fullmatch(ep.pred):
+            # Checked before the families, which would take a conjunction of two events for an event modifier.
+            got = coordination.map_ep(ctx, ep)
+            atoms.extend(got)
+            continue
         for fam in FAMILIES:
             got = fam.map_ep(ctx, ep)
             if got is None:
