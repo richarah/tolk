@@ -7,7 +7,7 @@ from tolk import lf
 from tolk.lf import Atom, Const, Var
 
 SCHEMA = """
-CREATE TABLE sentence(id INTEGER PRIMARY KEY, text TEXT NOT NULL);
+CREATE TABLE sentence(id INTEGER PRIMARY KEY, text TEXT NOT NULL, printed TEXT NOT NULL DEFAULT '', ctx TEXT NOT NULL DEFAULT 'world');
 CREATE TABLE entity(id TEXT PRIMARY KEY, kind TEXT NOT NULL);
 CREATE TABLE name(entity TEXT NOT NULL, text TEXT NOT NULL);
 CREATE UNIQUE INDEX name_u ON name(entity, text);
@@ -37,8 +37,19 @@ def open_store(path: str = ":memory:") -> sqlite3.Connection:
     return db
 
 
-def add_sentence(db: sqlite3.Connection, text: str) -> int:
-    return db.execute("INSERT INTO sentence(text) VALUES (?)", (text,)).lastrowid
+def add_sentence(db: sqlite3.Connection, text: str, printed: str = "", ctx: str = "world") -> int:
+    return db.execute("INSERT INTO sentence(text, printed, ctx) VALUES (?, ?, ?)", (text, printed, ctx)).lastrowid
+
+
+def repeat_of(db: sqlite3.Connection, printed: str, ctx: str) -> tuple[int, str] | None:
+    """An earlier sentence still in force whose printed logical form is this one: its id and text.
+    In force means something it told, a rule or a merge, is still stored."""
+    return db.execute(
+        "SELECT id, text FROM sentence WHERE printed = ? AND ctx IN ('world', ?) AND ("
+        "EXISTS (SELECT 1 FROM why WHERE sentence = sentence.id) OR EXISTS (SELECT 1 FROM rule WHERE sentence = sentence.id) "
+        "OR EXISTS (SELECT 1 FROM merge WHERE sentence = sentence.id)) ORDER BY id LIMIT 1",
+        (printed, ctx),
+    ).fetchone()
 
 
 def current_round(db: sqlite3.Connection) -> int:
@@ -47,13 +58,6 @@ def current_round(db: sqlite3.Connection) -> int:
 
 def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world") -> list[int] | lf.Refusal:
     """Store ground atoms. Returns the ids of the facts this call added, or a refusal if one contradicts a stored fact."""
-    told_before = db.execute(
-        "SELECT 1 FROM why w JOIN fact f ON f.id = w.fact JOIN sentence s ON s.id = w.sentence "
-        "WHERE f.ctx = ? AND s.text = (SELECT text FROM sentence WHERE id = ?) AND s.id < ?",
-        (ctx, sentence, sentence),
-    ).fetchone()
-    if told_before:
-        return []  # a sentence already stored in this context adds nothing; its events would otherwise be fresh again
     ids = _fresh_ids(db, t)
     grounds = [_ground(db, atom, ids) for atom in t.atoms]
     for g in grounds:

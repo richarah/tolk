@@ -79,3 +79,22 @@ def test_dropping_a_supposition_restores_every_table(mind: Mind) -> None:
 def test_a_modal_is_refused_by_name_not_as_a_variable(mind: Mind, text: str, pred: str) -> None:
     r = mind.tell(text)
     assert r.outcome == "refused" and r.printed == f"refuse UNSUPPORTED_PREDICATE: {pred}"
+
+
+def test_a_repeat_is_by_meaning_not_by_text(mind: Mind) -> None:
+    mind.tell("Kim owns a dog.")
+    r = mind.tell("Kim owns a dog")
+    assert r.outcome == 'already told: "Kim owns a dog."'
+    assert mind.db.execute("SELECT COUNT(*) FROM fact WHERE pred = '_dog_n_1'").fetchone()[0] == 1
+
+
+def test_a_repeated_rule_is_not_stored_twice(mind: Mind) -> None:
+    mind.tell("Every robin is a bird.")
+    assert mind.tell("Every robin is a bird").outcome.startswith("already told")
+    assert mind.db.execute("SELECT COUNT(*) FROM rule").fetchone()[0] == 1
+
+
+def test_a_dropped_supposition_is_no_longer_in_force(mind: Mind) -> None:
+    mind.suppose("Tweety is a penguin.")
+    mind.drop()
+    assert mind.suppose("Tweety is a penguin.").outcome.startswith("stored")

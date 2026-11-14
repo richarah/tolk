@@ -41,10 +41,13 @@ class Mind:
         if isinstance(x, lf.Ask):
             a = answer(self.db, x, self.ctx)
             return Result(*head, outcome=self._answer_text(a), answer=a)
+        prior = store.repeat_of(self.db, printed, self.ctx)
+        if prior:
+            return Result(*head, outcome=f'already told: "{prior[1]}"')
         if isinstance(x, lf.Same):
             if self.ctx != "world":
                 return Result(*head, outcome="refused: identity inside a supposition is not stored yet")
-            sid = store.add_sentence(self.db, text)
+            sid = store.add_sentence(self.db, text, printed, self.ctx)
             store.merge(self.db, x.a, x.b, sid)
             engine.run(self.db)
             return Result(*head, outcome=f"one thing: {x.a.id} and {x.b.id}")
@@ -54,11 +57,11 @@ class Mind:
             refusal = engine.check(self.db, x)
             if refusal is not None:
                 return Result(*head, outcome=lf.show(refusal))
-            sid = store.add_sentence(self.db, text)
+            sid = store.add_sentence(self.db, text, printed, self.ctx)
             store.add_rule(self.db, x, sid)
             engine.run(self.db)
             return Result(*head, outcome="rule stored")
-        sid = store.add_sentence(self.db, text)
+        sid = store.add_sentence(self.db, text, printed, self.ctx)
         stored = store.tell(self.db, x, sid, self.ctx)
         if isinstance(stored, lf.Refusal):
             opposite = prove(self.db, int(stored.detail))
