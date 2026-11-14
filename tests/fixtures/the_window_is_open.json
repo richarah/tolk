@@ -1,0 +1,64 @@
+{
+  "text": "The window is open.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _window_n_1<4:10> LBL: h7 ARG0: x3 ]  [ _open_a_to<14:19> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_the_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_window_n_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_open_a_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i8": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      }
+    }
+  ]
+}

@@ -55,11 +55,16 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     if sf not in ("prop", "ques"):
         return lf.Refusal("UNSUPPORTED_FORCE", str(sf))
     quants = [ep for ep in r.eps if quant.is_quantifier(ep)]
-    bound = {ep.args["ARG0"]: ep.pred for ep in quants}
-    alias = copula.plan(r.eps, bound)
     main_label = r.qeq[r.top]
     main = [ep for ep in r.eps if ep.label == main_label]
     main_vars = {v for ep in main for v in ep.args.values()}
+    subjects = {ep.args["ARG1"] for ep in main if "ARG1" in ep.args}
+    # A bare plural is universal only as a statement's subject; anywhere else it is an indefinite.
+    bound = {ep.args["ARG0"]: ep.pred for ep in quants}
+    for v, p in bound.items():
+        if p == "udef_q" and v not in subjects:
+            bound[v] = quant.INDEF
+    alias = copula.plan(r.eps, bound)
     const = names.plan(r)
     for q in quants:
         if q.pred == quant.DEFINITE:
@@ -70,14 +75,16 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     for ep in main:
         if copula.is_copula(ep) and ep.args["ARG1"] in const and ep.args["ARG2"] in const and sf == "prop":
             return lf.Same(Const(const[ep.args["ARG1"]], "named"), Const(const[ep.args["ARG2"]], "named"))
-    negated = neg.labels(r)
-    if any(q.pred == "_no_q" and q.args["ARG0"] in main_vars for q in quants):
-        negated.add(main_label)
     universal_top = [
         q for q in quants
         if q.pred in quant.UNIVERSAL and q.args["ARG0"] in main_vars and q.args["ARG0"] not in alias
+        and bound[q.args["ARG0"]] == q.pred
     ]
     body = _restricted(r, quants, universal_top)
+    negated = _negated(r, quants, alias, bound)
+    if any(q.pred == "_no_q" and q.args["ARG0"] in main_vars for q in quants):
+        # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
+        negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
     mode = "ask" if sf == "ques" else "rule" if universal_top else "tell"
     ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()))
     wanted = tuple(ctx.term(v) for v, p in bound.items() if p in quant.WH)
@@ -102,6 +109,17 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
     unbound = _unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
+
+
+def _negated(r: Reading, quants: list[EP], alias: dict[str, str], bound: dict[str, str]) -> set[str]:
+    """Labels of the clauses a neg predication negates, widened to a copula complement's restriction."""
+    negated = neg.labels(r)
+    for ep in r.eps:
+        if copula.is_copula(ep) and ep.label in negated and ep.args["ARG2"] in alias:
+            for q in quants:
+                if q.args["ARG0"] == ep.args["ARG2"]:
+                    negated.add(r.qeq.get(q.args["RSTR"]))
+    return negated
 
 
 def _definite(r: Reading, q: EP, lookup: Lookup | None) -> str | lf.Refusal:

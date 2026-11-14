@@ -1,0 +1,211 @@
+{
+  "text": "The teacher is tired.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _teacher_n_of<4:11> LBL: h7 ARG0: x3 ARG1: i8 ]  [ _tired_a_of<15:21> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_the_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3",
+              "ARG1": "i8"
+            }
+          },
+          {
+            "pred": "_tired_a_of",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i8": {},
+          "i9": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _teacher_n_of<4:11> LBL: h7 ARG0: x3 ARG1: i8 ]  [ _tire_v_1<15:21> LBL: h1 ARG0: e2 ARG1: i9 ARG2: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < e2 topic x3 > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_the_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3",
+              "ARG1": "i8"
+            }
+          },
+          {
+            "pred": "_tire_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i9",
+              "ARG2": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i8": {},
+          "i9": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _teacher_n_of<4:11> LBL: h7 ARG0: x3 ARG1: i8 ]  [ compound<15:21> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x IND: + ] ]  [ udef_q<15:21> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _tire_n_1<15:21> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_the_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3",
+              "ARG1": "i8"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_tire_n_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i8": {},
+          "x9": {
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      }
+    }
+  ]
+}

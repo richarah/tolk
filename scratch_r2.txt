@@ -1,0 +1,3 @@
+compiled 71 of 86 (82.6%)
+  11  DEFINITE_MATCHES  0 known things match
+   4  UNSUPPORTED_PREDICATE  card

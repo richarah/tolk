@@ -1,0 +1,670 @@
+{
+  "text": "Every car needs fuel.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _car_n_1<6:9> LBL: h7 ARG0: x3 ]  [ _need_v_1<10:15> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg ] ]  [ udef_q<16:21> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ _fuel_n_1<16:21> LBL: h12 ARG0: x8 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_every_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_car_n_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_need_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_fuel_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h12": {},
+          "h4": {},
+          "h9": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ _every_q<0:5> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<6:21> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<6:15> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<6:15> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x IND: + PT: notpro ] ]  [ udef_q<6:9> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _car_n_1<6:9> LBL: h20 ARG0: x16 ]  [ _need_n_of<10:15> LBL: h14 ARG0: x10 ARG1: i21 ]  [ _fuel_n_1<16:21> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "_car_n_1",
+            "label": "h20",
+            "args": {
+              "ARG0": "x16"
+            }
+          },
+          {
+            "pred": "_need_n_of",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10",
+              "ARG1": "i21"
+            }
+          },
+          {
+            "pred": "_fuel_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "i21": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ udef_q<0:21> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:21> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<0:9> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _every_a_1<0:5> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x10 ]  [ _car_n_1<6:9> LBL: h14 ARG0: x10 ]  [ compound<10:21> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x17 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<10:15> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _need_n_of<10:15> LBL: h21 ARG0: x17 ARG1: i22 ]  [ _fuel_n_1<16:21> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10"
+            }
+          },
+          {
+            "pred": "_car_n_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e16",
+              "ARG1": "x4",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h18",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "_need_n_of",
+            "label": "h21",
+            "args": {
+              "ARG0": "x17",
+              "ARG1": "i22"
+            }
+          },
+          {
+            "pred": "_fuel_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h19": "h21"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "e16": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x17": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h19": {},
+          "h20": {},
+          "i22": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h21": {},
+          "h5": {},
+          "h11": {},
+          "h18": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ _every_q<0:5> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<6:21> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<6:9> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _car_n_1<6:9> LBL: h14 ARG0: x10 ]  [ compound<10:21> LBL: h8 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x16 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<10:15> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _need_n_of<10:15> LBL: h20 ARG0: x16 ARG1: i21 ]  [ _fuel_n_1<16:21> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "_car_n_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x4",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "_need_n_of",
+            "label": "h20",
+            "args": {
+              "ARG0": "x16",
+              "ARG1": "i21"
+            }
+          },
+          {
+            "pred": "_fuel_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "i21": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ udef_q<0:21> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:21> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:15> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<0:15> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x IND: + PT: notpro ] ]  [ udef_q<0:9> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _every_a_1<0:5> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x16 ]  [ _car_n_1<6:9> LBL: h20 ARG0: x16 ]  [ _need_n_of<10:15> LBL: h14 ARG0: x10 ARG1: i22 ]  [ _fuel_n_1<16:21> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x16"
+            }
+          },
+          {
+            "pred": "_car_n_1",
+            "label": "h20",
+            "args": {
+              "ARG0": "x16"
+            }
+          },
+          {
+            "pred": "_need_n_of",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10",
+              "ARG1": "i22"
+            }
+          },
+          {
+            "pred": "_fuel_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "i22": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    }
+  ]
+}

@@ -391,3 +391,49 @@ $ .venv/bin/pytest -q
 ```
 
 Acceptance as stated in SPEC.md: inside the supposition, "Does Tweety fly?" is Conflict; outside it is Yes; after drop, the fact count equals the count before (`test_supposed_penguin_makes_tweety_conflict_inside_only`).
+
+## Phase 7: widening coverage
+
+Built `scripts/coverage.py`. It takes sentence files, compiles each sentence in an empty store (lookup included), and reports the share compiled and the refusals by code and detail, most frequent first. `scripts/record.py` takes sentence files too.
+
+`tests/extra.txt` (40 everyday sentences) was written before any coverage result was seen.
+
+Before any change, on the 80 sentences of `sentences.txt` plus `extra.txt`:
+
+```
+compiled 71 of 80 (88.8%)
+   8  DEFINITE_MATCHES  0 known things match
+   1  UNSUPPORTED_PREDICATE  card
+```
+
+Review of every compiled form in `extra.txt` found wrong meanings, which the spec counts as failures. Fixed before the first round, with regression tests in `tests/test_widening.py`:
+
+- `No teacher is a student.` compiled to a positive rule. Negation now reaches a copula complement and a `no` head.
+- `Milo is not a cat.` compiled to `cat(milo)`, with the negation dropped. Same cause.
+- A bare plural in object position ("Every car needs fuel.", "Ben teaches math.") was a universal. Only a statement's subject is universal now; any other bare plural is an indefinite.
+- `studies hard` made a new event for the adverb. An adverb or preposition now attaches to the event it modifies.
+- The where-pattern matched only locations, so "Where does Sam work?" missed `in Paris`, a state. It now matches `_*_p_[ls]*`.
+
+Round 1. Most frequent refusal: `DEFINITE_MATCHES 0 known things match` (8). Three new sentences recorded in `tests/round1.txt`: "The teacher is tired.", "The cup is empty.", "Is the cat asleep?". Each is refused on an empty store, which is correct because no referent is known. A definite does compile once its referent is told: "Anna reads a book." then "The book is old." (tested in `test_widening.py`). Decision: leave as is. No rule added.
+
+Round 2. Most frequent refusal now `UNSUPPORTED_PREDICATE card` (1 before round 1; 4 after it). Three new sentences recorded in `tests/round2.txt`: "Ana owns two cats.", "Tom has four books.", "Every bike has three wheels.". Counting is out of scope in SPEC.md, so these stay refused. Decision: leave refused. No rule added.
+
+Coverage after round 1 and round 2 (the rounds add sentences and add no rule):
+
+```
+compiled 71 of 83 (85.5%)
+  11  DEFINITE_MATCHES  0 known things match
+   1  UNSUPPORTED_PREDICATE  card
+compiled 71 of 86 (82.6%)
+  11  DEFINITE_MATCHES  0 known things match
+   4  UNSUPPORTED_PREDICATE  card
+```
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q tests/test_widening.py
+11 passed in 0.37s
+$ .venv/bin/pytest -q
+163 passed in 6.61s
+```

@@ -1,0 +1,574 @@
+{
+  "text": "Anna reads a book.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:4> LBL: h7 CARG: \"Anna\" ARG0: x3 ]  [ _read_v_1<5:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _book_n_of<13:18> LBL: h13 ARG0: x9 ARG1: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Anna",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_read_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_book_n_of",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9",
+              "ARG1": "i14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "i14": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:18> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:4> LBL: h14 CARG: \"Anna\" ARG0: x10 ]  [ _read_n_1<5:10> LBL: h8 ARG0: x4 ]  [ _a_p_per<11:12> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<11:12> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _book_n_of<13:18> LBL: h21 ARG0: x17 ARG1: i22 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Anna",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "_read_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "_a_p_per",
+            "label": "h8",
+            "args": {
+              "ARG0": "e16",
+              "ARG1": "x4",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h18",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "_book_n_of",
+            "label": "h21",
+            "args": {
+              "ARG0": "x17",
+              "ARG1": "i22"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h19": "h21"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e16": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "i22": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h21": {},
+          "h5": {},
+          "h11": {},
+          "h18": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:4> LBL: h7 CARG: \"Anna\" ARG0: x3 ]  [ _read_v_1<5:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ]  [ mod<11:18> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ _book_n_of<13:18> LBL: h15 ARG0: x11 ARG1: i16 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Anna",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_read_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i9"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "e2",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "_book_n_of",
+            "label": "h15",
+            "args": {
+              "ARG0": "x11",
+              "ARG1": "i16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i9": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "i16": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h15": {},
+          "h4": {},
+          "h12": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:4> LBL: h7 CARG: \"Anna\" ARG0: x3 ]  [ _read_v_1<5:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ unknown<11:18> LBL: h11 ARG0: e12 [ e SF: prop ] ARG: x13 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _book_n_of<13:18> LBL: h17 ARG0: x13 ARG1: i18 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h11 h15 qeq h17 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Anna",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_read_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "unknown",
+            "label": "h11",
+            "args": {
+              "ARG0": "e12",
+              "ARG": "x13"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x13",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "_book_n_of",
+            "label": "h17",
+            "args": {
+              "ARG0": "x13",
+              "ARG1": "i18"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h11",
+          "h15": "h17"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "e12": {
+            "SF": "prop"
+          },
+          "x13": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "i18": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h17": {},
+          "h4": {},
+          "h14": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:10> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:4> LBL: h14 CARG: \"Anna\" ARG0: x10 ]  [ _read_n_1<5:10> LBL: h8 ARG0: x4 ]  [ mod<11:18> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _book_n_of<13:18> LBL: h20 ARG0: x16 ARG1: i21 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Anna",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "_read_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e2",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "_book_n_of",
+            "label": "h20",
+            "args": {
+              "ARG0": "x16",
+              "ARG1": "i21"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h18": {},
+          "h19": {},
+          "i21": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "text": "Jo writes letters.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Jo\" ARG0: x3 ]  [ _write_v_to<3:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<10:18> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _letter_n_of<10:18> LBL: h13 ARG0: x9 ARG1: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Jo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_write_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_letter_n_of",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9",
+              "ARG1": "i14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "i14": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Jo\" ARG0: x3 ]  [ _write_v_to<3:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ unknown<10:18> LBL: h11 ARG0: e12 [ e SF: prop ] ARG: x13 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<10:18> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _letter_n_of<10:18> LBL: h17 ARG0: x13 ARG1: i18 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h11 h15 qeq h17 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Jo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_write_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "unknown",
+            "label": "h11",
+            "args": {
+              "ARG0": "e12",
+              "ARG": "x13"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x13",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "_letter_n_of",
+            "label": "h17",
+            "args": {
+              "ARG0": "x13",
+              "ARG1": "i18"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h11",
+          "h15": "h17"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "e12": {
+            "SF": "prop"
+          },
+          "x13": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "i18": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h17": {},
+          "h4": {},
+          "h14": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Jo\" ARG0: x3 ]  [ _write_v_to<3:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ _letter_v_1<10:18> LBL: h11 ARG0: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: i13 ARG2: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h11 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Jo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_write_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "_letter_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "i13",
+              "ARG2": "i14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h11"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i13": {},
+          "i14": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h4": {}
+        }
+      }
+    }
+  ]
+}

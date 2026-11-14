@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from helpers import FIXTURES, ROOT, fixture_path
+from helpers import ROOT, fixture_path
 from tolk import compile as comp
 from tolk import lf, sem
 
@@ -44,6 +44,10 @@ TIER_A = [
     line for line in (ROOT / "tests" / "sentences.txt").read_text().split("# tier B")[0].splitlines()
     if line.strip() and not line.startswith("#")
 ]
+TIER_B_AND_C = [
+    line for line in (ROOT / "tests" / "sentences.txt").read_text().split("# tier B")[1].splitlines()
+    if line.strip() and not line.startswith("#")
+]
 
 LEMMA = re.compile(r"^_([a-z]+)_[nva](?:_|\d|$)")
 # Determiners and auxiliaries the grammar names as ordinary predicates. Quantifier names
@@ -68,9 +72,10 @@ def test_printed_form(text: str) -> None:
 
 
 def content_lemmas() -> set[str]:
+    """Lemmas of the sentences in tests/sentences.txt, the set SPEC phase 1 names. Extra sentences are not scanned."""
     out: set[str] = set()
-    for path in FIXTURES.glob("*.json"):
-        for reading in json.loads(path.read_text())["readings"]:
+    for text in TIER_A + TIER_B_AND_C:
+        for reading in json.loads(fixture_path(text).read_text())["readings"]:
             for ep in reading["neutral"]["eps"]:
                 match = LEMMA.match(ep["pred"])
                 if match and not ep["pred"].endswith("_v_id"):
@@ -94,7 +99,7 @@ TIER_C_FORMS = {
     "Kim lives in Oslo.": "tell   _live_v_1(e1, kim)\ntell   _in_p_loc(e1, oslo)",
     "Sandy arrived.": "tell   _arrive_v_1(e1, sandy)\ntell   tense(e1, past)",
     "Who lives in Oslo?": "ask X  _live_v_1(E, X), _in_p_loc(E, oslo)",
-    "Where does Kim live?": "ask X  _*_p_loc(E, X), _live_v_1(E, kim)",
+    "Where does Kim live?": "ask X  _*_p_[ls]*(E, X), _live_v_1(E, kim)",
 }
 
 

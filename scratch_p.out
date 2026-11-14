@@ -1,0 +1,168 @@
+Tweety is a robin.
+    [1/2] tell   _robin_n_1(tweety)
+Every robin is a bird.
+    [1/2] rule   _bird_n_1(X) :- _robin_n_1(X)
+Every bird flies.
+    [2/2] rule   _fly_v_1(E!, X) :- _bird_n_1(X)
+Birds are animals.
+    [1/1] rule   _animal_n_1(X) :- _bird_n_1(X)
+Tweety sings.
+    [1/1] tell   _sing_v_1(e1, tweety)
+Every robin that sings is happy.
+    [1/5] rule   _happy_a_with(E!, X) :- _robin_n_1(X), _sing_v_1(E1, X)
+Kim is a person.
+    [1/1] tell   _person_n_1(kim)
+Kim owns a dog.
+    [1/1] tell   _own_v_1(e1, kim, a1)
+    tell   _dog_n_1(a1)
+Every person who owns a dog is happy.
+    [1/1] rule   _happy_a_with(E!, X) :- _person_n_1(X), _own_v_1(E1, X, Y), _dog_n_1(Y)
+Kim likes Sandy.
+    [1/1] tell   _like_v_1(e1, kim, sandy)
+Rex is a dog.
+    [1/1] tell   _dog_n_1(rex)
+Every dog has an owner.
+    [1/1] rule   _have_v_1(E!, X, Y!), _owner_n_of(Y) :- _dog_n_1(X)
+Does Tweety fly?
+    [1/5] ask    _fly_v_1(E, tweety)
+Is Tweety a bird?
+    [1/5] ask    _bird_n_1(tweety)
+Is Tweety an animal?
+    [1/5] ask    _animal_n_1(tweety)
+Is Tweety happy?
+    [1/5] ask    _happy_a_with(E, tweety)
+What flies?
+    [1/3] ask X  _fly_v_1(E, X)
+Which robin sings?
+    [1/2] ask X  _robin_n_1(X), _sing_v_1(E, X)
+Who is happy?
+    [1/1] ask X  _happy_a_with(E, X)
+Who likes Sandy?
+    [1/1] ask X  _like_v_1(E, X, sandy)
+Who does Kim like?
+    [1/2] ask X  _like_v_1(E, kim, X)
+Is Sandy happy?
+    [1/5] ask    _happy_a_with(E, sandy)
+Does Rex have an owner?
+    [1/2] ask    _have_v_1(E, rex, X), _owner_n_of(X)
+Pingu is a penguin.
+    [1/1] tell   _penguin_n_1(pingu)
+Pingu does not fly.
+    [1/4] tell   not _fly_v_1(_, pingu)
+No penguin flies.
+    [2/5] rule   not _fly_v_1(_, X) :- _penguin_n_1(X)
+Every penguin is a bird.
+    [1/1] rule   _bird_n_1(X) :- _penguin_n_1(X)
+Clark Kent is Superman.
+    [1/1] same   clark_kent = superman
+Superman flies.
+    [3/3] tell   _fly_v_1(e1, superman)
+Does Pingu fly?
+    [1/5] ask    _fly_v_1(E, pingu)
+Does Clark Kent fly?
+    [1/5] ask    _fly_v_1(E, clark_kent)
+Is the robin happy?
+    [1/5] refuse DEFINITE_MATCHES: 0 known things match
+The dog barks.
+    [1/2] refuse DEFINITE_MATCHES: 0 known things match
+Tweety does not fly.
+    [1/4] tell   not _fly_v_1(_, tweety)
+Kim lives in Oslo.
+    [1/4] tell   _live_v_1(e1, kim)
+    tell   _in_p_loc(e1, oslo)
+Sandy arrived.
+    [1/1] tell   _arrive_v_1(e1, sandy)
+    tell   tense(e1, past)
+Who lives in Oslo?
+    [1/2] ask X  _live_v_1(E, X), _in_p_loc(E, oslo)
+Where does Kim live?
+    [1/2] ask X  _*_p_loc(E, X), _live_v_1(E, kim)
+Does Kim live in Oslo?
+    [1/5] ask    _live_v_1(E, kim), _in_p_state(E, oslo)
+Does Kim live in Bergen?
+    [1/5] ask    _live_v_1(E, kim), _in_p_state(E, bergen)
+The cat sleeps.
+    [1/2] refuse DEFINITE_MATCHES: 0 known things match
+Anna reads a book.
+    [1/5] tell   _read_v_1(e1, anna, a1)
+    tell   _book_n_of(a1)
+Every student studies hard.
+    [1/4] rule   _study_v_1(E!, X), _hard_a_for(E1!, E) :- _student_n_of(X)
+Ben is a teacher.
+    [1/1] tell   _teacher_n_of(ben)
+Ben teaches math.
+    [1/1] rule   _teach_v_1(E!, ben, X) :- _math_n_1(X)
+Is Anna a student?
+    [1/5] ask    _student_n_of(anna)
+Does the cat sleep?
+    [1/5] refuse DEFINITE_MATCHES: 0 known things match
+Who reads books?
+    [1/1] ask X  _read_v_1(E, X, Y), _book_n_of(Y)
+What does Ben teach?
+    [1/2] ask X  _teach_v_1(E, ben, X)
+Every cat is an animal.
+    [1/1] rule   _animal_n_1(X) :- _cat_n_1(X)
+Milo is not a cat.
+    [1/2] tell   _cat_n_1(milo)
+Anna does not sleep.
+    [1/5] tell   not _sleep_v_1(_, anna)
+No teacher is a student.
+    [1/1] rule   _student_n_of(X) :- _teacher_n_of(X)
+The book is old.
+    [1/3] refuse DEFINITE_MATCHES: 0 known things match
+Is the book old?
+    [1/4] refuse DEFINITE_MATCHES: 0 known things match
+Carla drives a car.
+    [1/4] tell   _drive_v_1(e1, carla, a1)
+    tell   _car_n_1(a1)
+Every car needs fuel.
+    [1/5] rule   _need_v_1(E!, X, Y) :- _car_n_1(X), _fuel_n_1(Y)
+Who drives a car?
+    [1/2] ask X  _drive_v_1(E, X, Y), _car_n_1(Y)
+Does Carla drive a red car?
+    [1/5] ask    _drive_v_1(E, carla, X), _red_a_1(E1, X), _car_n_1(X)
+Jo writes letters.
+    [1/3] rule   _write_v_to(E!, jo, X) :- _letter_n_of(X)
+Every letter has a sender.
+    [1/1] rule   _have_v_1(E!, X, Y!), _sender_n_of(Y) :- _letter_n_of(X)
+Who writes letters?
+    [1/2] ask X  _write_v_to(E, X, Y), _letter_n_of(Y)
+Leo walks to school.
+    [1/5] rule   _walk_v_1(E!, leo), _to_p_dir(E, X) :- _school_n_1(X)
+Does Leo walk to school?
+    [1/5] ask    _walk_v_1(E, leo), _to_p_dir(E, X), _school_n_1(X)
+Mia cooked dinner.
+    [1/5] rule   _cook_v_1(E!, mia, X) :- _dinner_n_1(X)
+Ali bought a bike.
+    [1/2] tell   _buy_v_1(e1, ali, a1)
+    tell   _bike_n_1(a1)
+    tell   tense(e1, past)
+Who bought a bike?
+    [1/2] ask X  _buy_v_1(E, X, Y), _bike_n_1(Y)
+Every bike has two wheels.
+    [1/1] refuse UNSUPPORTED_PREDICATE: card
+Does Ali own a bike?
+    [1/2] ask    _own_v_1(E, ali, X), _bike_n_1(X)
+Sam works in Paris.
+    [1/5] tell   _work_v_1(e1, sam)
+    tell   _in_p_state(e1, paris)
+Where does Sam work?
+    [1/2] ask X  _*_p_loc(E, X), _work_v_1(E, sam)
+Every pilot flies a plane.
+    [1/4] rule   _fly_v_to(E!, X, Y!), _plane_n_1(Y) :- _pilot_n_of(X)
+Who flies a plane?
+    [1/2] ask X  _fly_v_to(E, X, Y), _plane_n_1(Y)
+Is Sam a pilot?
+    [1/5] ask    _pilot_n_of(sam)
+The window is open.
+    [1/1] refuse DEFINITE_MATCHES: 0 known things match
+Is the window open?
+    [1/5] refuse DEFINITE_MATCHES: 0 known things match
+Rita knows Tom.
+    [1/1] tell   _know_v_1(e1, rita, tom)
+Who knows Tom?
+    [1/1] ask X  _know_v_1(E, X, tom)
+Tom is tired.
+    [1/3] tell   _tired_a_of(e1, tom)
+Every nurse helps patients.
+    [1/3] rule   _help_v_1(E!, X, Y) :- _nurse_n_1(X), _patient_n_1(Y)

@@ -1,4 +1,4 @@
-"""Parse each line of tests/sentences.txt and write one fixture per sentence.
+"""Parse each sentence in the given files (default tests/sentences.txt) and write one fixture per sentence.
 
 Fixtures are the only source of parser output the tests may use. Existing
 fixtures are kept unless --force is given.
@@ -15,9 +15,9 @@ from helpers import FIXTURES, fixture_path, sentences  # noqa: E402
 from tolk import erg, sem  # noqa: E402
 
 
-def main(force: bool) -> None:
+def main(files: list[Path], force: bool) -> None:
     FIXTURES.mkdir(parents=True, exist_ok=True)
-    for line in sentences():
+    for line in [s for f in files for s in sentences(f)]:
         out = fixture_path(line)
         if out.exists() and not force:
             continue
@@ -32,4 +32,5 @@ def main(force: bool) -> None:
 
 
 if __name__ == "__main__":
-    main(force="--force" in sys.argv)
+    args = [a for a in sys.argv[1:] if a != "--force"]
+    main([Path(a) for a in args] or [ROOT / "tests" / "sentences.txt"], force="--force" in sys.argv)

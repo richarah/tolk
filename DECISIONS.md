@@ -45,3 +45,11 @@
 - Drop removes orphan fresh entities (kinds event, anon, skolem) that no remaining fact mentions.
 - Definites inside a supposition see the world's things and the supposition's.
 - Sentence identity (a repeated statement adds nothing) is per context: the same sentence in another supposition is stored again.
+- Bare plurals: universal only as a statement's subject (the argument of the main verb or copula). Anywhere else (an object, or the complement under a non-copula verb) a bare plural is an indefinite. "Ben teaches math" stores a math thing; "Every nurse helps patients" is a rule that makes a patient for each nurse.
+- Adverbs and prepositions: any predication whose first argument is an unused event, and whose second argument is an event, attaches as an atom on that event. "Every student studies hard" gives `hard(E)`.
+- Negation under a copula: when the copula's clause is negated, the complement's restriction is negated too. A top-level `no` negates every head atom.
+- Where: `_*_p_[ls]*` matches a locative or a state preposition by sense suffix.
+- Coverage: compiles each sentence in an empty store with a real lookup, so a definite with no referent is refused with its count (0). The coverage script is not a dialogue, so definites never compile in it.
+- The lemma scan (SPEC phase 1) covers the lemmas of `tests/sentences.txt`, as the spec says. The extra and round files are not scanned.
+- Parser senses: "Jo writes letters." reads `write_v_to` and "Every pilot flies a plane." reads `fly_v_to`. These are the parser's sense choices, and the reading choice rule does not rank senses. Left as parsed. Open.
+- Numbers ("two", "four", "three") are out of scope in SPEC.md and stay refused as `card`.

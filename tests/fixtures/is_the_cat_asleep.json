@@ -1,0 +1,414 @@
+{
+  "text": "Is the cat asleep?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<3:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _cat_n_1<7:10> LBL: h7 ARG0: x3 ]  [ _asleep_a_1<11:18> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_the_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_asleep_a_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ _cat_n_1<7:10> LBL: h8 ARG0: x4 ]  [ _asleep_a_1<11:18> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i3",
+              "ARG2": "x4"
+            }
+          },
+          {
+            "pred": "_the_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "_asleep_a_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i3": {},
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h5": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:2> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h4 ARG0: x3 RSTR: h5 BODY: h6 ]  [ _cat_n_1<7:10> LBL: h7 ARG0: x3 ]  [ _asleep_a_1<11:18> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "ellipsis_ref",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_the_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_asleep_a_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "e8",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e8": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _cat_n_1<7:10> LBL: h9 ARG0: x5 ]  [ subord<11:18> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ _asleep_a_1<11:18> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i15 ] > HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h4 h12 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_be_v_id",
+            "label": "h4",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i3",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "_the_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "subord",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "h11",
+              "ARG2": "h12"
+            }
+          },
+          {
+            "pred": "_asleep_a_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "i15"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h9",
+          "h11": "h4",
+          "h12": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i3": {},
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h7": {},
+          "h8": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h11": {},
+          "h12": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "i15": {},
+          "h0": {},
+          "h1": {},
+          "h9": {},
+          "h4": {},
+          "h13": {},
+          "h6": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ appos<0:18> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ _the_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ _cat_n_1<7:10> LBL: h15 ARG0: x6 ]  [ _asleep_a_1<11:18> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "appos",
+            "label": "h1",
+            "args": {
+              "ARG0": "e5",
+              "ARG1": "x4",
+              "ARG2": "x6"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h10",
+            "args": {
+              "CARG": "Is",
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "_the_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x6",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h15",
+            "args": {
+              "ARG0": "x6"
+            }
+          },
+          {
+            "pred": "_asleep_a_1",
+            "label": "h15",
+            "args": {
+              "ARG0": "e16",
+              "ARG1": "x6"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h10",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "e5": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x6": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h8": {},
+          "h9": {},
+          "h13": {},
+          "h14": {},
+          "e16": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h10": {},
+          "h15": {},
+          "h7": {},
+          "h12": {}
+        }
+      }
+    }
+  ]
+}
