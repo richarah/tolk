@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
 ROLES = ("ARG0", "ARG1", "ARG2")
-# A word the grammar does not know comes as _surface/TAG_u_unknown, TAG being a rough part of speech from the tagger it uses.
+# A word the grammar does not recognise comes as _surface/TAG_u_unknown, TAG being a rough part of speech from the tagger it uses.
 UNKNOWN = re.compile(r"_(.+)/([a-z]+)_u_unknown")
 # TAG -> (part of speech, suffix to strip to reach the base form). Other tags are refused: their spelling changes are not simple.
 TAGS = {"nn": ("n", ""), "nns": ("n", "s"), "jj": ("a", ""), "vb": ("v", ""), "vbp": ("v", ""), "vbz": ("v", "s")}

@@ -619,3 +619,12 @@ Tense must agree between question and fact; before/after orderings with built-in
 $ .venv/bin/pytest -q
 471 passed, 1 xfailed in 18.70s
 ```
+
+## Phase 21: beliefs and reports
+
+Clause verbs make claims held in separate contexts; questions compare content exactly; nothing derives inside a claim. The dialogue and own-word cases are in tests/test_phase21.py.
+
+```
+$ .venv/bin/pytest -q
+498 passed, 1 xfailed in 19.46s
+```

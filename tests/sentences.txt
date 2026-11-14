@@ -83,3 +83,10 @@ Did Kim arrive before Lee sang?
 Kim lived in Oslo in 2019.
 Where did Kim live in 2019?
 Kim arrived after Sandy left.
+# phase 21
+Kim believes that Tweety swims.
+Does Kim believe that Tweety swims?
+Who believes that Tweety swims?
+What does Kim believe?
+Kim wants to sleep.
+Kim knows that Sandy sings.

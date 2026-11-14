@@ -194,3 +194,5 @@ Phase 18: defaults, levels, defeat, policy, universal questions. defaults.py is 
 Phase 19: Mind.retract, diagnose, observe, auto_revise, Forget that S. store.retract, revision table.
 
 Phase 20: fixtures read (before/after predications, yofc, in_p_temp). rules/temporal.py, tense facts, Ask.tenses, built-in axioms, reuse_events.
+
+Phase 21: fixtures read. rules/claims.py, Tell.claims/Ask.claims, claim table, claim contexts, Mind binds claims in questions.

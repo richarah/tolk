@@ -84,3 +84,14 @@ Every dog barked.
 Did Rex bark?
 Kim arrived after Sandy left.
 Did Sandy leave before Kim arrived?
+# phase 21, own words
+Kim believes that Rio flies.
+Sandy says that Rio flies.
+Who says that Rio flies?
+Kim knows that Rio flies.
+Does Kim know that Rio flies?
+Kim believes that Rio sings.
+What does Kim believe?
+Kim believed that Rio flies.
+Sandy says that Kim believes that Rio flies.
+Kim wants to sleep.

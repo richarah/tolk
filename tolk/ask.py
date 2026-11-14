@@ -55,7 +55,7 @@ def _any(q: lf.Ask, parts: list[Answer]) -> Answer:
 
 def _widening(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     """Answer exactly; only if that finds nothing, let a preposition match a stored sense of the same lemma, and a word the grammar
-    did not know match the same word under its other guessed part of speech (noun for adjective, adjective for noun)."""
+    did not recognise match the same word under its other guessed part of speech (noun for adjective, adjective for noun)."""
     exact = _answer(db, q, ctx)
     wide_atoms = tuple(_widen(a) for a in q.body)
     if exact.value != UNKNOWN or wide_atoms == q.body:

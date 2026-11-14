@@ -10,9 +10,8 @@ COPULA = {"you": "are", "I": "am"}
 
 
 def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
-    pred, a0, a1, a2, positive = (SPEAKERS.get(v, v) for v in db.execute(
-        "SELECT pred, a0, a1, a2, positive FROM fact WHERE id = ?", (fact_id,)
-    ).fetchone())
+    pred, a0, a1, a2, positive = (SPEAKERS.get(v, v) if not isinstance(v, str) or not v.startswith("claim") else claim_text(db, v)
+                                   for v in db.execute("SELECT pred, a0, a1, a2, positive FROM fact WHERE id = ?", (fact_id,)).fetchone())
     neg = "" if positive else "not "
     if not pred.startswith("_"):
         return f"{neg}{pred}({', '.join(a for a in (a0, a1, a2) if a)})"
@@ -26,6 +25,12 @@ def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
     # Verbs, adjectives and prepositions take their event first; the event is not shown.
     things = [a for a in (a1, a2) if a]
     return f"{neg}{lemma}({', '.join(things)})"
+
+
+def claim_text(db: sqlite3.Connection, claim: str) -> str:
+    """What a claim holds, worded, as it stands in the context of the claim."""
+    ids = [i for (i,) in db.execute("SELECT id FROM fact WHERE ctx = ? ORDER BY id", (claim,))]
+    return "[" + "; ".join(fact_text(db, i) for i in ids) + "]" if ids else claim
 
 
 def proof_text(db: sqlite3.Connection, p: Proof, depth: int = 0) -> str:
@@ -52,6 +57,8 @@ def answer_text(db: sqlite3.Connection, a: Answer) -> str:
 
 
 def _name(value: str) -> str:
+    if "(" in value or value.startswith("["):
+        return value  # a claim, already worded
     return SPEAKERS.get(value) or value.replace("_", " ").title()
 
 

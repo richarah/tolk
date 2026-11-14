@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from itertools import chain, count
 
 # Kinds of constant that the store renames to fresh ids; the prefix is their one home.
-FRESH = {"event": "e", "anon": "a"}
-# A word the grammar did not know is stored as _base_pos_unknown; this is the one home of that shape.
+FRESH = {"event": "e", "anon": "a", "claim": "claim"}
+# A word the grammar did not recognise is stored as _base_pos_unknown; this is the one home of that shape.
 UNKNOWN_SENSE = "unknown"
 UNKNOWN_PRED = re.compile(rf"_(.+)_([nav])_{UNKNOWN_SENSE}")
 # Built-in predicates the system itself states: the tense of an event, and the order of two events.
@@ -49,6 +49,7 @@ class Tell:
     atoms: tuple[Atom, ...]
     mentions: tuple[tuple[int, str, str], ...] = ()  # (position in the sentence, thing, number), for later pronouns
     notes: tuple[str, ...] = ()  # pronoun resolutions, shown before anything is stored
+    claims: tuple[tuple["Const", tuple["Atom", ...]], ...] = ()  # (the claim, what it holds): a clause that someone believes, says, knows
 
 
 @dataclass(frozen=True)
@@ -78,6 +79,7 @@ class Ask:
     notes: tuple[str, ...] = ()
     count: Var | None = None  # count the distinct things this variable takes
     atleast: int = 0  # with count: 0 asks how many; n asks whether there are at least n
+    claims: tuple[tuple["Var", tuple["Atom", ...]], ...] = ()  # (the claim asked about, the content it must hold exactly)
     tenses: tuple[tuple[Var, str], ...] = ()  # events of the question that must be past, or present; a fact without an event is either
     alternatives: tuple[tuple[Atom, ...], ...] = ()  # an or: the question is answered by each alternative body, and any Yes wins
 
@@ -112,7 +114,7 @@ LF = Tell | Rule | Ask | Every | Same | Describe | Refusal
 # so the reading search ends. "reading": this reading is unusable, so the next one is tried.
 REFUSALS = {
     "ARGUMENT_GAP": "reading", "FALLBACK_PARSE": "reading", "EMPTY_RULE_BODY": "reading", "TOO_MANY_ARGUMENTS": "reading",
-    "UNBOUND_VARIABLE": "reading", "GRAMMAR_ARTIFACT": "reading", "UNCONSTRAINED_WANTED": "reading", "UNCONSUMED": "reading", "UNEXPRESSED_OBJECT": "reading",
+    "UNBOUND_VARIABLE": "reading", "DEMONSTRATIVE": "reading", "GRAMMAR_ARTIFACT": "reading", "UNCONSTRAINED_WANTED": "reading", "UNCONSUMED": "reading", "UNEXPRESSED_OBJECT": "reading",
     "UNEXPRESSED_SUBJECT": "reading", "WH_BOUND_TO_CONSTANT": "reading",
     "CONTRADICTS": "final", "COORDINATION": "final", "DEFINITE_MATCHES": "final", "DEFINITE_NEEDS_STORE": "final",
     "IDENTITY_NOT_YET": "final", "NEGATED_INDEFINITE": "final", "NO_EVENT_READING": "final", "SCOPE_AMBIGUOUS": "final",
@@ -128,8 +130,29 @@ def is_final(r: Refusal) -> bool:
 THING_NAMES = ("X", "Y", "Z", "U", "V", "W")
 
 
+def claim_key(atoms: tuple["Atom", ...]) -> str:
+    """The content of a claim, independent of how its events and things were numbered, so that a told claim and an asked one compare."""
+    def render(order: list) -> list[str]:
+        table: dict = {}
+
+        def name(t) -> str:
+            if isinstance(t, Var) or t.kind in FRESH:
+                return table.setdefault(t, f"#{len(table)}")
+            return t.id
+
+        return sorted(f"{'' if a.positive else 'not '}{a.pred}({','.join(name(t) for t in a.args)})" for a in order)
+
+    order = sorted(atoms, key=lambda a: (a.pred, len(a.args), tuple(t.id if isinstance(t, Const) and t.kind not in FRESH else "" for t in a.args)))
+    return ";".join(render(order))
+
+
 def show(x: LF) -> str:
     text = _show(x)
+    claims = getattr(x, "claims", ())
+    if claims:
+        names = _namer(x)
+        for ref, atoms in claims:
+            text += f"\n{'claim':<6} {names(ref) if isinstance(ref, Var) else ref.id} = " + ", ".join(_atom(a, names) for a in atoms)
     notes = getattr(x, "notes", ())
     return "\n".join([text] + [f"{'note':<6} {n}" for n in notes])
 
@@ -183,11 +206,12 @@ def _namer(x: LF):
 
 def _order(x: LF) -> list[Var]:
     if isinstance(x, Ask):
-        atoms, lead = x.body, list(x.wanted) + ([x.count] if x.count is not None else [])
+        atoms = x.body + tuple(a for _, claimed in x.claims for a in claimed)
+        lead = list(x.wanted) + ([x.count] if x.count is not None else []) + [ref for ref, _ in x.claims]
     elif isinstance(x, (Rule, Every)):
         atoms, lead = x.head + x.body, []
     elif isinstance(x, Tell):
-        atoms, lead = x.atoms, []
+        atoms, lead = x.atoms + tuple(a for _, claimed in x.claims for a in claimed), []
     else:
         return []
     return lead + [t for a in atoms for t in a.args if isinstance(t, Var)]

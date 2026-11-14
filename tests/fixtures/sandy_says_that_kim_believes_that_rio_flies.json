@@ -1,0 +1,816 @@
+{
+  "text": "Sandy says that Kim believes that Rio flies.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _say_v_to<6:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ proper_q<16:19> LBL: h11 ARG0: x12 [ x PERS: 3 NUM: sg IND: + ] RSTR: h13 BODY: h14 ]  [ named<16:19> LBL: h15 CARG: \"Kim\" ARG0: x12 ]  [ _believe_v_1<20:28> LBL: h17 ARG0: e18 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: h19 ]  [ proper_q<34:37> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<34:37> LBL: h24 CARG: \"Rio\" ARG0: x21 ]  [ _fly_v_1<38:44> LBL: h26 ARG0: e27 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x21 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h17 h13 qeq h15 h19 qeq h26 h22 qeq h24 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_say_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "_believe_v_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x12",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h24",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_fly_v_1",
+            "label": "h26",
+            "args": {
+              "ARG0": "e27",
+              "ARG1": "x21"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h17",
+          "h13": "h15",
+          "h19": "h26",
+          "h22": "h24"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h19": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "e27": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h17": {},
+          "h15": {},
+          "h26": {},
+          "h24": {},
+          "h4": {},
+          "h11": {},
+          "h20": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _say_v_to<6:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ proper_q<16:19> LBL: h11 ARG0: x12 [ x PERS: 3 NUM: sg IND: + ] RSTR: h13 BODY: h14 ]  [ named<16:19> LBL: h15 CARG: \"Kim\" ARG0: x12 ]  [ _believe_v_1<20:28> LBL: h17 ARG0: e18 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: h19 ]  [ _that_q_dem<29:33> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<34:37> LBL: h24 CARG: \"Rio\" ARG0: x21 ]  [ _fly_v_1<38:44> LBL: h26 ARG0: e27 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x21 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h17 h13 qeq h15 h19 qeq h26 h22 qeq h24 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_say_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "_believe_v_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x12",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "_that_q_dem",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h24",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_fly_v_1",
+            "label": "h26",
+            "args": {
+              "ARG0": "e27",
+              "ARG1": "x21"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h17",
+          "h13": "h15",
+          "h19": "h26",
+          "h22": "h24"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h19": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "e27": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h17": {},
+          "h15": {},
+          "h26": {},
+          "h24": {},
+          "h4": {},
+          "h11": {},
+          "h20": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _say_v_to<6:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ proper_q<16:19> LBL: h11 ARG0: x12 [ x PERS: 3 NUM: sg IND: + ] RSTR: h13 BODY: h14 ]  [ named<16:19> LBL: h15 CARG: \"Kim\" ARG0: x12 ]  [ _believe_v_1<20:28> LBL: h17 ARG0: e18 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: h19 ]  [ generic_entity<29:33> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<29:33> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ proper_q<34:37> LBL: h25 ARG0: x26 [ x PERS: 3 NUM: sg IND: + ] RSTR: h27 BODY: h28 ]  [ named<34:37> LBL: h29 CARG: \"Rio\" ARG0: x26 ]  [ _fly_v_to<38:44> LBL: h31 ARG0: e32 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x26 ARG2: x21 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h17 h13 qeq h15 h19 qeq h31 h23 qeq h20 h27 qeq h29 > ICONS: < e32 focus x21 > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_say_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "_believe_v_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x12",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_that_q_dem",
+            "label": "h22",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h23",
+              "BODY": "h24"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h25",
+            "args": {
+              "ARG0": "x26",
+              "RSTR": "h27",
+              "BODY": "h28"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h29",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x26"
+            }
+          },
+          {
+            "pred": "_fly_v_to",
+            "label": "h31",
+            "args": {
+              "ARG0": "e32",
+              "ARG1": "x26",
+              "ARG2": "x21"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h17",
+          "h13": "h15",
+          "h19": "h31",
+          "h23": "h20",
+          "h27": "h29"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h19": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "GEND": "n"
+          },
+          "h23": {},
+          "h24": {},
+          "x26": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h27": {},
+          "h28": {},
+          "e32": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h17": {},
+          "h15": {},
+          "h31": {},
+          "h20": {},
+          "h29": {},
+          "h4": {},
+          "h11": {},
+          "h22": {},
+          "h25": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _say_v_to<6:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ _that_q_dem<11:15> LBL: h11 ARG0: x12 [ x PERS: 3 NUM: sg IND: + ] RSTR: h13 BODY: h14 ]  [ named<16:19> LBL: h15 CARG: \"Kim\" ARG0: x12 ]  [ _believe_v_1<20:28> LBL: h17 ARG0: e18 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: h19 ]  [ proper_q<34:37> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<34:37> LBL: h24 CARG: \"Rio\" ARG0: x21 ]  [ _fly_v_1<38:44> LBL: h26 ARG0: e27 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x21 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h17 h13 qeq h15 h19 qeq h26 h22 qeq h24 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_say_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "_that_q_dem",
+            "label": "h11",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "_believe_v_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x12",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h24",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_fly_v_1",
+            "label": "h26",
+            "args": {
+              "ARG0": "e27",
+              "ARG1": "x21"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h17",
+          "h13": "h15",
+          "h19": "h26",
+          "h22": "h24"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h19": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "e27": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h17": {},
+          "h15": {},
+          "h26": {},
+          "h24": {},
+          "h4": {},
+          "h11": {},
+          "h20": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _say_v_to<6:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ proper_q<16:19> LBL: h11 ARG0: x12 [ x PERS: 3 NUM: sg IND: + ] RSTR: h13 BODY: h14 ]  [ named<16:19> LBL: h15 CARG: \"Kim\" ARG0: x12 ]  [ _believe_v_1<20:28> LBL: h17 ARG0: e18 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: x19 [ x PERS: 3 NUM: sg GEND: n ] ]  [ generic_entity<29:33> LBL: h20 ARG0: x19 ]  [ _that_q_dem<29:33> LBL: h21 ARG0: x19 RSTR: h22 BODY: h23 ]  [ proper_q<34:37> LBL: h24 ARG0: x25 [ x PERS: 3 NUM: sg IND: + ] RSTR: h26 BODY: h27 ]  [ named<34:37> LBL: h28 CARG: \"Rio\" ARG0: x25 ]  [ _fly_v_to<38:44> LBL: h20 ARG0: e30 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x25 ARG2: x19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h17 h13 qeq h15 h22 qeq h20 h26 qeq h28 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_say_v_to",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "_believe_v_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x12",
+              "ARG2": "x19"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h20",
+            "args": {
+              "ARG0": "x19"
+            }
+          },
+          {
+            "pred": "_that_q_dem",
+            "label": "h21",
+            "args": {
+              "ARG0": "x19",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h24",
+            "args": {
+              "ARG0": "x25",
+              "RSTR": "h26",
+              "BODY": "h27"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h28",
+            "args": {
+              "CARG": "Rio",
+              "ARG0": "x25"
+            }
+          },
+          {
+            "pred": "_fly_v_to",
+            "label": "h20",
+            "args": {
+              "ARG0": "e30",
+              "ARG1": "x25",
+              "ARG2": "x19"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h17",
+          "h13": "h15",
+          "h22": "h20",
+          "h26": "h28"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x19": {
+            "PERS": "3",
+            "NUM": "sg",
+            "GEND": "n"
+          },
+          "h22": {},
+          "h23": {},
+          "x25": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h26": {},
+          "h27": {},
+          "e30": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h17": {},
+          "h15": {},
+          "h20": {},
+          "h28": {},
+          "h4": {},
+          "h11": {},
+          "h21": {},
+          "h24": {}
+        }
+      }
+    }
+  ]
+}

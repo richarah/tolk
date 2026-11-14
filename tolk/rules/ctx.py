@@ -23,6 +23,7 @@ class Ctx:
     usage: Counter
     fresh: dict[str, Const] = field(default_factory=dict)
     counts: Counter = field(default_factory=Counter)
+    claim: dict[str, "lf.Const | lf.Var"] = field(default_factory=dict)  # a clause-verb's hole to the claim it stands for
 
     def term(self, var: str) -> Const | Var:
         while var in self.alias:

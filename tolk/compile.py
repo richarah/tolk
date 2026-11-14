@@ -5,14 +5,14 @@ from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope, temporal
+from tolk.rules import check, claims, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope, temporal
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
 # Predicates the grammar uses for bookkeeping of the grammar, seen only in readings that are not the sentence: ellipsis, an implied place, a
 # subordinator, a modifier of nothing, an apposition. A reading that has one is unusable; it is not a meaning the store cannot hold.
 ARTIFACTS = {"ellipsis_ref", "place_n", "subord", "mod", "appos", "id"}
-FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, modifiers, content)
+FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, claims, modifiers, content)
 
 
 def eventive(r: Reading) -> bool:
@@ -27,6 +27,9 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     unsaid = check.tense(r)
     if unsaid:
         return unsaid
+    for ep in r.eps:
+        if quant.DEMONSTRATIVE.fullmatch(ep.pred):
+            return lf.Refusal("DEMONSTRATIVE", ep.pred)
     quants = [ep for ep in r.eps if quant.is_quantifier(ep)]
     cards = numbers.cardinals(r)
     if isinstance(cards, lf.Refusal):
@@ -103,6 +106,14 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     if len(cards) > 1 and mode == "ask":
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card: one number per question")
     ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()))
+    held = claims.find(r)
+    inside: set[int] = set()
+    if held:
+        if mode == "rule" or len(held) > 1:
+            return lf.Refusal("UNSUPPORTED_PREDICATE", "a claim in a rule, or a claim inside a claim: " + held[0][0].pred)
+        verb, label = held[0]
+        inside = scope.clause(r, quants, label)
+        ctx.claim[verb.args["ARG2"]] = Const(lf.fresh_id("claim", 1), "claim") if mode == "tell" else Var("claim1")
     wanted = tuple(ctx.term(v) for v, p in bound.items() if p in quant.WH and not (many and v == many[1]))
     if sf == "ques" and mode == "rule" and (wanted or many or cards):
         return lf.Refusal("UNIVERSAL_QUESTION", "a question that asks for things, or counts them, over every thing")
@@ -129,20 +140,24 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         if sf == "ques":
             return lf.Every(head, tail)
     else:
-        atoms = _map(ctx, r.eps)
+        atoms = _map(ctx, [ep for i, ep in enumerate(r.eps) if i not in inside])
         if isinstance(atoms, lf.Refusal):
             return atoms
         ordered = temporal.order(ctx, r)
         if isinstance(ordered, lf.Refusal):
             return ordered
+        content_atoms = _map(ctx, [r.eps[i] for i in sorted(inside)]) if inside else ()
+        if isinstance(content_atoms, lf.Refusal):
+            return content_atoms
         alts = coordination.distribute(ctx, (_expand(ctx, atoms, cards) if mode == "tell" else atoms) + ordered, conjs)
         if isinstance(alts, lf.Refusal):
             return alts
         if mode == "tell":
-            out = lf.Tell(alts[0], notes=notes)
+            out = lf.Tell(alts[0], notes=notes, claims=tuple((ctx.claim[verb.args["ARG2"]], content_atoms) for verb, _ in held))
         else:
             counted, at_least = (Var(many[0]), 0) if many else next(((Var(v), n) for v, n in cards.items()), (None, 0))
-            out = lf.Ask(alts[0], wanted, notes, counted, at_least, alternatives=tuple(alts) if len(alts) > 1 else ())
+            out = lf.Ask(alts[0], wanted, notes, counted, at_least, claims=tuple((ctx.claim[verb.args["ARG2"]], content_atoms) for verb, _ in held),
+                         alternatives=tuple(alts) if len(alts) > 1 else ())
     probe = lf.Ask(tuple(a for alt in out.alternatives for a in alt), out.wanted) if isinstance(out, lf.Ask) and out.alternatives else out
     groups = {c.group for c in conjs if c.nominal}
     unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1]) and q.args["ARG0"] not in groups], probe, mode)

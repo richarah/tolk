@@ -45,15 +45,16 @@ def unconsumed(ctx: Ctx, quants: list[EP], out: lf.LF, mode: str) -> lf.Refusal 
 def unbound(x: lf.LF, bound: dict[str, str]) -> str:
     """Names of variables that no quantifier binds and that are not events. Such a variable would be silently ignored."""
     keys = {t.key for a in atoms_of(x) for t in a.args if isinstance(t, Var)}
+    keys -= {ref.key for ref, _ in getattr(x, "claims", ()) if isinstance(ref, Var)}  # a claim asked about is bound by its content
     names_ = sorted(k for k in keys if not Var(k).event and k not in bound)
     return ", ".join(names_)
 
 
 def atoms_of(x: lf.LF) -> list[Atom]:
     if isinstance(x, lf.Tell):
-        return list(x.atoms)
+        return list(x.atoms) + [a for _, atoms in x.claims for a in atoms]
     if isinstance(x, (lf.Rule, lf.Every)):
         return list(x.head + x.body)
     if isinstance(x, lf.Ask):
-        return list(x.body)
+        return list(x.body) + [a for _, atoms in x.claims for a in atoms]
     return []

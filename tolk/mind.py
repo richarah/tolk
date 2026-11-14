@@ -174,7 +174,8 @@ class Mind:
         if isinstance(x, lf.Refusal):
             return Result(*head, outcome="refused")
         if isinstance(x, lf.Ask):
-            a = answer(self.db, x, self.ctx)
+            x = self._bind_claims(x) if x.claims else x
+            a = x if isinstance(x, Answer) else answer(self.db, x, self.ctx)
             return Result(*head, outcome=self._answer_text(a), answer=a)
         if isinstance(x, lf.Every):
             value, by_default = defaults.universal(self.db, x, self.policy)
@@ -204,15 +205,22 @@ class Mind:
             store.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
             self._derive()
             return Result(*head, outcome="rule stored")
+        if x.claims and self.ctx != "world":
+            return Result(*head, outcome="refused: a claim inside a supposition is not stored yet")
         if any(a.pred in (lf.BEFORE, "_in_p_temp") for a in x.atoms):
             store.ensure_time_axioms(self.db)
             x = store.reuse_events(self.db, x, self.ctx)
         sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
         anon_before = store.fresh_of_kind(self.db, "anon")
+        claims_before = store.fresh_of_kind(self.db, "claim")
         stored = store.tell(self.db, x, sid, self.ctx, allow_conflict=observation)
         if isinstance(stored, lf.Refusal):
             opposite = prove(self.db, int(stored.detail))
             return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")
+        for claim_id, (ref, content) in zip(store.fresh_of_kind(self.db, "claim")[len(claims_before):], x.claims):
+            # The clause holds in a context apart that the world does not inherit and the engine does not derive in.
+            inner = store.tell(self.db, lf.Tell(content), sid, claim_id, allow_conflict=True)
+            self.db.execute("INSERT INTO claim(id, printed, sentence) VALUES (?, ?, ?)", (claim_id, lf.claim_key(content), sid))
         new = store.fresh_of_kind(self.db, "anon")[len(anon_before):]
         # The store numbers new things in the order the atoms first mention them.
         local = list(dict.fromkeys(t.id for a in x.atoms for t in a.args if isinstance(t, lf.Const) and t.kind == "anon"))
@@ -314,12 +322,26 @@ class Mind:
     def _lookup(self, pred: str) -> set[str]:
         return store.things_with(self.db, pred, self.ctx)
 
+    def _bind_claims(self, x: lf.Ask) -> lf.Ask | Answer:
+        """A question about what someone believes: the claims whose content is exactly the asked content stand in for the claim variable."""
+        (var, content), = x.claims
+        ids = [i for (i,) in self.db.execute("SELECT id FROM claim WHERE printed = ?", (lf.claim_key(content),))]
+        if not ids:
+            return Answer("Unknown", (), ())
+        bodies = tuple(tuple(Atom(a.pred, tuple(lf.Const(c, "claim") if t == var else t for t in a.args), a.positive) for a in x.body) for c in ids)
+        return dataclasses.replace(x, body=bodies[0], claims=(), alternatives=bodies if len(bodies) > 1 else ())
+
+    def _word_claims(self, a: Answer) -> Answer:
+        """A solution that is a claim is shown as what it holds."""
+        say_it = lambda v: say.claim_text(self.db, v) if self.db.execute("SELECT 1 FROM claim WHERE id = ?", (v,)).fetchone() else v
+        return dataclasses.replace(a, solutions=tuple(tuple(say_it(v) for v in s) for s in a.solutions))
+
     def _answer_text(self, a: Answer) -> str:
         proofs = "\n".join(say.proof_text(self.db, p) for solution in a.proofs for p in solution)
         defeats = self._defeats([p for solution in a.proofs for p in solution])
         if defeats:
             proofs = (proofs + "\n" if proofs else "") + defeats
-        head = say.answer_text(self.db, a)
+        head = say.answer_text(self.db, self._word_claims(a))
         if a.widened:
             head += "\n(widened: " + "; ".join(a.widened) + ")"
         return f"{head}\n{proofs}" if proofs else head

@@ -33,6 +33,7 @@ CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER N
 CREATE TABLE conflict(positive_fact INTEGER NOT NULL, negative_fact INTEGER NOT NULL);
 CREATE TABLE defeat(rule INTEGER NOT NULL, bindings TEXT NOT NULL, by_fact INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings);
+CREATE TABLE claim(id TEXT PRIMARY KEY, printed TEXT NOT NULL, sentence INTEGER NOT NULL);
 CREATE TABLE revision(sentence INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
@@ -305,6 +306,7 @@ def retract(db: sqlite3.Connection, sentence: int, reason: str) -> None:
     db.execute("DELETE FROM why WHERE sentence = ?", (sentence,))
     db.execute("DELETE FROM rule WHERE sentence = ?", (sentence,))
     db.execute("DELETE FROM mention WHERE sentence = ?", (sentence,))
+    db.execute("DELETE FROM claim WHERE sentence = ?", (sentence,))
     db.execute("DELETE FROM fact WHERE id NOT IN (SELECT fact FROM why)")
     db.execute("INSERT INTO revision(sentence, reason) VALUES (?, ?)", (sentence, reason))
 
