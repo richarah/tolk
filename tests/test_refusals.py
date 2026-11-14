@@ -18,7 +18,7 @@ FINAL = {
     "NEGATED_QUESTION": ([], "Does Kim not like Nemo?"),
     "NO_EVENT_READING": ([], "Kim"),
     "SCOPE_AMBIGUOUS": ([], "Every dog does not bark."),
-    "UNCONSTRAINED_WANTED": ([], "Who is Kim?"),
+    "UNCONSTRAINED_WANTED": ([], "Who is who?"),
     "UNIVERSAL_QUESTION": ([], "Is every dog a mammal?"),
     "UNKNOWN_WORD": ([], "Pip is a blorp."),
     "UNSUPPORTED_ASPECT": ([], "Kim is singing."),

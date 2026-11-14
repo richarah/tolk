@@ -209,3 +209,16 @@ def _entities(db: sqlite3.Connection, atom: Atom) -> None:
         db.execute("INSERT OR IGNORE INTO entity(id, kind) VALUES (?, ?)", (c.id, c.kind))
         if c.kind == "named":
             db.execute("INSERT OR IGNORE INTO name(entity, text) VALUES (?, ?)", (c.id, c.id))
+
+
+def mentioning(db: sqlite3.Connection, entity: str, ctx: str = "world") -> list[tuple[int, bool]]:
+    """Facts that mention a thing, or that modify an event the thing takes part in, as (id, told). Told facts come first."""
+    ident = canon(db, entity)
+    rows = db.execute(
+        "SELECT f.id, EXISTS (SELECT 1 FROM why w WHERE w.fact = f.id AND w.sentence IS NOT NULL) AS told FROM fact f "
+        "WHERE f.ctx IN ('world', ?) AND (? IN (f.a0, f.a1, f.a2) OR f.a0 IN ("
+        "  SELECT g.a0 FROM fact g JOIN entity e ON e.id = g.a0 WHERE e.kind = 'event' AND ? IN (g.a1, g.a2))) "
+        "ORDER BY told DESC, f.id",
+        (ctx, ident, ident),
+    ).fetchall()
+    return [(fid, bool(told)) for fid, told in rows]

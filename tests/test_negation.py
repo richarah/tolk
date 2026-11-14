@@ -52,14 +52,13 @@ def test_the_verb_reading_of_fish_loses_to_the_noun_reading() -> None:
 
 
 def test_wanted_variable_in_no_atom_is_refused(mind: Mind) -> None:
-    mind.tell("Kim is a person.")
-    r = mind.ask("Who is Kim?")
-    assert r.outcome == "refused"
-    assert "UNCONSTRAINED_WANTED" in r.printed or "IDENTITY_NOT_YET" in r.printed
+    # "Who is Kim?" used to be this case; phase 10 makes it a description. "Who is who?" still has nothing to enumerate.
+    r = mind.ask("Who is who?")
+    assert r.outcome == "refused" and "UNCONSTRAINED_WANTED" in r.printed
 
 
 def test_compile_refuses_an_unconstrained_wanted_variable() -> None:
-    raw = __import__("json").loads(fixture_path("Who is Kim?").read_text())["readings"][0]["simplemrs"]
+    raw = __import__("json").loads(fixture_path("Who is who?").read_text())["readings"][0]["simplemrs"]
     x = comp.compile_reading(sem.read(raw))
     assert isinstance(x, lf.Refusal) and x.code == "UNCONSTRAINED_WANTED"
 

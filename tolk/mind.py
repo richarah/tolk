@@ -41,6 +41,8 @@ class Mind:
         if isinstance(x, lf.Ask):
             a = answer(self.db, x, self.ctx)
             return Result(*head, outcome=self._answer_text(a), answer=a)
+        if isinstance(x, lf.Describe):
+            return Result(*head, outcome=self._describe(x.entity.id))
         prior = store.repeat_of(self.db, printed, self.ctx)
         if prior:
             return Result(*head, outcome=f'already told: "{prior[1]}"')
@@ -124,6 +126,17 @@ class Mind:
 
     def ask(self, text: str) -> Result:
         return self.hear(text)
+
+    def _describe(self, entity: str) -> str:
+        facts = store.mentioning(self.db, entity, self.ctx)
+        if not facts:
+            return "Unknown"
+        lines = []
+        for fid, told in facts:
+            p = prove(self.db, fid)
+            source = f'told: "{self.db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()[0]}"' if told and p.sentence else f"by rule {p.rule}"
+            lines.append(f"{say.fact_text(self.db, fid)}  ({source})")
+        return "\n".join(lines)
 
     def _lookup(self, pred: str) -> set[str]:
         return store.things_with(self.db, pred, self.ctx)

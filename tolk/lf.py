@@ -72,12 +72,17 @@ class Same:
 
 
 @dataclass(frozen=True)
+class Describe:
+    entity: Const
+
+
+@dataclass(frozen=True)
 class Refusal:
     code: str
     detail: str
 
 
-LF = Tell | Rule | Ask | Same | Refusal
+LF = Tell | Rule | Ask | Same | Describe | Refusal
 
 # The one home of refusal codes. "final": the sentence was understood and the store cannot hold what it means,
 # so the reading search ends. "reading": this reading is unusable, so the next one is tried.
@@ -104,6 +109,8 @@ def show(x: LF) -> str:
         return f"refuse {x.code}: {x.detail}"
     if isinstance(x, Same):
         return f"{'same':<6} {x.a.id} = {x.b.id}"
+    if isinstance(x, Describe):
+        return f"describe {x.entity.id}"
     names = _namer(x)
     if isinstance(x, Tell):
         return "\n".join(f"{'tell':<6} {_atom(a, names)}" for a in x.atoms)

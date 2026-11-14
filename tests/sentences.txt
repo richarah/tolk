@@ -41,3 +41,7 @@ Who lives in Oslo?
 Where does Kim live?
 Does Kim live in Oslo?
 Does Kim live in Bergen?
+# phase 10
+Who is Kim?
+What is Kim?
+Who is Tweety?

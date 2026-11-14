@@ -4,7 +4,7 @@ from collections import Counter
 
 from tolk import lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, content, copula, modifiers, names, neg, quant, scope
+from tolk.rules import check, content, copula, describe, modifiers, names, neg, quant, scope
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
@@ -41,6 +41,10 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
             if isinstance(resolved, lf.Refusal):
                 return resolved
             const[q.args["ARG0"]] = resolved
+    if sf == "ques":
+        described = describe.entity(r, main, bound, const)
+        if described is not None:
+            return lf.Describe(Const(described))
     for ep in main:
         if copula.is_copula(ep) and ep.args["ARG1"] in const and ep.args["ARG2"] in const and sf == "prop":
             return lf.Same(Const(const[ep.args["ARG1"]], "named"), Const(const[ep.args["ARG2"]], "named"))

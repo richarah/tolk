@@ -496,3 +496,12 @@ compiled 71 of 86 (82.6%)
 ```
 
 Open: "Where is Bob?" after "Bob is in Paris." is Unknown (argument shapes differ); "Ivy sings in Turin." stores a rule about ivy (the parser reads the name as a mass noun). Both in DECISIONS.md.
+
+## Phase 10: describing a thing
+
+Built Describe(entity), rules/describe.py, store.mentioning, Mind._describe. Ten own-word sentences in tests/own.txt, expectations in tests/test_phase10.py (written before the code). Three earlier tests that used 'Who is Kim?' as the unconstrained-wanted example now use 'Who is who?'; SPEC2 changes that result.
+
+```
+$ .venv/bin/pytest -q
+254 passed in 8.85s
+```

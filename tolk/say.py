@@ -8,8 +8,10 @@ def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
     pred, a0, a1, a2, positive = db.execute(
         "SELECT pred, a0, a1, a2, positive FROM fact WHERE id = ?", (fact_id,)
     ).fetchone()
-    lemma, pos = pred.lstrip("_").split("_")[:2]
     neg = "" if positive else "not "
+    if not pred.startswith("_"):
+        return f"{neg}{pred}({', '.join(a for a in (a0, a1, a2) if a)})"
+    lemma, pos = pred.lstrip("_").split("_")[:2]
     if pos == "n":
         things = [a for a in (a0, a1, a2) if a]
         if len(things) == 1 and positive:

@@ -1,0 +1,11 @@
+# phase 10, own words
+Rio is a sparrow.
+Rio sings.
+Every sparrow is a bird.
+Ada owns a cat.
+Ada does not like Bo.
+Who is Rio?
+What is Ada?
+Who is Zed?
+Who is Bo?
+What is Rio?

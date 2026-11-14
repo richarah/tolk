@@ -174,3 +174,5 @@ three times after three different fixes. Write the blocker in PROGRESS.md and st
 # SPEC2 plan
 
 Phase 9: eight debts, in the order of SPEC2, one commit each. Done.
+
+Phase 10: Describe(entity). Fixtures for Who is / What is read first: the wh variable has only an abstract restriction (person, thing), and the copula takes it in either argument slot.
