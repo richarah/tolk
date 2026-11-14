@@ -31,7 +31,7 @@ def test_negated_bare_noun_creates_nothing_and_applies_to_known_things(mind: Min
 
 
 def test_negated_bare_plural_subject_is_a_negative_rule(mind: Mind) -> None:
-    assert mind.tell("Dogs do not bark.").printed == "rule   not _bark_v_1(_, X) :- _dog_n_1(X)"
+    assert mind.tell("Dogs do not bark.").printed == "default not _bark_v_1(_, X) :- _dog_n_1(X)"
 
 
 def test_negated_subject_indefinite_keeps_wide_scope(mind: Mind) -> None:
@@ -78,9 +78,8 @@ def test_a_reading_with_an_unused_quantified_variable_does_not_compile() -> None
 
 
 def test_a_negated_question_is_not_answered_from_absence(mind: Mind) -> None:
-    # Phase 12 answers negated questions, but never from the mere absence of a fact.
+    # Phase 12 answers negated questions, but never from the mere absence of a fact. Phase 18 answers the one over a bare noun
+    # by what follows for a fresh thing, so it is Unknown here, not refused.
     mind.tell("Nemo is a fish.")
-    for q in ("Does Kim not like Nemo?", "Is Kim not a robin?"):
+    for q in ("Does Kim not like Nemo?", "Is Kim not a robin?", "Does Kim not like fish?"):
         assert mind.ask(q).answer.value == UNKNOWN, q
-    r = mind.ask("Does Kim not like fish?")
-    assert r.outcome == "refused" and "UNIVERSAL_QUESTION" in r.printed

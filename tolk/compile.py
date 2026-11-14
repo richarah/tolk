@@ -77,23 +77,20 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         if bound[q.args["ARG0"]] == quant.INDEF and q.args["ARG0"] not in alias and q.args["ARG0"] not in subjects
         and any(ep.label in negated and q.args["ARG0"] in ep.args.values() for ep in r.eps)
     ]
-    if sf == "ques" and narrow:
-        return lf.Refusal("UNIVERSAL_QUESTION", "a negated question over a bare or indefinite noun asks about every such thing")
-    if sf == "prop" and cond is None:
+    generic = any(q.pred == "udef_q" for q in universal_top)
+    if cond is None:
         universal_top += narrow
-    if sf == "ques" and any(q.pred in quant.UNIVERSAL and bound[q.args["ARG0"]] == q.pred for q in quants):
-        return lf.Refusal("UNIVERSAL_QUESTION", "a question over every or no thing would be answered as a question over some")
     body = scope.restricted(r, quants, universal_top)
     if cond is not None:
         body = scope.clause(r, quants, conditional.labels(r, cond)[0])
-    if any(q.pred == "_every_q" and q in universal_top for q in quants) and any(
+    if any(q.pred in ("_every_q", "_all_q", "_each_q") and q in universal_top for q in quants) and any(
         ep.label in negated and ep.pred != "neg" for i, ep in enumerate(r.eps) if i not in body
     ):
         return lf.Refusal("SCOPE_AMBIGUOUS", "every under negation means all-not or not-all")
     if any(q.pred == "_no_q" and q.args["ARG0"] in main_vars for q in quants):
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
-    mode = "ask" if sf == "ques" else "rule" if universal_top or cond is not None else "tell"
+    mode = "rule" if universal_top or cond is not None else "ask" if sf == "ques" else "tell"
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
         return lf.Refusal("COORDINATION", "a group or an or in a rule")
     if cards and mode == "rule":
@@ -102,6 +99,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card: one number per question")
     ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()))
     wanted = tuple(ctx.term(v) for v, p in bound.items() if p in quant.WH and not (many and v == many[1]))
+    if sf == "ques" and mode == "rule" and (wanted or many or cards):
+        return lf.Refusal("UNIVERSAL_QUESTION", "a question that asks for things, or counts them, over every thing")
     if any(not isinstance(w, Var) for w in wanted):
         return lf.Refusal("WH_BOUND_TO_CONSTANT", str(wanted))
     if mode == "rule":
@@ -121,7 +120,9 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         if not tail:
             # A universal over a named thing has nothing to range over; the name reading of a bare plural lands here.
             return lf.Refusal("EMPTY_RULE_BODY", "the restriction has no atom")
-        out = lf.Rule(head, tail, notes=notes)
+        out = lf.Rule(head, tail, notes=notes, kind="default" if generic and cond is None else "strict")
+        if sf == "ques":
+            return lf.Every(head, tail)
     else:
         atoms = _map(ctx, r.eps)
         if isinstance(atoms, lf.Refusal):

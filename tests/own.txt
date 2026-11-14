@@ -55,3 +55,14 @@ How many cats does Ada own?
 Ada does not like cats.
 If Rio hums, Ada is calm.
 Sam works in Paris.
+# phase 18, own words
+Birds fly.
+Every penguin is a bird.
+Penguins do not fly.
+Cats sleep.
+Cats do not sleep.
+Does Tom sleep?
+Is every penguin a bird?
+Does every bird fly?
+Do penguins fly?
+All cats purr.

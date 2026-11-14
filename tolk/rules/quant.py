@@ -8,7 +8,9 @@ from tolk.sem import EP
 if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
-UNIVERSAL = ("_every_q", "udef_q", "_no_q")
+UNIVERSAL = ("_every_q", "_all_q", "_each_q", "udef_q", "_no_q")
+# A bare plural states a default; these state a rule with no exceptions.
+STRICT_UNIVERSAL = ("_every_q", "_all_q", "_each_q", "_no_q")
 INDEF = "_a_q"
 DEFINITE = "_the_q"
 WH = ("which_q", "_which_q")

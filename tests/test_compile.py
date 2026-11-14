@@ -17,7 +17,7 @@ EXPECTED = {
     "Tweety is a robin.": "tell   _robin_n_1(tweety)",
     "Every robin is a bird.": "rule   _bird_n_1(X) :- _robin_n_1(X)",
     "Every bird flies.": "rule   _fly_v_1(E!, X) :- _bird_n_1(X)",
-    "Birds are animals.": "rule   _animal_n_1(X) :- _bird_n_1(X)",
+    "Birds are animals.": "default _animal_n_1(X) :- _bird_n_1(X)",
     "Tweety sings.": "tell   _sing_v_1(e1, tweety)",
     "Every robin that sings is happy.": "rule   _happy_a_with(E!, X) :- _robin_n_1(X), _sing_v_1(E1, X)",
     "Kim is a person.": "tell   _person_n_1(kim)",

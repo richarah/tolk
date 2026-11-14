@@ -18,7 +18,7 @@ FINAL = {
     "NEGATED_INDEFINITE": ([], "If Kim does not own a dog, Kim is happy."),
     "NO_EVENT_READING": ([], "Kim"),
     "SCOPE_AMBIGUOUS": ([], "Every dog does not bark."),
-    "UNIVERSAL_QUESTION": ([], "Is every dog a mammal?"),
+    "UNIVERSAL_QUESTION": ([], "Who likes every dog?"),
     "UNKNOWN_WORD": ([], "Does Pip glorb?"),
     "UNSUPPORTED_ASPECT": ([], "Kim is singing."),
     "UNSUPPORTED_FORCE": ([], "Sing!"),

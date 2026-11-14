@@ -49,7 +49,7 @@ def unbound(x: lf.LF, bound: dict[str, str]) -> str:
 def atoms_of(x: lf.LF) -> list[Atom]:
     if isinstance(x, lf.Tell):
         return list(x.atoms)
-    if isinstance(x, lf.Rule):
+    if isinstance(x, (lf.Rule, lf.Every)):
         return list(x.head + x.body)
     if isinstance(x, lf.Ask):
         return list(x.body)

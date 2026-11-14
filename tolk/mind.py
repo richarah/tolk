@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from tolk import compile as comp, engine, erg, lf, say, sem, store
+from tolk import compile as comp, defaults, engine, erg, lf, say, sem, store
 from tolk.ask import Answer, answer, prove
 from tolk.lf import Atom, Var
 
@@ -25,17 +25,36 @@ class Result:
 
 
 class Mind:
-    def __init__(self, path: str = ":memory:") -> None:
+    def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",)) -> None:
         self.db = store.open_store(path)
+        self.set_policy(policy)
         self.ctx = "world"  # the current context: "world", or a supposition's name
         self._suppositions = 0
         self._ran: list[tuple[int, int | None]] = []
 
-    def hear(self, text: str) -> Result:
-        with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot leave a half-stored rule
-            return self._hear(text)
+    @property
+    def policy(self) -> tuple[str, ...]:
+        (value,) = self.db.execute("SELECT value FROM meta WHERE key = 'policy'").fetchone()
+        return tuple(p for p in value.split(",") if p)
 
-    def _hear(self, text: str) -> Result:
+    def set_policy(self, policy: tuple[str, ...]) -> None:
+        """The conflict policy is stored with the facts it was used to derive. Changing it rebuilds them."""
+        unknown = [p for p in policy if p not in defaults.POLICIES]
+        if unknown:
+            raise ValueError(f"unknown policy criteria {unknown}; choose from {defaults.POLICIES}")
+        with self.db:
+            self.db.execute("INSERT INTO meta(key, value) VALUES ('policy', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value", (",".join(policy),))
+            if defaults.has_defaults(self.db):
+                defaults.rebuild(self.db, getattr(self, "ctx", "world"), policy)
+
+    def hear(self, text: str, trust: int = 0) -> Result:
+        with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot leave a half-stored rule
+            return self._hear(text, trust)
+
+    def _derive(self) -> None:
+        defaults.refresh(self.db, self.ctx, self.policy)
+
+    def _hear(self, text: str, trust: int = 0) -> Result:
         readings = [sem.read(raw) for raw in erg.parse(text)]
         k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
         printed = lf.show(x)
@@ -45,6 +64,10 @@ class Mind:
         if isinstance(x, lf.Ask):
             a = answer(self.db, x, self.ctx)
             return Result(*head, outcome=self._answer_text(a), answer=a)
+        if isinstance(x, lf.Every):
+            value, by_default = defaults.universal(self.db, x, self.policy)
+            a = Answer(value, (), (), by_default=by_default)
+            return Result(*head, outcome=value + (", by default" if by_default and value != "Unknown" else ""), answer=a)
         if isinstance(x, lf.Describe):
             return Result(*head, outcome=self._describe(x.entity.id))
         prior = store.repeat_of(self.db, printed, self.ctx)
@@ -53,10 +76,10 @@ class Mind:
         if isinstance(x, lf.Same):
             if self.ctx != "world":
                 return Result(*head, outcome="refused: identity inside a supposition is not stored yet")
-            sid = store.add_sentence(self.db, text, printed, self.ctx)
+            sid = store.add_sentence(self.db, text, printed, self.ctx, trust)
             store.merge(self.db, x.a, x.b, sid)
             store.add_mentions(self.db, sid, [(0, x.a.id, "sg"), (1, x.b.id, "sg")])
-            engine.run(self.db)
+            self._derive()
             return Result(*head, outcome=f"one thing: {x.a.id} and {x.b.id}")
         if isinstance(x, lf.Rule):
             if self.ctx != "world":
@@ -64,12 +87,12 @@ class Mind:
             refusal = engine.check(self.db, x)
             if refusal is not None:
                 return Result(*head, outcome=lf.show(refusal))
-            sid = store.add_sentence(self.db, text, printed, self.ctx)
+            sid = store.add_sentence(self.db, text, printed, self.ctx, trust)
             store.add_rule(self.db, x, sid)
             store.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
-            engine.run(self.db)
+            self._derive()
             return Result(*head, outcome="rule stored")
-        sid = store.add_sentence(self.db, text, printed, self.ctx)
+        sid = store.add_sentence(self.db, text, printed, self.ctx, trust)
         anon_before = store.fresh_of_kind(self.db, "anon")
         stored = store.tell(self.db, x, sid, self.ctx)
         if isinstance(stored, lf.Refusal):
@@ -81,7 +104,7 @@ class Mind:
         stored_id = dict(zip(local, new))
         store.add_mentions(self.db, sid, [(pos, stored_id.get(i[1:], i) if i.startswith("~") else i, num) for pos, i, num in x.mentions
                                           if not i.startswith("~") or i[1:] in stored_id])
-        engine.run(self.db, self.ctx)
+        self._derive()
         return Result(*head, outcome=f"stored, {len(stored)} new fact(s)")
 
     def suppose(self, text: str) -> Result:
@@ -131,11 +154,11 @@ class Mind:
         sid = store.add_sentence(self.db, proposal.question + " (confirmed)")
         rule = lf.Rule((Atom(proposal.q_pred, (Var("x"),)),), (Atom(proposal.p_pred, (Var("x"),)),))
         store.add_rule(self.db, rule, sid)
-        engine.run(self.db)
+        self._derive()
         return Result(0, 0, lf.show(rule), "rule stored")
 
-    def tell(self, text: str) -> Result:
-        return self.hear(text)
+    def tell(self, text: str, trust: int = 0) -> Result:
+        return self.hear(text, trust)
 
     def ask(self, text: str) -> Result:
         return self.hear(text)
@@ -151,6 +174,25 @@ class Mind:
             lines.append(f"{say.fact_text(self.db, fid)}  ({source})")
         return "\n".join(lines)
 
+    def _defeats(self, proofs: list) -> str:
+        """Lines for each default rule instance that a fact in these proofs defeated, and by which criterion."""
+        facts: list[int] = []
+
+        def walk(p) -> None:
+            facts.append(p.fact)
+            for q in p.premises:
+                walk(q)
+
+        for p in proofs:
+            walk(p)
+        if not facts:
+            return ""
+        marks = ", ".join("?" * len(facts))
+        rows = self.db.execute(
+            f"SELECT d.rule, d.reason, d.by_fact, s.text FROM defeat d JOIN rule r ON r.id = d.rule JOIN sentence s ON s.id = r.sentence "
+            f"WHERE d.by_fact IN ({marks}) GROUP BY d.rule, d.reason ORDER BY d.rule", facts).fetchall()
+        return "\n".join(f'  defeated "{text}" (rule {rule}) by {reason}' for rule, reason, _, text in rows)
+
     def _history(self) -> list[tuple[int, str, str]]:
         return store.recent_mentions(self.db)
 
@@ -159,6 +201,9 @@ class Mind:
 
     def _answer_text(self, a: Answer) -> str:
         proofs = "\n".join(say.proof_text(self.db, p) for solution in a.proofs for p in solution)
+        defeats = self._defeats([p for solution in a.proofs for p in solution])
+        if defeats:
+            proofs = (proofs + "\n" if proofs else "") + defeats
         head = say.answer_text(self.db, a)
         if a.widened:
             head += "\n(widened: " + "; ".join(a.widened) + ")"

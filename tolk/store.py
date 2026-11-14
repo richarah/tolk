@@ -7,7 +7,8 @@ from tolk import lf
 from tolk.lf import Atom, Const, Var
 
 SCHEMA = """
-CREATE TABLE sentence(id INTEGER PRIMARY KEY, text TEXT NOT NULL, printed TEXT NOT NULL DEFAULT '', ctx TEXT NOT NULL DEFAULT 'world');
+CREATE TABLE sentence(id INTEGER PRIMARY KEY, text TEXT NOT NULL, printed TEXT NOT NULL DEFAULT '', ctx TEXT NOT NULL DEFAULT 'world',
+    trust INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE entity(id TEXT PRIMARY KEY, kind TEXT NOT NULL);
 CREATE TABLE name(entity TEXT NOT NULL, text TEXT NOT NULL);
 CREATE UNIQUE INDEX name_u ON name(entity, text);
@@ -15,19 +16,23 @@ CREATE TABLE fact(
     id INTEGER PRIMARY KEY,
     pred TEXT NOT NULL, a0 TEXT NOT NULL, a1 TEXT NOT NULL, a2 TEXT NOT NULL,
     positive INTEGER NOT NULL, ctx TEXT NOT NULL, round INTEGER NOT NULL,
+    level INTEGER NOT NULL DEFAULT 1,  -- 1 told, 2 derived by strict rules only, 3 a default was used
     UNIQUE(pred, a0, a1, a2, positive, ctx)
 );
 CREATE INDEX fact_pred ON fact(pred, positive, ctx);
 CREATE TABLE why(
-    fact INTEGER NOT NULL, sentence INTEGER, rule INTEGER, premises TEXT NOT NULL
+    fact INTEGER NOT NULL, sentence INTEGER, rule INTEGER, premises TEXT NOT NULL, bindings TEXT NOT NULL DEFAULT ''
 );
 CREATE UNIQUE INDEX why_u ON why(fact, IFNULL(sentence, 0), IFNULL(rule, 0), premises);
 CREATE TABLE rule(
     id INTEGER PRIMARY KEY, sentence INTEGER NOT NULL, printed TEXT NOT NULL,
-    lf TEXT NOT NULL, ran INTEGER
+    lf TEXT NOT NULL, ran INTEGER, kind TEXT NOT NULL DEFAULT 'strict'
 );
 CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER NOT NULL);
 CREATE TABLE conflict(positive_fact INTEGER NOT NULL, negative_fact INTEGER NOT NULL);
+CREATE TABLE defeat(rule INTEGER NOT NULL, bindings TEXT NOT NULL, by_fact INTEGER NOT NULL, reason TEXT NOT NULL);
+CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings);
+CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
 INSERT INTO entity(id, kind) VALUES ('user', 'named'), ('tolk', 'named');
 INSERT INTO name(entity, text) VALUES ('user', 'user'), ('tolk', 'tolk');
@@ -40,8 +45,8 @@ def open_store(path: str = ":memory:") -> sqlite3.Connection:
     return db
 
 
-def add_sentence(db: sqlite3.Connection, text: str, printed: str = "", ctx: str = "world") -> int:
-    return db.execute("INSERT INTO sentence(text, printed, ctx) VALUES (?, ?, ?)", (text, printed, ctx)).lastrowid
+def add_sentence(db: sqlite3.Connection, text: str, printed: str = "", ctx: str = "world", trust: int = 0) -> int:
+    return db.execute("INSERT INTO sentence(text, printed, ctx, trust) VALUES (?, ?, ?, ?)", (text, printed, ctx, trust)).lastrowid
 
 
 def repeat_of(db: sqlite3.Connection, printed: str, ctx: str) -> tuple[int, str] | None:
@@ -77,11 +82,14 @@ def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world") 
             (pred, *args, int(g.positive), ctx, rnd),
         )
         if cur.rowcount:
-            db.execute(
-                "INSERT INTO why(fact, sentence, rule, premises) VALUES (?, ?, NULL, '[]')",
-                (cur.lastrowid, sentence),
-            )
-            added.append(cur.lastrowid)
+            fact_id = cur.lastrowid
+            added.append(fact_id)
+        else:
+            # Already stored, perhaps only derived: it is told now, and a rebuild of the derived facts must keep it.
+            (fact_id,) = db.execute("SELECT id FROM fact WHERE pred = ? AND a0 = ? AND a1 = ? AND a2 = ? AND positive = ? AND ctx = ?",
+                                    (pred, *args, int(g.positive), ctx)).fetchone()
+            db.execute("UPDATE fact SET level = 1 WHERE id = ?", (fact_id,))
+        db.execute("INSERT OR IGNORE INTO why(fact, sentence, rule, premises) VALUES (?, ?, NULL, '[]')", (fact_id, sentence))
     return added
 
 
@@ -158,8 +166,8 @@ def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
 
 def add_rule(db: sqlite3.Connection, rule: lf.Rule, sentence: int) -> int:
     return db.execute(
-        "INSERT INTO rule(sentence, printed, lf, ran) VALUES (?, ?, ?, NULL)",
-        (sentence, lf.show(rule), lf.encode_rule(rule)),
+        "INSERT INTO rule(sentence, printed, lf, ran, kind) VALUES (?, ?, ?, NULL, ?)",
+        (sentence, lf.show(rule), lf.encode_rule(rule), rule.kind),
     ).lastrowid
 
 
@@ -200,7 +208,7 @@ def _opposite(db: sqlite3.Connection, g: Atom, ctx: str) -> int | None:
     a0, a1, a2 = (g.args + (Const(""),) * 3)[:3]
     row = db.execute(
         "SELECT id FROM fact WHERE pred = ? AND positive = ? AND ctx = ? AND a1 = ? AND a2 = ? "
-        "AND (a0 = ? OR a0 = '' OR ? = '') LIMIT 1",
+        "AND (a0 = ? OR a0 = '' OR ? = '') AND level <= 2 LIMIT 1",
         (g.pred, int(not g.positive), ctx, a1.id, a2.id, a0.id, a0.id),
     ).fetchone()
     return row[0] if row else None

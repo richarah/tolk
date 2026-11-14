@@ -28,6 +28,7 @@ class Answer:
     proofs: tuple[tuple[Proof, ...], ...]  # for each solution, one proof per body atom
     widened: tuple[str, ...] = ()  # "asked matched as stored" for each preposition sense that was widened
     count: int | None = None  # for how many: the number of distinct things found
+    by_default: bool = False  # for a question about every thing: it holds, or fails, only through a default
 
 
 PREPOSITION = re.compile(r"_([^_]+)_p_[^_]+")

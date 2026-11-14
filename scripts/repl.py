@@ -1,5 +1,6 @@
 """Read sentences from standard input, one per line; print the reading, its printed form and the result."""
 
+import os
 import sys
 import traceback
 from pathlib import Path
@@ -26,7 +27,9 @@ def run(lines: Iterable[str], mind: Mind, out: TextIO, err: TextIO) -> None:
 
 
 def main() -> None:
-    run(sys.stdin, Mind(), sys.stdout, sys.stderr)
+    # The repl is the only place that reads the environment. TOLK_POLICY is a comma-separated list from specific, trusted, recent.
+    policy = tuple(p for p in os.environ.get("TOLK_POLICY", "specific").split(",") if p)
+    run(sys.stdin, Mind(policy=policy), sys.stdout, sys.stderr)
     erg.close()
 
 

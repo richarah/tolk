@@ -50,10 +50,11 @@ def test_a_past_tense_in_a_relative_clause_is_not_dropped(mind: Mind) -> None:
     assert r.outcome == "refused"
 
 
-def test_a_universal_question_is_not_answered_as_an_existential(mind: Mind) -> None:
+def test_a_universal_question_is_not_answered_from_known_instances(mind: Mind) -> None:
+    # Phase 18 answers it, by what follows for a fresh dog. A dog that is a mammal is not evidence for "every dog".
     mind.tell("Rex is a dog.")
     mind.tell("Rex is a mammal.")
-    assert refused(mind.ask("Is every dog a mammal?"), "UNIVERSAL_QUESTION")
+    assert mind.ask("Is every dog a mammal?").answer.value == UNKNOWN
 
 
 def test_a_merge_leaves_no_proof_with_a_missing_premise(mind: Mind) -> None:

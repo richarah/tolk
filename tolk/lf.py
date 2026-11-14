@@ -54,6 +54,7 @@ class Rule:
     body: tuple[Atom, ...]
     mentions: tuple[tuple[int, str, str], ...] = ()
     notes: tuple[str, ...] = ()
+    kind: str = "strict"  # "default" for a bare plural generic: it holds unless something overrides it
 
     @property
     def creates(self) -> tuple[Var, ...]:
@@ -78,6 +79,13 @@ class Ask:
 
 
 @dataclass(frozen=True)
+class Every:
+    """A question about every thing of a kind: does the conclusion follow from the restriction, for a fresh thing?"""
+    head: tuple[Atom, ...]
+    body: tuple[Atom, ...]
+
+
+@dataclass(frozen=True)
 class Same:
     a: Const
     b: Const
@@ -94,7 +102,7 @@ class Refusal:
     detail: str
 
 
-LF = Tell | Rule | Ask | Same | Describe | Refusal
+LF = Tell | Rule | Ask | Every | Same | Describe | Refusal
 
 # The one home of refusal codes. "final": the sentence was understood and the store cannot hold what it means,
 # so the reading search ends. "reading": this reading is unusable, so the next one is tried.
@@ -132,11 +140,13 @@ def _show(x: LF) -> str:
     names = _namer(x)
     if isinstance(x, Tell):
         return "\n".join(f"{'tell':<6} {_atom(a, names)}" for a in x.atoms)
+    if isinstance(x, Every):
+        return f"{'every':<6} {', '.join(_atom(a, names) for a in x.head)} :- {', '.join(_atom(a, names) for a in x.body)}"
     if isinstance(x, Rule):
         marked: set[Var] = set()
         head = ", ".join(_atom(a, names, x.creates, marked) for a in x.head)
         body = ", ".join(_atom(a, names) for a in x.body)
-        return f"{'rule':<6} {head} :- {body}"
+        return f"{x.kind if x.kind == 'default' else 'rule':<6} {head} :- {body}"
     body = " | ".join(", ".join(_atom(a, names) for a in alt) for alt in (x.alternatives or (x.body,)))
     if x.count is not None:
         kind = "count" if not x.atleast else f"ask >={x.atleast}"
@@ -168,7 +178,7 @@ def _namer(x: LF):
 def _order(x: LF) -> list[Var]:
     if isinstance(x, Ask):
         atoms, lead = x.body, list(x.wanted) + ([x.count] if x.count is not None else [])
-    elif isinstance(x, Rule):
+    elif isinstance(x, (Rule, Every)):
         atoms, lead = x.head + x.body, []
     elif isinstance(x, Tell):
         atoms, lead = x.atoms, []
@@ -192,12 +202,12 @@ def _atom(a: Atom, name, creates=(), marked: set[Var] | None = None) -> str:
 
 
 def encode_rule(r: Rule) -> str:
-    return json.dumps({"head": [_enc(a) for a in r.head], "body": [_enc(a) for a in r.body]})
+    return json.dumps({"head": [_enc(a) for a in r.head], "body": [_enc(a) for a in r.body], "kind": r.kind})
 
 
 def decode_rule(text: str) -> Rule:
     data = json.loads(text)
-    return Rule(tuple(_dec(a) for a in data["head"]), tuple(_dec(a) for a in data["body"]))
+    return Rule(tuple(_dec(a) for a in data["head"]), tuple(_dec(a) for a in data["body"]), kind=data.get("kind", "strict"))
 
 
 def _enc(a: Atom) -> list:

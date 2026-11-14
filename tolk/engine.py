@@ -7,9 +7,11 @@ from tolk.lf import Atom, Const, Var
 Statement = tuple[str, tuple]
 
 
-def run(db: sqlite3.Connection, ctx: str = "world") -> int:
-    """Run the rules stratum by stratum, each to fixpoint. Returns the number of facts added."""
-    rules = [(rid, lf.decode_rule(text), ran) for rid, text, ran in db.execute("SELECT id, lf, ran FROM rule ORDER BY id")]
+def run(db: sqlite3.Connection, ctx: str = "world", kinds: tuple[str, ...] = ("strict",)) -> int:
+    """Run the rules of the given kinds stratum by stratum, each to fixpoint. Returns the number of facts added."""
+    marks = ", ".join("?" * len(kinds))
+    rules = [(rid, lf.decode_rule(text), ran) for rid, text, ran in
+             db.execute(f"SELECT id, lf, ran FROM rule WHERE kind IN ({marks}) ORDER BY id", kinds)]
     level = strata([r for _, r, _ in rules])
     total = 0
     rnd = store.current_round(db)
@@ -186,6 +188,13 @@ def rule_sql(rule: lf.Rule, rule_id: int, ctx: str, delta: int | None, rnd: int)
         raise ValueError("a rule needs a body")
     m = Match(rule.body, ctx, rule_id, delta)
     bindings = " || ',' || ".join(m.column(v) for v in m.first) or "''"
+    if rule.kind == "default":
+        # A default instance that was defeated is not used again; the bindings name the instance.
+        m.src += f" AND NOT EXISTS (SELECT 1 FROM defeat d WHERE d.rule = ? AND d.bindings = {bindings})"
+        m.params += (rule_id,)
+    # A fact is as strong as its weakest premise, and a default makes it the weakest kind.
+    levels = ", ".join(f"{i[:-3]}.level" for i in m.ids_list)
+    level = "3" if rule.kind == "default" else f"MAX(2, {levels})" if levels else "2"
 
     def skolem(v: Var) -> tuple[str, tuple]:
         return f"('sk:' || ? || ':' || ? || ':' || {bindings})", (rule_id, v.key)
@@ -209,14 +218,14 @@ def rule_sql(rule: lf.Rule, rule_id: int, ctx: str, delta: int | None, rnd: int)
         fact_match = " AND ".join(f"a{k} = {e}" for k, (e, _) in enumerate(exprs))
         polarity = int(head.positive)
         statements.append((
-            f"INSERT OR IGNORE INTO fact(pred, a0, a1, a2, positive, ctx, round) "
-            f"SELECT ?, {vals}, ?, ?, ? {m.src}",
+            f"INSERT OR IGNORE INTO fact(pred, a0, a1, a2, positive, ctx, round, level) "
+            f"SELECT ?, {vals}, ?, ?, ?, {level} {m.src}",
             (head.pred, *val_params, polarity, ctx, rnd, *m.params),
         ))
         statements.append((
-            "INSERT OR IGNORE INTO why(fact, sentence, rule, premises) "
+            "INSERT OR IGNORE INTO why(fact, sentence, rule, premises, bindings) "
             f"SELECT (SELECT id FROM fact WHERE pred = ? AND {fact_match} AND positive = ? AND ctx = ?), "
-            f"NULL, ?, json_array({m.ids()}) {m.src}",
+            f"NULL, ?, json_array({m.ids()}), {bindings} {m.src}",
             (head.pred, *val_params, polarity, ctx, rule_id, *m.params),
         ))
     return statements

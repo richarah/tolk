@@ -592,3 +592,12 @@ Fragile, in order of how likely each is to bite:
 6. "How many" counts the known things; zero means none known, not none.
 7. The lemma scan reads comments too. A comment that uses a word from any sentence in `sentences.txt` fails the test. Twelve comments have been reworded for it so far.
 8. Open from phase 9: "Where is Bob?" after "Bob is in Paris." is Unknown (argument shapes differ); "Ivy sings in Turin." stores a rule about ivy (the parser reads the name as a mass noun).
+
+## Phase 18: defaults and the conflict policy
+
+Defaults, strength levels, defeat and the specific/trusted/recent policy; universal questions answered by a scratch derivation. The dialogue and ten own-word cases are in tests/test_phase18.py. Earlier results changed as SPEC2 says: Birds are animals is now a default (its answers are unchanged); universal and negated bare-noun questions are answered, not refused.
+
+```
+$ .venv/bin/pytest -q
+423 passed, 1 xfailed in 13.94s
+```
