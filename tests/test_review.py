@@ -98,3 +98,30 @@ def test_a_dropped_supposition_is_no_longer_in_force(mind: Mind) -> None:
     mind.suppose("Tweety is a penguin.")
     mind.drop()
     assert mind.suppose("Tweety is a penguin.").outcome.startswith("stored")
+
+
+def _prepositions_store():
+    from tolk import lf, store
+    from tolk.lf import Atom, Const
+    db = store.open_store()
+    sid = store.add_sentence(db, "synthetic")
+    store.tell(db, lf.Tell((Atom("_work_v_1", (Const("e1", "event"), Const("sam"))), Atom("_in_p_loc", (Const("e1", "event"), Const("oslo"))))), sid)
+    return db
+
+
+def _ask_in(db, prep: str):
+    from tolk import ask, lf
+    from tolk.lf import Atom, Const, Var
+    return ask.answer(db, lf.Ask((Atom("_work_v_1", (Var("e"), Const("sam"))), Atom(prep, (Var("e"), Const("oslo")))), ()))
+
+
+def test_a_preposition_sense_is_widened_only_when_nothing_matches_exactly() -> None:
+    db = _prepositions_store()
+    wide = _ask_in(db, "_in_p_state")
+    assert wide.value == YES and wide.widened == ("_in_p_state matched as _in_p_loc",)
+    exact = _ask_in(db, "_in_p_loc")
+    assert exact.value == YES and exact.widened == ()
+
+
+def test_a_preposition_with_another_lemma_is_not_widened() -> None:
+    assert _ask_in(_prepositions_store(), "_on_p_state").value == UNKNOWN

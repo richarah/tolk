@@ -1,10 +1,12 @@
 """Questions: an answer from the positive facts that match, with the proof of each matched fact."""
 
 import json
+import re
 import sqlite3
 from dataclasses import dataclass
 
 from tolk import engine, lf
+from tolk.lf import Atom
 
 YES, NO, UNKNOWN, CONFLICT = "Yes", "No", "Unknown", "Conflict"
 # For Conflict, proofs holds the positive proof set, then the negative one.
@@ -23,9 +25,31 @@ class Answer:
     value: str
     solutions: tuple[tuple[str, ...], ...]  # the wanted variables' constants, one tuple per solution
     proofs: tuple[tuple[Proof, ...], ...]  # for each solution, one proof per body atom
+    widened: tuple[str, ...] = ()  # "asked matched as stored" for each preposition sense that was widened
+
+
+PREPOSITION = re.compile(r"_([^_]+)_p_[^_]+")
 
 
 def answer(db: sqlite3.Connection, q: lf.Ask, ctx: str = "world") -> Answer:
+    """Answer exactly; only if that finds nothing, let a preposition match a stored sense of the same lemma."""
+    exact = _answer(db, q, ctx)
+    if exact.value != UNKNOWN or not any(PREPOSITION.fullmatch(a.pred) for a in q.body):
+        return exact
+    wide = lf.Ask(tuple(
+        Atom(f"_{m.group(1)}_p_*", a.args, a.positive) if (m := PREPOSITION.fullmatch(a.pred)) else a for a in q.body
+    ), q.wanted)
+    got = _answer(db, wide, ctx)
+    if got.value == UNKNOWN:
+        return exact
+    asked = [a.pred for a in q.body if PREPOSITION.fullmatch(a.pred)]
+    stored = {db.execute("SELECT pred FROM fact WHERE id = ?", (p.fact,)).fetchone()[0] for sol in got.proofs for p in sol}
+    notes = tuple(f"{a} matched as {b}" for a in asked for b in sorted(stored)
+                  if b != a and b.startswith(a.rsplit("_", 1)[0] + "_"))
+    return Answer(got.value, got.solutions, got.proofs, notes)
+
+
+def _answer(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     pos = _solutions(db, q, True, ctx)
     if not q.wanted:
         neg = _solutions(db, q, False, ctx)

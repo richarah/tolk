@@ -131,4 +131,6 @@ class Mind:
     def _answer_text(self, a: Answer) -> str:
         proofs = "\n".join(say.proof_text(self.db, p) for solution in a.proofs for p in solution)
         head = say.answer_text(self.db, a)
+        if a.widened:
+            head += "\n(widened: " + "; ".join(a.widened) + ")"
         return f"{head}\n{proofs}" if proofs else head
