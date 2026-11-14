@@ -21,3 +21,8 @@
 - Round semantics: told facts take round max+1. A rule's first run has no round constraint. Later runs require at least one body atom from the previous round, as the spec says. Stopping: a round that adds nothing ends the run.
 - Skolem guard: a body binding whose value starts with `sk:<rule id>:` blocks the match, so a rule never reuses its own skolems.
 - `tests/helpers.tell_text` tells one sentence through compile and store. It is test scaffolding and will be replaced by `Mind.tell` in phase 3, which removes it.
+- Answers: solutions for a wh question are sorted by constant id, so "Kim and Tweety" is the stable order. The spec does not fix an order.
+- Proof per body atom: a yes/no answer shows the first matching solution's proofs. A wh answer shows one proof set per solution.
+- `say.fact_text` shows skolem ids raw (for example `sk:6:x8:rex`). A readable name would have to parse the skolem format, which lives in the engine. Left stiff on purpose.
+- `Mind.hear` decides between tell and ask from the chosen reading's logical form. `tell` and `ask` are the same call, so a statement given as a question is answered, not stored.
+- Engine ask queries use `Match` with no skolem guard and no delta, so the same generator serves rules and questions.

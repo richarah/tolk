@@ -1,7 +1,7 @@
 import time
 
-from helpers import tell_text
 from tolk import engine, lf, store
+from tolk.mind import Mind
 from tolk.lf import Atom, Const, Var
 
 TIER_A_STATEMENTS = [
@@ -16,10 +16,10 @@ def count(db, pred: str, value: str, column: str = "a0") -> int:
 
 
 def test_tier_a_statements_derive_expected_facts() -> None:
-    db = store.open_store()
+    mind = Mind()
     for s in TIER_A_STATEMENTS:
-        tell_text(db, s)
-    engine.run(db)
+        mind.tell(s)
+    db = mind.db
     assert count(db, "_bird_n_1", "tweety") == 1
     assert count(db, "_animal_n_1", "tweety") == 1
     assert count(db, "_fly_v_1", "tweety", "a1") == 1
@@ -30,18 +30,19 @@ def test_tier_a_statements_derive_expected_facts() -> None:
 
 
 def test_telling_the_same_statement_twice_adds_nothing() -> None:
-    db = store.open_store()
-    tell_text(db, "Kim likes Sandy.")
+    mind = Mind()
+    mind.tell("Kim likes Sandy.")
+    db = mind.db
     before = db.execute("SELECT COUNT(*) FROM fact").fetchone()[0]
-    tell_text(db, "Kim likes Sandy.")
+    mind.tell("Kim likes Sandy.")
     assert db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] == before
 
 
 def test_dog_owner_is_created_once_and_rerun_creates_none() -> None:
-    db = store.open_store()
-    tell_text(db, "Rex is a dog.")
-    tell_text(db, "Every dog has an owner.")
-    engine.run(db)
+    mind = Mind()
+    mind.tell("Rex is a dog.")
+    mind.tell("Every dog has an owner.")
+    db = mind.db
     owners = db.execute("SELECT COUNT(*) FROM fact WHERE pred = '_owner_n_of'").fetchone()[0]
     assert owners == 1
     assert engine.run(db) == 0

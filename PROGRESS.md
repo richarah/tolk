@@ -115,3 +115,135 @@ $ .venv/bin/pytest -q
 ```
 
 The 50,000-fact timing is the `fixpoint` line above (300,000 facts derived through six rules).
+
+## Phase 3: questions, proofs, wording, repl
+
+Built `tolk/ask.py`, `tolk/say.py`, `tolk/mind.py`, `scripts/repl.py`. `ask.py` reuses `engine.Match`, the FROM/WHERE generator that rules also use. `say.py` is stiff: facts show as predicate and arguments; the article is chosen from the lemma.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q
+126 passed in 3.63s
+```
+
+The tier A dialogue run through the repl (`scripts/repl.py`), exact output:
+
+```
+Tweety is a robin.
+  reading 1 of 2
+  tell   _robin_n_1(tweety)
+  stored, 1 new fact(s)
+Every robin is a bird.
+  reading 1 of 2
+  rule   _bird_n_1(X) :- _robin_n_1(X)
+  rule stored
+Every bird flies.
+  reading 2 of 2
+  rule   _fly_v_1(E!, X) :- _bird_n_1(X)
+  rule stored
+Birds are animals.
+  reading 1 of 1
+  rule   _animal_n_1(X) :- _bird_n_1(X)
+  rule stored
+Tweety sings.
+  reading 1 of 1
+  tell   _sing_v_1(e1, tweety)
+  stored, 1 new fact(s)
+Every robin that sings is happy.
+  reading 1 of 5
+  rule   _happy_a_with(E!, X) :- _robin_n_1(X), _sing_v_1(E1, X)
+  rule stored
+Kim is a person.
+  reading 1 of 1
+  tell   _person_n_1(kim)
+  stored, 1 new fact(s)
+Kim owns a dog.
+  reading 1 of 1
+  tell   _own_v_1(e1, kim, a1)
+tell   _dog_n_1(a1)
+  stored, 2 new fact(s)
+Every person who owns a dog is happy.
+  reading 1 of 1
+  rule   _happy_a_with(E!, X) :- _person_n_1(X), _own_v_1(E1, X, Y), _dog_n_1(Y)
+  rule stored
+Kim likes Sandy.
+  reading 1 of 1
+  tell   _like_v_1(e1, kim, sandy)
+  stored, 1 new fact(s)
+Rex is a dog.
+  reading 1 of 1
+  tell   _dog_n_1(rex)
+  stored, 1 new fact(s)
+Every dog has an owner.
+  reading 1 of 1
+  rule   _have_v_1(E!, X, Y!), _owner_n_of(Y) :- _dog_n_1(X)
+  rule stored
+Does Tweety fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, tweety)
+  Yes
+fly(tweety)  (by rule 2)
+  tweety is a bird  (by rule 1)
+    tweety is a robin  (told: "Tweety is a robin.")
+Is Tweety an animal?
+  reading 1 of 5
+  ask    _animal_n_1(tweety)
+  Yes
+tweety is an animal  (by rule 3)
+  tweety is a bird  (by rule 1)
+    tweety is a robin  (told: "Tweety is a robin.")
+Is Tweety happy?
+  reading 1 of 5
+  ask    _happy_a_with(E, tweety)
+  Yes
+happy(tweety)  (by rule 4)
+  tweety is a robin  (told: "Tweety is a robin.")
+  sing(tweety)  (told: "Tweety sings.")
+What flies?
+  reading 1 of 3
+  ask X  _fly_v_1(E, X)
+  Tweety
+fly(tweety)  (by rule 2)
+  tweety is a bird  (by rule 1)
+    tweety is a robin  (told: "Tweety is a robin.")
+Which robin sings?
+  reading 1 of 2
+  ask X  _robin_n_1(X), _sing_v_1(E, X)
+  Tweety
+tweety is a robin  (told: "Tweety is a robin.")
+sing(tweety)  (told: "Tweety sings.")
+Who is happy?
+  reading 1 of 1
+  ask X  _happy_a_with(E, X)
+  Kim and Tweety
+happy(kim)  (by rule 5)
+  kim is a person  (told: "Kim is a person.")
+  own(kim, a1)  (told: "Kim owns a dog.")
+  a1 is a dog  (told: "Kim owns a dog.")
+happy(tweety)  (by rule 4)
+  tweety is a robin  (told: "Tweety is a robin.")
+  sing(tweety)  (told: "Tweety sings.")
+Who likes Sandy?
+  reading 1 of 1
+  ask X  _like_v_1(E, X, sandy)
+  Kim
+like(kim, sandy)  (told: "Kim likes Sandy.")
+Who does Kim like?
+  reading 1 of 2
+  ask X  _like_v_1(E, kim, X)
+  Sandy
+like(kim, sandy)  (told: "Kim likes Sandy.")
+Is Sandy happy?
+  reading 1 of 5
+  ask    _happy_a_with(E, sandy)
+  Unknown
+Does Rex have an owner?
+  reading 1 of 2
+  ask    _have_v_1(E, rex, X), _owner_n_of(X)
+  Yes
+have(rex, sk:6:x8:rex)  (by rule 6)
+  rex is a dog  (told: "Rex is a dog.")
+sk:6:x8:rex is an owner  (by rule 6)
+  rex is a dog  (told: "Rex is a dog.")
+```
