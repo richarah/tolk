@@ -1,0 +1,106 @@
+Tweety is a robin.
+  reading 1 of 2
+  tell   _robin_n_1(tweety)
+  stored, 1 new fact(s)
+Every robin is a bird.
+  reading 1 of 2
+  rule   _bird_n_1(X) :- _robin_n_1(X)
+  rule stored
+Every bird flies.
+  reading 2 of 2
+  rule   _fly_v_1(E!, X) :- _bird_n_1(X)
+  rule stored
+Birds are animals.
+  reading 1 of 1
+  rule   _animal_n_1(X) :- _bird_n_1(X)
+  rule stored
+Tweety sings.
+  reading 1 of 1
+  tell   _sing_v_1(e1, tweety)
+  stored, 1 new fact(s)
+Every robin that sings is happy.
+  reading 1 of 5
+  rule   _happy_a_with(E!, X) :- _robin_n_1(X), _sing_v_1(E1, X)
+  rule stored
+Kim is a person.
+  reading 1 of 1
+  tell   _person_n_1(kim)
+  stored, 1 new fact(s)
+Kim owns a dog.
+  reading 1 of 1
+  tell   _own_v_1(e1, kim, a1)
+tell   _dog_n_1(a1)
+  stored, 2 new fact(s)
+Every person who owns a dog is happy.
+  reading 1 of 1
+  rule   _happy_a_with(E!, X) :- _person_n_1(X), _own_v_1(E1, X, Y), _dog_n_1(Y)
+  rule stored
+Kim likes Sandy.
+  reading 1 of 1
+  tell   _like_v_1(e1, kim, sandy)
+  stored, 1 new fact(s)
+Rex is a dog.
+  reading 1 of 1
+  tell   _dog_n_1(rex)
+  stored, 1 new fact(s)
+Every dog has an owner.
+  reading 1 of 1
+  rule   _have_v_1(E!, X, Y!), _owner_n_of(Y) :- _dog_n_1(X)
+  rule stored
+Pingu is a penguin.
+  reading 1 of 1
+  tell   _penguin_n_1(pingu)
+  stored, 1 new fact(s)
+Pingu does not fly.
+  reading 1 of 4
+  tell   not _fly_v_1(_, pingu)
+  stored, 1 new fact(s)
+Does Pingu fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, pingu)
+  No
+not fly(pingu)  (told: "Pingu does not fly.")
+Every penguin is a bird.
+  reading 1 of 1
+  rule   _bird_n_1(X) :- _penguin_n_1(X)
+  rule stored
+Does Pingu fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, pingu)
+  Conflict
+fly(pingu)  (by rule 2)
+  pingu is a bird  (by rule 7)
+    pingu is a penguin  (told: "Pingu is a penguin.")
+not fly(pingu)  (told: "Pingu does not fly.")
+Clark Kent is Superman.
+  reading 1 of 1
+  same   clark_kent = superman
+  one thing: clark_kent and superman
+Superman flies.
+  reading 3 of 3
+  tell   _fly_v_1(e1, superman)
+  stored, 1 new fact(s)
+Does Clark Kent fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, clark_kent)
+  Yes
+fly(clark_kent)  (told: "Superman flies.")
+Is the robin happy?
+  reading 1 of 5
+  ask    _robin_n_1(tweety), _happy_a_with(E, tweety)
+  Yes
+tweety is a robin  (told: "Tweety is a robin.")
+happy(tweety)  (by rule 4)
+  tweety is a robin  (told: "Tweety is a robin.")
+  sing(tweety)  (told: "Tweety sings.")
+The dog barks.
+  reading 1 of 2
+  refuse DEFINITE_MATCHES: 2 known things match
+  refuse DEFINITE_MATCHES: 2 known things match
+Tweety does not fly.
+  reading 1 of 4
+  tell   not _fly_v_1(_, tweety)
+  refused, contradicts:
+fly(tweety)  (by rule 2)
+  tweety is a bird  (by rule 1)
+    tweety is a robin  (told: "Tweety is a robin.")

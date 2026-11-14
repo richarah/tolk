@@ -26,3 +26,14 @@
 - `say.fact_text` shows skolem ids raw (for example `sk:6:x8:rex`). A readable name would have to parse the skolem format, which lives in the engine. Left stiff on purpose.
 - `Mind.hear` decides between tell and ask from the chosen reading's logical form. `tell` and `ask` are the same call, so a statement given as a question is answered, not stored.
 - Engine ask queries use `Match` with no skolem guard and no delta, so the same generator serves rules and questions.
+- Negative facts: the event column is empty (`''`). A stored negative verb is `not fly(pingu)` with `a0 = ''`, and a question's event variable matches it.
+- Negated event in a rule head or told atom: `Const("", "empty")`, printed `_`. In a rule body it is a local variable, so negation as failure matches any event.
+- Contradiction: telling a fact whose opposite is stored or derived is refused before anything is written, and the opposite's proof is shown. The opposite matches on predicate, polarity and non-event arguments.
+- Conflict rows: a positive and a negative fact that clash get a conflict row once one of them is derived. Told-against-told clashes are refused, so they never reach the table.
+- Identity: `Same(a, b)` keeps the older entity (lower rowid). The other's facts move onto it, a name row records the merge, and later mentions of the dropped name map to the kept one. A copula with a named complement and a non-name subject is refused `IDENTITY_NOT_YET`.
+- Definites: a definite resolves to the one known thing with every restriction predicate (a positive fact). Zero or two-plus matches are refused `DEFINITE_MATCHES` with the count.
+- "No X V": a top-level `_no_q` makes a universal rule whose head clause is negated. "No penguin flies" is `rule not fly(_, X) :- penguin(X)`.
+- Unexpressed subject: an event predicate whose first non-event argument is unexpressed is refused `UNEXPRESSED_SUBJECT`. Reading 2 of "Is Sandy happy?" was otherwise stored as `happy(E)`, a silent drop.
+- Unbound variable: a variable that no quantifier binds and that is not an event is refused `UNBOUND_VARIABLE`, instead of being ignored.
+- Negation as failure is evaluated in rounds, so a negated predicate that an earlier round derives may be missed until the round that derives it. The spec's stratification check (no negated predicate depends on the rule's head) is enforced, but a full strata-by-strata evaluation is not built. Open.
+- `choose` takes a `lookup`, and `compile_reading` uses it only for definites.

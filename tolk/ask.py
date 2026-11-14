@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from tolk import engine, lf
 
 YES, NO, UNKNOWN, CONFLICT = "Yes", "No", "Unknown", "Conflict"
+# For Conflict, proofs holds the positive proof set, then the negative one.
 
 
 @dataclass(frozen=True)
@@ -24,22 +25,34 @@ class Answer:
 
 
 def answer(db, q: lf.Ask, ctx: str = "world") -> Answer:
-    m = engine.Match(q.body, ctx, None, None)
+    pos = _solutions(db, q, True, ctx)
+    if not q.wanted:
+        neg = _solutions(db, q, False, ctx)
+        if pos and neg:
+            return Answer(CONFLICT, (), (pos[()], neg[()]))
+        if pos:
+            return Answer(YES, (), (pos[()],))
+        if neg:
+            return Answer(NO, (), (neg[()],))
+        return Answer(UNKNOWN, (), ())
+    if not pos:
+        return Answer(UNKNOWN, (), ())
+    solutions = sorted(pos)
+    return Answer(YES, tuple(solutions), tuple(pos[s] for s in solutions))
+
+
+def _solutions(db, q: lf.Ask, polarity: bool, ctx: str) -> dict[tuple[str, ...], tuple[Proof, ...]]:
+    """For each distinct value of the wanted variables, one proof per positive body atom of the first matching row."""
+    m = engine.Match(q.body, ctx, None, None, polarity)
     wanted = [m.column(v) for v in q.wanted]
-    select = ", ".join(wanted + [m.ids()])
-    rows = db.execute(f"SELECT {select} {m.src} ORDER BY f0.id", m.params).fetchall()
+    rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {m.src} ORDER BY {m.ids()}", m.params).fetchall()
     n = len(wanted)
     seen: dict[tuple[str, ...], tuple[Proof, ...]] = {}
     for row in rows:
         values = tuple(row[:n])
         if values not in seen:
             seen[values] = tuple(prove(db, fid) for fid in row[n:])
-    if not seen:
-        return Answer(UNKNOWN, (), ())
-    if not q.wanted:
-        return Answer(YES, (), (seen[()],))
-    solutions = sorted(seen)
-    return Answer(YES, tuple(solutions), tuple(seen[s] for s in solutions))
+    return seen
 
 
 def prove(db, fact_id: int) -> Proof:

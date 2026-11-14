@@ -1,4 +1,4 @@
-"""The identity copula: an indefinite complement describes the subject, so it adds atoms to the subject and creates nothing."""
+"""The identity copula. An indefinite complement describes the subject, so it adds atoms to the subject and creates nothing."""
 
 from tolk import lf
 from tolk.rules import quant
@@ -20,5 +20,7 @@ def map_ep(ctx, ep) -> tuple | lf.Refusal | None:
     if not is_copula(ep):
         return None
     if ep.args["ARG2"] in ctx.const:
+        # Two names make an identity, which compile returns as Same before mapping. A named complement
+        # with a non-name subject is not stored.
         return lf.Refusal("IDENTITY_NOT_YET", ep.pred)
     return ()

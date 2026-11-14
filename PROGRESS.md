@@ -247,3 +247,78 @@ have(rex, sk:6:x8:rex)  (by rule 6)
 sk:6:x8:rex is an owner  (by rule 6)
   rex is a dog  (told: "Rex is a dog.")
 ```
+
+## Phase 4: negation, "no", identity, definites (tier B)
+
+Built: negative atoms (`Atom.positive`), `rules/neg.py`, the `_no_q` rule shape (universal with a negated head), definites resolved through a store lookup, identity as `Same` merged in the store, negation as failure in rule bodies with the spec's safety and stratification checks, contradiction refusal at tell time, and conflict rows after each engine run.
+
+Checks, exact output:
+
+```
+$ .venv/bin/pytest -q tests/test_dialogue_b.py
+14 passed in 0.42s
+$ .venv/bin/pytest -q
+140 passed in 5.47s
+```
+
+The tier B dialogue through `Mind` (the repl transcript; "No penguin flies." is not in the spec's dialogue table, so it is not told here; its compiled form is tested separately):
+
+```
+Pingu is a penguin.
+  reading 1 of 1
+  tell   _penguin_n_1(pingu)
+  stored, 1 new fact(s)
+Pingu does not fly.
+  reading 1 of 4
+  tell   not _fly_v_1(_, pingu)
+  stored, 1 new fact(s)
+Does Pingu fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, pingu)
+  No
+  not fly(pingu)  (told: "Pingu does not fly.")
+Every penguin is a bird.
+  reading 1 of 1
+  rule   _bird_n_1(X) :- _penguin_n_1(X)
+  rule stored
+Does Pingu fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, pingu)
+  Conflict
+  fly(pingu)  (by rule 2)
+    pingu is a bird  (by rule 7)
+      pingu is a penguin  (told: "Pingu is a penguin.")
+  not fly(pingu)  (told: "Pingu does not fly.")
+Clark Kent is Superman.
+  reading 1 of 1
+  same   clark_kent = superman
+  one thing: clark_kent and superman
+Superman flies.
+  reading 3 of 3
+  tell   _fly_v_1(e1, superman)
+  stored, 1 new fact(s)
+Does Clark Kent fly?
+  reading 1 of 5
+  ask    _fly_v_1(E, clark_kent)
+  Yes
+  fly(clark_kent)  (told: "Superman flies.")
+Is the robin happy?
+  reading 1 of 5
+  ask    _robin_n_1(tweety), _happy_a_with(E, tweety)
+  Yes
+  tweety is a robin  (told: "Tweety is a robin.")
+  happy(tweety)  (by rule 4)
+    tweety is a robin  (told: "Tweety is a robin.")
+    sing(tweety)  (told: "Tweety sings.")
+The dog barks.
+  reading 1 of 2
+  refuse DEFINITE_MATCHES: 2 known things match
+  refused
+Tweety does not fly.
+  reading 1 of 4
+  tell   not _fly_v_1(_, tweety)
+  refused, contradicts:
+  fly(tweety)  (by rule 2)
+    tweety is a bird  (by rule 1)
+      tweety is a robin  (told: "Tweety is a robin.")
+```

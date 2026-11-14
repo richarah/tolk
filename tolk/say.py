@@ -4,17 +4,20 @@ from tolk.ask import Answer, Proof
 
 
 def fact_text(db, fact_id: int) -> str:
-    pred, a0, a1, a2 = db.execute("SELECT pred, a0, a1, a2 FROM fact WHERE id = ?", (fact_id,)).fetchone()
+    pred, a0, a1, a2, positive = db.execute(
+        "SELECT pred, a0, a1, a2, positive FROM fact WHERE id = ?", (fact_id,)
+    ).fetchone()
     lemma, pos = pred.lstrip("_").split("_")[:2]
+    neg = "" if positive else "not "
     if pos == "n":
         things = [a for a in (a0, a1, a2) if a]
-        if len(things) == 1:
+        if len(things) == 1 and positive:
             article = "an" if lemma[0] in "aeiou" else "a"
             return f"{things[0]} is {article} {lemma}"
-        return f"{lemma}({', '.join(things)})"
+        return f"{neg}{lemma}({', '.join(things)})"
     # Verbs, adjectives and prepositions take their event first; the event is not shown.
     things = [a for a in (a1, a2) if a]
-    return f"{lemma}({', '.join(things)})"
+    return f"{neg}{lemma}({', '.join(things)})"
 
 
 def proof_text(db, p: Proof, depth: int = 0) -> str:

@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 
 from tolk import compile as comp, engine, erg, lf, say, sem, store
-from tolk.ask import Answer, answer
+from tolk.ask import Answer, answer, prove
 
 
 @dataclass(frozen=True)
@@ -21,29 +21,43 @@ class Mind:
 
     def hear(self, text: str) -> Result:
         readings = [sem.read(raw) for raw in erg.parse(text)]
-        k, x = comp.choose(readings, store.known_preds(self.db))
+        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup)
         printed = lf.show(x)
+        head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):
-            return Result(k + 1, len(readings), printed, printed)
+            return Result(*head, outcome="refused")
         if isinstance(x, lf.Ask):
             a = answer(self.db, x)
-            return Result(k + 1, len(readings), printed, self._answer_text(a), a)
-        sid = store.add_sentence(self.db, text)
-        if isinstance(x, lf.Tell):
-            added = store.tell(self.db, x, sid)
+            return Result(*head, outcome=self._answer_text(a), answer=a)
+        if isinstance(x, lf.Same):
+            sid = store.add_sentence(self.db, text)
+            store.merge(self.db, x.a, x.b, sid)
             engine.run(self.db)
-            outcome = f"stored, {len(added)} new fact(s)"
-        else:
+            return Result(*head, outcome=f"one thing: {x.a.id} and {x.b.id}")
+        if isinstance(x, lf.Rule):
+            refusal = engine.check(self.db, x)
+            if refusal is not None:
+                return Result(*head, outcome=lf.show(refusal))
+            sid = store.add_sentence(self.db, text)
             store.add_rule(self.db, x, sid)
             engine.run(self.db)
-            outcome = "rule stored"
-        return Result(k + 1, len(readings), printed, outcome)
+            return Result(*head, outcome="rule stored")
+        sid = store.add_sentence(self.db, text)
+        stored = store.tell(self.db, x, sid)
+        if isinstance(stored, lf.Refusal):
+            opposite = prove(self.db, int(stored.detail))
+            return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")
+        engine.run(self.db)
+        return Result(*head, outcome=f"stored, {len(stored)} new fact(s)")
 
     def tell(self, text: str) -> Result:
         return self.hear(text)
 
     def ask(self, text: str) -> Result:
         return self.hear(text)
+
+    def _lookup(self, pred: str) -> set[str]:
+        return store.things_with(self.db, pred)
 
     def _answer_text(self, a: Answer) -> str:
         proofs = "\n".join(say.proof_text(self.db, p) for solution in a.proofs for p in solution)

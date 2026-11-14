@@ -4,6 +4,8 @@ from itertools import chain, count
 
 # Kinds of constant that the store renames to fresh ids; the prefix is their one home.
 FRESH = {"event": "e", "anon": "a"}
+# Constant standing for the missing event of a negated predication; its event column is empty.
+NO_EVENT = "empty"
 
 
 def fresh_id(kind: str, n: int) -> str:
@@ -32,6 +34,7 @@ Term = Const | Var
 class Atom:
     pred: str
     args: tuple[Term, ...]
+    positive: bool = True
 
 
 @dataclass(frozen=True)
@@ -133,14 +136,14 @@ def _atom(a: Atom, name, creates=(), marked: set[Var] | None = None) -> str:
     parts = []
     for t in a.args:
         if isinstance(t, Const):
-            parts.append(t.id)
+            parts.append(t.id or "_")
             continue
         mark = ""
         if marked is not None and t in creates and t not in marked:
             marked.add(t)
             mark = "!"
         parts.append(name(t) + mark)
-    return f"{a.pred}({', '.join(parts)})"
+    return f"{'' if a.positive else 'not '}{a.pred}({', '.join(parts)})"
 
 
 def encode_rule(r: Rule) -> str:
@@ -154,9 +157,9 @@ def decode_rule(text: str) -> Rule:
 
 def _enc(a: Atom) -> list:
     args = [["c", t.id, t.kind] if isinstance(t, Const) else ["v", t.key] for t in a.args]
-    return [a.pred, args]
+    return [a.pred, args, a.positive]
 
 
 def _dec(a: list) -> Atom:
     args = tuple(Const(t[1], t[2]) if t[0] == "c" else Var(t[1]) for t in a[1])
-    return Atom(a[0], args)
+    return Atom(a[0], args, a[2])
