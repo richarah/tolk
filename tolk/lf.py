@@ -79,6 +79,23 @@ class Refusal:
 
 LF = Tell | Rule | Ask | Same | Refusal
 
+# The one home of refusal codes. "final": the sentence was understood and the store cannot hold what it means,
+# so the reading search ends. "reading": this reading is unusable, so the next one is tried.
+REFUSALS = {
+    "ARGUMENT_GAP": "reading", "EMPTY_RULE_BODY": "reading", "TOO_MANY_ARGUMENTS": "reading",
+    "UNBOUND_VARIABLE": "reading", "UNCONSUMED": "reading", "UNEXPRESSED_OBJECT": "reading",
+    "UNEXPRESSED_SUBJECT": "reading", "WH_BOUND_TO_CONSTANT": "reading",
+    "CONTRADICTS": "final", "COORDINATION": "final", "DEFINITE_MATCHES": "final", "DEFINITE_NEEDS_STORE": "final",
+    "IDENTITY_NOT_YET": "final", "NEGATED_QUESTION": "final", "NO_EVENT_READING": "final", "SCOPE_AMBIGUOUS": "final",
+    "UNCONSTRAINED_WANTED": "final", "UNIVERSAL_QUESTION": "final", "UNKNOWN_WORD": "final", "UNSAFE_NEGATION": "final",
+    "UNSTRATIFIED": "final", "UNSUPPORTED_ASPECT": "final", "UNSUPPORTED_FORCE": "final",
+    "UNSUPPORTED_PREDICATE": "final", "UNSUPPORTED_QUANTIFIER": "final", "UNSUPPORTED_TENSE": "final",
+}
+
+
+def is_final(r: Refusal) -> bool:
+    return REFUSALS[r.code] == "final"
+
 THING_NAMES = ("X", "Y", "Z", "U", "V", "W")
 
 

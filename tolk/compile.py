@@ -9,8 +9,6 @@ from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
 FAMILIES = (names, quant, neg, copula, modifiers, content)
-# Refusals that say a reading is not a sensible analysis, as opposed to a meaning the store cannot hold.
-MALFORMED = {"EMPTY_RULE_BODY", "UNBOUND_VARIABLE", "UNCONSUMED", "ARGUMENT_GAP", "UNEXPRESSED_SUBJECT", "TOO_MANY_ARGUMENTS", "WH_BOUND_TO_CONSTANT"}
 
 
 def eventive(r: Reading) -> bool:
@@ -131,7 +129,7 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     for i, x in cands:
         if not isinstance(x, lf.Refusal):
             ok.append((i, x))
-        elif x.code not in MALFORMED:
+        elif lf.is_final(x):
             if not ok:
                 return i, x
             break
