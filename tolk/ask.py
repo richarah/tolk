@@ -52,9 +52,6 @@ def _any(q: lf.Ask, parts: list[Answer]) -> Answer:
     return Answer(UNKNOWN, (), ())
 
 
-UNKNOWN_SENSE = re.compile(r"_(.+)_([na])_unknown")
-
-
 def _widening(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     """Answer exactly; only if that finds nothing, let a preposition match a stored sense of the same lemma, and a word the grammar
     did not know match the same word under its other guessed part of speech (noun for adjective, adjective for noun)."""
@@ -75,18 +72,19 @@ def _same_word(asked: str, stored: str) -> bool:
     a, b = PREPOSITION.fullmatch(asked), PREPOSITION.fullmatch(stored)
     if a and b:
         return a.group(1) == b.group(1)
-    a, b = UNKNOWN_SENSE.fullmatch(asked), UNKNOWN_SENSE.fullmatch(stored)
+    a, b = lf.UNKNOWN_PRED.fullmatch(asked), lf.UNKNOWN_PRED.fullmatch(stored)
     return bool(a and b and a.group(1) == b.group(1))
 
 
 def _widen(a: Atom) -> Atom:
     if m := PREPOSITION.fullmatch(a.pred):
         return Atom(f"_{m.group(1)}_p_*", a.args, a.positive)
-    if m := UNKNOWN_SENSE.fullmatch(a.pred):
+    if m := lf.UNKNOWN_PRED.fullmatch(a.pred):
         # An adjective takes an event, a noun does not, so the other part of speech has the other shape.
         if m.group(2) == "n":
-            return Atom(f"_{m.group(1)}_a_unknown", (Var("ewiden"), *a.args), a.positive)
-        return Atom(f"_{m.group(1)}_n_unknown", a.args[1:], a.positive)
+            return Atom(f"_{m.group(1)}_a_{lf.UNKNOWN_SENSE}", (Var("ewiden"), *a.args), a.positive)
+        if m.group(2) == "a":
+            return Atom(f"_{m.group(1)}_n_{lf.UNKNOWN_SENSE}", a.args[1:], a.positive)
     return a
 
 

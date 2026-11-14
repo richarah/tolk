@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from tolk import lf
-from tolk.lf import Atom, Const, Term, Var
+from tolk.lf import Atom, Term, Var
 from tolk.sem import EP, Reading
 
 if TYPE_CHECKING:

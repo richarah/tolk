@@ -59,3 +59,12 @@ def test_an_unknown_verb_in_a_yes_no_question_is_refused_by_name(mind: Mind) -> 
 def test_an_unknown_word_is_not_a_known_word(mind: Mind) -> None:
     mind.tell("Pip is a zorp.")
     assert mind.ask("Is Pip a bird?").answer.value == UNKNOWN
+
+
+def test_an_unknown_verb_is_never_widened_to_another_part_of_speech() -> None:
+    from tolk import ask, lf
+    from tolk.lf import Atom, Const, Var
+    m = Mind()
+    m.tell("Pip is a glorb.")
+    q = lf.Ask((Atom("_glorb_v_unknown", (Var("e"), Const("pip"))),), ())
+    assert ask.answer(m.db, q).value == UNKNOWN

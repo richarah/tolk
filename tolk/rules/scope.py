@@ -1,7 +1,7 @@
 """Which predications belong to the main clause, to a restriction, to a negated clause, and what a definite refers to."""
 
 from tolk import lf
-from tolk.rules import copula, neg, quant
+from tolk.rules import copula, neg
 from tolk.rules.ctx import Lookup
 from tolk.sem import EP, Reading
 

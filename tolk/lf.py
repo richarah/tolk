@@ -1,9 +1,13 @@
 import json
+import re
 from dataclasses import dataclass
 from itertools import chain, count
 
 # Kinds of constant that the store renames to fresh ids; the prefix is their one home.
 FRESH = {"event": "e", "anon": "a"}
+# A word the grammar did not know is stored as _base_pos_unknown; this is the one home of that shape.
+UNKNOWN_SENSE = "unknown"
+UNKNOWN_PRED = re.compile(rf"_(.+)_([nav])_{UNKNOWN_SENSE}")
 # Constant standing for the missing event of a negated predication; its event column is empty.
 NO_EVENT = "empty"
 

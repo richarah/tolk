@@ -572,3 +572,23 @@ tolk/__init__.py exposes exactly read, printed, Mind and the logical form types.
 $ .venv/bin/pytest -q
 404 passed, 1 xfailed in 12.24s
 ```
+
+## Checkpoint after phase 17
+
+Reread everything changed since the review (commits 7bec894 to 332c91d), reran the tier A, B and C dialogues through the repl (every result as in SPEC.md), and ran an automated pass for unused imports and definitions. Removed: two unused imports, the second home of the unknown-word predicate shape (now `lf.UNKNOWN_PRED`). Found and fixed on the way: an unknown verb was widened as if it were an adjective.
+
+```
+$ .venv/bin/pytest -q
+405 passed, 1 xfailed in 11.91s
+```
+
+Fragile, in order of how likely each is to bite:
+
+1. Making `UNSUPPORTED_PREDICATE` final means a reading ranked first that uses a scopal verb ends the search even when a later reading is the sentence. Seen once: "If Kim does not own a dog, Kim is tired." (the first reading takes `tire` as a verb).
+2. `compile_reading` is about 170 lines of interacting cases (scope, polarity, cardinals, groups, conditionals) in a file of 256 lines. The next feature that needs another special case will need the function split first.
+3. Unknown words depend on the grammar's tagger guessing: an adjective can come back as a noun in a question, and two unknown words in one sentence give no reading. The matching widens noun and adjective only.
+4. Pronouns: questions leave no mentions, a thing made by an indefinite counts as a mention (so "Kim owns a dog. It barks." is ambiguous), a group made by a cardinal is not a mention, and there is no plural pronoun until a plural thing exists.
+5. A distributed "and" shares one event across the copies in a statement; collective readings are ignored.
+6. "How many" counts the known things; zero means none known, not none.
+7. The lemma scan reads comments too. A comment that uses a word from any sentence in `sentences.txt` fails the test. Twelve comments have been reworded for it so far.
+8. Open from phase 9: "Where is Bob?" after "Bob is in Paris." is Unknown (argument shapes differ); "Ivy sings in Turin." stores a rule about ivy (the parser reads the name as a mass noun).

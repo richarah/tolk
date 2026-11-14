@@ -26,7 +26,7 @@ def known_as(pred: str) -> str | lf.Refusal:
     lemma, (pos, suffix) = m.group(1), TAGS[m.group(2)]
     if suffix and lemma.endswith(suffix):
         lemma = lemma[: -2] if lemma.endswith(("ches", "shes", "sses", "xes", "zes")) else lemma[: -1]
-    return f"_{lemma}_{pos}_unknown"
+    return f"_{lemma}_{pos}_{lf.UNKNOWN_SENSE}"
 
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if not ep.pred.startswith("_"):
