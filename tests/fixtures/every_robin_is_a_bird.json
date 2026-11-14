@@ -1,0 +1,172 @@
+{
+  "text": "Every robin is a bird.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _robin_n_1<6:11> LBL: h7 ARG0: x3 ]  [ _be_v_id<12:14> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<15:16> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ _bird_n_1<17:22> LBL: h12 ARG0: x8 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_every_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_robin_n_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h12": {},
+          "h4": {},
+          "h9": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<6:11> LBL: h7 CARG: \"Robin\" ARG0: x3 ]  [ _be_v_id<12:14> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<15:16> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _bird_n_1<17:22> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_every_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Robin",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "text": "Birds are animals.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]  [ _bird_n_1<0:5> LBL: h7 ARG0: x3 ]  [ _be_v_id<6:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<10:18> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ _animal_n_1<10:18> LBL: h12 ARG0: x8 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "udef_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_animal_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h12": {},
+          "h4": {},
+          "h9": {}
+        }
+      }
+    }
+  ]
+}

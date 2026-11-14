@@ -1,0 +1,43 @@
+# tier A
+Tweety is a robin.
+Every robin is a bird.
+Every bird flies.
+Birds are animals.
+Tweety sings.
+Every robin that sings is happy.
+Kim is a person.
+Kim owns a dog.
+Every person who owns a dog is happy.
+Kim likes Sandy.
+Rex is a dog.
+Every dog has an owner.
+Does Tweety fly?
+Is Tweety a bird?
+Is Tweety an animal?
+Is Tweety happy?
+What flies?
+Which robin sings?
+Who is happy?
+Who likes Sandy?
+Who does Kim like?
+Is Sandy happy?
+Does Rex have an owner?
+# tier B
+Pingu is a penguin.
+Pingu does not fly.
+No penguin flies.
+Every penguin is a bird.
+Clark Kent is Superman.
+Superman flies.
+Does Pingu fly?
+Does Clark Kent fly?
+Is the robin happy?
+The dog barks.
+Tweety does not fly.
+# tier C
+Kim lives in Oslo.
+Sandy arrived.
+Who lives in Oslo?
+Where does Kim live?
+Does Kim live in Oslo?
+Does Kim live in Bergen?

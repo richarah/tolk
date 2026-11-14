@@ -1,0 +1,581 @@
+{
+  "text": "Does Pingu fly?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:10> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:10> LBL: h7 CARG: \"Pingu\" ARG0: x3 ]  [ _fly_v_1<11:15> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_fly_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:15> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:15> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:10> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<0:10> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ named<0:4> LBL: h20 CARG: \"Does\" ARG0: x16 ]  [ named<5:10> LBL: h14 CARG: \"Pingu\" ARG0: x10 ]  [ _fly_n_1<11:15> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h20",
+            "args": {
+              "CARG": "Does",
+              "ARG0": "x16"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "_fly_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:15> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:15> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:10> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<0:10> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:4> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ named<0:4> LBL: h20 CARG: \"Does\" ARG0: x16 ]  [ named<5:10> LBL: h14 CARG: \"Pingu\" ARG0: x10 ]  [ _fly_n_1<11:15> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h20",
+            "args": {
+              "CARG": "Does",
+              "ARG0": "x16"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "_fly_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:15> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:15> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:4> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _doe_n_1<0:4> LBL: h14 ARG0: x10 ]  [ compound<5:15> LBL: h8 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x16 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<5:10> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ named<5:10> LBL: h20 CARG: \"Pingu\" ARG0: x16 ]  [ _fly_n_1<11:15> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "_doe_n_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x4",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h20",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x16"
+            }
+          },
+          {
+            "pred": "_fly_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:10> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:4> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:4> LBL: h9 CARG: \"Does\" ARG0: x3 ]  [ proper_q<5:10> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ named<5:10> LBL: h14 CARG: \"Pingu\" ARG0: x5 ]  [ _fly_v_1<11:15> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "appos",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "x3",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h9",
+            "args": {
+              "CARG": "Does",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_fly_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h9",
+          "h12": "h14"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h7": {},
+          "h8": {},
+          "h12": {},
+          "h13": {},
+          "h0": {},
+          "h1": {},
+          "h9": {},
+          "h14": {},
+          "h6": {},
+          "h11": {}
+        }
+      }
+    }
+  ]
+}

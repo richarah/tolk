@@ -1,0 +1,88 @@
+{
+  "text": "Who likes Sandy?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _like_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<10:16> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ named<10:16> LBL: h12 CARG: \"Sandy\" ARG0: x8 ] > HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "person",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_like_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h12",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h12": {},
+          "h5": {},
+          "h9": {}
+        }
+      }
+    }
+  ]
+}

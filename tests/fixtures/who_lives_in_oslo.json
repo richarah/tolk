@@ -1,0 +1,201 @@
+{
+  "text": "Who lives in Oslo?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _live_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_loc<10:12> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:18> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ named<13:18> LBL: h13 CARG: \"Oslo\" ARG0: x9 ] > HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "person",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_loc",
+            "label": "h1",
+            "args": {
+              "ARG0": "e8",
+              "ARG1": "e2",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Oslo",
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "e8": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h13": {},
+          "h5": {},
+          "h10": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _live_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_state<10:12> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:18> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ named<13:18> LBL: h13 CARG: \"Oslo\" ARG0: x9 ] > HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "person",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_state",
+            "label": "h1",
+            "args": {
+              "ARG0": "e8",
+              "ARG1": "e2",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Oslo",
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "e8": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h13": {},
+          "h5": {},
+          "h10": {}
+        }
+      }
+    }
+  ]
+}
