@@ -35,10 +35,10 @@ Numbered by severity. Status is after the fixes.
 9. **Rule violation.** A merge could leave a `why` row naming a premise fact that was deleted as a twin (`prove` would then fail on that row). Fixed: premises are rewritten to the twin.
 10. **Rule violation.** Dropping a supposition left its sentence row behind and changed the rules' `ran` round, so the state was not exactly restored (SPEC phase 6 says it is). Fixed; the test compares every table.
 11. **Fragile.** The check that "every predication is consumed" was not a check: a predication no family handles is refused, but a `neg` that negated nothing, or a quantified variable that no atom used, passed silently. Fixed with `_unconsumed`.
-12. **Fragile, unresolved.** Preposition senses (`_in_p_loc` against `_in_p_state`) and verb senses (`work_v_1` against `work_v_in`) differ between the statement and the question when the parser ranks them differently, so a told fact may not answer its own question. Overlap with the store cannot repair it, because it counts predicates, not senses. Not fixable without a sense-merging rule that this spec does not allow.
-13. **Fragile, unresolved.** Negation as failure is evaluated per round, not per stratum (DECISIONS.md already says so). A negated body atom whose predicate is derived late can fire early.
-14. **Fragile, unresolved.** A repeated statement is detected by its text, not its meaning; a definite description ("The robin sings.") told twice in a changed world is not stored again. Not tested here.
-15. **Untidy, unresolved.** Modals and control verbs ("Rio might swim.", "Ada wants to sleep.") are refused `UNBOUND_VARIABLE h9`, which is correct and unhelpful. The refusal is safe; its detail is not.
+12. **Fragile. Fixed in 3405a53 (phase 9.8).** Preposition senses (`_in_p_loc` against `_in_p_state`) and verb senses (`work_v_1` against `work_v_in`) differ between the statement and the question when the parser ranks them differently, so a told fact may not answer its own question. Overlap with the store cannot repair it, because it counts predicates, not senses. Not fixable without a sense-merging rule that this spec does not allow.
+13. **Fragile. Fixed in 01c59f7 (phase 9.6).** Negation as failure is evaluated per round, not per stratum (DECISIONS.md already says so). A negated body atom whose predicate is derived late can fire early.
+14. **Fragile. Fixed in ffb1fb9 (phase 9.7).** A repeated statement is detected by its text, not its meaning; a definite description ("The robin sings.") told twice in a changed world is not stored again. Not tested here.
+15. **Untidy. Fixed in b5a3bdd (phase 9.3).** Modals and control verbs ("Rio might swim.", "Ada wants to sleep.") are refused `UNBOUND_VARIABLE h9`, which is correct and unhelpful. The refusal is safe; its detail is not.
 16. **Untidy.** The README and PROGRESS.md say the suite has 80 tests; PROGRESS.md was not rewritten here. Do not rely on its counts.
 
 ## Generalisation
@@ -112,7 +112,7 @@ The free-form sentences from the manual-use session (negation, questions, bare n
 
 ## Unresolved, and final output
 
-Findings 12, 13, 14 and 15 are unresolved (reasons given with each).
+None. Findings 12 to 15 were fixed in phase 9 (commits named with each finding).
 
 Final test output: `204 passed in 8.76s`.
 

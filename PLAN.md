@@ -170,3 +170,7 @@ Commit with the attribution line from the current system reminder. No push.
 ## Stop conditions
 Parser unusable, a check that needs a hard rule broken, or the same check failing
 three times after three different fixes. Write the blocker in PROGRESS.md and stop.
+
+# SPEC2 plan
+
+Phase 9: eight debts, in the order of SPEC2, one commit each. Done.

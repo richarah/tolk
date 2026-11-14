@@ -483,3 +483,16 @@ Spec points resolved myself (each is in DECISIONS.md or the resolutions at the t
 - The lemma scan covers the lemmas of `tests/sentences.txt`, as the spec says. Extra sentences are not scanned.
 - `propose` returns the thing ids as support. Showing their wording would reuse `say.fact_text`, not done.
 - SQUID and libglot: not used. SQUID is named in SPEC.md, and its code was not read. The only idea taken is keeping the parser session open, recorded in DECISIONS.md.
+
+## Phase 9: debts from the review (SPEC2)
+
+Eight items, one commit each: 7bec894 records, e27ee02 split of compile.py (test output identical before and after), b5a3bdd consumption of scopal predicates, 3676cfd refusal table, 729b711 reading choice, 01c59f7 stratified negation, ffb1fb9 repeats by meaning, 3405a53 preposition widening and the repl. The four unresolved findings in REVIEW.md are marked fixed with these commits.
+
+```
+$ .venv/bin/pytest -q
+241 passed in 8.72s
+$ .venv/bin/python scripts/coverage.py tests/sentences.txt tests/extra.txt tests/round1.txt tests/round2.txt
+compiled 71 of 86 (82.6%)
+```
+
+Open: "Where is Bob?" after "Bob is in Paris." is Unknown (argument shapes differ); "Ivy sings in Turin." stores a rule about ivy (the parser reads the name as a mass noun). Both in DECISIONS.md.
