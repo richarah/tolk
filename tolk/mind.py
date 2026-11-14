@@ -29,6 +29,7 @@ class Mind:
         self.db = store.open_store(path)
         self.ctx = "world"  # the current context: "world", or a supposition's name
         self._suppositions = 0
+        self._ran: list[tuple[int, int | None]] = []
 
     def hear(self, text: str) -> Result:
         readings = [sem.read(raw) for raw in erg.parse(text)]
@@ -70,6 +71,8 @@ class Mind:
         if self.ctx != "world":
             raise ValueError("a supposition inside a supposition is not supported")
         self._suppositions += 1
+        # The engine's round bookkeeping is state too; drop puts it back.
+        self._ran = self.db.execute("SELECT id, ran FROM rule").fetchall()
         self.ctx = f"s{self._suppositions}"
         return self.hear(text)
 
@@ -77,6 +80,7 @@ class Mind:
         if self.ctx == "world":
             raise ValueError("there is no supposition to drop")
         store.drop_ctx(self.db, self.ctx)
+        self.db.executemany("UPDATE rule SET ran = ? WHERE id = ?", [(ran, rid) for rid, ran in self._ran])
         self.ctx = "world"
 
     def propose(self) -> list[Proposal]:

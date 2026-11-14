@@ -1,0 +1,776 @@
+{
+  "text": "Ada keeps two cats.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Ada\" ARG0: x3 ]  [ _keep_v_unspec<4:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<10:13> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ card<10:13> LBL: h13 CARG: \"2\" ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ]  [ _cat_n_1<14:19> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_keep_v_unspec",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h13",
+            "args": {
+              "CARG": "2",
+              "ARG0": "e15",
+              "ARG1": "x9"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Ada\" ARG0: x3 ]  [ _keep_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ unknown<10:19> LBL: h11 ARG0: e12 [ e SF: prop ] ARG: x13 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<10:13> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ card<10:13> LBL: h17 CARG: \"2\" ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x13 ]  [ _cat_n_1<14:19> LBL: h17 ARG0: x13 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h11 h15 qeq h17 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_keep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h9",
+              "ARG3": "i10"
+            }
+          },
+          {
+            "pred": "unknown",
+            "label": "h11",
+            "args": {
+              "ARG0": "e12",
+              "ARG": "x13"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x13",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h17",
+            "args": {
+              "CARG": "2",
+              "ARG0": "e19",
+              "ARG1": "x13"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "x13"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h9": "h11",
+          "h15": "h17"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h9": {},
+          "i10": {},
+          "e12": {
+            "SF": "prop"
+          },
+          "x13": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "e19": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h17": {},
+          "h4": {},
+          "h14": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:19> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ compound<4:19> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x17 [ x PERS: 3 NUM: sg PT: notpro ] ]  [ compound<4:13> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x17 ARG2: x20 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<4:9> LBL: h21 ARG0: x20 RSTR: h22 BODY: h23 ]  [ _keep_n_1<4:9> LBL: h24 ARG0: x20 ]  [ number_q<10:13> LBL: h25 ARG0: x17 RSTR: h26 BODY: h27 ]  [ card<10:13> LBL: h28 CARG: \"2\" ARG0: x17 ARG1: i30 ]  [ _cat_n_1<14:19> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h22 qeq h24 h26 qeq h28 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e16",
+              "ARG1": "x4",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h18",
+            "args": {
+              "ARG0": "e19",
+              "ARG1": "x17",
+              "ARG2": "x20"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h21",
+            "args": {
+              "ARG0": "x20",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "_keep_n_1",
+            "label": "h24",
+            "args": {
+              "ARG0": "x20"
+            }
+          },
+          {
+            "pred": "number_q",
+            "label": "h25",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h26",
+              "BODY": "h27"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h28",
+            "args": {
+              "CARG": "2",
+              "ARG0": "x17",
+              "ARG1": "i30"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h22": "h24",
+          "h26": "h28"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e16": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg",
+            "PT": "notpro"
+          },
+          "e19": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x20": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h22": {},
+          "h23": {},
+          "h26": {},
+          "h27": {},
+          "i30": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h24": {},
+          "h28": {},
+          "h5": {},
+          "h11": {},
+          "h18": {},
+          "h21": {},
+          "h25": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:19> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg PT: notpro ] ]  [ compound<0:13> LBL: h11 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x13 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:9> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ compound<0:9> LBL: h17 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x13 ARG2: x19 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]  [ named<0:3> LBL: h23 CARG: \"Ada\" ARG0: x19 ]  [ _keep_n_1<4:9> LBL: h17 ARG0: x13 ]  [ number_q<10:13> LBL: h25 ARG0: x10 RSTR: h26 BODY: h27 ]  [ card<10:13> LBL: h28 CARG: \"2\" ARG0: x10 ARG1: i30 ]  [ _cat_n_1<14:19> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h15 qeq h17 h21 qeq h23 h26 qeq h28 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h11",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "x10",
+              "ARG2": "x13"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x13",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x13",
+              "ARG2": "x19"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x19",
+              "RSTR": "h21",
+              "BODY": "h22"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h23",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x19"
+            }
+          },
+          {
+            "pred": "_keep_n_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "x13"
+            }
+          },
+          {
+            "pred": "number_q",
+            "label": "h25",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h26",
+              "BODY": "h27"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h28",
+            "args": {
+              "CARG": "2",
+              "ARG0": "x10",
+              "ARG1": "i30"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h15": "h17",
+          "h21": "h23",
+          "h26": "h28"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "PT": "notpro"
+          },
+          "e12": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x13": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h15": {},
+          "h16": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x19": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h21": {},
+          "h22": {},
+          "h26": {},
+          "h27": {},
+          "i30": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h17": {},
+          "h23": {},
+          "h28": {},
+          "h5": {},
+          "h11": {},
+          "h14": {},
+          "h20": {},
+          "h25": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop-or-ques ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ loc_nonsp<0:13> LBL: h1 ARG0: e5 [ e SF: prop ] ARG1: e2 ARG2: x6 [ x PERS: 3 NUM: sg ] ]  [ compound<0:13> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x9 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:9> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ compound<0:9> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x15 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]  [ named<0:3> LBL: h19 CARG: \"Ada\" ARG0: x15 ]  [ _keep_n_1<4:9> LBL: h13 ARG0: x9 ]  [ number_q<10:13> LBL: h21 ARG0: x6 RSTR: h22 BODY: h23 ]  [ card<10:13> LBL: h24 CARG: \"2\" ARG0: x6 ARG1: i26 ]  [ udef_q<14:19> LBL: h27 ARG0: x4 RSTR: h28 BODY: h29 ]  [ _cat_n_1<14:19> LBL: h30 ARG0: x4 ] > HCONS: < h0 qeq h1 h11 qeq h13 h17 qeq h19 h22 qeq h24 h28 qeq h30 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e5",
+              "ARG1": "e2",
+              "ARG2": "x6"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h7",
+            "args": {
+              "ARG0": "e8",
+              "ARG1": "x6",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h13",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "x9",
+              "ARG2": "x15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h17",
+              "BODY": "h18"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h19",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "_keep_n_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "number_q",
+            "label": "h21",
+            "args": {
+              "ARG0": "x6",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h24",
+            "args": {
+              "CARG": "2",
+              "ARG0": "x6",
+              "ARG1": "i26"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h27",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h28",
+              "BODY": "h29"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h30",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h11": "h13",
+          "h17": "h19",
+          "h22": "h24",
+          "h28": "h30"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop-or-ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "e5": {
+            "SF": "prop"
+          },
+          "x6": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "e8": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x9": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h11": {},
+          "h12": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h17": {},
+          "h18": {},
+          "h22": {},
+          "h23": {},
+          "i26": {},
+          "h28": {},
+          "h29": {},
+          "h0": {},
+          "h1": {},
+          "h13": {},
+          "h19": {},
+          "h24": {},
+          "h30": {},
+          "h7": {},
+          "h10": {},
+          "h16": {},
+          "h21": {},
+          "h27": {}
+        }
+      }
+    }
+  ]
+}

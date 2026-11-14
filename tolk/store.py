@@ -1,5 +1,6 @@
 """SQLite store: schema, writing told facts and rules, and identity of fresh constants."""
 
+import json
 import sqlite3
 
 from tolk import lf
@@ -99,6 +100,11 @@ def merge(db: sqlite3.Connection, a: Const, b: Const, sentence: int) -> None:
         ).fetchone()
         if twin:
             db.execute("UPDATE why SET fact = ? WHERE fact = ?", (twin[0], fid))
+            for why_id, premises in db.execute("SELECT rowid, premises FROM why").fetchall():
+                listed = json.loads(premises)
+                if fid in listed:
+                    db.execute("UPDATE why SET premises = ? WHERE rowid = ?",
+                               (json.dumps([twin[0] if p == fid else p for p in listed]), why_id))
             db.execute("DELETE FROM fact WHERE id = ?", (fid,))
         else:
             db.execute("UPDATE fact SET a0 = ?, a1 = ?, a2 = ? WHERE id = ?", (*moved, fid))
@@ -132,6 +138,10 @@ def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
     db.execute(f"DELETE FROM conflict WHERE positive_fact IN ({ids}) OR negative_fact IN ({ids})", (ctx, ctx))
     db.execute(f"DELETE FROM why WHERE fact IN ({ids})", (ctx,))
     db.execute("DELETE FROM fact WHERE ctx = ?", (ctx,))
+    db.execute(
+        "DELETE FROM sentence WHERE id NOT IN (SELECT sentence FROM why WHERE sentence IS NOT NULL "
+        "UNION SELECT sentence FROM rule UNION SELECT sentence FROM merge)"
+    )
     db.execute(
         "DELETE FROM entity WHERE kind IN ('event', 'anon', 'skolem') AND id NOT IN ("
         "SELECT a0 FROM fact UNION SELECT a1 FROM fact UNION SELECT a2 FROM fact)"

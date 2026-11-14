@@ -1,0 +1,455 @@
+{
+  "text": "Pip does not swim.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Pip\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _swim_v_1<13:18> LBL: h11 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Pip",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_swim_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ udef_q<0:18> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<0:8> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]  [ compound<0:8> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<0:3> LBL: h18 CARG: \"Pip\" ARG0: x14 ]  [ _doe_n_1<4:8> LBL: h12 ARG0: x9 ]  [ udef_q<9:18> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ _not_c<9:12> LBL: h24 ARG0: x4 ARG1: x9 ARG2: x21 ]  [ _swim_n_1<13:18> LBL: h25 ARG0: x21 ] > HCONS: < h0 qeq h1 h6 qeq h24 h10 qeq h12 h16 qeq h18 h22 qeq h25 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h8",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h12",
+            "args": {
+              "ARG0": "e13",
+              "ARG1": "x9",
+              "ARG2": "x14"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h15",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Pip",
+              "ARG0": "x14"
+            }
+          },
+          {
+            "pred": "_doe_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "_not_c",
+            "label": "h24",
+            "args": {
+              "ARG0": "x4",
+              "ARG1": "x9",
+              "ARG2": "x21"
+            }
+          },
+          {
+            "pred": "_swim_n_1",
+            "label": "h25",
+            "args": {
+              "ARG0": "x21"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h24",
+          "h10": "h12",
+          "h16": "h18",
+          "h22": "h25"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3"
+          },
+          "h6": {},
+          "h7": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "e13": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h16": {},
+          "h17": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "h0": {},
+          "h1": {},
+          "h24": {},
+          "h12": {},
+          "h18": {},
+          "h25": {},
+          "h5": {},
+          "h8": {},
+          "h15": {},
+          "h20": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Pip\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _swim_v_1<13:18> LBL: h11 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Pip",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_swim_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h4": {}
+        }
+      }
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ udef_q<0:18> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:18> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Pip\" ARG0: x10 ]  [ udef_q<4:8> LBL: h16 ARG0: x17 [ x PERS: 3 NUM: pl IND: + ] RSTR: h18 BODY: h19 ]  [ _doe_n_1<4:8> LBL: h20 ARG0: x17 ]  [ udef_q<9:18> LBL: h21 ARG0: x22 [ x PERS: 3 NUM: sg IND: + ] RSTR: h23 BODY: h24 ]  [ _not_c<9:12> LBL: h8 ARG0: x4 ARG1: x17 ARG2: x22 ]  [ _swim_n_1<13:18> LBL: h25 ARG0: x22 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h23 qeq h25 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Pip",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "_doe_n_1",
+            "label": "h20",
+            "args": {
+              "ARG0": "x17"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h21",
+            "args": {
+              "ARG0": "x22",
+              "RSTR": "h23",
+              "BODY": "h24"
+            }
+          },
+          {
+            "pred": "_not_c",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4",
+              "ARG1": "x17",
+              "ARG2": "x22"
+            }
+          },
+          {
+            "pred": "_swim_n_1",
+            "label": "h25",
+            "args": {
+              "ARG0": "x22"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20",
+          "h23": "h25"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "x17": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h18": {},
+          "h19": {},
+          "x22": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h23": {},
+          "h24": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h25": {},
+          "h5": {},
+          "h11": {},
+          "h16": {},
+          "h21": {}
+        }
+      }
+    }
+  ]
+}

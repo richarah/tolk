@@ -1,0 +1,61 @@
+# tier A shapes, new words
+Rio is a sparrow.
+Every sparrow is a finch.
+Every finch swims.
+Finches are creatures.
+Rio hums.
+Every sparrow that hums is cheerful.
+Ada is a teacher.
+Ada keeps a cat.
+Every teacher who keeps a cat is calm.
+Ada admires Bo.
+Tom is a cat.
+Every cat has a master.
+Does Rio swim?
+Is Rio a creature?
+Is Rio cheerful?
+What swims?
+Which sparrow hums?
+Who is calm?
+Who admires Bo?
+Who does Ada admire?
+Is Bo calm?
+Does Tom have a master?
+# tier B shapes
+Pip is a puffin.
+Pip does not swim.
+No puffin swims.
+Every puffin is a finch.
+Does Pip swim?
+Bruce Wayne is Batman.
+Batman swims.
+Does Bruce Wayne swim?
+Is the sparrow cheerful?
+The cat purrs.
+Rio does not swim.
+# tier C shapes
+Ann sleeps in Rome.
+Bob departed.
+Who sleeps in Rome?
+Where does Ann sleep?
+Does Ann sleep in Rome?
+Does Ann sleep in Paris?
+# should be refused
+Most cats purr.
+She swims.
+Rio might swim.
+Rio is smaller than Pip.
+Ada keeps two cats.
+If Rio hums, Pip hums.
+Rio hums and Ada sings.
+Sing!
+Ada wants to sleep.
+Every finch that swims quickly is cheerful or calm.
+Every dog barks or sleeps.
+Kim sings and dances.
+Kim will sing.
+Kim is singing.
+Kim has arrived.
+Every person who owned a dog is happy.
+Is every dog a mammal?
+Nobody flies.

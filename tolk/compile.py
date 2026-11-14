@@ -10,6 +10,8 @@ from tolk.rules import content, copula, modifiers, names, neg, quant
 from tolk.sem import EP, Reading
 
 FAMILIES = (names, quant, neg, copula, modifiers, content)
+# Refusals that say a reading is not a sensible analysis, as opposed to a meaning the store cannot hold.
+MALFORMED = {"EMPTY_RULE_BODY", "UNBOUND_VARIABLE", "UNCONSUMED", "ARGUMENT_GAP", "UNEXPRESSED_SUBJECT", "TOO_MANY_ARGUMENTS", "WH_BOUND_TO_CONSTANT"}
 Lookup = Callable[[str], set[str]]
 
 
@@ -54,6 +56,9 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
     sf = r.props[r.index].get("SF")
     if sf not in ("prop", "ques"):
         return lf.Refusal("UNSUPPORTED_FORCE", str(sf))
+    unsaid = _tense(r)
+    if unsaid:
+        return unsaid
     quants = [ep for ep in r.eps if quant.is_quantifier(ep)]
     main_labels = _main_labels(r)
     main = [ep for ep in r.eps if ep.label in main_labels]
@@ -88,6 +93,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
             if bound[q.args["ARG0"]] == quant.INDEF and q.args["ARG0"] not in alias and q.args["ARG0"] not in subjects
             and any(ep.label in negated and q.args["ARG0"] in ep.args.values() for ep in r.eps)
         ]
+    if sf == "ques" and any(q.pred in quant.UNIVERSAL and bound[q.args["ARG0"]] == q.pred for q in quants):
+        return lf.Refusal("UNIVERSAL_QUESTION", "a question over every or no thing would be answered as a question over some")
     body = _restricted(r, quants, universal_top)
     if any(q.pred == "_every_q" and q in universal_top for q in quants) and any(
         ep.label in negated and ep.pred != "neg" for i, ep in enumerate(r.eps) if i not in body
@@ -126,6 +133,20 @@ def compile_reading(r: Reading, lookup: Lookup | None = None) -> lf.LF:
         out = lf.Tell(out.atoms + (Atom("tense", (ctx.term(r.index), Const("past", "value"))),))
     unbound = _unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
+
+
+def _tense(r: Reading) -> lf.Refusal | None:
+    """Only present, and past on the main event, are stored. Anything else would be dropped without a trace."""
+    for ep in r.eps:
+        v = ep.args.get("ARG0", "")
+        if not (ep.pred.startswith("_") and v.startswith("e")):
+            continue
+        p = r.props.get(v, {})
+        if p.get("PERF") == "+" or p.get("PROG") == "+":
+            return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)
+        if p.get("TENSE") not in (None, "untensed", "pres") and not (v == r.index and p["TENSE"] == "past"):
+            return lf.Refusal("UNSUPPORTED_TENSE", f"{p['TENSE']} on {ep.pred}")
+    return None
 
 
 def _main_labels(r: Reading) -> set[str]:
@@ -207,6 +228,9 @@ def _restricted(r: Reading, quants: list[EP], universal_top: list[EP]) -> set[in
 def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
     atoms: list[Atom] = []
     for ep in eps:
+        if content.CONJUNCTION.fullmatch(ep.pred):
+            # Checked before the families: the families would take a conjunction of two events for an event modifier.
+            return lf.Refusal("COORDINATION", ep.pred)
         for fam in FAMILIES:
             got = fam.map_ep(ctx, ep)
             if got is None:
@@ -242,7 +266,16 @@ def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None
     cands = [(i, compile_reading(r, lookup)) for i, r in enumerate(readings) if eventive(r)]
     if not cands:
         return 0, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event")
-    ok = [(i, x) for i, x in cands if not isinstance(x, lf.Refusal)]
+    # A refusal for a meaning the store cannot hold ends the search: a reading ranked below it would store something else.
+    # A malformed reading, such as a name reading of a bare plural, is skipped.
+    ok = []
+    for i, x in cands:
+        if not isinstance(x, lf.Refusal):
+            ok.append((i, x))
+        elif x.code not in MALFORMED:
+            if not ok:
+                return i, x
+            break
     if not ok:
         return cands[0]
     voters = [readings[i] for i, _ in ok]
