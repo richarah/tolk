@@ -196,3 +196,5 @@ Phase 19: Mind.retract, diagnose, observe, auto_revise, Forget that S. store.ret
 Phase 20: fixtures read (before/after predications, yofc, in_p_temp). rules/temporal.py, tense facts, Ask.tenses, built-in axioms, reuse_events.
 
 Phase 21: fixtures read. rules/claims.py, Tell.claims/Ask.claims, claim table, claim contexts, Mind binds claims in questions.
+
+Phase 22: fixtures read (a comparative is the adjective `_tall_a_1(e2, x3)` plus `more_comp(e9, e2, y)`: ARG1 the adjective's event, ARG2 the thing compared with; "the tallest" is `superl(e14, e13)` over a `generic_entity` with the adjective; `comp_equal` is "as ... as"; `_less_x_comp` is "less ... than", part of speech x, and was being stored as a fact). rules/comparatives.py; the fact is `comp:<adjective predicate>(a, b)` with no event; axioms per adjective in comparison.py; `Extreme` logical form for "Who is the tallest?".

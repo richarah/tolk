@@ -103,12 +103,17 @@ class Describe:
 
 
 @dataclass(frozen=True)
+class Extreme:
+    pred: str  # the adjective a superlative question is about: Who is the tallest?
+
+
+@dataclass(frozen=True)
 class Refusal:
     code: str
     detail: str
 
 
-LF = Tell | Rule | Ask | Every | Same | Describe | Refusal
+LF = Tell | Rule | Ask | Every | Same | Describe | Extreme | Refusal
 
 # The one home of refusal codes. "final": the sentence was understood and the store cannot hold what it means,
 # so the reading search ends. "reading": this reading is unusable, so the next one is tried.
@@ -130,22 +135,6 @@ def is_final(r: Refusal) -> bool:
 THING_NAMES = ("X", "Y", "Z", "U", "V", "W")
 
 
-def claim_key(atoms: tuple["Atom", ...]) -> str:
-    """The content of a claim, independent of how its events and things were numbered, so that a told claim and an asked one compare."""
-    def render(order: list) -> list[str]:
-        table: dict = {}
-
-        def name(t) -> str:
-            if isinstance(t, Var) or t.kind in FRESH:
-                return table.setdefault(t, f"#{len(table)}")
-            return t.id
-
-        return sorted(f"{'' if a.positive else 'not '}{a.pred}({','.join(name(t) for t in a.args)})" for a in order)
-
-    order = sorted(atoms, key=lambda a: (a.pred, len(a.args), tuple(t.id if isinstance(t, Const) and t.kind not in FRESH else "" for t in a.args)))
-    return ";".join(render(order))
-
-
 def show(x: LF) -> str:
     text = _show(x)
     claims = getattr(x, "claims", ())
@@ -164,6 +153,8 @@ def _show(x: LF) -> str:
         return f"{'same':<6} {x.a.id} = {x.b.id}"
     if isinstance(x, Describe):
         return f"describe {x.entity.id}"
+    if isinstance(x, Extreme):
+        return f"extreme {x.pred}"
     names = _namer(x)
     if isinstance(x, Tell):
         return "\n".join(f"{'tell':<6} {_atom(a, names)}" for a in x.atoms)

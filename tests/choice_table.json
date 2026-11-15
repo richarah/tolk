@@ -1237,14 +1237,14 @@
     "generic": 0,
     "overlap": 0,
     "swallowed": 0,
-    "status": "UNCONSUMED"
+    "status": "UNSUPPORTED_PREDICATE"
    },
    {
     "rank": 4,
     "generic": 0,
     "overlap": 0,
     "swallowed": 0,
-    "status": "UNCONSUMED"
+    "status": "UNSUPPORTED_PREDICATE"
    },
    {
     "rank": 5,

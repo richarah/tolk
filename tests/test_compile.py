@@ -92,11 +92,16 @@ def code_words(source: str) -> set[str]:
     previous = tokenize.NEWLINE
     for tok in tokenize.generate_tokens(io.StringIO(source).readline):
         docstring = tok.type == tokenize.STRING and previous in (tokenize.NEWLINE, tokenize.INDENT, tokenize.DEDENT, tokenize.NL)
-        if tok.type not in (tokenize.COMMENT, tokenize.NL) and not docstring:
+        prose = tok.type == tokenize.STRING and " " in tok.string.strip("\"'")  # a key is one word; wording for the reader is not a key
+        if tok.type not in (tokenize.COMMENT, tokenize.NL) and not docstring and not prose:
             out |= set(re.split(r"[^a-z]+", tok.string.lower()))
         if tok.type != tokenize.COMMENT:
             previous = tok.type
     return out
+
+
+def test_the_scan_ignores_wording_with_spaces_but_not_a_word_a_rule_could_key_on() -> None:
+    assert not code_words('x = "among those sparrow"') & {"sparrow"} and "sparrow" in code_words('x = "sparrow"')
 
 
 def test_the_scan_ignores_comments_and_docstrings_but_not_code() -> None:

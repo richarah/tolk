@@ -95,3 +95,14 @@ What does Kim believe?
 Kim believed that Rio flies.
 Sandy says that Kim believes that Rio flies.
 Kim wants to sleep.
+# phase 22, own words
+Ada is older than Bo.
+Bo is older than Cy.
+Is Ada older than Cy?
+Is Cy older than Ada?
+Is Ada old?
+Who is the oldest?
+Is Ada heavier than Bo?
+Ada is shorter than Bo.
+Is Bo taller than Ada?
+Lee is not taller than Bo.

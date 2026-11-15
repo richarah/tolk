@@ -628,3 +628,16 @@ Clause verbs make claims held in separate contexts; questions compare content ex
 $ .venv/bin/pytest -q
 498 passed, 1 xfailed in 19.46s
 ```
+
+## Audit (AUDIT.md) and its fixes
+
+Findings and fixes are in `AUDIT.md`. Reading choice is now generic entries, overlap, swallowed words, parser order, with compile only among ties (table in `tests/choice_table.json`); unknown words keep their class and are given to the parser as part-of-speech tags; no file in `tolk/` is over 250 lines.
+
+## Phase 22: comparatives
+
+Dialogue and own-word cases in `tests/test_phase22.py`; fixtures read first, plan in PLAN.md. Earlier results changed as SPEC2 says: "Rio is smaller than Pip." is stored, not refused (`test_generalise.REFUSED`).
+
+```
+$ .venv/bin/pytest -q
+686 passed, 1 xfailed in 20.33s
+```

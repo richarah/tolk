@@ -5,14 +5,14 @@ from collections import Counter
 
 from tolk import choice, lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, claims, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, post, quant, scope, temporal
+from tolk.rules import check, claims, comparatives, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, post, quant, scope, temporal
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
 # Predicates the grammar uses for bookkeeping of the grammar, seen only in readings that are not the sentence: ellipsis, an implied place, a
 # subordinator, a modifier of nothing, an apposition. A reading that has one is unusable; it is not a meaning the store cannot hold.
 ARTIFACTS = {"ellipsis_ref", "place_n", "subord", "mod", "appos", "id"}
-FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, claims, modifiers, content)
+FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, claims, comparatives, modifiers, content)
 
 
 def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.History | None = None) -> lf.LF:
@@ -43,6 +43,11 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     for c in conjs:
         if c.nominal:
             bound[c.group] = quant.INDEF  # a group of things is not a generic: it stands for its members
+    compared = comparatives.plan(r)
+    if isinstance(compared, lf.Refusal):
+        return compared
+    if sf == "ques" and (extreme := comparatives.superlative(r)):
+        return lf.Extreme(extreme)
     alias = copula.plan(r.eps, bound)
     const = names.plan(r)
     resolved = pronouns.plan(r, const, history)
@@ -100,7 +105,7 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card in a rule: the number of things a rule makes is not stored")
     if len(cards) > 1 and mode == "ask":
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card: one number per question")
-    ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()))
+    ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()), compared=compared)
     held = claims.find(r)
     inside: set[int] = set()
     if held:

@@ -6,6 +6,7 @@ import sqlite3
 from tolk import lf, say, store
 from tolk.ask import Answer, prove
 from tolk.lf import Atom
+from tolk.rules import claims
 
 
 def describe(db: sqlite3.Connection, ctx: str, entity: str) -> str:
@@ -43,7 +44,7 @@ def defeated(db: sqlite3.Connection, proofs: list) -> str:
 def bind_claims(db: sqlite3.Connection, x: lf.Ask) -> lf.Ask | Answer:
     """A question about what someone believes: the claims whose content is exactly the asked content stand in for the claim variable."""
     (var, content), = x.claims
-    ids = [i for (i,) in db.execute("SELECT id FROM claim WHERE printed = ?", (lf.claim_key(content),))]
+    ids = [i for (i,) in db.execute("SELECT id FROM claim WHERE printed = ?", (claims.claim_key(content),))]
     if not ids:
         return Answer("Unknown", (), ())
     bodies = tuple(tuple(Atom(a.pred, tuple(lf.Const(c, "claim") if t == var else t for t in a.args), a.positive) for a in x.body) for c in ids)
@@ -65,3 +66,11 @@ def answer_text(db: sqlite3.Connection, a: Answer) -> str:
     if a.widened:
         head += "\n(widened: " + "; ".join(a.widened) + ")"
     return f"{head}\n{proofs}" if proofs else head
+
+
+def extreme_text(db: sqlite3.Connection, a: Answer) -> str:
+    """Who is the tallest: the thing, and that it is the tallest among the things compared, not of everything."""
+    head, _, proofs = answer_text(db, a).partition("\n")
+    if a.value != "Yes":
+        return head
+    return head + " (among those I know)" + ("\n" + proofs if proofs else "")

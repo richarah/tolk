@@ -90,3 +90,14 @@ Who believes that Tweety swims?
 What does Kim believe?
 Kim wants to sleep.
 Kim knows that Sandy sings.
+# phase 22
+Kim is taller than Sandy.
+Sandy is taller than Lee.
+Is Kim taller than Lee?
+Is Lee taller than Kim?
+Is Kim tall?
+Who is the tallest?
+Kim is as tall as Sandy.
+Kim is less tall than Sandy.
+Kim is shorter than Sandy.
+Kim is two metres taller than Sandy.

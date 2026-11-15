@@ -4,8 +4,10 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, defaults, engine, diagnosis, history, lf, negation, ordering, proposals, report, say, sem, store, words
+from tolk import compile as comp, comparison, defaults, engine, diagnosis, history, lf, negation, ordering, proposals, report, say, sem, store, words
 from tolk.diagnosis import Diagnosis
+from tolk.rules import claims
+from tolk.rules.comparatives import PREFIX
 from tolk.proposals import Proposal
 from tolk.ask import Answer, answer, prove
 from tolk.lf import Atom, Var
@@ -97,7 +99,7 @@ class Mind:
     def _forget(self, target: str) -> Result:
         readings, k, x = self._read(target)
         head = (k + 1, len(readings), lf.show(x))
-        if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every)):
+        if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every, lf.Extreme)):
             return Result(*head, outcome="refused: only a statement can be forgotten")
         found = history.latest_told(self.db, lf.show(x), self.ctx)
         if found is None:
@@ -138,6 +140,9 @@ class Mind:
             value, by_default = defaults.universal(self.db, x, self.policy)
             a = Answer(value, (), (), by_default=by_default)
             return Result(*head, outcome=value + (", by default" if by_default and value != "Unknown" else ""), answer=a)
+        if isinstance(x, lf.Extreme):
+            a = comparison.extreme(self.db, self.ctx, x.pred)
+            return Result(*head, outcome=report.extreme_text(self.db, a), answer=a)
         if isinstance(x, lf.Describe):
             return Result(*head, outcome=report.describe(self.db, self.ctx, x.entity.id))
         prior = store.repeat_of(self.db, printed, self.ctx)
@@ -165,6 +170,8 @@ class Mind:
             return Result(*head, outcome="rule stored")
         if x.claims and self.ctx != "world":
             return Result(*head, outcome="refused: a claim inside a supposition is not stored yet")
+        for pred in {a.pred for a in x.atoms if a.pred.startswith(PREFIX)}:
+            comparison.ensure_axioms(self.db, pred)
         if any(a.pred in (lf.BEFORE, "_in_p_temp") for a in x.atoms):
             ordering.ensure_time_axioms(self.db)
             x = ordering.reuse_events(self.db, x, self.ctx)
@@ -179,7 +186,7 @@ class Mind:
         for claim_id, (ref, content) in zip(store.fresh_of_kind(self.db, "claim")[len(claims_before):], x.claims):
             # The clause holds in a context apart that the world does not inherit and the engine does not derive in.
             inner = store.tell(self.db, lf.Tell(content), sid, claim_id, allow_conflict=True)
-            self.db.execute("INSERT INTO claim(id, printed, sentence) VALUES (?, ?, ?)", (claim_id, lf.claim_key(content), sid))
+            self.db.execute("INSERT INTO claim(id, printed, sentence) VALUES (?, ?, ?)", (claim_id, claims.claim_key(content), sid))
         new = store.fresh_of_kind(self.db, "anon")[len(anon_before):]
         # The store numbers new things in the order the atoms first mention them.
         local = list(dict.fromkeys(t.id for a in x.atoms for t in a.args if isinstance(t, lf.Const) and t.kind == "anon"))
