@@ -1,6 +1,5 @@
 """SQLite store: schema, writing told facts and rules, and identity of fresh constants."""
 
-import dataclasses
 import json
 import sqlite3
 

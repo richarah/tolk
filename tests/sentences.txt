@@ -107,3 +107,11 @@ Is Rex glorpy?
 Pingu is a flibberer.
 Does Pingu flibber?
 Tweety is flibberable.
+# phase 24: the patterns the generator's skeletons are made from
+Tweety is happy.
+Tweety is not a robin.
+Tweety is not happy.
+Tweety does not sing.
+Kim does not like Sandy.
+Tweety is calm.
+Tweety is not calm.

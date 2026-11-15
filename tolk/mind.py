@@ -4,7 +4,7 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, comparison, defaults, engine, diagnosis, history, lf, morph, negation, ordering, proposals, report, say, sem, store, words
+from tolk import compile as comp, comparison, defaults, diagnosis, engine, generate, history, lf, morph, negation, ordering, proposals, report, say, sem, store, words
 from tolk.diagnosis import Diagnosis
 from tolk.rules import claims
 from tolk.rules.comparatives import PREFIX
@@ -218,6 +218,10 @@ class Mind:
         store.drop_ctx(self.db, self.ctx)
         self.db.executemany("UPDATE rule SET ran = ? WHERE id = ?", [(ran, rid) for rid, ran in self._ran])
         self.ctx = "world"
+
+    def word(self, fact_id: int) -> generate.Wording:
+        """A fact in English, through the grammar when that gives the fact back, and from the template otherwise."""
+        return generate.word(self.db, fact_id)
 
     def propose(self) -> list[Proposal]:
         return proposals.propose(self.db)

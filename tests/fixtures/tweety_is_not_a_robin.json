@@ -1,0 +1,523 @@
+{
+  "text": "Tweety is not a robin.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ _be_v_id<7:9> LBL: h9 ARG0: e2 ARG1: x3 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ neg<10:13> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ]  [ _a_q<14:15> LBL: h13 ARG0: x10 RSTR: h14 BODY: h15 ]  [ _robin_n_1<16:22> LBL: h16 ARG0: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Tweety",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "h12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "_robin_n_1",
+            "label": "h16",
+            "args": {
+              "ARG0": "x10"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h9",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h12": {},
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h9": {},
+          "h16": {},
+          "h4": {},
+          "h13": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "be_id_is",
+          7,
+          9
+        ],
+        [
+          "not",
+          10,
+          13
+        ],
+        [
+          "a_det",
+          14,
+          15
+        ],
+        [
+          "robin_n2",
+          16,
+          22
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ _be_v_id<7:9> LBL: h9 ARG0: e2 ARG1: x3 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ neg<10:13> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ]  [ _a_q<14:15> LBL: h13 ARG0: x10 RSTR: h14 BODY: h15 ]  [ named<16:22> LBL: h16 CARG: \"Robin\" ARG0: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Tweety",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "h12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h16",
+            "args": {
+              "CARG": "Robin",
+              "ARG0": "x10"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h9",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h12": {},
+          "h14": {},
+          "h15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h9": {},
+          "h16": {},
+          "h4": {},
+          "h13": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "be_id_is",
+          7,
+          9
+        ],
+        [
+          "not",
+          10,
+          13
+        ],
+        [
+          "a_det",
+          14,
+          15
+        ],
+        [
+          "robin_n1",
+          16,
+          22
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ _be_v_id<7:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _not_x_deg<10:13> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u12 ]  [ _a_q<14:15> LBL: h10 ARG0: x9 RSTR: h13 BODY: h14 ]  [ _robin_n_1<16:22> LBL: h15 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Tweety",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "_not_x_deg",
+            "label": "h10",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "u12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "_robin_n_1",
+            "label": "h15",
+            "args": {
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "u12": {},
+          "h13": {},
+          "h14": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h15": {},
+          "h4": {},
+          "h10": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "be_id_is",
+          7,
+          9
+        ],
+        [
+          "not_deg",
+          10,
+          13
+        ],
+        [
+          "a_det",
+          14,
+          15
+        ],
+        [
+          "robin_n2",
+          16,
+          22
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ _be_v_id<7:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _not_x_deg<10:13> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u12 ]  [ _a_q<14:15> LBL: h10 ARG0: x9 RSTR: h13 BODY: h14 ]  [ named<16:22> LBL: h15 CARG: \"Robin\" ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Tweety",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "_not_x_deg",
+            "label": "h10",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "u12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Robin",
+              "ARG0": "x9"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "u12": {},
+          "h13": {},
+          "h14": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h15": {},
+          "h4": {},
+          "h10": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "be_id_is",
+          7,
+          9
+        ],
+        [
+          "not_deg",
+          10,
+          13
+        ],
+        [
+          "a_det",
+          14,
+          15
+        ],
+        [
+          "robin_n1",
+          16,
+          22
+        ]
+      ]
+    }
+  ]
+}

@@ -650,3 +650,26 @@ The dialogue and fifteen own-word cases are in `tests/test_phase23.py` (written 
 $ .venv/bin/pytest -q
 714 passed, 1 xfailed in 21.13s
 ```
+
+## Phase 24: wording through the grammar
+
+Skeletons from fixtures; `Mind.word`. Tier A derived facts (all facts of level 2 or 3 after the twelve statements): 9, of which 5 generated and round-tripped (Tweety is a bird, Tweety flies, Tweety is happy, Kim is happy, Tweety is an animal) and 4 from the template (the two `have` and two `owner` facts about things made by a rule, which have no name). The one-place verb and "is a" patterns generate.
+
+```
+$ .venv/bin/pytest -q
+746 passed, 1 xfailed in 27.21s
+```
+
+## Checkpoint after phase 24
+
+Reread everything changed since the checkpoint after phase 17 (the audit, 2A to 2C, phases 22 to 24), reran the nine dialogues of phases 10 to 21 through the repl (identical to the run before the audit, except phase 16, changed on purpose), the three tiers (in the suite), and a scan for unused imports and definitions: one unused import removed.
+
+Fragile, most likely to bite first:
+
+1. The parser returns five readings. A sentence whose right reading is the sixth is refused with an uninformative code ("If Rio hums, Pip hums."). No choice rule can help.
+2. Reading choice keeps three narrow reading refusals (`FALLBACK_PARSE`, `GRAMMAR_ARTIFACT`, `DEMONSTRATIVE`) that decide ties at an empty store; the table in `tests/choice_table.json` shows where. The table is built from the stores the suite's dialogues chose in, so a store the suite never builds is not covered.
+3. Unknown words: the retry offers every tag that fits the ending and trusts the grammar's syntax; a word used as two classes is offered as both. "Every blorp flibbers." still has no reading. ACE's `-y` is undocumented outside the binary's message.
+4. ACE generation stops answering after N inputs under `-n N`; the generator is run without `-n`. Any change to its arguments needs rerunning `tests/test_phase24.py` more than ten times in one process.
+5. Morphology splits only on a base that is a two-argument predicate in the store; a base used only in a rule is not found.
+6. Comparatives: a comparison needs a named second thing; "Who is the tallest?" is about adjectives alone, not "the tallest cat".
+7. `tests/choice.txt` and `tests/choice_contexts.json` are recorded from the suite; a new dialogue test with a new sentence needs `scripts/choice_table.py --record` and a re-record of fixtures, or the table test fails.

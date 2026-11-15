@@ -10,6 +10,7 @@ GRAMMAR = ROOT / "erg" / "erg-2018.dat"
 
 _session: ace.ACEParser | None = None
 _tagged: ace.ACEParser | None = None
+_generator: ace.ACEGenerator | None = None
 
 
 def _open() -> ace.ACEParser:
@@ -77,9 +78,18 @@ def _open_tagged() -> ace.ACEParser:
     return _tagged
 
 
+def generate(mrs: str) -> list[str]:
+    """The sentences the grammar generates for a meaning structure."""
+    global _generator
+    if _generator is None:
+        _generator = ace.ACEGenerator(str(GRAMMAR), executable=str(ACE), cmdargs=[])
+        _generator.__enter__()
+    return [r["surface"] for r in _generator.interact(mrs).get("results", [])]
+
+
 def close() -> None:
-    global _session, _tagged
-    for session in (_session, _tagged):
+    global _session, _tagged, _generator
+    for session in (_session, _tagged, _generator):
         if session is not None:
             session.__exit__(None, None, None)
-    _session = _tagged = None
+    _session = _tagged = _generator = None
