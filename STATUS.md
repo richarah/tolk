@@ -75,3 +75,14 @@ tried). The table is `tolk/lf.py` REFUSALS; its contents are printed by `scripts
 
 ## Open items from VERIFY.md
 (see the end of this file once the verification rounds are in)
+
+## Open items from VERIFY.md (after two rounds)
+Round 1 found 11 mismatches: 5 fixed (Where is Bob?, underscored word, preposition "if", group subject with a noun complement, `_not_c` stored in a rule), 1 not a defect, 1 confounded (SQUID), 4 open. Round 2 found 4, not fixed by instruction. Still open:
+1. Four things with identical extensions of two predicates give no proposal (SPEC says one).
+2. "Do all penguins fly?" answers "No, by default" where SPEC says "No" (the penguin rule is a default).
+3. "Tweety is a blips." (ungrammatical) is refused NO_EVENT_READING, not UNKNOWN_WORD; "Blips are things." is refused EMPTY_RULE_BODY.
+4. "A blips sleeps." raises IndexError in `Mind.hear` (the repl survives it); not diagnosed.
+5. "Is Kim happy or Lee happy?" is refused UNCONSUMED (SPEC2 phase 15 says an or in a question is Yes if either side is).
+6. "Ola owns more than two cellos." is refused UNKNOWN_WORD, not more_comp.
+7. "Quorl is a thing." stores the invented word as a name (arguable).
+8. SQUID: a row named "Ga" is read as Georgia, so its SQL compares 'georgia' and returns nothing with no refusal.
