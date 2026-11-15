@@ -206,3 +206,10 @@ The word is not rewritten: a column name is not English.
 "If Luna paints, Bruno is happy." was refused `_if_x`: reading 1 (if as a preposition, "paints" as a noun) had a final UNSUPPORTED_PREDICATE and ended
 the search before reading 2, tied with it, was compiled. `_if_x` is now a reading refusal GRAMMAR_ARTIFACT (`compile.PREPOSITION_IF`). Two rows of the
 choice table change their status label (UNSUPPORTED_PREDICATE to GRAMMAR_ARTIFACT); no chosen reading changes.
+
+## A universal question answers "No, by default"
+"Does every penguin fly?" with "Birds fly." (a default) and "Penguins do not fly." (a default, more specific) answers `No, by default`, not `No`. SPEC
+Phase 18 writes "No"; this is a deliberate difference, and it is the intended behaviour. A universal question asks what follows for a fresh thing of the
+kind, not what the known things do. When the opposite follows only through a default rule, it is true unless something defeats it, and a bare "No" would
+say it cannot be defeated. When it follows through a strict rule or a told fact the answer is a bare "No" (tested in `tests/test_phase18.py`). "Yes" is
+treated the same way ("Does every bird fly?" is `Yes, by default`). `Answer.by_default` carries the distinction, and the proof lines name the rule.

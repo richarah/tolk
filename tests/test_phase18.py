@@ -126,3 +126,19 @@ def test_known_instances_are_not_evidence_for_every() -> None:
     for s in ["Tweety is a bird.", "Sparrow is a bird.", "Tweety flies.", "Sparrow flies.", "Pip is a bird.", "Pip flies."]:
         m.tell(s)
     assert m.ask("Does every bird fly?").answer.value == UNKNOWN
+
+
+def test_a_universal_question_answered_through_a_strict_rule_is_not_by_default() -> None:
+    m = Mind()
+    m.tell("Every penguin is a bird.")
+    m.tell("No penguin flies.")
+    r = m.ask("Does every penguin fly?")
+    assert r.answer.value == NO and not r.answer.by_default and r.outcome == NO
+
+
+def test_no_by_default_is_written_down_as_intended_behaviour() -> None:
+    from pathlib import Path
+    text = (Path(__file__).resolve().parent.parent / "DECISIONS.md").read_text()
+    assert '## A universal question answers "No, by default"' in text
+    status = (Path(__file__).resolve().parent.parent / "STATUS.md").read_text()
+    assert "answers \"No, by default\" where SPEC says" not in status
