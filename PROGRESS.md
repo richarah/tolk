@@ -782,3 +782,8 @@ Each told once, on an empty store, in the form that fits. Expected class written
 | greeb | Tweety is a greeb. | stored as [('greeb', 'n')] | n | yes |
 
 Fix (rule family, not the words): a small-letter word the chosen reading takes for a name is offered the classes it could be, through tagged input; if the grammar still takes it for a name (its lexicon has `tove` as one) the sentence is refused UNKNOWN_WORD. A sentence with no reading at all is parsed again with every small-letter word offered its classes. "Every blorp flibbers." now gets a reading and compiles to `rule _flibber_v_unknown(E!, X) :- _blorp_n_unknown(X)`; its expected failure is removed, and tests/test_phase16.py and test_unknown_words.py changed with it, as the item says.
+
+## Housekeeping item 2: continuous integration
+Workflow `.github/workflows/tests.yml` (push and pull request): checkout, Python 3.12, cache of `erg/` keyed on `scripts/setup_erg.sh`, `sh scripts/setup_erg.sh`, `pip install -e '.[test]'`, `python -m pytest -q`.
+Branch `housekeeping` pushed to origin (https://github.com/richarah/tolk.git, read with `git remote -v`); main not pushed.
+Run 43718826041 on commit 134d1e8: **success**, `789 passed in 18.46s`, https://github.com/richarah/tolk/actions/runs/43718826041. First run, no workflow fix needed. (It also warns that Node 20 actions are deprecated.)
