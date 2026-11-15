@@ -57,7 +57,19 @@
           "h4": {},
           "h5": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "generic_trans_verb_pres3sg",
+          4,
+          11
+        ]
+      ]
     }
   ]
 }

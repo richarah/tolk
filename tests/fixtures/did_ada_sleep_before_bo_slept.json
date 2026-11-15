@@ -119,7 +119,39 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "ada_n1",
+          4,
+          7
+        ],
+        [
+          "sleep_v1",
+          8,
+          13
+        ],
+        [
+          "before2",
+          14,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          23
+        ],
+        [
+          "sleep_v1",
+          24,
+          30
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<4:7> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<4:7> LBL: h7 CARG: \"Ada\" ARG0: x3 ]  [ _sleep_v_1<8:13> LBL: h9 ARG0: e2 ARG1: x3 ]  [ _before_x_h<14:20> LBL: h1 ARG0: e10 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ proper_q<21:23> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ named<21:23> LBL: h17 CARG: \"Bo\" ARG0: x14 ]  [ _sleep_v_1<24:30> LBL: h19 ARG0: e20 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h9 h12 qeq h19 h15 qeq h17 > ICONS: < > ]",
@@ -239,7 +271,39 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "ada_n1",
+          4,
+          7
+        ],
+        [
+          "sleep_v1",
+          8,
+          13
+        ],
+        [
+          "before2",
+          14,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          23
+        ],
+        [
+          "sleep_v1",
+          24,
+          30
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<4:7> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<4:7> LBL: h7 CARG: \"Ada\" ARG0: x3 ]  [ _sleep_v_1<8:13> LBL: h9 ARG0: e2 ARG1: x3 ]  [ _before_x_h<14:20> LBL: h1 ARG0: e10 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ proper_q<21:23> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ named<21:23> LBL: h17 CARG: \"Bo\" ARG0: x14 ]  [ _sleep_v_1<24:30> LBL: h19 ARG0: e20 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h9 h12 qeq h19 h15 qeq h17 > ICONS: < > ]",
@@ -359,7 +423,39 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "ada_n1",
+          4,
+          7
+        ],
+        [
+          "sleep_v1",
+          8,
+          13
+        ],
+        [
+          "before2",
+          14,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          23
+        ],
+        [
+          "sleep_v1",
+          24,
+          30
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:3> LBL: h4 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg ] ]  [ udef_q<4:13> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ compound<4:13> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<4:7> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<4:7> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ _sleep_n_1<8:13> LBL: h8 ARG0: x3 ]  [ _before_x_h<14:20> LBL: h1 ARG0: e16 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h17 ARG2: h18 ]  [ proper_q<21:23> LBL: h19 ARG0: x20 [ x PERS: 3 NUM: sg IND: + ] RSTR: h21 BODY: h22 ]  [ named<21:23> LBL: h23 CARG: \"Bo\" ARG0: x20 ]  [ _sleep_v_1<24:30> LBL: h25 ARG0: e26 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x20 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h17 qeq h4 h18 qeq h25 h21 qeq h23 > ICONS: < > ]",
@@ -521,7 +617,39 @@
           "h11": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "ada_n1",
+          4,
+          7
+        ],
+        [
+          "sleep_n1",
+          8,
+          13
+        ],
+        [
+          "before2",
+          14,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          23
+        ],
+        [
+          "sleep_v1",
+          24,
+          30
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:3> LBL: h4 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg ] ]  [ udef_q<4:13> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ compound<4:13> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<4:7> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<4:7> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ _sleep_n_1<8:13> LBL: h8 ARG0: x3 ]  [ _before_x_h<14:20> LBL: h1 ARG0: e16 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h17 ARG2: h18 ]  [ proper_q<21:23> LBL: h19 ARG0: x20 [ x PERS: 3 NUM: sg IND: + ] RSTR: h21 BODY: h22 ]  [ named<21:23> LBL: h23 CARG: \"Bo\" ARG0: x20 ]  [ _sleep_v_1<24:30> LBL: h25 ARG0: e26 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x20 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h17 qeq h4 h18 qeq h25 h21 qeq h23 > ICONS: < > ]",
@@ -683,7 +811,39 @@
           "h11": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "ada_n1",
+          4,
+          7
+        ],
+        [
+          "sleep_n1",
+          8,
+          13
+        ],
+        [
+          "before2",
+          14,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          23
+        ],
+        [
+          "sleep_v1",
+          24,
+          30
+        ]
+      ]
     }
   ]
 }

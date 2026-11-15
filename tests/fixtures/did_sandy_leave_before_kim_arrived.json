@@ -121,7 +121,39 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "sandy",
+          4,
+          9
+        ],
+        [
+          "leave_v1",
+          10,
+          15
+        ],
+        [
+          "before2",
+          16,
+          22
+        ],
+        [
+          "kim",
+          23,
+          26
+        ],
+        [
+          "arrive_v1",
+          27,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<4:9> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<4:9> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _leave_v_1<10:15> LBL: h9 ARG0: e2 ARG1: x3 ARG2: i10 ]  [ _before_x_h<16:22> LBL: h1 ARG0: e11 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<23:26> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<23:26> LBL: h18 CARG: \"Kim\" ARG0: x15 ]  [ _arrive_v_1<27:35> LBL: h20 ARG0: e21 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x15 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 > ICONS: < > ]",
@@ -243,7 +275,39 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "sandy",
+          4,
+          9
+        ],
+        [
+          "leave_v1",
+          10,
+          15
+        ],
+        [
+          "before2",
+          16,
+          22
+        ],
+        [
+          "kim",
+          23,
+          26
+        ],
+        [
+          "arrive_v1",
+          27,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<4:9> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<4:9> LBL: h7 CARG: \"Sandy\" ARG0: x3 ]  [ _leave_v_1<10:15> LBL: h9 ARG0: e2 ARG1: x3 ARG2: i10 ]  [ _before_x_h<16:22> LBL: h1 ARG0: e11 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<23:26> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<23:26> LBL: h18 CARG: \"Kim\" ARG0: x15 ]  [ _arrive_v_1<27:35> LBL: h20 ARG0: e21 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x15 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 > ICONS: < > ]",
@@ -365,7 +429,39 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "sandy",
+          4,
+          9
+        ],
+        [
+          "leave_v1",
+          10,
+          15
+        ],
+        [
+          "before2",
+          16,
+          22
+        ],
+        [
+          "kim",
+          23,
+          26
+        ],
+        [
+          "arrive_v1",
+          27,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:3> LBL: h4 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg ] ]  [ udef_q<4:15> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _sandy_a_1<4:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x3 ]  [ _leave_n_1<10:15> LBL: h8 ARG0: x3 ]  [ _before_x_h<16:22> LBL: h1 ARG0: e10 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ proper_q<23:26> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ named<23:26> LBL: h17 CARG: \"Kim\" ARG0: x14 ]  [ _arrive_v_1<27:35> LBL: h19 ARG0: e20 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x14 ] > HCONS: < h0 qeq h1 h6 qeq h8 h11 qeq h4 h12 qeq h19 h15 qeq h17 > ICONS: < > ]",
@@ -498,7 +594,39 @@
           "h5": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "sandy_a1",
+          4,
+          9
+        ],
+        [
+          "leave_n1",
+          10,
+          15
+        ],
+        [
+          "before2",
+          16,
+          22
+        ],
+        [
+          "kim",
+          23,
+          26
+        ],
+        [
+          "arrive_v1",
+          27,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative ] RELS: < [ _do_v_1<0:3> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg ] ]  [ udef_q<4:15> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _sandy_a_1<4:9> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x5 ]  [ _leave_n_1<10:15> LBL: h9 ARG0: x5 ]  [ _before_x_h<16:22> LBL: h1 ARG0: e11 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<23:26> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<23:26> LBL: h18 CARG: \"Kim\" ARG0: x15 ]  [ _arrive_v_1<27:35> LBL: h20 ARG0: e21 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x15 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h4 h13 qeq h20 h16 qeq h18 > ICONS: < > ]",
@@ -631,7 +759,39 @@
           "h6": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "do2",
+          0,
+          3
+        ],
+        [
+          "sandy_a1",
+          4,
+          9
+        ],
+        [
+          "leave_n1",
+          10,
+          15
+        ],
+        [
+          "before2",
+          16,
+          22
+        ],
+        [
+          "kim",
+          23,
+          26
+        ],
+        [
+          "arrive_v1",
+          27,
+          35
+        ]
+      ]
     }
   ]
 }

@@ -103,7 +103,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not",
+          9,
+          12
+        ],
+        [
+          "like_v1",
+          13,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ ellipsis_ref<4:8> LBL: h9 ARG0: e2 ARG1: x3 ]  [ neg<9:12> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ]  [ _like_p<13:17> LBL: h1 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x13 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:24> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ named<18:24> LBL: h17 CARG: \"Sandy\" ARG0: x13 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h9 h15 qeq h17 > ICONS: < > ]",
@@ -222,7 +249,34 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not",
+          9,
+          12
+        ],
+        [
+          "like_p",
+          13,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ ellipsis_ref<4:8> LBL: h1 ARG0: e2 ARG1: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _like_p<13:17> LBL: h11 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x13 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:24> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ named<18:24> LBL: h17 CARG: \"Sandy\" ARG0: x13 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h15 qeq h17 > ICONS: < > ]",
@@ -341,7 +395,34 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not_prdp",
+          9,
+          12
+        ],
+        [
+          "like_p",
+          13,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _do_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ]  [ neg<9:12> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ]  [ _like_p<13:17> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x14 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:24> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<18:24> LBL: h18 CARG: \"Sandy\" ARG0: x14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h12 h16 qeq h18 > ICONS: < > ]",
@@ -462,7 +543,34 @@
           "h4": {},
           "h15": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "do2",
+          4,
+          8
+        ],
+        [
+          "not_prdp",
+          9,
+          12
+        ],
+        [
+          "like_p",
+          13,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:24> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:24> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:8> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Kim\" ARG0: x10 ]  [ _doe_n_1<4:8> LBL: h8 ARG0: x4 ]  [ neg<9:12> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h17 ]  [ _like_p<13:17> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x20 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:24> LBL: h21 ARG0: x20 RSTR: h22 BODY: h23 ]  [ named<18:24> LBL: h24 CARG: \"Sandy\" ARG0: x20 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h17 qeq h18 h22 qeq h24 > ICONS: < > ]",
@@ -620,7 +728,34 @@
           "h11": {},
           "h21": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "doe_n1",
+          4,
+          8
+        ],
+        [
+          "not_prdp",
+          9,
+          12
+        ],
+        [
+          "like_p",
+          13,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          24
+        ]
+      ]
     }
   ]
 }

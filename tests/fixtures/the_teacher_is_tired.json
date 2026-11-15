@@ -60,7 +60,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "the_1",
+          0,
+          3
+        ],
+        [
+          "teacher_n1",
+          4,
+          11
+        ],
+        [
+          "be_c_is",
+          12,
+          14
+        ],
+        [
+          "tired_a1",
+          15,
+          21
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _teacher_n_of<4:11> LBL: h7 ARG0: x3 ARG1: i8 ]  [ _tire_v_1<15:21> LBL: h1 ARG0: e2 ARG1: i9 ARG2: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < e2 topic x3 > ]",
@@ -121,7 +143,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "the_1",
+          0,
+          3
+        ],
+        [
+          "teacher_n1",
+          4,
+          11
+        ],
+        [
+          "be_c_is",
+          12,
+          14
+        ],
+        [
+          "tire_v1",
+          15,
+          21
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _teacher_n_of<4:11> LBL: h7 ARG0: x3 ARG1: i8 ]  [ compound<15:21> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x IND: + ] ]  [ udef_q<15:21> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _tire_n_1<15:21> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
@@ -205,7 +249,29 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "the_1",
+          0,
+          3
+        ],
+        [
+          "teacher_n1",
+          4,
+          11
+        ],
+        [
+          "be_c_is",
+          12,
+          14
+        ],
+        [
+          "tire_n1",
+          15,
+          21
+        ]
+      ]
     }
   ]
 }

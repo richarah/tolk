@@ -84,7 +84,29 @@
           "h5": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "creature_n1",
+          9,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:6> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:2> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:2> LBL: h14 CARG: \"Is\" ARG0: x10 ]  [ named<3:6> LBL: h8 CARG: \"Rio\" ARG0: x4 ]  [ mod<7:18> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<7:8> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _creature_n_1<9:18> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -217,7 +239,29 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "creature_n1",
+          9,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:6> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:2> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:2> LBL: h14 CARG: \"Is\" ARG0: x10 ]  [ named<3:6> LBL: h8 CARG: \"Rio\" ARG0: x4 ]  [ mod<7:18> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<7:8> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _creature_n_1<9:18> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -350,7 +394,29 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "creature_n1",
+          9,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<3:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ named<3:6> LBL: h8 CARG: \"Rio\" ARG0: x4 ]  [ mod<7:18> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<7:8> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ _creature_n_1<9:18> LBL: h15 ARG0: x11 ] > HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h15 > ICONS: < > ]",
@@ -452,7 +518,29 @@
           "h5": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "creature_n1",
+          9,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ appos<0:6> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ proper_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ named<3:6> LBL: h15 CARG: \"Rio\" ARG0: x6 ]  [ mod<7:18> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<7:8> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _creature_n_1<9:18> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 h19 qeq h21 > ICONS: < > ]",
@@ -584,7 +672,29 @@
           "h12": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "creature_n1",
+          9,
+          18
+        ]
+      ]
     }
   ]
 }

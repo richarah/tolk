@@ -128,7 +128,39 @@
           "h9": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "forget_v2",
+          0,
+          6
+        ],
+        [
+          "that_c",
+          7,
+          11
+        ],
+        [
+          "generic_proper_ne",
+          12,
+          15
+        ],
+        [
+          "be_id_is",
+          16,
+          18
+        ],
+        [
+          "a_det",
+          19,
+          20
+        ],
+        [
+          "finch_n1",
+          21,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: - PERF: - ] RELS: < [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: i3 ARG2: h4 ]  [ proper_q<12:15> LBL: h5 ARG0: x6 [ x PERS: 3 NUM: sg IND: + ] RSTR: h7 BODY: h8 ]  [ named<12:15> LBL: h9 CARG: \"Rio\" ARG0: x6 ]  [ _be_v_id<16:18> LBL: h11 ARG0: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x13 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _finch_n_1<21:27> LBL: h17 ARG0: x13 ] > HCONS: < h0 qeq h1 h4 qeq h11 h7 qeq h9 h15 qeq h17 > ICONS: < > ]",
@@ -233,7 +265,39 @@
           "h5": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "forget_v2",
+          0,
+          6
+        ],
+        [
+          "that_c",
+          7,
+          11
+        ],
+        [
+          "generic_proper_ne",
+          12,
+          15
+        ],
+        [
+          "be_id_is",
+          16,
+          18
+        ],
+        [
+          "a_det",
+          19,
+          20
+        ],
+        [
+          "finch_n1",
+          21,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pronoun_q<0:27> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]  [ pron<0:27> LBL: h7 ARG0: x3 ]  [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ]  [ _that_q_dem<7:11> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]  [ named<12:15> LBL: h13 CARG: \"Rio\" ARG0: x10 ]  [ _be_v_id<16:18> LBL: h15 ARG0: e16 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _finch_n_1<21:27> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h5 qeq h7 h8 qeq h15 h11 qeq h13 h19 qeq h21 > ICONS: < > ]",
@@ -362,7 +426,39 @@
           "h9": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "forget_v2",
+          0,
+          6
+        ],
+        [
+          "that_det",
+          7,
+          11
+        ],
+        [
+          "generic_proper_ne",
+          12,
+          15
+        ],
+        [
+          "be_id_is",
+          16,
+          18
+        ],
+        [
+          "a_det",
+          19,
+          20
+        ],
+        [
+          "finch_n1",
+          21,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: - PERF: - ] RELS: < [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: i3 ARG2: h4 ]  [ _that_q_dem<7:11> LBL: h5 ARG0: x6 [ x PERS: 3 NUM: sg IND: + ] RSTR: h7 BODY: h8 ]  [ named<12:15> LBL: h9 CARG: \"Rio\" ARG0: x6 ]  [ _be_v_id<16:18> LBL: h11 ARG0: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x13 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _finch_n_1<21:27> LBL: h17 ARG0: x13 ] > HCONS: < h0 qeq h1 h4 qeq h11 h7 qeq h9 h15 qeq h17 > ICONS: < > ]",
@@ -467,7 +563,39 @@
           "h5": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "forget_v2",
+          0,
+          6
+        ],
+        [
+          "that_det",
+          7,
+          11
+        ],
+        [
+          "generic_proper_ne",
+          12,
+          15
+        ],
+        [
+          "be_id_is",
+          16,
+          18
+        ],
+        [
+          "a_det",
+          19,
+          20
+        ],
+        [
+          "finch_n1",
+          21,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pronoun_q<0:27> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]  [ pron<0:27> LBL: h7 ARG0: x3 ]  [ relative_mod<0:27> LBL: h1 ARG0: i8 ARG1: x9 ARG2: h10 ]  [ udef_q<0:27> LBL: h11 ARG0: x9 RSTR: h12 BODY: h13 ]  [ generic_entity<0:27> LBL: h14 ARG0: x9 ]  [ _forget_v_1<0:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i15 ]  [ loc_nonsp<7:11> LBL: h10 ARG0: i16 ARG1: e17 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG2: x9 ]  [ proper_q<12:15> LBL: h18 ARG0: x19 [ x PERS: 3 NUM: sg IND: + ] RSTR: h20 BODY: h21 ]  [ named<12:15> LBL: h22 CARG: \"Rio\" ARG0: x19 ]  [ _be_v_id<16:18> LBL: h10 ARG0: e17 ARG1: x19 ARG2: x24 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<19:20> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]  [ _finch_n_1<21:27> LBL: h28 ARG0: x24 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h20 qeq h22 h26 qeq h28 > ICONS: < > ]",
@@ -637,7 +765,39 @@
           "h18": {},
           "h25": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "forget_v1",
+          0,
+          6
+        ],
+        [
+          "that_r_npadv",
+          7,
+          11
+        ],
+        [
+          "generic_proper_ne",
+          12,
+          15
+        ],
+        [
+          "be_id_is",
+          16,
+          18
+        ],
+        [
+          "a_det",
+          19,
+          20
+        ],
+        [
+          "finch_n1",
+          21,
+          27
+        ]
+      ]
     }
   ]
 }

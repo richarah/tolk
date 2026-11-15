@@ -56,7 +56,7 @@ FUNCTION_LEMMAS = {"do", "does", "doe", "every", "is", "no", "a", "an", "the", "
 
 def compiled(text: str) -> str:
     record = json.loads(fixture_path(text).read_text())
-    readings = [sem.read(r["simplemrs"]) for r in record["readings"]]
+    readings = [sem.read(r["simplemrs"], r["lexical"]) for r in record["readings"]]
     index, x = comp.choose(readings, set())
     return lf.show(x)
 

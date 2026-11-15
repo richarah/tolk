@@ -1,14 +1,12 @@
 """Reading choice, criterion by criterion (DECISIONS.md, "reading choice"). Each criterion has a sentence where it decides
 and a sentence where it must not change the outcome. Readings come from recorded fixtures."""
 
-import json
-
-from helpers import fixture_path
+from helpers import readings_of
 from tolk import compile as comp, sem
 
 
 def readings(text: str) -> list[sem.Reading]:
-    return [sem.read(r["simplemrs"]) for r in json.loads(fixture_path(text).read_text())["readings"]]
+    return readings_of(text)
 
 
 def chosen(text: str, store: set | None = None) -> int:

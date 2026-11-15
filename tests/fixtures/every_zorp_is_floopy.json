@@ -55,7 +55,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "generic_mass_count_noun",
+          6,
+          10
+        ],
+        [
+          "be_c_is",
+          11,
+          13
+        ],
+        [
+          "generic_adj",
+          14,
+          21
+        ]
+      ]
     }
   ]
 }

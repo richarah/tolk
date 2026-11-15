@@ -58,7 +58,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_c_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "window_n1",
+          7,
+          13
+        ],
+        [
+          "open_a1",
+          14,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _window_n_1<7:13> LBL: h9 ARG0: x5 ]  [ subord<14:19> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ _open_a_to<14:19> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i15 ARG2: i16 ] > HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h4 h12 qeq h13 > ICONS: < > ]",
@@ -155,7 +177,29 @@
           "h13": {},
           "h6": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "window_n1",
+          7,
+          13
+        ],
+        [
+          "open_a1",
+          14,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:13> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:2> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:2> LBL: h9 CARG: \"Is\" ARG0: x3 ]  [ _the_q<3:6> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ _window_n_1<7:13> LBL: h14 ARG0: x5 ]  [ _open_v_1<14:19> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 > ICONS: < > ]",
@@ -255,7 +299,29 @@
           "h6": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "window_n1",
+          7,
+          13
+        ],
+        [
+          "open_v2",
+          14,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ appos<0:13> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ _the_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ _window_n_1<7:13> LBL: h15 ARG0: x6 ]  [ _open_a_to<14:19> LBL: h1 ARG0: e2 ARG1: u16 ARG2: i17 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 > ICONS: < > ]",
@@ -362,7 +428,29 @@
           "h7": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "window_n1",
+          7,
+          13
+        ],
+        [
+          "open_a1",
+          14,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg GEND: n IND: - ] ]  [ _the_q<3:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<7:19> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<7:13> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _window_n_1<7:13> LBL: h14 ARG0: x10 ]  [ _open_n_1<14:19> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -463,7 +551,29 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "window_n1",
+          7,
+          13
+        ],
+        [
+          "open_n1",
+          14,
+          19
+        ]
+      ]
     }
   ]
 }

@@ -56,7 +56,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "the_1",
+          5,
+          8
+        ],
+        [
+          "cat_n1",
+          9,
+          12
+        ],
+        [
+          "sleep_v1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:4> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg ] ]  [ _the_q<5:8> LBL: h4 ARG0: x3 RSTR: h5 BODY: h6 ]  [ compound<9:19> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x IND: + PT: notpro ] ]  [ udef_q<9:12> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _cat_n_1<9:12> LBL: h13 ARG0: x9 ]  [ _sleep_n_1<13:19> LBL: h7 ARG0: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
@@ -153,7 +175,29 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "the_1",
+          5,
+          8
+        ],
+        [
+          "cat_n1",
+          9,
+          12
+        ],
+        [
+          "sleep_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _do_v_1<0:4> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg ] ]  [ _the_q<5:8> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<9:19> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<9:12> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _cat_n_1<9:12> LBL: h14 ARG0: x10 ]  [ _sleep_n_1<13:19> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -252,7 +296,29 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "do2",
+          0,
+          4
+        ],
+        [
+          "the_1",
+          5,
+          8
+        ],
+        [
+          "cat_n1",
+          9,
+          12
+        ],
+        [
+          "sleep_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _do_v_1<0:4> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg ] ARG3: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<5:8> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _cat_n_1<9:12> LBL: h9 ARG0: x5 ]  [ udef_q<13:19> LBL: h10 ARG0: x4 RSTR: h11 BODY: h12 ]  [ _sleep_n_1<13:19> LBL: h13 ARG0: x4 ] > HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h13 > ICONS: < > ]",
@@ -337,7 +403,29 @@
           "h6": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "do_v4",
+          0,
+          4
+        ],
+        [
+          "the_1",
+          5,
+          8
+        ],
+        [
+          "cat_n1",
+          9,
+          12
+        ],
+        [
+          "sleep_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ appos<0:19> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg ] ]  [ proper_q<0:4> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:4> LBL: h10 CARG: \"Does\" ARG0: x4 ]  [ _the_q<5:8> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ compound<9:19> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x17 [ x IND: + PT: notpro ] ]  [ udef_q<9:12> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _cat_n_1<9:12> LBL: h21 ARG0: x17 ]  [ _sleep_n_1<13:19> LBL: h15 ARG0: x6 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 h19 qeq h21 > ICONS: < > ]",
@@ -473,7 +561,29 @@
           "h12": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "the_1",
+          5,
+          8
+        ],
+        [
+          "cat_n1",
+          9,
+          12
+        ],
+        [
+          "sleep_n1",
+          13,
+          19
+        ]
+      ]
     }
   ]
 }

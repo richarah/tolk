@@ -113,7 +113,34 @@
           "h7": {},
           "h15": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "do1_pos",
+          0,
+          2
+        ],
+        [
+          "kim",
+          3,
+          6
+        ],
+        [
+          "and_conj",
+          7,
+          10
+        ],
+        [
+          "sandy",
+          11,
+          16
+        ],
+        [
+          "sing_v1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:16> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl ] RSTR: h5 BODY: h6 ]  [ proper_q<0:6> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ compound<0:6> LBL: h11 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x8 ARG2: x13 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:2> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ named<0:2> LBL: h17 CARG: \"Do\" ARG0: x13 ]  [ named<3:6> LBL: h11 CARG: \"Kim\" ARG0: x8 ]  [ _and_c<7:10> LBL: h20 ARG0: x3 ARG1: x8 ARG2: x21 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<11:16> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ named<11:16> LBL: h25 CARG: \"Sandy\" ARG0: x21 ]  [ _sing_v_1<17:22> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i27 ] > HCONS: < h0 qeq h1 h5 qeq h20 h9 qeq h11 h15 qeq h17 h23 qeq h25 > ICONS: < > ]",
@@ -271,7 +298,34 @@
           "h14": {},
           "h22": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "kim",
+          3,
+          6
+        ],
+        [
+          "and_conj",
+          7,
+          10
+        ],
+        [
+          "sandy",
+          11,
+          16
+        ],
+        [
+          "sing_v1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:16> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl ] RSTR: h5 BODY: h6 ]  [ proper_q<0:2> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ named<0:2> LBL: h11 CARG: \"Do\" ARG0: x8 ]  [ udef_q<3:16> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: pl ] RSTR: h15 BODY: h16 ]  [ implicit_conj<3:16> LBL: h17 ARG0: x3 ARG1: x8 ARG2: x14 ]  [ proper_q<3:6> LBL: h18 ARG0: x19 [ x PERS: 3 NUM: sg IND: + ] RSTR: h20 BODY: h21 ]  [ named<3:6> LBL: h22 CARG: \"Kim\" ARG0: x19 ]  [ _and_c<7:10> LBL: h24 ARG0: x14 ARG1: x19 ARG2: x25 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<11:16> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]  [ named<11:16> LBL: h29 CARG: \"Sandy\" ARG0: x25 ]  [ _sing_v_1<17:22> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i31 ] > HCONS: < h0 qeq h1 h5 qeq h17 h9 qeq h11 h15 qeq h24 h20 qeq h22 h27 qeq h29 > ICONS: < > ]",
@@ -439,7 +493,34 @@
           "h18": {},
           "h26": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "kim",
+          3,
+          6
+        ],
+        [
+          "and_conj",
+          7,
+          10
+        ],
+        [
+          "sandy",
+          11,
+          16
+        ],
+        [
+          "sing_v1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: tensed MOOD: indicative PROG: - PERF: - ] RELS: < [ _do_v_1<0:2> LBL: h1 ARG0: e4 [ e SF: ques TENSE: tensed MOOD: indicative PROG: - PERF: - ] ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ named<3:6> LBL: h9 CARG: \"Kim\" ARG0: x5 ]  [ _and_c<7:10> LBL: h11 ARG0: e2 ARG1: e4 ARG2: e12 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ subord<11:16> LBL: h1 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h14 ARG2: h15 ]  [ _sandy_a_1<11:16> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i18 ]  [ _sing_v_1<17:22> LBL: h1 ARG0: e12 ARG1: i3 ARG2: i19 ] > HCONS: < h0 qeq h1 h7 qeq h9 h14 qeq h11 h15 qeq h16 > ICONS: < > ]",
@@ -568,7 +649,34 @@
           "h16": {},
           "h6": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "do2",
+          0,
+          2
+        ],
+        [
+          "kim",
+          3,
+          6
+        ],
+        [
+          "and_conj",
+          7,
+          10
+        ],
+        [
+          "sandy_a1",
+          11,
+          16
+        ],
+        [
+          "sing_v1",
+          17,
+          22
+        ]
+      ]
     }
   ]
 }

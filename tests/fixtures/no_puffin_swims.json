@@ -67,7 +67,24 @@
           "h8": {},
           "h5": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "no_det",
+          0,
+          2
+        ],
+        [
+          "puff_v1",
+          3,
+          9
+        ],
+        [
+          "swim_n1",
+          10,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:16> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ _no_q<0:2> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<3:16> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg GEND: n PT: notpro ] ]  [ udef_q<3:9> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _puff_v_1<3:9> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: i16 ]  [ nominalization<3:9> LBL: h17 ARG0: x10 ARG1: h14 ]  [ _swim_n_1<10:16> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h17 > ICONS: < > ]",
@@ -181,7 +198,24 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "no_det",
+          0,
+          2
+        ],
+        [
+          "puff_v1",
+          3,
+          9
+        ],
+        [
+          "swim_n1",
+          10,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:16> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ _no_q<0:2> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<3:16> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<3:9> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _puffin_n_1<3:9> LBL: h14 ARG0: x10 ]  [ _swim_n_1<10:16> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -275,7 +309,24 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "no_det",
+          0,
+          2
+        ],
+        [
+          "puffin_n1",
+          3,
+          9
+        ],
+        [
+          "swim_n1",
+          10,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _no_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _puffin_n_1<3:9> LBL: h7 ARG0: x3 ]  [ _swim_v_1<10:16> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -332,7 +383,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "no_det",
+          0,
+          2
+        ],
+        [
+          "puffin_n1",
+          3,
+          9
+        ],
+        [
+          "swim_v1",
+          10,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _no_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n PT: notpro ] RSTR: h5 BODY: h6 ]  [ _puff_v_1<3:9> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: i9 ]  [ nominalization<3:9> LBL: h10 ARG0: x3 ARG1: h7 ]  [ _swim_v_1<10:16> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h10 > ICONS: < > ]",
@@ -408,7 +476,24 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "no_det",
+          0,
+          2
+        ],
+        [
+          "puff_v1",
+          3,
+          9
+        ],
+        [
+          "swim_v1",
+          10,
+          16
+        ]
+      ]
     }
   ]
 }

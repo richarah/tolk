@@ -58,7 +58,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_c_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "robin_n2",
+          7,
+          12
+        ],
+        [
+          "happy_a1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _the_q<3:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<7:12> LBL: h7 CARG: \"Robin\" ARG0: x3 ]  [ _happy_a_with<13:19> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -118,7 +140,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_c_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "robin_n1",
+          7,
+          12
+        ],
+        [
+          "happy_a1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _robin_n_1<7:12> LBL: h9 ARG0: x5 ]  [ subord<13:19> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ _happy_a_with<13:19> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i15 ARG2: i16 ] > HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h4 h12 qeq h13 > ICONS: < > ]",
@@ -215,7 +259,29 @@
           "h13": {},
           "h6": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "robin_n2",
+          7,
+          12
+        ],
+        [
+          "happy_a1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ appos<0:12> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ _the_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ _robin_n_1<7:12> LBL: h15 ARG0: x6 ]  [ _happy_a_with<13:19> LBL: h1 ARG0: e2 ARG1: u16 ARG2: i17 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 > ICONS: < > ]",
@@ -322,7 +388,29 @@
           "h7": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "robin_n2",
+          7,
+          12
+        ],
+        [
+          "happy_a1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ named<7:12> LBL: h9 CARG: \"Robin\" ARG0: x5 ]  [ subord<13:19> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ _happy_a_with<13:19> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i16 ARG2: i17 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h4 h13 qeq h14 > ICONS: < > ]",
@@ -420,7 +508,29 @@
           "h14": {},
           "h6": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "robin_n1",
+          7,
+          12
+        ],
+        [
+          "happy_a1",
+          13,
+          19
+        ]
+      ]
     }
   ]
 }

@@ -83,7 +83,29 @@
           "h4": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "nurse_n1",
+          6,
+          11
+        ],
+        [
+          "help_v1",
+          12,
+          17
+        ],
+        [
+          "patient_n1",
+          18,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:27> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:27> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:27> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<0:17> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x IND: + PT: notpro ] ]  [ udef_q<0:11> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _every_a_1<0:5> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x16 ]  [ _nurse_n_1<6:11> LBL: h20 ARG0: x16 ]  [ _help_n_1<12:17> LBL: h14 ARG0: x10 ]  [ _patient_n_1<18:27> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
@@ -235,7 +257,29 @@
           "h11": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every_a1",
+          0,
+          5
+        ],
+        [
+          "nurse_n1",
+          6,
+          11
+        ],
+        [
+          "help_n1",
+          12,
+          17
+        ],
+        [
+          "patient_n1",
+          18,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:27> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:27> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:27> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<0:11> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _every_a_1<0:5> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x10 ]  [ _nurse_n_1<6:11> LBL: h14 ARG0: x10 ]  [ compound<12:27> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x17 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<12:17> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _help_n_1<12:17> LBL: h21 ARG0: x17 ]  [ _patient_n_1<18:27> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -387,7 +431,29 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every_a1",
+          0,
+          5
+        ],
+        [
+          "nurse_n1",
+          6,
+          11
+        ],
+        [
+          "help_n1",
+          12,
+          17
+        ],
+        [
+          "patient_n1",
+          18,
+          27
+        ]
+      ]
     }
   ]
 }

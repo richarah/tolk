@@ -102,7 +102,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "milo_n1",
+          0,
+          4
+        ],
+        [
+          "be_id_is",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "a_det",
+          12,
+          13
+        ],
+        [
+          "cat_n1",
+          14,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:4> LBL: h7 CARG: \"Milo\" ARG0: x3 ]  [ _be_v_id<5:7> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _not_x_deg<8:11> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u12 ]  [ _a_q<12:13> LBL: h10 ARG0: x9 RSTR: h13 BODY: h14 ]  [ _cat_n_1<14:18> LBL: h15 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 > ICONS: < > ]",
@@ -203,7 +230,34 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "milo_n1",
+          0,
+          4
+        ],
+        [
+          "be_id_is",
+          5,
+          7
+        ],
+        [
+          "not_deg",
+          8,
+          11
+        ],
+        [
+          "a_det",
+          12,
+          13
+        ],
+        [
+          "cat_n1",
+          14,
+          18
+        ]
+      ]
     }
   ]
 }

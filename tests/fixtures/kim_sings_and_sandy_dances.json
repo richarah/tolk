@@ -119,7 +119,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy",
+          14,
+          19
+        ],
+        [
+          "dance_v1",
+          20,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _sing_v_1<4:9> LBL: h1 ARG0: e9 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i10 ]  [ _and_c<10:13> LBL: h11 ARG0: e2 ARG1: e9 ARG2: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ subord<14:19> LBL: h1 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h14 ARG2: h15 ]  [ _sandy_a_1<14:19> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i18 ]  [ _dance_v_1<20:27> LBL: h1 ARG0: e12 ARG1: x3 ARG2: i19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h14 qeq h11 h15 qeq h16 > ICONS: < > ]",
@@ -248,7 +275,34 @@
           "h16": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy_a1",
+          14,
+          19
+        ],
+        [
+          "dance_v1",
+          20,
+          27
+        ]
+      ]
     }
   ]
 }

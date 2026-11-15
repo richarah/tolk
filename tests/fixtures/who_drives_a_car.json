@@ -82,7 +82,29 @@
           "h5": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "drive_v2",
+          4,
+          10
+        ],
+        [
+          "a_det",
+          11,
+          12
+        ],
+        [
+          "car_n1",
+          13,
+          17
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _drive_v_1<4:10> LBL: h1 ARG0: e2 ARG1: x3 ]  [ mod<11:17> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _car_n_1<13:17> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h13 > ICONS: < > ]",
@@ -180,7 +202,29 @@
           "h5": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "drive_v1",
+          4,
+          10
+        ],
+        [
+          "a_det",
+          11,
+          12
+        ],
+        [
+          "car_n1",
+          13,
+          17
+        ]
+      ]
     }
   ]
 }

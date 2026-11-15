@@ -103,7 +103,39 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "believe_v3",
+          9,
+          16
+        ],
+        [
+          "that_c",
+          17,
+          21
+        ],
+        [
+          "generic_proper_ne",
+          22,
+          28
+        ],
+        [
+          "swim_v1",
+          29,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _believe_v_1<9:16> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg GEND: n ] ]  [ generic_entity<17:21> LBL: h10 ARG0: x9 ]  [ _that_q_dem<17:21> LBL: h11 ARG0: x9 RSTR: h12 BODY: h13 ]  [ proper_q<22:28> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<22:28> LBL: h18 CARG: \"Tweety\" ARG0: x15 ]  [ _swim_v_1<29:35> LBL: h10 ARG0: e20 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x15 ARG2: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h10 h16 qeq h18 > ICONS: < > ]",
@@ -231,7 +263,39 @@
           "h11": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "believe_v1",
+          9,
+          16
+        ],
+        [
+          "that_deix",
+          17,
+          21
+        ],
+        [
+          "generic_proper_ne",
+          22,
+          28
+        ],
+        [
+          "swim_v2",
+          29,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _believe_v_1<9:16> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ]  [ _that_q_dem<17:21> LBL: h10 ARG0: x11 [ x PERS: 3 NUM: sg IND: + ] RSTR: h12 BODY: h13 ]  [ named<22:28> LBL: h14 CARG: \"Tweety\" ARG0: x11 ]  [ _swim_v_1<29:35> LBL: h16 ARG0: e17 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x11 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h16 h12 qeq h14 > ICONS: < > ]",
@@ -335,7 +399,39 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "believe_v3",
+          9,
+          16
+        ],
+        [
+          "that_det",
+          17,
+          21
+        ],
+        [
+          "generic_proper_ne",
+          22,
+          28
+        ],
+        [
+          "swim_v1",
+          29,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _believe_v_1<9:16> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ]  [ generic_entity<17:21> LBL: h10 ARG0: x11 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<17:21> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ proper_q<22:28> LBL: h15 ARG0: x16 [ x PERS: 3 NUM: sg IND: + ] RSTR: h17 BODY: h18 ]  [ named<22:28> LBL: h19 CARG: \"Tweety\" ARG0: x16 ]  [ _swim_v_1<29:35> LBL: h21 ARG0: e22 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x16 ARG2: x11 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h21 h13 qeq h10 h17 qeq h19 > ICONS: < e22 focus x11 > ]",
@@ -466,7 +562,39 @@
           "h12": {},
           "h15": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "believe_v3",
+          9,
+          16
+        ],
+        [
+          "that_deix",
+          17,
+          21
+        ],
+        [
+          "generic_proper_ne",
+          22,
+          28
+        ],
+        [
+          "swim_v2",
+          29,
+          35
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:8> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:4> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:4> LBL: h9 CARG: \"Does\" ARG0: x3 ]  [ proper_q<5:8> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ named<5:8> LBL: h14 CARG: \"Kim\" ARG0: x5 ]  [ _believe_v_1<9:16> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h16 ]  [ proper_q<22:28> LBL: h17 ARG0: x18 [ x PERS: 3 NUM: sg IND: + ] RSTR: h19 BODY: h20 ]  [ named<22:28> LBL: h21 CARG: \"Tweety\" ARG0: x18 ]  [ _swim_v_1<29:35> LBL: h23 ARG0: e24 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x18 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 h16 qeq h23 h19 qeq h21 > ICONS: < > ]",
@@ -613,7 +741,39 @@
           "h11": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "believe_v3",
+          9,
+          16
+        ],
+        [
+          "that_c",
+          17,
+          21
+        ],
+        [
+          "generic_proper_ne",
+          22,
+          28
+        ],
+        [
+          "swim_v1",
+          29,
+          35
+        ]
+      ]
     }
   ]
 }

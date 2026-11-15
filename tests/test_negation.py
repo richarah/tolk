@@ -2,7 +2,7 @@
 
 import pytest
 
-from helpers import fixture_path
+from helpers import fixture_path, readings_of
 from tolk import compile as comp, lf, sem
 from tolk.ask import NO, UNKNOWN, YES
 from tolk.mind import Mind
@@ -45,7 +45,7 @@ def test_every_under_negation_is_refused(mind: Mind) -> None:
 
 def test_the_verb_reading_of_fish_loses_to_the_noun_reading() -> None:
     # Reading 1 is the verb "to fish" with its object left implicit; it says less than the noun reading.
-    readings = [sem.read(r["simplemrs"]) for r in __import__("json").loads(fixture_path("Kim does not like fish.").read_text())["readings"]]
+    readings = readings_of("Kim does not like fish.")
     assert "_fish_v_1" in lf.show(comp.compile_reading(readings[0]))
     k, x = comp.choose(readings, set())
     assert k > 0 and "_like_v_1" in lf.show(x)

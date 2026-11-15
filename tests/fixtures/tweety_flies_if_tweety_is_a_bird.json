@@ -148,7 +148,44 @@
           "h13": {},
           "h22": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "fly_v1",
+          7,
+          12
+        ],
+        [
+          "if_subconj_unspec",
+          13,
+          15
+        ],
+        [
+          "generic_proper_ne",
+          16,
+          22
+        ],
+        [
+          "be_id_is",
+          23,
+          25
+        ],
+        [
+          "a_det",
+          26,
+          27
+        ],
+        [
+          "bird_n1",
+          28,
+          33
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ unknown<0:33> LBL: h4 ARG0: e2 ARG: x5 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:12> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _tweety/JJ_u_unknown<0:6> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x5 ]  [ _fly_n_1<7:12> LBL: h9 ARG0: x5 ]  [ _if_x_then<13:15> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<16:22> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<16:22> LBL: h18 CARG: \"Tweety\" ARG0: x15 ]  [ _be_v_id<23:25> LBL: h20 ARG0: e2 ARG1: x15 ARG2: x21 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<26:27> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ _bird_n_1<28:33> LBL: h25 ARG0: x21 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h4 h13 qeq h20 h16 qeq h18 h23 qeq h25 > ICONS: < > ]",
@@ -304,7 +341,44 @@
           "h14": {},
           "h22": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_adj",
+          0,
+          6
+        ],
+        [
+          "fly_n1",
+          7,
+          12
+        ],
+        [
+          "if_subconj_unspec",
+          13,
+          15
+        ],
+        [
+          "generic_proper_ne",
+          16,
+          22
+        ],
+        [
+          "be_id_is",
+          23,
+          25
+        ],
+        [
+          "a_det",
+          26,
+          27
+        ],
+        [
+          "bird_n1",
+          28,
+          33
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ _fly_v_1<7:12> LBL: h9 ARG0: e2 ARG1: x3 ]  [ _if_x_then<13:15> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ proper_q<16:22> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ named<16:22> LBL: h17 CARG: \"Tweety\" ARG0: x14 ]  [ _be_v_id<23:25> LBL: h19 ARG0: e20 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: x21 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<26:27> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ _bird_n_1<28:33> LBL: h25 ARG0: x21 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h9 h12 qeq h19 h15 qeq h17 h23 qeq h25 > ICONS: < > ]",
@@ -453,7 +527,44 @@
           "h13": {},
           "h22": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "fly_v1",
+          7,
+          12
+        ],
+        [
+          "if_subconj_unspec",
+          13,
+          15
+        ],
+        [
+          "generic_proper_ne",
+          16,
+          22
+        ],
+        [
+          "be_id_is",
+          23,
+          25
+        ],
+        [
+          "a_det",
+          26,
+          27
+        ],
+        [
+          "bird_n1",
+          28,
+          33
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ unknown<0:33> LBL: h4 ARG0: e2 ARG: x5 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:12> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ compound<0:12> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: x11 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:6> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ named<0:6> LBL: h15 CARG: \"Tweety\" ARG0: x11 ]  [ _fly_n_1<7:12> LBL: h9 ARG0: x5 ]  [ _if_x_then<13:15> LBL: h1 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h18 ARG2: h19 ]  [ proper_q<16:22> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<16:22> LBL: h24 CARG: \"Tweety\" ARG0: x21 ]  [ _be_v_id<23:25> LBL: h26 ARG0: e2 ARG1: x21 ARG2: x27 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<26:27> LBL: h28 ARG0: x27 RSTR: h29 BODY: h30 ]  [ _bird_n_1<28:33> LBL: h31 ARG0: x27 ] > HCONS: < h0 qeq h1 h7 qeq h9 h13 qeq h15 h18 qeq h4 h19 qeq h26 h22 qeq h24 h29 qeq h31 > ICONS: < > ]",
@@ -638,7 +749,44 @@
           "h20": {},
           "h28": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "fly_n1",
+          7,
+          12
+        ],
+        [
+          "if_subconj_unspec",
+          13,
+          15
+        ],
+        [
+          "generic_proper_ne",
+          16,
+          22
+        ],
+        [
+          "be_id_is",
+          23,
+          25
+        ],
+        [
+          "a_det",
+          26,
+          27
+        ],
+        [
+          "bird_n1",
+          28,
+          33
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Tweety\" ARG0: x3 ]  [ _fly_v_to<7:12> LBL: h9 ARG0: e2 ARG1: x3 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ _if_x_then<13:15> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h12 ARG2: h13 ]  [ proper_q<16:22> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<16:22> LBL: h18 CARG: \"Tweety\" ARG0: x15 ]  [ ellipsis_ref<23:25> LBL: h20 ARG0: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x15 ]  [ _a_q<26:27> LBL: h22 ARG0: x10 RSTR: h23 BODY: h24 ]  [ _bird_n_1<28:33> LBL: h25 ARG0: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h13 qeq h20 h16 qeq h18 h23 qeq h25 > ICONS: < > ]",
@@ -787,7 +935,44 @@
           "h14": {},
           "h22": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "fly_v3",
+          7,
+          12
+        ],
+        [
+          "if_subconj_unspec",
+          13,
+          15
+        ],
+        [
+          "generic_proper_ne",
+          16,
+          22
+        ],
+        [
+          "be_c_is",
+          23,
+          25
+        ],
+        [
+          "a_det",
+          26,
+          27
+        ],
+        [
+          "bird_n1",
+          28,
+          33
+        ]
+      ]
     }
   ]
 }

@@ -75,7 +75,29 @@
           "h11": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "anna_n1",
+          0,
+          4
+        ],
+        [
+          "does1_pos",
+          5,
+          9
+        ],
+        [
+          "not",
+          10,
+          13
+        ],
+        [
+          "sleep_v1",
+          14,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl ] ]  [ udef_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<0:9> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]  [ compound<0:9> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<0:4> LBL: h18 CARG: \"Anna\" ARG0: x14 ]  [ _doe_n_1<5:9> LBL: h12 ARG0: x9 ]  [ _not_c<10:13> LBL: h20 ARG0: x4 ARG1: x9 ARG2: x21 [ x PERS: 3 NUM: sg ] ]  [ udef_q<14:20> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ _sleep_n_1<14:20> LBL: h25 ARG0: x21 ] > HCONS: < h0 qeq h1 h6 qeq h20 h10 qeq h12 h16 qeq h18 h23 qeq h25 > ICONS: < > ]",
@@ -224,7 +246,29 @@
           "h15": {},
           "h22": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "anna_n1",
+          0,
+          4
+        ],
+        [
+          "doe_n1",
+          5,
+          9
+        ],
+        [
+          "not_conj",
+          10,
+          13
+        ],
+        [
+          "sleep_n1",
+          14,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ udef_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:20> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:4> LBL: h14 CARG: \"Anna\" ARG0: x10 ]  [ udef_q<5:9> LBL: h16 ARG0: x17 [ x PERS: 3 NUM: pl IND: + ] RSTR: h18 BODY: h19 ]  [ _doe_n_1<5:9> LBL: h20 ARG0: x17 ]  [ udef_q<10:20> LBL: h21 ARG0: x22 [ x PERS: 3 NUM: sg ] RSTR: h23 BODY: h24 ]  [ _not_c<10:13> LBL: h8 ARG0: x4 ARG1: x17 ARG2: x22 ]  [ _sleep_n_1<14:20> LBL: h25 ARG0: x22 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h23 qeq h25 > ICONS: < > ]",
@@ -372,7 +416,29 @@
           "h16": {},
           "h21": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "anna_n1",
+          0,
+          4
+        ],
+        [
+          "doe_n1",
+          5,
+          9
+        ],
+        [
+          "not_conj",
+          10,
+          13
+        ],
+        [
+          "sleep_n1",
+          14,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ udef_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<0:9> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]  [ compound<0:9> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<0:4> LBL: h18 CARG: \"Anna\" ARG0: x14 ]  [ _doe_n_1<5:9> LBL: h12 ARG0: x9 ]  [ udef_q<10:20> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg ] RSTR: h22 BODY: h23 ]  [ _not_c<10:13> LBL: h24 ARG0: x4 ARG1: x9 ARG2: x21 ]  [ _sleep_n_1<14:20> LBL: h25 ARG0: x21 ] > HCONS: < h0 qeq h1 h6 qeq h24 h10 qeq h12 h16 qeq h18 h22 qeq h25 > ICONS: < > ]",
@@ -520,7 +586,29 @@
           "h15": {},
           "h20": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "anna_n1",
+          0,
+          4
+        ],
+        [
+          "doe_n1",
+          5,
+          9
+        ],
+        [
+          "not_conj",
+          10,
+          13
+        ],
+        [
+          "sleep_n1",
+          14,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl ] ]  [ udef_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ proper_q<0:4> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ named<0:4> LBL: h12 CARG: \"Anna\" ARG0: x9 ]  [ udef_q<5:20> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: pl ] RSTR: h16 BODY: h17 ]  [ implicit_conj<5:20> LBL: h18 ARG0: x4 ARG1: x9 ARG2: x15 ]  [ udef_q<5:9> LBL: h19 ARG0: x20 [ x PERS: 3 NUM: pl IND: + ] RSTR: h21 BODY: h22 ]  [ _doe_n_1<5:9> LBL: h23 ARG0: x20 ]  [ _not_c<10:13> LBL: h24 ARG0: x15 ARG1: x20 ARG2: x25 [ x PERS: 3 NUM: sg ] ]  [ udef_q<14:20> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]  [ _sleep_n_1<14:20> LBL: h29 ARG0: x25 ] > HCONS: < h0 qeq h1 h6 qeq h18 h10 qeq h12 h16 qeq h24 h21 qeq h23 h27 qeq h29 > ICONS: < > ]",
@@ -679,7 +767,29 @@
           "h19": {},
           "h26": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "anna_n1",
+          0,
+          4
+        ],
+        [
+          "doe_n1",
+          5,
+          9
+        ],
+        [
+          "not_conj",
+          10,
+          13
+        ],
+        [
+          "sleep_n1",
+          14,
+          20
+        ]
+      ]
     }
   ]
 }

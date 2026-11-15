@@ -147,7 +147,7 @@ class Mind:
         return "\n".join(lines)
 
     def _forget(self, target: str) -> Result:
-        readings = [sem.read(raw) for raw in erg.parse(target)]
+        readings = [sem.read(p.mrs, p.lex) for p in erg.parse(target)]
         k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
         head = (k + 1, len(readings), lf.show(x))
         if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every)):
@@ -167,7 +167,7 @@ class Mind:
         forgetting = FORGET.fullmatch(text.strip())
         if forgetting:
             return self._forget(forgetting.group(1) + ".")
-        readings = [sem.read(raw) for raw in erg.parse(text)]
+        readings = [sem.read(p.mrs, p.lex) for p in erg.parse(text)]
         k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
         printed = lf.show(x)
         head = (k + 1, len(readings), printed)

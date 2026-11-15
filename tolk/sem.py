@@ -19,9 +19,10 @@ class Reading:
     eps: tuple[EP, ...]
     qeq: dict[str, str]
     props: dict[str, dict[str, str]]
+    lex: tuple[tuple[str, int, int], ...] = ()  # lexical entries by token, when the parser's derivation is at hand
 
 
-def read(simplemrs_text: str) -> Reading:
+def read(simplemrs_text: str, lex: tuple = ()) -> Reading:
     m = simplemrs.decode(simplemrs_text)
     eps = []
     for ep in m.rels:
@@ -31,7 +32,7 @@ def read(simplemrs_text: str) -> Reading:
         eps.append(EP(ep.predicate, ep.label, args, ep.cfrom, ep.cto))
     qeq = {hc.hi: hc.lo for hc in m.hcons}
     props = {v: dict(p) for v, p in m.variables.items()}
-    return Reading(m.top, m.index, tuple(eps), qeq, props)
+    return Reading(m.top, m.index, tuple(eps), qeq, props, tuple(tuple(e) for e in lex))
 
 
 def to_dict(r: Reading) -> dict:

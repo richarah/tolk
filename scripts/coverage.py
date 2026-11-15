@@ -27,7 +27,7 @@ def main(files: list[Path]) -> None:
         for text in sentences(f):
             total += 1
             record = json.loads(fixture_path(text).read_text())
-            readings = [sem.read(r["simplemrs"]) for r in record["readings"]]
+            readings = [sem.read(r["simplemrs"], r["lexical"]) for r in record["readings"]]
             _, x = comp.choose(readings, set(), lambda pred: store.things_with(db, pred))
             if isinstance(x, lf.Refusal):
                 refusals[(x.code, x.detail)] += 1

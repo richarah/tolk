@@ -99,7 +99,39 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "carla_n1",
+          5,
+          10
+        ],
+        [
+          "drive_v2",
+          11,
+          16
+        ],
+        [
+          "a_det",
+          17,
+          18
+        ],
+        [
+          "red_a1",
+          19,
+          22
+        ],
+        [
+          "car_n1",
+          23,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:10> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:10> LBL: h7 CARG: \"Carla\" ARG0: x3 ]  [ _drive_v_1<11:16> LBL: h1 ARG0: e2 ARG1: x3 ]  [ mod<17:27> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<17:18> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _red_a_1<19:22> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x10 ]  [ _car_n_1<23:27> LBL: h14 ARG0: x10 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 > ICONS: < > ]",
@@ -214,7 +246,39 @@
           "h4": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "carla_n1",
+          5,
+          10
+        ],
+        [
+          "drive_v1",
+          11,
+          16
+        ],
+        [
+          "a_det",
+          17,
+          18
+        ],
+        [
+          "red_a1",
+          19,
+          22
+        ],
+        [
+          "car_n1",
+          23,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:10> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:4> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:4> LBL: h9 CARG: \"Does\" ARG0: x3 ]  [ proper_q<5:10> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ named<5:10> LBL: h14 CARG: \"Carla\" ARG0: x5 ]  [ _drive_v_1<11:16> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<17:18> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _red_a_1<19:22> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x16 ]  [ _car_n_1<23:27> LBL: h20 ARG0: x16 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
@@ -357,7 +421,39 @@
           "h11": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "carla_n1",
+          5,
+          10
+        ],
+        [
+          "drive_v2",
+          11,
+          16
+        ],
+        [
+          "a_det",
+          17,
+          18
+        ],
+        [
+          "red_a1",
+          19,
+          22
+        ],
+        [
+          "car_n1",
+          23,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _do_v_1<0:4> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ARG3: x5 [ x PERS: 3 NUM: sg ] ]  [ udef_q<5:16> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ compound<5:16> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: x11 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<5:10> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ named<5:10> LBL: h15 CARG: \"Carla\" ARG0: x11 ]  [ _drive_n_1<11:16> LBL: h9 ARG0: x5 ]  [ _a_q<17:18> LBL: h17 ARG0: x4 RSTR: h18 BODY: h19 ]  [ _red_a_1<19:22> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x4 ]  [ _car_n_1<23:27> LBL: h20 ARG0: x4 ] > HCONS: < h0 qeq h1 h7 qeq h9 h13 qeq h15 h18 qeq h20 > ICONS: < > ]",
@@ -501,7 +597,39 @@
           "h12": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "do_v4",
+          0,
+          4
+        ],
+        [
+          "carla_n1",
+          5,
+          10
+        ],
+        [
+          "drive_n1",
+          11,
+          16
+        ],
+        [
+          "a_det",
+          17,
+          18
+        ],
+        [
+          "red_a1",
+          19,
+          22
+        ],
+        [
+          "car_n1",
+          23,
+          27
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:27> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ udef_q<0:16> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:16> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:10> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<0:10> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:4> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ named<0:4> LBL: h20 CARG: \"Does\" ARG0: x16 ]  [ named<5:10> LBL: h14 CARG: \"Carla\" ARG0: x10 ]  [ _drive_n_1<11:16> LBL: h8 ARG0: x4 ]  [ mod<17:27> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x23 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<17:18> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]  [ _red_a_1<19:22> LBL: h27 ARG0: e28 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x23 ]  [ _car_n_1<23:27> LBL: h27 ARG0: x23 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h25 qeq h27 > ICONS: < > ]",
@@ -691,7 +819,39 @@
           "h17": {},
           "h24": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "carla_n1",
+          5,
+          10
+        ],
+        [
+          "drive_n1",
+          11,
+          16
+        ],
+        [
+          "a_det",
+          17,
+          18
+        ],
+        [
+          "red_a1",
+          19,
+          22
+        ],
+        [
+          "car_n1",
+          23,
+          27
+        ]
+      ]
     }
   ]
 }

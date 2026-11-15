@@ -98,7 +98,29 @@
           "h7": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "does1_pos",
+          6,
+          10
+        ],
+        [
+          "kim",
+          11,
+          14
+        ],
+        [
+          "live_v2",
+          15,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ place_n<0:5> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:5> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ proper_q<11:14> LBL: h9 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ named<11:14> LBL: h12 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<15:20> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x5 ] > HCONS: < h0 qeq h1 h7 qeq h4 h10 qeq h12 > ICONS: < > ]",
@@ -182,7 +204,29 @@
           "h6": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "does1_pos",
+          6,
+          10
+        ],
+        [
+          "kim",
+          11,
+          14
+        ],
+        [
+          "live_v1",
+          15,
+          20
+        ]
+      ]
     }
   ]
 }

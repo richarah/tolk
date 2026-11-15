@@ -76,7 +76,29 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "ada_n1",
+          0,
+          3
+        ],
+        [
+          "want_v2",
+          4,
+          9
+        ],
+        [
+          "to_c_prop",
+          10,
+          12
+        ],
+        [
+          "sleep_v1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ _want_n_of<4:9> LBL: h8 ARG0: x4 ARG1: i16 ]  [ _to_p<10:12> LBL: h8 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x18 [ x PERS: 3 NUM: sg ] ]  [ udef_q<13:19> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]  [ _sleep_n_1<13:19> LBL: h22 ARG0: x18 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h20 qeq h22 > ICONS: < > ]",
@@ -216,7 +238,29 @@
           "h11": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "ada_n1",
+          0,
+          3
+        ],
+        [
+          "want_n1",
+          4,
+          9
+        ],
+        [
+          "to_nmod",
+          10,
+          12
+        ],
+        [
+          "sleep_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ _want_n_of<4:9> LBL: h8 ARG0: x4 ARG1: i16 ]  [ with_p<10:19> LBL: h8 ARG0: e17 [ e SF: prop ] ARG1: e18 [ e SF: prop-or-ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG2: x4 ]  [ _sleep_v_1<13:19> LBL: h8 ARG0: e18 ARG1: i19 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -343,7 +387,29 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "ada_n1",
+          0,
+          3
+        ],
+        [
+          "want_n1",
+          4,
+          9
+        ],
+        [
+          "to_c_prop",
+          10,
+          12
+        ],
+        [
+          "sleep_v1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ _want_n_of<4:9> LBL: h8 ARG0: x4 ARG1: i16 ]  [ eventuality<10:19> LBL: h8 ARG0: e17 [ e SF: prop ] ARG1: h18 ]  [ _sleep_v_1<13:19> LBL: h18 ARG0: e19 [ e SF: prop-or-ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -469,7 +535,29 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "ada_n1",
+          0,
+          3
+        ],
+        [
+          "want_n1",
+          4,
+          9
+        ],
+        [
+          "to_c_prop",
+          10,
+          12
+        ],
+        [
+          "sleep_v1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: untensed MOOD: indicative ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:9> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Ada\" ARG0: x10 ]  [ _want_n_of<4:9> LBL: h8 ARG0: x4 ARG1: i16 ]  [ _to_p<10:12> LBL: h1 ARG0: e2 ARG1: u17 ARG2: x18 [ x PERS: 3 NUM: sg ] ]  [ udef_q<13:19> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]  [ _sleep_n_1<13:19> LBL: h22 ARG0: x18 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h20 qeq h22 > ICONS: < > ]",
@@ -605,7 +693,29 @@
           "h11": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "ada_n1",
+          0,
+          3
+        ],
+        [
+          "want_n1",
+          4,
+          9
+        ],
+        [
+          "to",
+          10,
+          12
+        ],
+        [
+          "sleep_n1",
+          13,
+          19
+        ]
+      ]
     }
   ]
 }

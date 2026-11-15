@@ -84,7 +84,29 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "be_id_is",
+          7,
+          9
+        ],
+        [
+          "a_det",
+          10,
+          11
+        ],
+        [
+          "generic_mass_count_noun",
+          12,
+          18
+        ]
+      ]
     }
   ]
 }

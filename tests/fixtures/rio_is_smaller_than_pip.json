@@ -100,7 +100,34 @@
           "h4": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          3
+        ],
+        [
+          "be_c_is",
+          4,
+          6
+        ],
+        [
+          "smaller_a1",
+          7,
+          14
+        ],
+        [
+          "than_p1_nc",
+          15,
+          19
+        ],
+        [
+          "generic_proper_ne",
+          20,
+          24
+        ]
+      ]
     }
   ]
 }

@@ -117,7 +117,54 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "finch_n1",
+          6,
+          11
+        ],
+        [
+          "that_r",
+          12,
+          16
+        ],
+        [
+          "swim_v1",
+          17,
+          22
+        ],
+        [
+          "quickly_adv1",
+          23,
+          30
+        ],
+        [
+          "be_c_is",
+          31,
+          33
+        ],
+        [
+          "cheerful_a1",
+          34,
+          42
+        ],
+        [
+          "or_conj_1",
+          43,
+          45
+        ],
+        [
+          "calm_a1",
+          46,
+          51
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _finch_n_1<6:11> LBL: h7 ARG0: x3 ]  [ generic_entity<12:16> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<12:16> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _swim_v_1<17:22> LBL: h7 ARG0: e13 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x3 ]  [ _quick_a_1<23:30> LBL: h7 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e13 ]  [ _cheerful_a_1<34:42> LBL: h1 ARG0: e15 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x3 ]  [ _or_c<43:45> LBL: h1 ARG0: e2 ARG1: e15 ARG2: e16 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ _calm_a_1<46:51> LBL: h1 ARG0: e16 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h8 > ICONS: < > ]",
@@ -262,7 +309,54 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "finch_n1",
+          6,
+          11
+        ],
+        [
+          "that_deix",
+          12,
+          16
+        ],
+        [
+          "swim_v2",
+          17,
+          22
+        ],
+        [
+          "quickly_adv1",
+          23,
+          30
+        ],
+        [
+          "be_c_is",
+          31,
+          33
+        ],
+        [
+          "cheerful_a1",
+          34,
+          42
+        ],
+        [
+          "or_conj_1",
+          43,
+          45
+        ],
+        [
+          "calm_a1",
+          46,
+          51
+        ]
+      ]
     }
   ]
 }

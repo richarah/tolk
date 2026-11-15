@@ -75,7 +75,29 @@
           "h11": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "do1_pos",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "fly_v1",
+          12,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]  [ _fish_n_1<0:4> LBL: h7 ARG0: x3 ]  [ neg<8:11> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h9 ]  [ _fly_v_1<12:16> LBL: h10 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h10 > ICONS: < > ]",
@@ -150,7 +172,29 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "fish_n1",
+          0,
+          4
+        ],
+        [
+          "do1_pos",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "fly_v1",
+          12,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:4> LBL: h7 CARG: \"Fish\" ARG0: x3 ]  [ neg<8:11> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _fly_v_1<12:16> LBL: h11 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
@@ -226,7 +270,29 @@
           "h11": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "do1_pos",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "fly_v1",
+          12,
+          16
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]  [ _fish_n_1<0:4> LBL: h7 ARG0: x3 ]  [ neg<8:11> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h9 ]  [ _fly_v_1<12:16> LBL: h10 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h10 > ICONS: < > ]",
@@ -301,7 +367,29 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "fish_n1",
+          0,
+          4
+        ],
+        [
+          "do1_pos",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "fly_v1",
+          12,
+          16
+        ]
+      ]
     }
   ]
 }

@@ -83,7 +83,34 @@
           "h4": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "robin_n2",
+          6,
+          11
+        ],
+        [
+          "be_id_is",
+          12,
+          14
+        ],
+        [
+          "a_det",
+          15,
+          16
+        ],
+        [
+          "bird_n1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<6:11> LBL: h7 CARG: \"Robin\" ARG0: x3 ]  [ _be_v_id<12:14> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<15:16> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _bird_n_1<17:22> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
@@ -168,7 +195,34 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "robin_n1",
+          6,
+          11
+        ],
+        [
+          "be_id_is",
+          12,
+          14
+        ],
+        [
+          "a_det",
+          15,
+          16
+        ],
+        [
+          "bird_n1",
+          17,
+          22
+        ]
+      ]
     }
   ]
 }

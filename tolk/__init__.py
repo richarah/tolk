@@ -13,7 +13,7 @@ __all__ = ["read", "printed", "Mind", "LF", "Tell", "Rule", "Ask", "Same", "Desc
 def read(text: str, known_predicates: frozenset = frozenset()) -> LF:
     """Parse, compile and choose a reading of one sentence. known_predicates, bare names or (name, arity) pairs, steer the choice
     between readings the way a store's predicates would. Nothing is stored; no pronoun or definite can be resolved without a store."""
-    readings = [_sem.read(raw) for raw in _erg.parse(text)]
+    readings = [_sem.read(p.mrs, p.lex) for p in _erg.parse(text)]
     return _compile.choose(readings, set(known_predicates))[1]
 
 

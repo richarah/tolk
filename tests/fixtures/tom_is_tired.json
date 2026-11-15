@@ -59,7 +59,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "tom_n1",
+          0,
+          3
+        ],
+        [
+          "be_c_is",
+          4,
+          6
+        ],
+        [
+          "tired_a1",
+          7,
+          13
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Tom\" ARG0: x3 ]  [ _tire_v_1<7:13> LBL: h1 ARG0: e2 ARG1: i9 ARG2: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < e2 topic x3 > ]",
@@ -119,7 +136,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "tom_n1",
+          0,
+          3
+        ],
+        [
+          "be_c_is",
+          4,
+          6
+        ],
+        [
+          "tire_v1",
+          7,
+          13
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Tom\" ARG0: x3 ]  [ compound<7:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x IND: + ] ]  [ udef_q<7:13> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _tire_n_1<7:13> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
@@ -202,7 +236,24 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "tom_n1",
+          0,
+          3
+        ],
+        [
+          "be_c_is",
+          4,
+          6
+        ],
+        [
+          "tire_n1",
+          7,
+          13
+        ]
+      ]
     }
   ]
 }

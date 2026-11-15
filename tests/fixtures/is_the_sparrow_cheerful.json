@@ -56,7 +56,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_c_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "sparrow_n1",
+          7,
+          14
+        ],
+        [
+          "cheerful_a1",
+          15,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _sparrow_n_1<7:14> LBL: h9 ARG0: x5 ]  [ subord<15:24> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ _cheerful_a_1<15:24> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i15 ] > HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h4 h12 qeq h13 > ICONS: < > ]",
@@ -151,7 +173,29 @@
           "h13": {},
           "h6": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "sparrow_n1",
+          7,
+          14
+        ],
+        [
+          "cheerful_a1",
+          15,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:24> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ appos<0:14> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ _the_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ _sparrow_n_1<7:14> LBL: h15 ARG0: x6 ]  [ _cheerful_a_1<15:24> LBL: h1 ARG0: e2 ARG1: u16 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 > ICONS: < > ]",
@@ -256,7 +300,29 @@
           "h7": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "sparrow_n1",
+          7,
+          14
+        ],
+        [
+          "cheerful_a1",
+          15,
+          24
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:24> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ appos<0:14> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ _the_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ _sparrow_n_1<7:14> LBL: h15 ARG0: x6 ]  [ _cheerful_a_1<15:24> LBL: h1 ARG0: e2 ARG1: u16 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 > ICONS: < > ]",
@@ -361,7 +427,29 @@
           "h7": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "sparrow_n1",
+          7,
+          14
+        ],
+        [
+          "cheerful_a1",
+          15,
+          24
+        ]
+      ]
     }
   ]
 }

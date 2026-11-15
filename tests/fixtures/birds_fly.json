@@ -56,7 +56,19 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "bird_n1",
+          0,
+          5
+        ],
+        [
+          "fly_v1",
+          6,
+          10
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:10> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:10> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:5> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _bird_n_1<0:5> LBL: h14 ARG0: x10 ]  [ _fly_n_1<6:10> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -152,7 +164,19 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "bird_n1",
+          0,
+          5
+        ],
+        [
+          "fly_n1",
+          6,
+          10
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:10> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:10> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:5> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:5> LBL: h14 CARG: \"Birds\" ARG0: x10 ]  [ _fly_n_1<6:10> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -249,7 +273,19 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "fly_n1",
+          6,
+          10
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Birds\" ARG0: x3 ]  [ _fly_v_1<6:10> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -307,7 +343,19 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "fly_v1",
+          6,
+          10
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:10> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:10> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:5> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:5> LBL: h14 CARG: \"Birds\" ARG0: x10 ]  [ _fly_n_1<6:10> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -404,7 +452,19 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "fly_n1",
+          6,
+          10
+        ]
+      ]
     }
   ]
 }

@@ -84,7 +84,24 @@
           "h5": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "write_v3",
+          4,
+          10
+        ],
+        [
+          "letter_n1",
+          11,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:10> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h5 BODY: h6 ]  [ nominalization<0:10> LBL: h7 ARG0: x3 ARG1: h8 ]  [ person<0:3> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _write_v_to<4:10> LBL: h8 ARG0: e14 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: i15 ]  [ _letter_v_1<11:19> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i16 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 > ICONS: < > ]",
@@ -186,7 +203,24 @@
           "h4": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "write_v3",
+          4,
+          10
+        ],
+        [
+          "letter_v1",
+          11,
+          19
+        ]
+      ]
     }
   ]
 }

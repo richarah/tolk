@@ -84,7 +84,34 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "tom_n1",
+          5,
+          8
+        ],
+        [
+          "have-poss",
+          9,
+          13
+        ],
+        [
+          "a_det",
+          14,
+          15
+        ],
+        [
+          "master_n1",
+          16,
+          23
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:8> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:4> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:4> LBL: h9 CARG: \"Does\" ARG0: x3 ]  [ proper_q<5:8> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ named<5:8> LBL: h14 CARG: \"Tom\" ARG0: x5 ]  [ _have_v_1<9:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<14:15> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _master_n_1<16:23> LBL: h20 ARG0: x16 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
@@ -212,7 +239,34 @@
           "h11": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "tom_n1",
+          5,
+          8
+        ],
+        [
+          "have-poss",
+          9,
+          13
+        ],
+        [
+          "a_det",
+          14,
+          15
+        ],
+        [
+          "master_n1",
+          16,
+          23
+        ]
+      ]
     }
   ]
 }

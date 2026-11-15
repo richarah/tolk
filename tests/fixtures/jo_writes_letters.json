@@ -86,7 +86,24 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "jo_n1",
+          0,
+          2
+        ],
+        [
+          "write_v3",
+          3,
+          9
+        ],
+        [
+          "letter_n1",
+          10,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Jo\" ARG0: x3 ]  [ _write_v_to<3:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ unknown<10:18> LBL: h11 ARG0: e12 [ e SF: prop ] ARG: x13 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<10:18> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _letter_n_of<10:18> LBL: h17 ARG0: x13 ARG1: i18 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h11 h15 qeq h17 > ICONS: < > ]",
@@ -189,7 +206,24 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "jo_n1",
+          0,
+          2
+        ],
+        [
+          "write_v7",
+          3,
+          9
+        ],
+        [
+          "letter_n1",
+          10,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Jo\" ARG0: x3 ]  [ _write_v_to<3:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ARG3: i10 ]  [ _letter_v_1<10:18> LBL: h11 ARG0: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: i13 ARG2: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h11 > ICONS: < > ]",
@@ -271,7 +305,24 @@
           "h11": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "jo_n1",
+          0,
+          2
+        ],
+        [
+          "write_v7",
+          3,
+          9
+        ],
+        [
+          "letter_v1",
+          10,
+          18
+        ]
+      ]
     }
   ]
 }

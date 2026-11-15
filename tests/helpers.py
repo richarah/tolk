@@ -1,3 +1,4 @@
+import json
 import re
 from pathlib import Path
 
@@ -13,3 +14,9 @@ def sentences(path: Path | None = None) -> list[str]:
 def fixture_path(text: str) -> Path:
     return FIXTURES / (re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_") + ".json")
 
+
+
+def readings_of(text: str) -> list:
+    """The recorded readings of a sentence, with the lexical entries the parser's derivation gave each."""
+    from tolk import sem
+    return [sem.read(r["simplemrs"], r["lexical"]) for r in json.loads(fixture_path(text).read_text())["readings"]]

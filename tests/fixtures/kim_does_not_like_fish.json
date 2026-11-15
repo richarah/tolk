@@ -77,7 +77,34 @@
           "h11": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not",
+          9,
+          12
+        ],
+        [
+          "like_disc_adv",
+          13,
+          17
+        ],
+        [
+          "fish_v1",
+          18,
+          23
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _like_v_1<13:17> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<18:23> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ _fish_n_1<18:23> LBL: h16 ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
@@ -180,7 +207,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not",
+          9,
+          12
+        ],
+        [
+          "like_v1",
+          13,
+          17
+        ],
+        [
+          "fish_n1",
+          18,
+          23
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _like_v_1<13:17> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg ] ]  [ udef_q<18:23> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ _fish_n_1<18:23> LBL: h16 ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
@@ -282,7 +336,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not",
+          9,
+          12
+        ],
+        [
+          "like_v1",
+          13,
+          17
+        ],
+        [
+          "fish_n1",
+          18,
+          23
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ ellipsis_ref<4:8> LBL: h9 ARG0: e2 ARG1: x3 ]  [ neg<9:12> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ]  [ _like_p<13:17> LBL: h1 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x13 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<18:23> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _fish_n_1<18:23> LBL: h17 ARG0: x13 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h9 h15 qeq h17 > ICONS: < > ]",
@@ -400,7 +481,34 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not",
+          9,
+          12
+        ],
+        [
+          "like_p",
+          13,
+          17
+        ],
+        [
+          "fish_n1",
+          18,
+          23
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ ellipsis_ref<4:8> LBL: h1 ARG0: e2 ARG1: x3 ]  [ neg<9:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _like_p<13:17> LBL: h11 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x13 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<18:23> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ _fish_n_1<18:23> LBL: h17 ARG0: x13 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h15 qeq h17 > ICONS: < > ]",
@@ -518,7 +626,34 @@
           "h4": {},
           "h14": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "not_prdp",
+          9,
+          12
+        ],
+        [
+          "like_p",
+          13,
+          17
+        ],
+        [
+          "fish_n1",
+          18,
+          23
+        ]
+      ]
     }
   ]
 }

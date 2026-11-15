@@ -108,7 +108,24 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every_a1",
+          0,
+          5
+        ],
+        [
+          "bird_n1",
+          6,
+          10
+        ],
+        [
+          "fly_n1",
+          11,
+          17
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _bird_n_1<6:10> LBL: h7 ARG0: x3 ]  [ _fly_v_1<11:17> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -165,7 +182,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "bird_n1",
+          6,
+          10
+        ],
+        [
+          "fly_v1",
+          11,
+          17
+        ]
+      ]
     }
   ]
 }

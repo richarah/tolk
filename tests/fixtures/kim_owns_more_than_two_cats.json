@@ -153,7 +153,39 @@
           "h11": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "own_v1",
+          4,
+          8
+        ],
+        [
+          "more_adj",
+          9,
+          13
+        ],
+        [
+          "than_p1_nc",
+          14,
+          18
+        ],
+        [
+          "two",
+          19,
+          22
+        ],
+        [
+          "cat_n1",
+          23,
+          28
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _own_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 ] ]  [ generic_entity<9:13> LBL: h10 ARG0: x9 ]  [ udef_q<9:13> LBL: h11 ARG0: x9 RSTR: h12 BODY: h13 ]  [ much-many_a<9:13> LBL: h10 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x9 ]  [ more_comp<9:13> LBL: h10 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e14 ARG2: u16 ]  [ _than_p_ind<14:18> LBL: h10 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x18 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<19:22> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]  [ card<19:22> LBL: h22 CARG: \"2\" ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x18 ]  [ _cat_n_1<23:28> LBL: h22 ARG0: x18 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h10 h20 qeq h22 > ICONS: < > ]",
@@ -324,7 +356,39 @@
           "h11": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "own_v1",
+          4,
+          8
+        ],
+        [
+          "more_adj",
+          9,
+          13
+        ],
+        [
+          "than_p2",
+          14,
+          18
+        ],
+        [
+          "two",
+          19,
+          22
+        ],
+        [
+          "cat_n1",
+          23,
+          28
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _own_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<9:22> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _more+than_a_1<9:18> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ]  [ card<19:22> LBL: h13 CARG: \"2\" ARG0: e15 ARG1: x9 ]  [ _cat_n_1<23:28> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
@@ -440,7 +504,34 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "own_v1",
+          4,
+          8
+        ],
+        [
+          "more_than_adv1",
+          9,
+          13
+        ],
+        [
+          "two",
+          19,
+          22
+        ],
+        [
+          "cat_n1",
+          23,
+          28
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _own_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: pl IND: + ] ]  [ _more_a_1<9:13> LBL: h1 ARG0: i10 ARG1: e2 ]  [ more_comp<9:13> LBL: h1 ARG0: i11 ARG1: i10 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]  [ basic_numbered_hour<19:22> LBL: h13 CARG: \"2\" ARG0: x12 ]  [ def_implicit_q<19:22> LBL: h15 ARG0: x12 RSTR: h16 BODY: h17 ]  [ udef_q<23:28> LBL: h18 ARG0: x9 RSTR: h19 BODY: h20 ]  [ _cat_n_1<23:28> LBL: h21 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -569,7 +660,39 @@
           "h18": {},
           "h21": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "own_v1",
+          4,
+          8
+        ],
+        [
+          "more_comp_adv",
+          9,
+          13
+        ],
+        [
+          "than_p1_nc",
+          14,
+          18
+        ],
+        [
+          "two_hour",
+          19,
+          22
+        ],
+        [
+          "cat_n1",
+          23,
+          28
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _own_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: pl IND: + ] ]  [ _more+than_p<9:18> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ basic_numbered_hour<19:22> LBL: h12 CARG: \"2\" ARG0: x11 ]  [ def_implicit_q<19:22> LBL: h14 ARG0: x11 RSTR: h15 BODY: h16 ]  [ udef_q<23:28> LBL: h17 ARG0: x9 RSTR: h18 BODY: h19 ]  [ _cat_n_1<23:28> LBL: h20 ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h15 qeq h12 h18 qeq h20 > ICONS: < > ]",
@@ -695,7 +818,34 @@
           "h14": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "own_v1",
+          4,
+          8
+        ],
+        [
+          "more_than_p",
+          9,
+          13
+        ],
+        [
+          "two_hour",
+          19,
+          22
+        ],
+        [
+          "cat_n1",
+          23,
+          28
+        ]
+      ]
     }
   ]
 }

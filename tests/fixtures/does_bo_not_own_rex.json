@@ -103,7 +103,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "bo_n1",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "own_v1",
+          12,
+          15
+        ],
+        [
+          "rex_n1",
+          16,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:7> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:7> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ neg<8:11> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _own_v_1<12:15> LBL: h11 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<16:20> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ named<16:20> LBL: h16 CARG: \"Rex\" ARG0: x12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h14 qeq h16 > ICONS: < > ]",
@@ -207,7 +234,34 @@
           "h4": {},
           "h13": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "bo_n1",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "own_v1",
+          12,
+          15
+        ],
+        [
+          "rex_n1",
+          16,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:20> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PT: notpro ] ]  [ udef_q<0:15> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ udef_q<0:4> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: pl IND: + ] RSTR: h16 BODY: h17 ]  [ named<0:4> LBL: h18 CARG: \"Does\" ARG0: x15 ]  [ udef_q<5:7> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ implicit_conj<5:15> LBL: h24 ARG0: x10 ARG1: x15 ARG2: x25 [ x PERS: 3 ] ]  [ udef_q<8:15> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]  [ named<5:7> LBL: h29 CARG: \"Bo\" ARG0: x21 ]  [ udef_q<8:15> LBL: h31 ARG0: x32 [ x PERS: 3 NUM: sg IND: + ] RSTR: h33 BODY: h34 ]  [ _not_c<8:11> LBL: h35 ARG0: x25 ARG1: x21 ARG2: x32 ]  [ _own_n_1<12:15> LBL: h36 ARG0: x32 ]  [ named<16:20> LBL: h8 CARG: \"Rex\" ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h24 h16 qeq h18 h22 qeq h29 h27 qeq h35 h33 qeq h36 > ICONS: < > ]",
@@ -409,7 +463,34 @@
           "h26": {},
           "h31": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "bo_n1",
+          5,
+          7
+        ],
+        [
+          "not_conj",
+          8,
+          11
+        ],
+        [
+          "own_n1",
+          12,
+          15
+        ],
+        [
+          "rex_n1",
+          16,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:20> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:20> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PT: notpro ] ]  [ udef_q<0:15> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ udef_q<0:4> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: pl IND: + ] RSTR: h16 BODY: h17 ]  [ named<0:4> LBL: h18 CARG: \"Does\" ARG0: x15 ]  [ udef_q<5:7> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ implicit_conj<5:15> LBL: h24 ARG0: x10 ARG1: x15 ARG2: x25 [ x PERS: 3 ] ]  [ udef_q<8:15> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]  [ named<5:7> LBL: h29 CARG: \"Bo\" ARG0: x21 ]  [ udef_q<8:15> LBL: h31 ARG0: x32 [ x PERS: 3 NUM: pl IND: + ] RSTR: h33 BODY: h34 ]  [ _not_c<8:11> LBL: h35 ARG0: x25 ARG1: x21 ARG2: x32 ]  [ _own_n_1<12:15> LBL: h36 ARG0: x32 ]  [ named<16:20> LBL: h8 CARG: \"Rex\" ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h24 h16 qeq h18 h22 qeq h29 h27 qeq h35 h33 qeq h36 > ICONS: < > ]",
@@ -611,7 +692,34 @@
           "h26": {},
           "h31": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "bo_n1",
+          5,
+          7
+        ],
+        [
+          "not_conj",
+          8,
+          11
+        ],
+        [
+          "own_n1",
+          12,
+          15
+        ],
+        [
+          "rex_n1",
+          16,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 ]  [ appos<0:20> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:15> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ udef_q<0:4> LBL: h10 ARG0: x11 [ x PERS: 3 NUM: pl IND: + ] RSTR: h12 BODY: h13 ]  [ named<0:4> LBL: h14 CARG: \"Does\" ARG0: x11 ]  [ udef_q<5:7> LBL: h16 ARG0: x17 [ x PERS: 3 NUM: sg IND: + ] RSTR: h18 BODY: h19 ]  [ implicit_conj<5:15> LBL: h20 ARG0: x4 ARG1: x11 ARG2: x21 [ x PERS: 3 ] ]  [ udef_q<8:15> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ named<5:7> LBL: h25 CARG: \"Bo\" ARG0: x17 ]  [ udef_q<8:15> LBL: h27 ARG0: x28 [ x PERS: 3 NUM: sg IND: + ] RSTR: h29 BODY: h30 ]  [ _not_c<8:11> LBL: h31 ARG0: x21 ARG1: x17 ARG2: x28 ]  [ _own_n_1<12:15> LBL: h32 ARG0: x28 ]  [ proper_q<16:20> LBL: h33 ARG0: x6 RSTR: h34 BODY: h35 ]  [ named<16:20> LBL: h36 CARG: \"Rex\" ARG0: x6 ] > HCONS: < h0 qeq h1 h8 qeq h20 h12 qeq h14 h18 qeq h25 h23 qeq h31 h29 qeq h32 h34 qeq h36 > ICONS: < > ]",
@@ -811,7 +919,34 @@
           "h27": {},
           "h33": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "bo_n1",
+          5,
+          7
+        ],
+        [
+          "not_conj",
+          8,
+          11
+        ],
+        [
+          "own_n1",
+          12,
+          15
+        ],
+        [
+          "rex_n1",
+          16,
+          20
+        ]
+      ]
     }
   ]
 }

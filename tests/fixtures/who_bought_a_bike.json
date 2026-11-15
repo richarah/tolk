@@ -82,7 +82,29 @@
           "h5": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "buy_v1",
+          4,
+          10
+        ],
+        [
+          "a_det",
+          11,
+          12
+        ],
+        [
+          "bike_n1",
+          13,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _buy_v_1<4:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ]  [ mod<11:18> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _bike_n_1<13:18> LBL: h14 ARG0: x10 ] > HCONS: < h0 qeq h1 h6 qeq h4 h12 qeq h14 > ICONS: < > ]",
@@ -182,7 +204,29 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "buy_v1",
+          4,
+          10
+        ],
+        [
+          "a_det",
+          11,
+          12
+        ],
+        [
+          "bike_n1",
+          13,
+          18
+        ]
+      ]
     }
   ]
 }

@@ -21,13 +21,13 @@ def main(files: list[Path], force: bool) -> None:
         out = fixture_path(line)
         if out.exists() and not force:
             continue
-        raws = erg.parse(line)
+        parsed = erg.parse(line)
         record = {
             "text": line,
-            "readings": [{"simplemrs": raw, "neutral": sem.to_dict(sem.read(raw))} for raw in raws],
+            "readings": [{"simplemrs": p.mrs, "neutral": sem.to_dict(sem.read(p.mrs)), "lexical": [list(e) for e in p.lex]} for p in parsed],
         }
         out.write_text(json.dumps(record, indent=2) + "\n")
-        print(f"{len(raws)} reading(s): {line}")
+        print(f"{len(parsed)} reading(s): {line}")
     erg.close()
 
 

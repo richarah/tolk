@@ -82,7 +82,29 @@
           "h5": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "fly_v3",
+          4,
+          9
+        ],
+        [
+          "a_det",
+          10,
+          11
+        ],
+        [
+          "plane_n1",
+          12,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _fly_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ mod<10:18> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<10:11> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _plane_n_1<12:18> LBL: h13 ARG0: x9 ] > HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h13 > ICONS: < > ]",
@@ -180,7 +202,29 @@
           "h5": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "fly_v1",
+          4,
+          9
+        ],
+        [
+          "a_det",
+          10,
+          11
+        ],
+        [
+          "plane_n1",
+          12,
+          18
+        ]
+      ]
     }
   ]
 }

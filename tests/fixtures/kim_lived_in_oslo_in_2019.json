@@ -143,7 +143,39 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "live_v2",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "oslo_n1",
+          13,
+          17
+        ],
+        [
+          "in_temp",
+          18,
+          20
+        ],
+        [
+          "generic_year_ne",
+          21,
+          26
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_state<10:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<13:17> LBL: h14 CARG: \"Oslo\" ARG0: x10 ]  [ _in_p_temp<18:20> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<21:26> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ yofc<21:26> LBL: h21 CARG: \"2019\" ARG0: x17 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -287,7 +319,39 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "live_v2",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "oslo_n1",
+          13,
+          17
+        ],
+        [
+          "in_temp",
+          18,
+          20
+        ],
+        [
+          "generic_year_ne",
+          21,
+          26
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_loc<10:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<13:17> LBL: h14 CARG: \"Oslo\" ARG0: x10 ]  [ _in_p_state<18:20> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg ] ]  [ number_q<21:26> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ card<21:26> LBL: h21 CARG: \"2019\" ARG0: x17 ARG1: i23 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -432,7 +496,39 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "live_v2",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "oslo_n1",
+          13,
+          17
+        ],
+        [
+          "in",
+          18,
+          20
+        ],
+        [
+          "generic_card_ne",
+          21,
+          26
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_loc<10:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<13:17> LBL: h14 CARG: \"Oslo\" ARG0: x10 ]  [ _in_p_temp<18:20> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e9 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<21:26> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ yofc<21:26> LBL: h21 CARG: \"2019\" ARG0: x17 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -576,7 +672,39 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "live_v2",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "oslo_n1",
+          13,
+          17
+        ],
+        [
+          "in_temp",
+          18,
+          20
+        ],
+        [
+          "generic_year_ne",
+          21,
+          26
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<4:9> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_state<10:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<13:17> LBL: h14 CARG: \"Oslo\" ARG0: x10 ]  [ _in_p_temp<18:20> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e9 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<21:26> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ yofc<21:26> LBL: h21 CARG: \"2019\" ARG0: x17 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -720,7 +848,39 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "live_v2",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "oslo_n1",
+          13,
+          17
+        ],
+        [
+          "in_temp",
+          18,
+          20
+        ],
+        [
+          "generic_year_ne",
+          21,
+          26
+        ]
+      ]
     }
   ]
 }

@@ -102,7 +102,29 @@
           "h4": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "sam_n1",
+          0,
+          3
+        ],
+        [
+          "work_v1",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "paris_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Sam\" ARG0: x3 ]  [ _work_v_in<4:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:19> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ named<13:19> LBL: h13 CARG: \"Paris\" ARG0: x9 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
@@ -188,7 +210,29 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "sam_n1",
+          0,
+          3
+        ],
+        [
+          "work_in_v1",
+          4,
+          9
+        ],
+        [
+          "in_prtcl",
+          10,
+          12
+        ],
+        [
+          "paris_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Sam\" ARG0: x10 ]  [ _work_n_1<4:9> LBL: h8 ARG0: x4 ]  [ _in_p_loc<10:12> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:19> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ named<13:19> LBL: h21 CARG: \"Paris\" ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -328,7 +372,29 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "sam_n1",
+          0,
+          3
+        ],
+        [
+          "work_n1",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "paris_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Sam\" ARG0: x10 ]  [ _works_n_1<4:9> LBL: h8 ARG0: x4 ]  [ _in_p_loc<10:12> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:19> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ named<13:19> LBL: h21 CARG: \"Paris\" ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -468,7 +534,29 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "sam_n1",
+          0,
+          3
+        ],
+        [
+          "works_n1",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "paris_n1",
+          13,
+          19
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: untensed MOOD: indicative ] RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:9> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:3> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:3> LBL: h14 CARG: \"Sam\" ARG0: x10 ]  [ _work_n_1<4:9> LBL: h8 ARG0: x4 ]  [ _in_p_loc<10:12> LBL: h1 ARG0: e2 ARG1: u16 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<13:19> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ named<13:19> LBL: h21 CARG: \"Paris\" ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
@@ -604,7 +692,29 @@
           "h11": {},
           "h18": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "sam_n1",
+          0,
+          3
+        ],
+        [
+          "work_n1",
+          4,
+          9
+        ],
+        [
+          "in",
+          10,
+          12
+        ],
+        [
+          "paris_n1",
+          13,
+          19
+        ]
+      ]
     }
   ]
 }

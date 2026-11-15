@@ -73,7 +73,39 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "sparrow_n1",
+          6,
+          13
+        ],
+        [
+          "that_r",
+          14,
+          18
+        ],
+        [
+          "hum_v1",
+          19,
+          23
+        ],
+        [
+          "be_c_is",
+          24,
+          26
+        ],
+        [
+          "cheerful_a1",
+          27,
+          36
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ _sparrow_n_1<6:13> LBL: h7 ARG0: x3 ]  [ generic_entity<14:18> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg GEND: n ] ]  [ _that_q_dem<14:18> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _hum_v_1<19:23> LBL: h7 ARG0: e13 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x3 ]  [ _cheerful_a_1<27:36> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h8 > ICONS: < > ]",
@@ -172,7 +204,39 @@
           "h4": {},
           "h10": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "sparrow_n1",
+          6,
+          13
+        ],
+        [
+          "that_deix",
+          14,
+          18
+        ],
+        [
+          "hum_v1",
+          19,
+          23
+        ],
+        [
+          "be_c_is",
+          24,
+          26
+        ],
+        [
+          "cheerful_a1",
+          27,
+          36
+        ]
+      ]
     }
   ]
 }

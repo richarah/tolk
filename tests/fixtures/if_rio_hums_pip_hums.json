@@ -145,7 +145,34 @@
           "h12": {},
           "h17": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "if_prep_2",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "hum_n1",
+          7,
+          12
+        ],
+        [
+          "generic_proper_ne",
+          13,
+          16
+        ],
+        [
+          "hum_v1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:22> LBL: h4 ARG0: e2 ARG: u5 ]  [ _if_x_then<0:2> LBL: h1 ARG0: e6 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h7 ARG2: h8 ]  [ unknown<0:2> LBL: h9 ARG0: e10 [ e SF: prop ] ARG: x11 [ x PERS: 3 NUM: pl IND: + ] ]  [ appos<3:22> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x14 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<3:12> LBL: h15 ARG0: x11 RSTR: h16 BODY: h17 ]  [ compound<3:12> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x20 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<3:6> LBL: h21 ARG0: x20 RSTR: h22 BODY: h23 ]  [ named<3:6> LBL: h24 CARG: \"Rio\" ARG0: x20 ]  [ _hum_n_1<7:12> LBL: h18 ARG0: x11 ]  [ udef_q<13:22> LBL: h26 ARG0: x14 RSTR: h27 BODY: h28 ]  [ compound<13:22> LBL: h29 ARG0: e30 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: x31 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<13:16> LBL: h32 ARG0: x31 RSTR: h33 BODY: h34 ]  [ named<13:16> LBL: h35 CARG: \"Pip\" ARG0: x31 ]  [ _hum_n_1<17:22> LBL: h29 ARG0: x14 ] > HCONS: < h0 qeq h1 h7 qeq h4 h8 qeq h9 h16 qeq h18 h22 qeq h24 h27 qeq h29 h33 qeq h35 > ICONS: < > ]",
@@ -363,7 +390,34 @@
           "h26": {},
           "h32": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "if_prep",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "hum_n1",
+          7,
+          12
+        ],
+        [
+          "generic_proper_ne",
+          13,
+          16
+        ],
+        [
+          "hum_n1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:22> LBL: h1 ARG0: e2 ARG: u4 ]  [ _if_x<0:2> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: e2 ARG2: x6 [ x PERS: 3 NUM: pl IND: + ] ]  [ appos<3:22> LBL: h1 ARG0: e7 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x8 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<3:12> LBL: h9 ARG0: x6 RSTR: h10 BODY: h11 ]  [ compound<3:12> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x14 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<3:6> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ named<3:6> LBL: h18 CARG: \"Rio\" ARG0: x14 ]  [ _hum_n_1<7:12> LBL: h12 ARG0: x6 ]  [ udef_q<13:22> LBL: h20 ARG0: x8 RSTR: h21 BODY: h22 ]  [ compound<13:22> LBL: h23 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x8 ARG2: x25 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<13:16> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]  [ named<13:16> LBL: h29 CARG: \"Pip\" ARG0: x25 ]  [ _hum_n_1<17:22> LBL: h23 ARG0: x8 ] > HCONS: < h0 qeq h1 h10 qeq h12 h16 qeq h18 h21 qeq h23 h27 qeq h29 > ICONS: < > ]",
@@ -561,7 +615,34 @@
           "h20": {},
           "h26": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "if_prep_2",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "hum_n1",
+          7,
+          12
+        ],
+        [
+          "generic_proper_ne",
+          13,
+          16
+        ],
+        [
+          "hum_n1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop-or-ques ] RELS: < [ unknown<0:22> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ _if_x<0:2> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: e6 [ e SF: prop ] ARG2: x7 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<3:12> LBL: h8 ARG0: x7 RSTR: h9 BODY: h10 ]  [ compound<3:12> LBL: h11 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x7 ARG2: x13 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<3:6> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]  [ named<3:6> LBL: h17 CARG: \"Rio\" ARG0: x13 ]  [ _hum_n_1<7:12> LBL: h11 ARG0: x7 ]  [ udef_q<13:22> LBL: h19 ARG0: x4 RSTR: h20 BODY: h21 ]  [ compound<13:22> LBL: h22 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x24 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<13:16> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]  [ named<13:16> LBL: h28 CARG: \"Pip\" ARG0: x24 ]  [ _hum_n_1<17:22> LBL: h22 ARG0: x4 ] > HCONS: < h0 qeq h1 h9 qeq h11 h15 qeq h17 h20 qeq h22 h26 qeq h28 > ICONS: < > ]",
@@ -745,7 +826,34 @@
           "h19": {},
           "h25": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "if_prep_2",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "hum_n1",
+          7,
+          12
+        ],
+        [
+          "generic_proper_ne",
+          13,
+          16
+        ],
+        [
+          "hum_n1",
+          17,
+          22
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _if_x_then<0:2> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h5 ARG2: h6 ]  [ unknown<0:2> LBL: h7 ARG0: e8 [ e SF: prop ] ARG: x9 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<3:12> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ compound<3:12> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x15 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<3:6> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]  [ named<3:6> LBL: h19 CARG: \"Rio\" ARG0: x15 ]  [ _hum_n_1<7:12> LBL: h13 ARG0: x9 ]  [ proper_q<13:16> LBL: h21 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<13:16> LBL: h24 CARG: \"Pip\" ARG0: x3 ]  [ _hum_v_1<17:22> LBL: h26 ARG0: e2 ARG1: x3 ARG2: i27 ] > HCONS: < h0 qeq h1 h5 qeq h26 h6 qeq h7 h11 qeq h13 h17 qeq h19 h22 qeq h24 > ICONS: < > ]",
@@ -908,7 +1016,34 @@
           "h16": {},
           "h21": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "if_prep",
+          0,
+          2
+        ],
+        [
+          "generic_proper_ne",
+          3,
+          6
+        ],
+        [
+          "hum_n1",
+          7,
+          12
+        ],
+        [
+          "generic_proper_ne",
+          13,
+          16
+        ],
+        [
+          "hum_v1",
+          17,
+          22
+        ]
+      ]
     }
   ]
 }

@@ -56,7 +56,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_c_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "cat_n1",
+          7,
+          10
+        ],
+        [
+          "asleep_a1",
+          11,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ _cat_n_1<7:10> LBL: h8 ARG0: x4 ]  [ _asleep_a_1<11:18> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 > ICONS: < > ]",
@@ -130,7 +152,29 @@
           "h8": {},
           "h5": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "cat_n1",
+          7,
+          10
+        ],
+        [
+          "asleep_a1",
+          11,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ ellipsis_ref<0:2> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h4 ARG0: x3 RSTR: h5 BODY: h6 ]  [ _cat_n_1<7:10> LBL: h7 ARG0: x3 ]  [ _asleep_a_1<11:18> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -202,7 +246,29 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_c_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "cat_n1",
+          7,
+          10
+        ],
+        [
+          "asleep_a1",
+          11,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h4 ARG0: e2 ARG1: i3 ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ _the_q<3:6> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _cat_n_1<7:10> LBL: h9 ARG0: x5 ]  [ subord<11:18> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ _asleep_a_1<11:18> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i15 ] > HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h4 h12 qeq h13 > ICONS: < > ]",
@@ -297,7 +363,29 @@
           "h13": {},
           "h6": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "cat_n1",
+          7,
+          10
+        ],
+        [
+          "asleep_a1",
+          11,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:18> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ appos<0:18> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ _the_q<3:6> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ _cat_n_1<7:10> LBL: h15 ARG0: x6 ]  [ _asleep_a_1<11:18> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 > ICONS: < > ]",
@@ -408,7 +496,29 @@
           "h7": {},
           "h12": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "the_1",
+          3,
+          6
+        ],
+        [
+          "cat_n1",
+          7,
+          10
+        ],
+        [
+          "asleep_a1",
+          11,
+          18
+        ]
+      ]
     }
   ]
 }

@@ -58,7 +58,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "which1",
+          0,
+          5
+        ],
+        [
+          "robin_n2",
+          6,
+          11
+        ],
+        [
+          "sing_v1",
+          12,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _which_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<6:11> LBL: h7 CARG: \"Robin\" ARG0: x3 ]  [ _sing_v_1<12:18> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -118,7 +135,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "which1",
+          0,
+          5
+        ],
+        [
+          "robin_n1",
+          6,
+          11
+        ],
+        [
+          "sing_v1",
+          12,
+          18
+        ]
+      ]
     }
   ]
 }

@@ -56,7 +56,24 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "the_1",
+          0,
+          3
+        ],
+        [
+          "cat_n1",
+          4,
+          7
+        ],
+        [
+          "purr_v1",
+          8,
+          14
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:14> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ _the_q<0:3> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<4:14> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<4:7> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _cat_n_1<4:7> LBL: h14 ARG0: x10 ]  [ _purr_n_1<8:14> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 > ICONS: < > ]",
@@ -150,7 +167,24 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "the_1",
+          0,
+          3
+        ],
+        [
+          "cat_n1",
+          4,
+          7
+        ],
+        [
+          "purr_n1",
+          8,
+          14
+        ]
+      ]
     }
   ]
 }

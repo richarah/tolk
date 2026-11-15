@@ -83,7 +83,29 @@
           "h6": {},
           "h9": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "does1_pos",
+          4,
+          8
+        ],
+        [
+          "kim",
+          9,
+          12
+        ],
+        [
+          "like_v1",
+          13,
+          18
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _do_v_1<4:8> LBL: h8 ARG0: e2 ARG1: x3 ARG2: i9 ]  [ subord<9:18> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h11 ARG2: h12 ]  [ named<9:12> LBL: h13 CARG: \"Kim\" ARG0: x15 [ x IND: + ] ]  [ _like_a_1<13:18> LBL: h16 ARG0: i17 ARG1: i18 ARG2: x15 ]  [ udef_q<13:18> LBL: h19 ARG0: x15 RSTR: h20 BODY: h21 ] > HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h8 h12 qeq h16 h20 qeq h13 > ICONS: < > ]",
@@ -199,7 +221,29 @@
           "h5": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "do2",
+          4,
+          8
+        ],
+        [
+          "kim",
+          9,
+          12
+        ],
+        [
+          "like_a1",
+          13,
+          18
+        ]
+      ]
     }
   ]
 }

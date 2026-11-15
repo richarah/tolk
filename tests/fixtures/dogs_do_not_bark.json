@@ -74,7 +74,29 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "dog_n1",
+          0,
+          4
+        ],
+        [
+          "do1_pos",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "bark_v1",
+          12,
+          17
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]  [ _dog_n_1<0:4> LBL: h7 ARG0: x3 ]  [ neg<8:11> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h9 ]  [ _bark_v_1<12:17> LBL: h10 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h10 > ICONS: < > ]",
@@ -149,7 +171,29 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "dog_n1",
+          0,
+          4
+        ],
+        [
+          "do1_pos",
+          5,
+          7
+        ],
+        [
+          "not",
+          8,
+          11
+        ],
+        [
+          "bark_v1",
+          12,
+          17
+        ]
+      ]
     }
   ]
 }

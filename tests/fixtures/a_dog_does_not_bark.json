@@ -74,7 +74,34 @@
           "h10": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "a_det",
+          0,
+          1
+        ],
+        [
+          "dog_n1",
+          2,
+          5
+        ],
+        [
+          "does1_pos",
+          6,
+          10
+        ],
+        [
+          "not",
+          11,
+          14
+        ],
+        [
+          "bark_v1",
+          15,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 IND: + ] ]  [ _a_q<0:1> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<2:10> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]  [ compound<2:10> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x IND: + PT: notpro ] ]  [ udef_q<2:5> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ _dog_n_1<2:5> LBL: h18 ARG0: x14 ]  [ _doe_n_1<6:10> LBL: h12 ARG0: x9 ]  [ udef_q<11:20> LBL: h19 ARG0: x20 [ x PERS: 3 NUM: sg ] RSTR: h21 BODY: h22 ]  [ _not_c<11:14> LBL: h23 ARG0: x4 ARG1: x9 ARG2: x20 ]  [ _bark_n_1<15:20> LBL: h24 ARG0: x20 ] > HCONS: < h0 qeq h1 h6 qeq h23 h10 qeq h12 h16 qeq h18 h21 qeq h24 > ICONS: < > ]",
@@ -220,7 +247,34 @@
           "h15": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "a_conj_det",
+          0,
+          1
+        ],
+        [
+          "dog_n1",
+          2,
+          5
+        ],
+        [
+          "doe_n1",
+          6,
+          10
+        ],
+        [
+          "not_conj",
+          11,
+          14
+        ],
+        [
+          "bark_n1",
+          15,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x IND: + ] ]  [ _a_q<0:1> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<2:5> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ _dog_n_1<2:5> LBL: h12 ARG0: x9 ]  [ udef_q<6:10> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: pl IND: + ] RSTR: h15 BODY: h16 ]  [ implicit_conj<6:20> LBL: h17 ARG0: x4 ARG1: x9 ARG2: x18 [ x PERS: 3 ] ]  [ udef_q<11:20> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]  [ _doe_n_1<6:10> LBL: h22 ARG0: x14 ]  [ udef_q<11:20> LBL: h23 ARG0: x24 [ x PERS: 3 NUM: sg ] RSTR: h25 BODY: h26 ]  [ _not_c<11:14> LBL: h27 ARG0: x18 ARG1: x14 ARG2: x24 ]  [ _bark_n_1<15:20> LBL: h28 ARG0: x24 ] > HCONS: < h0 qeq h1 h6 qeq h17 h10 qeq h12 h15 qeq h22 h20 qeq h27 h25 qeq h28 > ICONS: < > ]",
@@ -376,7 +430,34 @@
           "h19": {},
           "h23": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "a_conj_det",
+          0,
+          1
+        ],
+        [
+          "dog_n1",
+          2,
+          5
+        ],
+        [
+          "doe_n1",
+          6,
+          10
+        ],
+        [
+          "not_conj",
+          11,
+          14
+        ],
+        [
+          "bark_n1",
+          15,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 IND: + ] ]  [ _a_q<0:1> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<2:20> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<2:5> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _dog_n_1<2:5> LBL: h14 ARG0: x10 ]  [ udef_q<6:10> LBL: h15 ARG0: x16 [ x PERS: 3 NUM: pl IND: + ] RSTR: h17 BODY: h18 ]  [ _doe_n_1<6:10> LBL: h19 ARG0: x16 ]  [ udef_q<11:20> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg ] RSTR: h22 BODY: h23 ]  [ _not_c<11:14> LBL: h8 ARG0: x4 ARG1: x16 ARG2: x21 ]  [ _bark_n_1<15:20> LBL: h24 ARG0: x21 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h17 qeq h19 h22 qeq h24 > ICONS: < > ]",
@@ -522,7 +603,34 @@
           "h15": {},
           "h20": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "a_conj_det",
+          0,
+          1
+        ],
+        [
+          "dog_n1",
+          2,
+          5
+        ],
+        [
+          "doe_n1",
+          6,
+          10
+        ],
+        [
+          "not_conj",
+          11,
+          14
+        ],
+        [
+          "bark_n1",
+          15,
+          20
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 IND: + ] ]  [ _a_q<0:1> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<2:10> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]  [ compound<2:10> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x14 [ x IND: + PT: notpro ] ]  [ udef_q<2:5> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ _dog_n_1<2:5> LBL: h18 ARG0: x14 ]  [ _doe_n_1<6:10> LBL: h12 ARG0: x9 ]  [ udef_q<11:20> LBL: h19 ARG0: x20 [ x PERS: 3 NUM: sg ] RSTR: h21 BODY: h22 ]  [ _not_c<11:14> LBL: h23 ARG0: x4 ARG1: x9 ARG2: x20 ]  [ _bark_n_1<15:20> LBL: h24 ARG0: x20 ] > HCONS: < h0 qeq h1 h6 qeq h23 h10 qeq h12 h16 qeq h18 h21 qeq h24 > ICONS: < > ]",
@@ -668,7 +776,34 @@
           "h15": {},
           "h19": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "a_conj_det",
+          0,
+          1
+        ],
+        [
+          "dog_n1",
+          2,
+          5
+        ],
+        [
+          "doe_n1",
+          6,
+          10
+        ],
+        [
+          "not_conj",
+          11,
+          14
+        ],
+        [
+          "bark_n1",
+          15,
+          20
+        ]
+      ]
     }
   ]
 }

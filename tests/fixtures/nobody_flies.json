@@ -96,7 +96,19 @@
           "h5": {},
           "h11": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "fly_n1",
+          7,
+          13
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ _no_q<0:6> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _fly_v_1<7:13> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h6 qeq h4 > ICONS: < > ]",
@@ -152,7 +164,19 @@
           "h4": {},
           "h5": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "nobody",
+          0,
+          6
+        ],
+        [
+          "fly_v1",
+          7,
+          13
+        ]
+      ]
     },
     {
       "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:6> LBL: h7 CARG: \"Nobody\" ARG0: x3 ]  [ _fly_v_1<7:13> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
@@ -210,7 +234,19 @@
           "h7": {},
           "h4": {}
         }
-      }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          6
+        ],
+        [
+          "fly_v1",
+          7,
+          13
+        ]
+      ]
     }
   ]
 }
