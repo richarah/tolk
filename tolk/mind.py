@@ -4,12 +4,12 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, comparison, defaults, diagnosis, engine, forget, generate, history, lf, morph, negation, ordering, proposals, reading, report, say, settings, store, words
+from tolk import compile as comp, comparison, defaults, diagnosis, engine, forget, generate, history, lf, morph, negation, ordering, proposals, questions, reading, say, settings, statements, store, words
 from tolk.diagnosis import Diagnosis
 from tolk.rules import claims
 from tolk.rules.comparatives import PREFIX
 from tolk.proposals import Proposal
-from tolk.ask import Answer, answer, close_world, prove
+from tolk.ask import Answer, prove
 from tolk.lf import Atom, Var
 
 
@@ -131,21 +131,15 @@ class Mind:
         head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):
             return Result(*head, outcome="refused")
-        if isinstance(x, lf.Ask):
-            x = report.bind_claims(self.db, x) if x.claims else x
-            a = x if isinstance(x, Answer) else answer(self.db, x, self.ctx)
-            a = close_world(a, x) if self.closed_world else a
-            return Result(*head, outcome=report.answer_text(self.db, a), answer=a)
-        if isinstance(x, lf.Every):
-            value, by_default = defaults.universal(self.db, x, self.policy)
-            a = Answer(value, (), (), by_default=by_default)
-            return Result(*head, outcome=value + (", by default" if by_default and value != "Unknown" else ""), answer=a)
-        if isinstance(x, lf.Extreme):
-            a = comparison.extreme(self.db, self.ctx, x.pred)
-            a = close_world(a, lf.Ask((), ("x",))) if self.closed_world else a
-            return Result(*head, outcome=report.extreme_text(self.db, a), answer=a)
-        if isinstance(x, lf.Describe):
-            return Result(*head, outcome=report.describe(self.db, self.ctx, x.entity.id))
+        asked = questions.answer_to(self, x, head, Result)
+        if asked is not None:
+            return asked
+        return self._store(text, x, head, trust, observation)
+
+    def _store(self, text: str, x: lf.LF, head: tuple, trust: int, observation: bool) -> Result:
+        printed = lf.show(x)
+        if isinstance(x, lf.Tell) and self.ctx == "world" and len(parts := statements.split(x)) > 1:
+            return statements.each(self, text, parts, head, trust, observation, Result)
         prior = store.repeat_of(self.db, printed, self.ctx)
         if prior:
             return Result(*head, outcome=f'already told: "{prior[1]}"')

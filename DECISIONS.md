@@ -147,3 +147,10 @@ Each was removed in turn (scripts/code_removal.py) and the choice table rebuilt.
 ### DEMONSTRATIVE
 
 - `does_kim_know_that_rio_flies.json` (Does Kim know that Rio flies?)
+
+## Finish, item 6: clause "and"
+Authorised by the Finish prompt (item 6), not by SPEC2's phase 15 opening sentence alone. "Kim sings and Sandy dances." already compiled to two
+tell atoms under one sentence; now it is two statements: `tolk/statements.py` splits a Tell into groups of atoms that share an event or an
+anonymous thing (a name does not join them), and each is stored with its own sentence row (text: the whole sentence), all or none (a
+savepoint). "Forget that Kim sings." then removes that statement alone. "Kim sings and dances." is two as well. Moved on the way to keep
+mind.py under 250 lines: question answering to `tolk/questions.py`, `forget` to `tolk/forget.py`. Written code-first, test beside it; no test failed first.
