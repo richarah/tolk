@@ -126,6 +126,7 @@ Each was removed in turn (scripts/code_removal.py) and the choice table rebuilt.
 
 ### FALLBACK_PARSE
 
+- `if_rio_hums_pip_hums.json` (If Rio hums, Pip hums.; its wide parse and its first five both need it since item 1)
 - `if_rio_hums_ada_is_calm.json` (If Rio hums, Ada is calm.)
 - `rio_hums_if_rio_is_a_sparrow.json` (Rio hums if Rio is a sparrow.)
 - `sam_works_in_paris.json` (Sam works in Paris.)
@@ -200,3 +201,8 @@ unique near word exists.
 "List the section_name in reversed lexicographical order." raised MRSSyntaxError: PyDelphin cannot decode the grammar's predicate for a word with an
 underscore (`_section_name/NN_u_unknown`). A text with such a word is refused UNKNOWN_WORD, naming it, before parsing (`tolk/reading.py`); no error is raised.
 The word is not rewritten: a column name is not English.
+
+## VERIFY round 1, mismatch 6: "if" as a preposition
+"If Luna paints, Bruno is happy." was refused `_if_x`: reading 1 (if as a preposition, "paints" as a noun) had a final UNSUPPORTED_PREDICATE and ended
+the search before reading 2, tied with it, was compiled. `_if_x` is now a reading refusal GRAMMAR_ARTIFACT (`compile.PREPOSITION_IF`). Two rows of the
+choice table change their status label (UNSUPPORTED_PREDICATE to GRAMMAR_ARTIFACT); no chosen reading changes.

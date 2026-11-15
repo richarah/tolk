@@ -12,6 +12,7 @@ from tolk.sem import EP, Reading
 # Predicates the grammar uses for bookkeeping of the grammar, seen only in readings that are not the sentence: ellipsis, an implied place, a
 # subordinator, a modifier of nothing, an apposition. A reading that has one is unusable; it is not a meaning the store cannot hold.
 ARTIFACTS = {"ellipsis_ref", "place_n", "subord", "mod", "appos", "id"}
+PREPOSITION_IF = "_if_x"  # "if" with an event and a thing, not two clauses: the other reading of "If Luna paints" (paints as a noun)
 FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, claims, comparatives, modifiers, content)
 
 
@@ -184,6 +185,8 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
         if ep.pred == "unknown":
             # The grammar's fallback for words it could not analyse in this reading; another reading may do better.
             return lf.Refusal("FALLBACK_PARSE", "a word was not analysed by the grammar")
+        if ep.pred == PREPOSITION_IF:
+            return lf.Refusal("GRAMMAR_ARTIFACT", ep.pred)
         if coordination.CONJUNCTION.fullmatch(ep.pred):
             # Checked before the families, which would take a conjunction of two events for an event modifier.
             got = coordination.map_ep(ctx, ep)

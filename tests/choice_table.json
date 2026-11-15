@@ -1269,14 +1269,14 @@
     "generic": 0,
     "overlap": 0,
     "swallowed": 0,
-    "status": "UNSUPPORTED_PREDICATE"
+    "status": "GRAMMAR_ARTIFACT"
    },
    {
     "rank": 4,
     "generic": 0,
     "overlap": 0,
     "swallowed": 0,
-    "status": "UNSUPPORTED_PREDICATE"
+    "status": "GRAMMAR_ARTIFACT"
    },
    {
     "rank": 5,
