@@ -5,7 +5,7 @@ from collections import Counter
 
 from tolk import choice, lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, claims, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope, temporal
+from tolk.rules import check, claims, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, post, quant, scope, temporal
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
@@ -144,7 +144,7 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         content_atoms = _map(ctx, [r.eps[i] for i in sorted(inside)]) if inside else ()
         if isinstance(content_atoms, lf.Refusal):
             return content_atoms
-        alts = coordination.distribute(ctx, (_expand(ctx, atoms, cards) if mode == "tell" else atoms) + ordered, conjs)
+        alts = coordination.distribute(ctx, (post.expand(ctx, atoms, cards) if mode == "tell" else atoms) + ordered, conjs)
         if isinstance(alts, lf.Refusal):
             return alts
         if mode == "tell":
@@ -159,13 +159,13 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     if unconsumed:
         return unconsumed
     if isinstance(out, (lf.Tell, lf.Rule)):
-        out = dataclasses.replace(out, mentions=_mentions(r, ctx, [q for q in quants if q.args["ARG0"] not in cards], out))
+        out = dataclasses.replace(out, mentions=post.mentions(r, ctx, [q for q in quants if q.args["ARG0"] not in cards], out))
     if mode == "tell":
-        out = dataclasses.replace(out, atoms=out.atoms + _tenses(ctx, r, out.atoms))
+        out = dataclasses.replace(out, atoms=out.atoms + post.tenses(ctx, r, out.atoms))
     elif isinstance(out, lf.Rule):
-        out = dataclasses.replace(out, head=out.head + _tenses(ctx, r, out.head))
+        out = dataclasses.replace(out, head=out.head + post.tenses(ctx, r, out.head))
     elif isinstance(out, lf.Ask):
-        out = dataclasses.replace(out, tenses=_asked_tenses(ctx, r, out))
+        out = dataclasses.replace(out, tenses=post.asked_tenses(ctx, r, out))
     unbound = check.unbound(out, bound)
     return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
 
@@ -192,62 +192,6 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
         else:
             return lf.Refusal("GRAMMAR_ARTIFACT" if ep.pred in ARTIFACTS else "UNSUPPORTED_PREDICATE", ep.pred)
     return tuple(atoms)
-
-
-def _tenses(ctx: Ctx, r: Reading, atoms: tuple[Atom, ...]) -> tuple[Atom, ...]:
-    """tense(event, past) for each past event that the atoms mention. Present is not stored: it is what an event is by default."""
-    used = {t for a in atoms for t in a.args}
-    found: list[Atom] = []
-    for ep in r.eps:
-        v = ep.args.get("ARG0", "")
-        if ep.pred.startswith("_") and v.startswith("e") and r.props.get(v, {}).get("TENSE") == "past":
-            t = ctx.term(v)
-            atom = Atom(lf.TENSE, (t, Const("past", "value")))
-            if t in used and atom not in found:
-                found.append(atom)
-    return tuple(found)
-
-
-def _asked_tenses(ctx: Ctx, r: Reading, out: lf.Ask) -> tuple[tuple[Var, str], ...]:
-    """The tense each event of the question must carry: a past question needs a past event, a present one an event that is not past."""
-    used = {t for alt in (out.alternatives or (out.body,)) for a in alt for t in a.args}
-    found: list[tuple[Var, str]] = []
-    for ep in r.eps:
-        v = ep.args.get("ARG0", "")
-        tense = r.props.get(v, {}).get("TENSE")
-        if ep.pred.startswith("_") and v.startswith("e") and tense in ("past", "pres"):
-            t = ctx.term(v)
-            if isinstance(t, Var) and t in used and (t, tense) not in found:
-                found.append((t, tense))
-    return tuple(found)
-
-
-def _expand(ctx: Ctx, atoms: tuple[Atom, ...], cards: dict[str, int]) -> tuple[Atom, ...]:
-    """A cardinal makes that many distinct things: each atom about the thing is repeated for each of them."""
-    for var, n in cards.items():
-        t = ctx.term(var)
-        if not isinstance(t, Const) or t.kind != "anon":
-            continue
-        copies = [t]
-        for _ in range(n - 1):
-            ctx.counts["anon"] += 1
-            copies.append(Const(lf.fresh_id("anon", ctx.counts["anon"]), "anon"))
-        atoms = tuple(
-            b for a in atoms for b in (
-                [Atom(a.pred, tuple(c if x == t else x for x in a.args), a.positive) for c in copies] if t in a.args else [a])
-        )
-    return atoms
-
-
-def _mentions(r: Reading, ctx: Ctx, quants: list[EP], out: lf.LF) -> tuple[tuple[int, str, str], ...]:
-    """Things this sentence mentions, by position, for pronouns in later sentences. A thing the sentence creates is marked with ~ and its local id, until the store numbers it."""
-    used = {t for a in check.atoms_of(out) for t in a.args}
-    found = []
-    for q in quants:
-        t = ctx.term(q.args["ARG0"])
-        if isinstance(t, Const) and t.kind in ("named", "anon") and t.id not in (pronouns.USER, pronouns.TOLK) and (t in used or t.kind == "named"):
-            found.append((q.cfrom, ("~" if t.kind == "anon" else "") + t.id, r.props.get(q.args["ARG0"], {}).get("NUM", "sg")))
-    return tuple(sorted(found))
 
 
 def choose(readings: list[Reading], store_preds: set, lookup: Lookup | None = None,

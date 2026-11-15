@@ -1,7 +1,8 @@
 """Rules to SQL, run to fixpoint. Identifiers are fixed column names and generated aliases; every value is a bound parameter."""
 
 import sqlite3
-from tolk import lf, store
+
+from tolk import lf, negation, store
 from tolk.lf import Atom, Const, Var
 
 Statement = tuple[str, tuple]
@@ -12,7 +13,7 @@ def run(db: sqlite3.Connection, ctx: str = "world", kinds: tuple[str, ...] = ("s
     marks = ", ".join("?" * len(kinds))
     rules = [(rid, lf.decode_rule(text), ran) for rid, text, ran in
              db.execute(f"SELECT id, lf, ran FROM rule WHERE kind IN ({marks}) ORDER BY id", kinds)]
-    level = strata([r for _, r, _ in rules])
+    level = negation.strata([r for _, r, _ in rules])
     total = 0
     rnd = store.current_round(db)
     for stratum in sorted(set(level)):
@@ -51,24 +52,6 @@ def _year_order(db: sqlite3.Connection, ctx: str, rnd: int) -> None:
                f"NULL, ?, json_array(f.id, g.id), f.a1 || ',' || g.a1 {pairs}", (ctx, row[0], *marks))
 
 
-def strata(rules: list[lf.Rule]) -> list[int]:
-    """A stratum for each rule: above every rule that can derive an atom it negates, and not below one it reads.
-    Raises ValueError for a cycle through negation; check() refuses such a rule before it is stored."""
-    level = [0] * len(rules)
-    for _ in range(len(rules) + 1):
-        moved = False
-        for i, r in enumerate(rules):
-            for b in r.body:
-                for j, s in enumerate(rules):
-                    if any(h.pred == b.pred and h.positive for h in s.head):
-                        need = level[j] + (0 if b.positive else 1)
-                        if level[i] < need:
-                            level[i], moved = need, True
-        if not moved:
-            return level
-    raise ValueError("a cycle through negation")
-
-
 # A positive fact p and a negative fact n clash when they differ only in sign. A negative fact has no event, so its empty one matches any.
 CLASH = (
     "FROM fact p JOIN fact n ON n.pred = p.pred AND n.ctx = p.ctx AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
@@ -85,44 +68,6 @@ def record_conflicts(db: sqlite3.Connection) -> None:
         "     OR EXISTS (SELECT 1 FROM why w WHERE w.fact = n.id AND w.rule IS NOT NULL)) "
         "AND NOT EXISTS (SELECT 1 FROM conflict c WHERE c.positive_fact = p.id AND c.negative_fact = n.id)"
     )
-
-
-def check(db: sqlite3.Connection, rule: lf.Rule) -> lf.Refusal | None:
-    """A rule is stored only if its negated variables are bound by a positive atom and no negated predicate depends on its head."""
-    positive_vars = {t for a in rule.body if a.positive for t in a.args if isinstance(t, Var)}
-    for a in rule.body:
-        if a.positive:
-            continue
-        for t in a.args:
-            if isinstance(t, Var) and not t.event and t not in positive_vars:
-                return lf.Refusal("UNSAFE_NEGATION", t.key)
-    if not any(a.positive for a in rule.body):
-        return lf.Refusal("UNSAFE_NEGATION", "nothing in the body is positive, so the rule would fire on ignorance alone")
-    rules = [lf.decode_rule(text) for (text,) in db.execute("SELECT lf FROM rule")] + [rule]
-    try:
-        strata(rules)
-    except ValueError:
-        for r in rules:
-            for a in r.body:
-                if not a.positive and _reaches(rules, a.pred, {h.pred for h in r.head}):
-                    return lf.Refusal("NEGATION_CYCLE", a.pred)
-        return lf.Refusal("NEGATION_CYCLE", "a cycle through negation")
-    return None
-
-
-def _reaches(rules: list[lf.Rule], start: str, targets: set[str]) -> bool:
-    seen, todo = set(), [start]
-    while todo:
-        pred = todo.pop()
-        if pred in targets:
-            return True
-        if pred in seen:
-            continue
-        seen.add(pred)
-        for r in rules:
-            if any(h.pred == pred for h in r.head):
-                todo += [b.pred for b in r.body]
-    return False
 
 
 def _pred_op(pred: str) -> str:

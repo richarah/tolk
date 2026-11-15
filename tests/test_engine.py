@@ -1,6 +1,6 @@
 import time
 
-from tolk import engine, lf, store
+from tolk import engine, negation, lf, store
 from tolk.mind import Mind
 from tolk.lf import Atom, Const, Var
 
@@ -98,4 +98,4 @@ def test_a_cycle_through_negation_is_refused_when_the_rule_is_told() -> None:
     x = Var("x")
     store.add_rule(db, lf.Rule((Atom("p", (x,)),), (Atom("q", (x,)), Atom("r", (x,), positive=False))), sid)
     closing = lf.Rule((Atom("r", (x,)),), (Atom("p", (x,)),))
-    assert engine.check(db, closing).code == "NEGATION_CYCLE"
+    assert negation.check(db, closing).code == "NEGATION_CYCLE"

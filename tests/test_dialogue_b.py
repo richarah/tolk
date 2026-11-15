@@ -2,7 +2,7 @@
 
 import pytest
 
-from tolk import engine, lf, store
+from tolk import engine, negation, lf, store
 from tolk.ask import CONFLICT, NO, YES
 from tolk.lf import Atom, Const, Var
 from tolk.mind import Mind
@@ -91,7 +91,7 @@ def test_negation_as_failure_in_a_rule_body() -> None:
         (Atom("grounded", (Var("x"),)),),
         (Atom("robin", (Var("x"),)), Atom("fly", (Var("e"), Var("x")), positive=False)),
     )
-    assert engine.check(db_mind.db, rule) is None
+    assert negation.check(db_mind.db, rule) is None
     store.add_rule(db_mind.db, rule, sid)
     engine.run(db_mind.db)
     assert db_mind.db.execute("SELECT COUNT(*) FROM fact WHERE pred = 'grounded'").fetchone()[0] == 1
@@ -99,7 +99,7 @@ def test_negation_as_failure_in_a_rule_body() -> None:
 
 def test_negated_variable_must_be_bound_positively() -> None:
     rule = lf.Rule((Atom("p", (Var("x"),)),), (Atom("q", (Var("y"),), positive=False),))
-    assert engine.check(store.open_store(), rule) == lf.Refusal("UNSAFE_NEGATION", "y")
+    assert negation.check(store.open_store(), rule) == lf.Refusal("UNSAFE_NEGATION", "y")
 
 
 def test_negation_through_its_own_head_is_refused() -> None:
@@ -107,4 +107,4 @@ def test_negation_through_its_own_head_is_refused() -> None:
     sid = store.add_sentence(db, "synthetic")
     rule = lf.Rule((Atom("p", (Var("x"),)),), (Atom("q", (Var("x"),)), Atom("p", (Var("x"),), positive=False)))
     store.add_rule(db, rule, sid)
-    assert engine.check(db, rule) == lf.Refusal("NEGATION_CYCLE", "p")
+    assert negation.check(db, rule) == lf.Refusal("NEGATION_CYCLE", "p")
