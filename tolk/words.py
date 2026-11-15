@@ -25,17 +25,21 @@ def remember(db: sqlite3.Connection, x: lf.LF, sentence: int) -> None:
 
 def tags_for(db: sqlite3.Connection, text: str) -> dict[str, tuple[str, ...]]:
     """Lowercase token to the tags of the word the store remembers it as: the lemma itself, or the lemma with a plural or third-person ending."""
+    return tags_of(db.execute("SELECT lemma, pos FROM word").fetchall(), text)
+
+
+def tags_of(known: list[tuple[str, str]], text: str) -> dict[str, tuple[str, ...]]:
+    """The same for (lemma, class) pairs, class being n, v or a."""
     forms: dict[str, tuple[str, ...]] = {}
-    for lemma, pos in db.execute("SELECT lemma, pos FROM word"):
+    for lemma, pos in known:
         for ending, suffix in (("", ""), ("s", "s"), ("es", "s")):
             forms[lemma + ending] = forms.get(lemma + ending, ()) + TAG_OF.get((pos, suffix), ())
     return {w.lower(): forms[w.lower()] for w, _, _ in erg.tokens(text) if w.lower() in forms and "'" not in text}
 
 
-def parse(db: sqlite3.Connection, text: str, limit: int = erg.READINGS) -> list[erg.Parsed]:
-    """The readings of a sentence, with the remembered class of each unknown word it uses given to the parser. If that gives no reading
-    the parser's own tagging stands."""
-    tags = tags_for(db, text)
+def parse(tags: dict[str, tuple[str, ...]], text: str, limit: int = erg.READINGS) -> list[erg.Parsed]:
+    """The readings of a sentence, with the given class of each word the caller knows given to the parser. If that gives no reading the
+    parser's own tagging stands."""
     return (erg.parse(text, tags, limit) if tags else []) or erg.parse(text, None, limit)
 
 

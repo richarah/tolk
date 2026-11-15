@@ -117,7 +117,7 @@ class Mind:
         return forget.forget(self, target, Result)
 
     def _read(self, text: str) -> tuple[list, int, lf.LF]:
-        return reading.read(self.db, text, self._lookup, self._history)
+        return reading.read(store.known_preds(self.db), words.tags_for(self.db, text), text, self._lookup, self._history)
 
     def _derive(self) -> None:
         defaults.refresh(self.db, self.ctx, self.policy)

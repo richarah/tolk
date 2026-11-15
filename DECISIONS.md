@@ -160,3 +160,9 @@ mind.py under 250 lines: question answering to `tolk/questions.py`, `forget` to 
 fact line in a proof and in a description goes through `generate.word`, which gives the grammar's sentence when parsing it back gives exactly
 the fact, and the template otherwise, fact by fact (`say.fact_line`). The generator's sentence is its own: "Rio doesn't sing." The words of
 conflict reports and diagnosis stay template: they are compared as keys. Answers themselves (Yes, No, names) are unchanged.
+
+## Finish, item 10 (tolk side): vocabulary
+`tolk.read(text, known_predicates, vocabulary)`: a word-to-class map ("n", "v", "a") is given to the parser as tagged input, by the same
+route that gives a Mind the classes it remembers. It is a hint, not a limit: if the tagged parse has no reading the parser's own tagging
+stands, and a word the grammar took for a name is still offered its classes. `tolk.read` now goes through `tolk/reading.py`, as a Mind does, so
+the wide parse and the offering of classes apply to it too. A class other than n, v, a raises ValueError.
