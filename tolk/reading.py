@@ -51,7 +51,7 @@ def read_text(known: set, tags: dict, text: str, lookup=None, history=None) -> t
             return again, k2, x2
         if names:  # a small-letter word taken for a name is not a name: it is a word the grammar lacks
             return readings, k, lf.Refusal("UNKNOWN_WORD", sorted(names)[0])
-    if isinstance(x, lf.Refusal) and len(readings) >= erg.READINGS:
+    if isinstance(x, lf.Refusal) and not lf.is_final(x) and len(readings) >= erg.READINGS:  # a final refusal is a reading understood and declined
         wide = [sem.read(p.mrs, p.lex) for p in words.parse(tags, text, erg.WIDE)]
         k2, x2 = comp.choose(wide, known, lookup, history, after=erg.READINGS)
         if not isinstance(x2, lf.Refusal):

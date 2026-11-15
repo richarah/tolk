@@ -1,5 +1,7 @@
 """Item 1: when the first five readings give a refusal, the sentence is parsed again with 25 and chosen again by the same order."""
 
+import pytest
+
 from tolk import choice, compile as comp, lf
 from tolk.mind import Mind
 from helpers import wide_readings_of
@@ -30,3 +32,31 @@ def test_a_refused_sentence_with_fewer_than_five_readings_is_not_parsed_again() 
     finally:
         erg.parse = real
     assert r.outcome == "refused" and calls == [erg.READINGS]
+
+
+UNDERSTOOD_AND_DECLINED = [
+    ("Kim owns more than two cats.", "UNSUPPORTED_PREDICATE"),
+    ("Kim and Lee like Rio or Pip.", "COORDINATION"),
+    ("Kim saw Lee in the park with Rio.", "DEFINITE_MATCHES"),
+    ("Kim told Lee that Rio sings or hums.", "UNSUPPORTED_TENSE"),
+    ("If Kim sings or Lee dances, Rio hums.", "COORDINATION"),
+    ("Kim sings, Lee dances, or Rio hums.", "COORDINATION"),
+    ("Kim gave Lee a book and Pip a pen.", "UNSUPPORTED_PREDICATE"),
+    ("Most dogs bark.", "UNSUPPORTED_QUANTIFIER"),
+    ("Kim can sing and Lee can dance or hum.", "UNSUPPORTED_PREDICATE"),
+    ("Few dogs bark loudly at night.", "UNSUPPORTED_QUANTIFIER"),
+]
+
+
+@pytest.mark.parametrize("text, code", UNDERSTOOD_AND_DECLINED)
+def test_a_reading_that_was_understood_and_declined_keeps_its_refusal_with_the_wider_search_on(text: str, code: str) -> None:
+    from tolk import erg
+    limits = []
+    real = erg.parse
+    erg.parse = lambda t, tags=None, limit=erg.READINGS: (limits.append(limit), real(t, tags, limit))[1]
+    try:
+        r = Mind().tell(text)
+    finally:
+        erg.parse = real
+    assert r.outcome == "refused" and r.printed.startswith(f"refuse {code}"), r.printed
+    assert erg.WIDE not in limits, "a final refusal ends the search: no wider parse"
