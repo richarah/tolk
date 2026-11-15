@@ -76,4 +76,4 @@ def extreme_text(db: sqlite3.Connection, a: Answer) -> str:
     head, _, proofs = answer_text(db, a).partition("\n")
     if a.value != "Yes":
         return head
-    return head + " (among those I know)" + ("\n" + proofs if proofs else "")
+    return head + say.AMONG_THOSE + ("\n" + proofs if proofs else "")

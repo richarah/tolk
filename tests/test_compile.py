@@ -4,6 +4,7 @@ The expected strings were written from the printed-form shapes in SPEC.md and th
 predicate names in the fixtures, not from the output of compile.py.
 """
 
+import ast
 import io
 import json
 import re
@@ -13,7 +14,7 @@ import pytest
 
 from helpers import ROOT, fixture_path
 from tolk import compile as comp
-from tolk import lf, sem
+from tolk import lf, say, sem
 
 EXPECTED = {
     "Tweety is a robin.": "tell   _robin_n_1(tweety)",
@@ -86,22 +87,25 @@ def content_lemmas() -> set[str]:
     return out - FUNCTION_LEMMAS
 
 
-def code_words(source: str) -> set[str]:
-    """Words in the code of a module: comments and docstrings are prose, and rule 3 is about what the rules key on."""
+def code_words(source: str, allowed: frozenset[str] = frozenset()) -> set[str]:
+    """Words in the code of a module: comments and docstrings are prose, and rule 3 is about what the rules key on. Every string is
+    scanned, except one that is exactly an entry of `allowed`, which only say.py's own list may be."""
     out: set[str] = set()
     previous = tokenize.NEWLINE
     for tok in tokenize.generate_tokens(io.StringIO(source).readline):
         docstring = tok.type == tokenize.STRING and previous in (tokenize.NEWLINE, tokenize.INDENT, tokenize.DEDENT, tokenize.NL)
-        prose = tok.type == tokenize.STRING and " " in tok.string.strip("\"'")  # a key is one word; wording for the reader is not a key
-        if tok.type not in (tokenize.COMMENT, tokenize.NL) and not docstring and not prose:
+        listed = tok.type == tokenize.STRING and ast.literal_eval(tok.string) in allowed
+        if tok.type not in (tokenize.COMMENT, tokenize.NL) and not docstring and not listed:
             out |= set(re.split(r"[^a-z]+", tok.string.lower()))
         if tok.type != tokenize.COMMENT:
             previous = tok.type
     return out
 
 
-def test_the_scan_ignores_wording_with_spaces_but_not_a_word_a_rule_could_key_on() -> None:
-    assert not code_words('x = "among those sparrow"') & {"sparrow"} and "sparrow" in code_words('x = "sparrow"')
+def test_the_scan_reads_every_string_except_an_exact_entry_of_the_allowed_list() -> None:
+    assert "sparrow" in code_words('x = "among those sparrow"')
+    assert not code_words('x = "among those sparrow"', frozenset({"among those sparrow"})) & {"sparrow"}
+    assert "sparrow" in code_words('x = "among those sparrow, too"', frozenset({"among those sparrow"}))
 
 
 def test_the_scan_ignores_comments_and_docstrings_but_not_code() -> None:
@@ -114,8 +118,15 @@ def test_source_has_no_content_lemma() -> None:
     assert lemmas, "no lemmas found in fixtures"
     offenders = []
     for path in (ROOT / "tolk").rglob("*.py"):
-        offenders += [f"{path.relative_to(ROOT)}: {w}" for w in sorted(code_words(path.read_text()) & lemmas)]
+        allowed = say.WORDING if path.name == "say.py" else frozenset()
+        offenders += [f"{path.relative_to(ROOT)}: {w}" for w in sorted(code_words(path.read_text(), allowed) & lemmas)]
     assert offenders == []
+
+
+def test_the_allowed_wording_is_kept_in_say_py_and_nowhere_else() -> None:
+    for path in (ROOT / "tolk").rglob("*.py"):
+        if path.name != "say.py":
+            assert not [w for w in say.WORDING if w in path.read_text()], path
 
 
 TIER_C_FORMS = {

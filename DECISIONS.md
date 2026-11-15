@@ -114,3 +114,8 @@ The wide result stands only if it is not a refusal. `tests/choice_table.json` is
 question that would be Unknown is No (no proof), a question for things that would be Unknown answers "Nothing" with no solutions, the
 extreme question likewise. A Conflict stays a Conflict. "Is every X a Y?" is left alone: with no X known it is vacuously true, and
 turning that into No would be wrong. Repl: TOLK_CLOSED_WORLD=1.
+
+## Finish, item 4: the content-word scan
+The rule that skipped any string literal with a space is gone. Every string in `tolk/` is scanned. The one exact wording that holds a
+lemma ("(among those I know)") is `say.AMONG_THOSE`, in `say.WORDING`, the explicit list, which exists only in say.py; a test checks that no
+other file contains an entry of it, and that the scan skips only exact entries.

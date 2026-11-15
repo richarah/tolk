@@ -7,6 +7,9 @@ from tolk.ask import Answer, Proof
 # The user is spoken to as "you" and tolk speaks as "I".
 SPEAKERS = {"user": "you", "tolk": "I"}
 COPULA = {"you": "are", "I": "am"}
+# Wording that contains a word the rules also use as a predicate. The content-word scan reads every string in tolk/ except these exact ones.
+AMONG_THOSE = " (among those I know)"
+WORDING = frozenset({AMONG_THOSE})
 
 
 def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
