@@ -4,7 +4,7 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, comparison, defaults, diagnosis, engine, generate, history, lf, morph, negation, ordering, proposals, report, say, sem, store, words
+from tolk import compile as comp, comparison, defaults, diagnosis, engine, generate, history, lf, morph, negation, ordering, proposals, reading, report, say, store, words
 from tolk.diagnosis import Diagnosis
 from tolk.rules import claims
 from tolk.rules.comparatives import PREFIX
@@ -110,15 +110,7 @@ class Mind:
         return Result(*head, outcome=f'forgot "{found[1]}"')
 
     def _read(self, text: str) -> tuple[list, int, lf.LF]:
-        """Parse, and choose a reading. A sentence refused for a word the grammar does not know gets one more try with every class offered."""
-        readings = [sem.read(p.mrs, p.lex) for p in words.parse(self.db, text)]
-        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
-        if isinstance(x, lf.Refusal) and x.code == "UNKNOWN_WORD":
-            again = [sem.read(p.mrs, p.lex) for p in words.offered(text, readings)]
-            k2, x2 = comp.choose(again, store.known_preds(self.db), self._lookup, self._history) if again else (k, x)
-            if not isinstance(x2, lf.Refusal):
-                return again, k2, x2
-        return readings, k, x
+        return reading.read(self.db, text, self._lookup, self._history)
 
     def _derive(self) -> None:
         defaults.refresh(self.db, self.ctx, self.policy)

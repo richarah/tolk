@@ -20,3 +20,10 @@ def readings_of(text: str) -> list:
     """The recorded readings of a sentence, with the lexical entries the parser's derivation gave each."""
     from tolk import sem
     return [sem.read(r["simplemrs"], r["lexical"]) for r in json.loads(fixture_path(text).read_text())["readings"]]
+
+
+def wide_readings_of(text: str) -> list:
+    """The recorded 25-reading parse of a sentence (scripts/record.py --wide)."""
+    from tolk import sem
+    path = FIXTURES / "wide" / fixture_path(text).name
+    return [sem.read(r["simplemrs"], r["lexical"]) for r in json.loads(path.read_text())["readings"]]

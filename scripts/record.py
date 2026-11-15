@@ -33,6 +33,22 @@ def tagged(path: Path, force: bool) -> None:
     erg.close()
 
 
+def wide(path: Path, force: bool) -> None:
+    """Parse each sentence with the wide limit and record it in tests/fixtures/wide/."""
+    out_dir = FIXTURES / "wide"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for text in sentences(path):
+        out = out_dir / fixture_path(text).name
+        if out.exists() and not force:
+            continue
+        parsed = erg.parse(text, limit=erg.WIDE)
+        record = {"text": text, "limit": erg.WIDE,
+                  "readings": [{"simplemrs": p.mrs, "neutral": sem.to_dict(sem.read(p.mrs)), "lexical": [list(e) for e in p.lex]} for p in parsed]}
+        out.write_text(json.dumps(record, indent=2) + "\n")
+        print(f"{len(parsed)} wide reading(s): {text}")
+    erg.close()
+
+
 def main(files: list[Path], force: bool) -> None:
     FIXTURES.mkdir(parents=True, exist_ok=True)
     for line in [s for f in files for s in sentences(f)]:
@@ -50,8 +66,11 @@ def main(files: list[Path], force: bool) -> None:
 
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if a not in ("--force", "--tagged")]
+    args = [a for a in sys.argv[1:] if a not in ("--force", "--tagged", "--wide")]
     if "--tagged" in sys.argv:
         tagged(Path(args[0]), "--force" in sys.argv)
+        sys.exit(0)
+    if "--wide" in sys.argv:
+        wide(Path(args[0]), "--force" in sys.argv)
         sys.exit(0)
     main([Path(a) for a in args] or [ROOT / "tests" / "sentences.txt"], force="--force" in sys.argv)

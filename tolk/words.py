@@ -31,11 +31,11 @@ def tags_for(db: sqlite3.Connection, text: str) -> dict[str, tuple[str, ...]]:
     return {w.lower(): forms[w.lower()] for w, _, _ in erg.tokens(text) if w.lower() in forms and "'" not in text}
 
 
-def parse(db: sqlite3.Connection, text: str) -> list[erg.Parsed]:
+def parse(db: sqlite3.Connection, text: str, limit: int = erg.READINGS) -> list[erg.Parsed]:
     """The readings of a sentence, with the remembered class of each unknown word it uses given to the parser. If that gives no reading
     the parser's own tagging stands."""
     tags = tags_for(db, text)
-    return (erg.parse(text, tags) if tags else []) or erg.parse(text)
+    return (erg.parse(text, tags, limit) if tags else []) or erg.parse(text, None, limit)
 
 
 def fits(word: str, tag: str) -> bool:

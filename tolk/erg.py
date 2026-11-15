@@ -8,17 +8,10 @@ ROOT = Path(__file__).resolve().parent.parent
 ACE = ROOT / "erg" / "ace"
 GRAMMAR = ROOT / "erg" / "erg-2018.dat"
 
-_session: ace.ACEParser | None = None
-_tagged: ace.ACEParser | None = None
+READINGS = 5  # how many readings the parser returns by default
+WIDE = 25  # and how many when the first five gave nothing that can be stored
+_sessions: dict[tuple[bool, int], ace.ACEParser] = {}
 _generator: ace.ACEGenerator | None = None
-
-
-def _open() -> ace.ACEParser:
-    global _session
-    if _session is None:
-        _session = ace.ACEParser(str(GRAMMAR), executable=str(ACE), cmdargs=["-n", "5"])
-        _session.__enter__()
-    return _session
 
 
 class Parsed(NamedTuple):
@@ -63,19 +56,19 @@ def _yy(text: str, tags: dict[str, tuple[str, ...]]) -> str:
     return " ".join(out)
 
 
-def parse(text: str, tags: dict[str, tuple[str, ...]] | None = None) -> list[Parsed]:
+def parse(text: str, tags: dict[str, tuple[str, ...]] | None = None, limit: int = READINGS) -> list[Parsed]:
     """One per reading, in parser order. With tags (lowercase token to part-of-speech tags) the sentence is given to the parser
     already tokenised, with those tags: the parser's -y input. Without them the parser tokenizes and tags it itself."""
-    result = (_open_tagged().interact(_yy(text, tags)) if tags else _open().interact(text))
+    result = _open(True, limit).interact(_yy(text, tags)) if tags else _open(False, limit).interact(text)
     return [Parsed(r["mrs"], lexical_entries(r["derivation"])) for r in result.get("results", [])]
 
 
-def _open_tagged() -> ace.ACEParser:
-    global _tagged
-    if _tagged is None:
-        _tagged = ace.ACEParser(str(GRAMMAR), executable=str(ACE), cmdargs=["-n", "5", "-y"])
-        _tagged.__enter__()
-    return _tagged
+def _open(tagged: bool, limit: int) -> ace.ACEParser:
+    key = (tagged, limit)
+    if key not in _sessions:
+        _sessions[key] = ace.ACEParser(str(GRAMMAR), executable=str(ACE), cmdargs=["-n", str(limit)] + (["-y"] if tagged else []))
+        _sessions[key].__enter__()
+    return _sessions[key]
 
 
 def generate(mrs: str) -> list[str]:
@@ -88,8 +81,9 @@ def generate(mrs: str) -> list[str]:
 
 
 def close() -> None:
-    global _session, _tagged, _generator
-    for session in (_session, _tagged, _generator):
+    global _generator
+    for session in (*_sessions.values(), _generator):
         if session is not None:
             session.__exit__(None, None, None)
-    _session = _tagged = _generator = None
+    _sessions.clear()
+    _generator = None

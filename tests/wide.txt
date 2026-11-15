@@ -1,0 +1,2 @@
+# Sentences whose right reading is beyond the parser's first five.
+If Rio hums, Pip hums.

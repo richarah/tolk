@@ -200,18 +200,22 @@ def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
 
 
 def choose(readings: list[Reading], store_preds: set, lookup: Lookup | None = None,
-           history: pronouns.History | None = None) -> tuple[int, lf.LF]:
+           history: pronouns.History | None = None, after: int = 0) -> tuple[int, lf.LF]:
     """Compile the reading `choice.preferred` puts first, and return what it gives, refusal or not. Only when readings are tied
-    on every measure does compile decide among them, in parser order: a reading refusal passes the tie to the next reading."""
+    on every measure does compile decide among them, in parser order: a reading refusal passes the tie to the next reading. With
+    `after` (the wide parse) the readings before it were refused already and are not compiled again: the first tied reading from there
+    on that compiles to something is the one, whatever kind of refusal the earlier ones gave."""
     tied = choice.preferred(readings, store_preds)
     if not tied:
         return 0, _blame_unknown_word(readings, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event"))
     first = None
-    for i in tied:
+    for i in [i for i in tied if i >= after]:
         x = compile_reading(readings[i], lookup, history)
-        if not isinstance(x, lf.Refusal) or lf.is_final(x):
+        if not isinstance(x, lf.Refusal) or (lf.is_final(x) and not after):
             return i, _blame_unknown_word(readings, x) if isinstance(x, lf.Refusal) else x
         first = first or (i, x)
+    if first is None:
+        return 0, lf.Refusal("NO_EVENT_READING", "no reading beyond the first ones")
     return first[0], _blame_unknown_word(readings, first[1])
 
 

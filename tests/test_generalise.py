@@ -27,7 +27,7 @@ TIER_C = [
 ]
 REFUSED = [
     "Most cats purr.", "She swims.", "Rio might swim.",
-    "If Rio hums, Pip hums.", "Sing!", "Ada wants to sleep.",
+    "Sing!", "Ada wants to sleep.",
     "Every finch that swims quickly is cheerful or calm.",
 ]
 
