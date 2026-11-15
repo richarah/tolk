@@ -128,3 +128,10 @@ def test_a_preposition_sense_is_widened_only_when_nothing_matches_exactly() -> N
 
 def test_a_preposition_with_another_lemma_is_not_widened() -> None:
     assert _ask_in(_prepositions_store(), "_on_p_state").value == UNKNOWN
+
+
+def test_the_join_that_pairs_a_fact_with_its_opposite_has_one_home() -> None:
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent / "tolk"
+    homes = [p.name for p in root.rglob("*.py") if "n.a0 = p.a0" in p.read_text()]
+    assert homes == ["engine.py"]

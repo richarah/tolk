@@ -10,10 +10,6 @@ from tolk import engine, lf, store
 from tolk.lf import Atom, Const, Var
 
 POLICIES = ("specific", "trusted", "recent")
-CLASH = (
-    "FROM fact p JOIN fact n ON n.pred = p.pred AND n.ctx = p.ctx AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
-    "WHERE p.positive = 1 AND n.positive = 0"
-)
 
 
 def has_defaults(db: sqlite3.Connection) -> bool:
@@ -63,7 +59,7 @@ def _reset(db: sqlite3.Connection) -> None:
 def _decide(db: sqlite3.Connection, policy: tuple[str, ...], winners: dict) -> bool:
     """Defeat the loser of each clash that has one. True if that defeated something new."""
     grew = False
-    clashes = db.execute(f"SELECT p.id, n.id, p.level, n.level, p.pred {CLASH} AND (p.level = 3 OR n.level = 3)").fetchall()
+    clashes = db.execute(f"SELECT p.id, n.id, p.level, n.level, p.pred {engine.CLASH} AND (p.level = 3 OR n.level = 3)").fetchall()
     for pid, nid, lp, ln, pred in clashes:
         if lp != ln:
             win, lose = (pid, nid) if lp < ln else (nid, pid)

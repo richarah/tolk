@@ -69,13 +69,18 @@ def strata(rules: list[lf.Rule]) -> list[int]:
     raise ValueError("a cycle through negation")
 
 
+# A positive fact p and a negative fact n clash when they differ only in sign. A negative fact has no event, so its empty one matches any.
+CLASH = (
+    "FROM fact p JOIN fact n ON n.pred = p.pred AND n.ctx = p.ctx AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
+    "WHERE p.positive = 1 AND n.positive = 0"
+)
+
+
 def record_conflicts(db: sqlite3.Connection) -> None:
     """A positive and a negative fact that clash get a conflict row, once one of them was derived."""
     db.execute(
         "INSERT INTO conflict(positive_fact, negative_fact) "
-        "SELECT p.id, n.id FROM fact AS p JOIN fact AS n "
-        "ON n.pred = p.pred AND n.ctx = p.ctx AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
-        "WHERE p.positive = 1 AND n.positive = 0 "
+        f"SELECT p.id, n.id {CLASH} "
         "AND (EXISTS (SELECT 1 FROM why w WHERE w.fact = p.id AND w.rule IS NOT NULL) "
         "     OR EXISTS (SELECT 1 FROM why w WHERE w.fact = n.id AND w.rule IS NOT NULL)) "
         "AND NOT EXISTS (SELECT 1 FROM conflict c WHERE c.positive_fact = p.id AND c.negative_fact = n.id)"
