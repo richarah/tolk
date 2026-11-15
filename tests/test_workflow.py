@@ -22,3 +22,14 @@ def test_the_parser_directory_can_be_named_by_the_environment_for_an_installed_c
     out = subprocess.run([sys.executable, "-c", "from tolk import erg; print(erg.ACE)"], capture_output=True, text=True, check=True,
                          env={"TOLK_ERG_DIR": "/somewhere/erg", "PATH": ""}, cwd=ROOT)
     assert out.stdout.strip() == "/somewhere/erg/ace"
+
+
+def test_ci_runs_the_whole_suite_unselected_and_prints_how_many_tests_it_collected() -> None:
+    # The count in CI was lower than a clean clone's once, because the suite had grown between the two runs. Both now say what they ran.
+    text = FILES[0].read_text()
+    lines = [line.strip() for line in text.splitlines() if "pytest" in line]
+    assert any("--collect-only" in line for line in lines)
+    runs = [line for line in lines if line.startswith("- run:") and "--collect-only" not in line]
+    assert runs == ["- run: python -m pytest -q"]
+    config = (ROOT / "pyproject.toml").read_text()
+    assert "addopts" not in config and "deselect" not in config
