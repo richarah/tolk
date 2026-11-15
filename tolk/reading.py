@@ -18,7 +18,7 @@ def read(known: set, tags: dict, text: str, lookup=None, history=None) -> tuple[
     names = words.lowercase_names(text, readings[k:k + 1])
     if names or not readings or (isinstance(x, lf.Refusal) and x.code == "UNKNOWN_WORD"):
         again = [sem.read(p.mrs, p.lex) for p in words.offered(text, readings, names)]
-        k2, x2 = comp.choose(again, known, lookup, history) if again else (0, lf.Refusal("NO_READING", text))
+        k2, x2 = comp.choose(again, known, lookup, history) if again else (0, lf.Refusal("NO_EVENT_READING", "the grammar gave no reading"))
         if again and not isinstance(x2, lf.Refusal) and not words.lowercase_names(text, again[k2:k2 + 1]):
             return again, k2, x2
         if names:  # a small-letter word taken for a name is not a name: it is a word the grammar lacks
