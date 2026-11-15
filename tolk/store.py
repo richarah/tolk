@@ -36,6 +36,7 @@ CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings);
 CREATE TABLE claim(id TEXT PRIMARY KEY, printed TEXT NOT NULL, sentence INTEGER NOT NULL);
 CREATE TABLE revision(sentence INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE morph(word TEXT PRIMARY KEY, base TEXT NOT NULL, affix TEXT NOT NULL);  -- an unknown word split into an affix and a base the store has
 CREATE TABLE word(lemma TEXT NOT NULL, pos TEXT NOT NULL, sentence INTEGER NOT NULL, PRIMARY KEY(lemma, pos));  -- a class an unknown word was used as, from its first accepted use of that class
 CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
 INSERT INTO entity(id, kind) VALUES ('user', 'named'), ('tolk', 'named');

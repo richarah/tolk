@@ -641,3 +641,12 @@ Dialogue and own-word cases in `tests/test_phase22.py`; fixtures read first, pla
 $ .venv/bin/pytest -q
 686 passed, 1 xfailed in 20.33s
 ```
+
+## Phase 23: morphology of unknown words
+
+The dialogue and fifteen own-word cases are in `tests/test_phase23.py` (written before the code). A word the grammar knows is never split.
+
+```
+$ .venv/bin/pytest -q
+714 passed, 1 xfailed in 21.13s
+```

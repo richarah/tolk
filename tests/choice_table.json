@@ -708,6 +708,38 @@
   ]
  },
  {
+  "text": "Does Pingu flibber?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "UNKNOWN_WORD",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
   "text": "Does Pip glorb?",
   "known": [],
   "chosen": 2,

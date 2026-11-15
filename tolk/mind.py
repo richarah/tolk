@@ -4,7 +4,7 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, comparison, defaults, engine, diagnosis, history, lf, negation, ordering, proposals, report, say, sem, store, words
+from tolk import compile as comp, comparison, defaults, engine, diagnosis, history, lf, morph, negation, ordering, proposals, report, say, sem, store, words
 from tolk.diagnosis import Diagnosis
 from tolk.rules import claims
 from tolk.rules.comparatives import PREFIX
@@ -148,6 +148,10 @@ class Mind:
         prior = store.repeat_of(self.db, printed, self.ctx)
         if prior:
             return Result(*head, outcome=f'already told: "{prior[1]}"')
+        splits = []
+        if self.ctx == "world" and isinstance(x, (lf.Tell, lf.Rule)):
+            x, splits = morph.annotate(self.db, x)
+            head = (*head[:2], lf.show(x))
         if isinstance(x, lf.Same):
             if self.ctx != "world":
                 return Result(*head, outcome="refused: identity inside a supposition is not stored yet")
@@ -165,6 +169,7 @@ class Mind:
             sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
             store.add_rule(self.db, x, sid)
             words.remember(self.db, x, sid)
+            morph.record(self.db, splits)
             history.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
             self._derive()
             return Result(*head, outcome="rule stored")
@@ -183,6 +188,7 @@ class Mind:
             opposite = prove(self.db, int(stored.detail))
             return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")
         words.remember(self.db, x, sid)
+        morph.record(self.db, splits)
         for claim_id, (ref, content) in zip(store.fresh_of_kind(self.db, "claim")[len(claims_before):], x.claims):
             # The clause holds in a context apart that the world does not inherit and the engine does not derive in.
             inner = store.tell(self.db, lf.Tell(content), sid, claim_id, allow_conflict=True)

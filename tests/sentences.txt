@@ -101,3 +101,9 @@ Kim is as tall as Sandy.
 Kim is less tall than Sandy.
 Kim is shorter than Sandy.
 Kim is two metres taller than Sandy.
+# phase 23
+Rex is unglorpy.
+Is Rex glorpy?
+Pingu is a flibberer.
+Does Pingu flibber?
+Tweety is flibberable.

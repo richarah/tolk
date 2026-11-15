@@ -3,7 +3,7 @@
 import dataclasses
 import sqlite3
 
-from tolk import lf, say, store
+from tolk import lf, morph, say, store
 from tolk.ask import Answer, prove
 from tolk.lf import Atom
 from tolk.rules import claims
@@ -18,6 +18,9 @@ def describe(db: sqlite3.Connection, ctx: str, entity: str) -> str:
         p = prove(db, fid)
         source = f'told: "{db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()[0]}"' if told and p.sentence else f"by rule {p.rule}"
         lines.append(f"{say.fact_text(db, fid)}  ({source})")
+    preds = [p for (p,) in db.execute(f"SELECT DISTINCT pred FROM fact WHERE id IN ({', '.join('?' * len(facts))})", [f for f, _ in facts])]
+    for word, base, affix in db.execute(f"SELECT word, base, affix FROM morph WHERE word IN ({', '.join('?' * len(preds))})", preds):
+        lines.append(f"({morph.shown(word, base, affix)})")
     return "\n".join(lines)
 
 

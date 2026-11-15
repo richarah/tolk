@@ -106,3 +106,14 @@ Is Ada heavier than Bo?
 Ada is shorter than Bo.
 Is Bo taller than Ada?
 Lee is not taller than Bo.
+# phase 23, own words
+Pip is nonzorpy.
+Is Pip zorpy?
+Ada is a zorper.
+Does Ada zorp?
+Bo is zorpable.
+Tom is a runner.
+Cy is a dancer.
+Eve is untidy.
+Ann is a carrier.
+Ann carries.
