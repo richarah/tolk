@@ -15,12 +15,13 @@ def mind() -> Mind:
 def test_the_four_sentences(mind: Mind) -> None:
     assert mind.tell("Tweety is a blorp.").printed == "tell   _blorp_n_unknown(tweety)"
     r = mind.hear("Every blorp flibbers.")
-    assert r.outcome == "refused"  # no reading at all: two words are unknown to the grammar
+    # Finish item 3: the untagged parse has no reading (two words unknown), the tagged one has, and the rule is stored.
+    assert r.outcome == "rule stored" and r.printed == "rule   _flibber_v_unknown(E!, X) :- _blorp_n_unknown(X)"
     assert mind.tell("Tweety is glorpy.").printed.startswith("tell   _glorpy_a_unknown(e1, tweety)")
-    # Audit 2B: the verb question is read with the verb class offered, so it is understood; nothing says Tweety flibbers.
-    assert mind.ask("Does Tweety flibber?").answer.value == UNKNOWN
-    # Nothing that was stored is wrong, and nothing was invented.
-    assert {p for (p,) in mind.db.execute("SELECT DISTINCT pred FROM fact")} == {"_blorp_n_unknown", "_glorpy_a_unknown"}
+    # The verb question is read with the verb class offered; the rule says every blorp flibbers, and Tweety is one.
+    assert mind.ask("Does Tweety flibber?").answer.value == "Yes"
+    # What was stored is what was told, and what the rule derives.
+    assert {p for (p,) in mind.db.execute("SELECT DISTINCT pred FROM fact")} == {"_blorp_n_unknown", "_glorpy_a_unknown", "_flibber_v_unknown"}
 
 
 def test_an_unknown_noun_and_adjective_behave_like_known_ones(mind: Mind) -> None:

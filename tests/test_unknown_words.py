@@ -44,6 +44,7 @@ def test_a_past_tense_is_refused_not_stored_as_a_present_verb() -> None:
     assert m.db.execute("SELECT COUNT(*) FROM fact").fetchone()[0] == 0
 
 
-def test_a_sentence_with_two_unknown_words_the_parser_cannot_read_stays_refused() -> None:
-    # The grammar gives no reading, so there is no unknown word to offer classes for (PROGRESS.md, phase 16).
-    assert Mind().hear("Every blorp flibbers.").outcome == "refused"
+def test_a_sentence_with_two_unknown_words_the_parser_cannot_read_is_read_with_every_class_offered() -> None:
+    # The grammar gives no reading, so every small-letter word is offered the classes it could be (finish, item 3).
+    r = Mind().hear("Every blorp flibbers.")
+    assert r.outcome == "rule stored" and r.printed == "rule   _flibber_v_unknown(E!, X) :- _blorp_n_unknown(X)"

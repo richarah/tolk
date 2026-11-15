@@ -10,16 +10,21 @@ def load(text: str) -> dict:
     return json.loads(fixture_path(text).read_text())
 
 
-# SPEC phase 0: a sentence with no reading is an expected failure with its reason; the only permitted use of xfail.
-NO_READING = {"Every blorp flibbers.": "the grammar gives no reading when two words in a sentence are unknown to it (PROGRESS.md, Open)"}
-CASES = [pytest.param(t, marks=pytest.mark.xfail(strict=True, reason=NO_READING[t])) if t in NO_READING else t for t in sentences()]
+def readings_of_fixture(text: str) -> list:
+    """The readings the parser gave; for a sentence with none, those it gives with the unknown words tagged (finish, item 3)."""
+    found = load(text)["readings"]
+    tagged = fixture_path(text).parent / "tagged" / fixture_path(text).name
+    return found or (json.loads(tagged.read_text())["readings"] if tagged.exists() else [])
+
+
+CASES = sentences()
 
 
 @pytest.mark.parametrize("text", CASES)
 def test_every_sentence_has_a_reading(text: str) -> None:
     fixture = load(text)
     assert fixture["text"] == text
-    assert len(fixture["readings"]) >= 1
+    assert len(readings_of_fixture(text)) >= 1
 
 
 @pytest.mark.parametrize("text", sentences())

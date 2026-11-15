@@ -2,6 +2,7 @@
 again with that class given as the part-of-speech tag, which is what the parser's tagged input takes. A sentence refused for an unknown
 word is tried once more with every class offered for it, and the grammar's syntax picks."""
 
+import re
 import sqlite3
 
 from tolk import erg, lf
@@ -45,8 +46,17 @@ def fits(word: str, tag: str) -> bool:
     return word.endswith("s") == bool(suffix) and not (pos == "v" and word.endswith(("ed", "ing")))
 
 
-def offered(text: str, readings: list[Reading]) -> list[erg.Parsed]:
-    """The sentence parsed with every class offered for each word the grammar had to guess, so that the syntax of the sentence decides."""
-    guessed = {m.group(1).lower() for r in readings for ep in r.eps if (m := content.UNKNOWN.fullmatch(ep.pred))}
+def lowercase_names(text: str, readings: list[Reading]) -> set[str]:
+    """Words the readings given take for a name though the sentence spells them with a small letter: a word it lacks, or has only as a name."""
+    return {w.lower() for r in readings for ep in r.eps if ep.pred == "named" and ep.cfrom >= 0 and text[ep.cfrom:ep.cfrom + 1].islower()
+            for w in re.findall(r"\w+", text[ep.cfrom:ep.cto])}
+
+
+def offered(text: str, readings: list[Reading], names: set[str] = frozenset()) -> list[erg.Parsed]:
+    """The sentence parsed with every class offered for each word the grammar had to guess, or took for a name, so that the syntax of the
+    sentence decides."""
+    guessed = {m.group(1).lower() for r in readings for ep in r.eps if (m := content.UNKNOWN.fullmatch(ep.pred))} | names
+    if not readings:  # the grammar gave no reading, so which word it lacks is not known: any small-letter word may be the one
+        guessed |= {w.lower() for w, _, _ in erg.tokens(text) if w[0].islower() and w[0].isalpha()}
     tags = {w: tuple(t.upper() for t in content.TAGS if fits(w, t)) for w in guessed}
     return erg.parse(text, {w: t for w, t in tags.items() if t}) if tags and all(tags.values()) and "'" not in text else []

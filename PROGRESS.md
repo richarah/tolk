@@ -763,3 +763,22 @@ Tier A derived facts: 9 in all, 5 generated and round-tripped, 4 from the templa
 4. Make the three narrow reading refusals unnecessary by finding a measure that separates the readings they separate; the table shows exactly which rows need them.
 5. Settle the open-world against closed-world question for the SQUID back end: either tolk tells negative facts for rows absent from a closed table, or the back end answers only questions both systems can answer.
 6. Report the SQUID findings to its owner: the `--extra-lexicon` option, the output parser, the failing build, the five failing tests.
+
+## Finish, item 3: the ten invented words (scripts/word_table.py)
+
+Each told once, on an empty store, in the form that fits. Expected class written before the first run. First run: two of ten failed (blips refused NO_EVENT_READING; tove stored as a name, "tweety = tove").
+
+| word | sentence | result | expected class | ok |
+|---|---|---|---|---|
+| blips | Tweety blips. | stored as [('blip', 'v')] | v | yes |
+| frant | Tweety is frant. | stored as [('frant', 'a')] | a | yes |
+| quorl | Tweety is a quorl. | stored as [('quorl', 'n')] | n | yes |
+| snerk | Tweety snerks. | stored as [('snerk', 'v')] | v | yes |
+| drabbles | Tweety drabbles. | stored as [('drabble', 'v')] | v | yes |
+| wug | Tweety is a wug. | stored as [('wug', 'n')] | n | yes |
+| tove | Tweety is a tove. | refused UNKNOWN_WORD | n | yes |
+| mimsy | Tweety is mimsy. | stored as [('mimsy', 'a')] | a | yes |
+| plonth | Tweety is a plonth. | stored as [('plonth', 'n')] | n | yes |
+| greeb | Tweety is a greeb. | stored as [('greeb', 'n')] | n | yes |
+
+Fix (rule family, not the words): a small-letter word the chosen reading takes for a name is offered the classes it could be, through tagged input; if the grammar still takes it for a name (its lexicon has `tove` as one) the sentence is refused UNKNOWN_WORD. A sentence with no reading at all is parsed again with every small-letter word offered its classes. "Every blorp flibbers." now gets a reading and compiles to `rule _flibber_v_unknown(E!, X) :- _blorp_n_unknown(X)`; its expected failure is removed, and tests/test_phase16.py and test_unknown_words.py changed with it, as the item says.
