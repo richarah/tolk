@@ -44,3 +44,23 @@ def test_confirmed_proposal_is_stored_and_no_longer_proposed() -> None:
     assert m.propose() == []
     m.tell("Milo is a robin.")
     assert m.ask("Is Milo a bird?").answer.value == "Yes"
+
+
+def test_four_things_with_identical_extensions_give_exactly_one_proposal() -> None:
+    # SPEC Phase 8: four things that share two predicates yield exactly one proposal, even when nothing else has either predicate.
+    m = robins_and_birds(FOUR, FOUR)
+    proposals = m.propose()
+    assert len(proposals) == 1
+    assert proposals[0].question in ("Is every robin a bird?", "Is every bird a robin?")
+
+
+def test_the_one_proposal_for_identical_extensions_ends_once_confirmed() -> None:
+    m = robins_and_birds(FOUR, FOUR)
+    [proposal] = m.propose()
+    m.confirm(proposal)
+    assert m.propose() == []
+
+
+def test_identical_extensions_with_a_counterexample_each_way_give_none() -> None:
+    m = robins_and_birds(FOUR + ["Yan"], FOUR + ["Zed"])  # Zed is a robin and no bird; Yan is a bird and no robin
+    assert m.propose() == []

@@ -33,8 +33,10 @@ def propose(db: sqlite3.Connection) -> list[Proposal]:
         if len(members) < 3:
             continue
         for q, others in sorted(things.items()):
-            # Q must cover P and contain a thing P lacks, so the pair is not two predicates with one extension.
-            if q == p or (p, q) in derived or not members <= others or others <= members:
+            if q == p or (p, q) in derived or not members <= others:
+                continue
+            # Two predicates with one extension are proposed once, in one direction, and not at all once a rule links them either way.
+            if members == others and (p > q or (q, p) in derived):
                 continue
             out.append(Proposal(say.proposal_text(p, q), p, q, tuple(sorted(members))))
     return out
