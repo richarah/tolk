@@ -26,3 +26,11 @@ def test_6_if_read_as_a_preposition_does_not_end_the_search_for_the_reading_wher
 ])
 def test_7_a_group_subject_with_a_noun_complement_is_two_facts(text: str, want: str) -> None:
     assert Mind().hear(text).printed == want
+
+
+def test_3_where_is_bob_finds_the_copular_location() -> None:
+    m = Mind()
+    m.tell("Bob is in Paris.")
+    r = m.ask("Where is Bob?")
+    assert r.answer.value == "Yes" and r.answer.solutions == (("paris",),)
+    assert Mind().ask("Where is Bob?").outcome == "Unknown"

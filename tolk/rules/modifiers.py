@@ -34,7 +34,9 @@ def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if ep.pred == "loc_nonsp":
         if ctx.mode == "tell":
             return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
-        return (Atom(ANY_LOCATIVE, (ctx.term(ep.args["ARG1"]), ctx.term(ep.args["ARG2"]))),)
+        # "Where does Kim live?" modifies an event; "Where is Bob?" has no verb of its own, so the location's event is the atom's first term.
+        lead = () if ep.args["ARG1"].startswith("e") else (ctx.term(ep.args["ARG0"]),)
+        return (Atom(ANY_LOCATIVE, (*lead, ctx.term(ep.args["ARG1"]), ctx.term(ep.args["ARG2"]))),)
     if not modifies(ep, ctx.usage):
         return None
     event = ep.args["ARG1"]
