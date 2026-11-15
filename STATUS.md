@@ -47,11 +47,16 @@ tried). The table is `tolk/lf.py` REFUSALS; its contents are printed by `scripts
 | UNBOUND_VARIABLE | reading | a variable that nothing binds |
 | UNCONSTRAINED_WANTED | reading | a wanted variable with no restriction |
 | UNCONSUMED | reading | a negation, question or rule with nothing for it to apply to |
-| UNEXPRESSED_OBJECT / _SUBJECT | reading | an argument the sentence leaves out |
+| UNEXPRESSED_OBJECT | reading | an object the sentence leaves out |
+| UNEXPRESSED_SUBJECT | reading | a subject the sentence leaves out |
 | UNIVERSAL_QUESTION | final | a question over every thing |
 | UNKNOWN_WORD | final | a word the grammar lacks, in a class the store cannot hold (or a small-letter name) |
 | UNSAFE_NEGATION | final | a rule whose body has nothing positive |
-| UNSUPPORTED_ASPECT / _FORCE / _PREDICATE / _QUANTIFIER / _TENSE | final | a feature with no form in the store (progressive, imperative, "more than", "most", future, ...) |
+| UNSUPPORTED_ASPECT | final | progressive or perfect |
+| UNSUPPORTED_FORCE | final | an imperative or other sentence that is neither statement nor question |
+| UNSUPPORTED_PREDICATE | final | a predicate with no form in the store ("more than", "want", measure, ...) |
+| UNSUPPORTED_QUANTIFIER | final | "most", "half" and the like |
+| UNSUPPORTED_TENSE | final | a tense the store does not hold (future, past inside a rule) |
 | WH_BOUND_TO_CONSTANT | reading | a wh word fixed to a name |
 
 ## Settings
