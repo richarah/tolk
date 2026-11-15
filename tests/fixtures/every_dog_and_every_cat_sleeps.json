@@ -1,0 +1,975 @@
+{
+  "text": "Every dog and every cat sleeps.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:31> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl ] ]  [ udef_q<0:31> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ _every_q<0:5> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ _dog_n_1<6:9> LBL: h12 ARG0: x9 ]  [ _and_c<10:13> LBL: h13 ARG0: x4 ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<14:31> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]  [ compound<14:31> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: x20 [ x IND: + PT: notpro ] ]  [ udef_q<14:23> LBL: h21 ARG0: x20 RSTR: h22 BODY: h23 ]  [ _every_a_1<14:19> LBL: h24 ARG0: e25 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x20 ]  [ _cat_n_1<20:23> LBL: h24 ARG0: x20 ]  [ _sleep_n_1<24:31> LBL: h18 ARG0: x14 ] > HCONS: < h0 qeq h1 h6 qeq h13 h10 qeq h12 h16 qeq h18 h22 qeq h24 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h8",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h13",
+            "args": {
+              "ARG0": "x4",
+              "ARG1": "x9",
+              "ARG2": "x14"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h15",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h18",
+            "args": {
+              "ARG0": "e19",
+              "ARG1": "x14",
+              "ARG2": "x20"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h21",
+            "args": {
+              "ARG0": "x20",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h24",
+            "args": {
+              "ARG0": "e25",
+              "ARG1": "x20"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h24",
+            "args": {
+              "ARG0": "x20"
+            }
+          },
+          {
+            "pred": "_sleep_n_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "x14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h13",
+          "h10": "h12",
+          "h16": "h18",
+          "h22": "h24"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl"
+          },
+          "h6": {},
+          "h7": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "x14": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e19": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x20": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h22": {},
+          "h23": {},
+          "e25": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h13": {},
+          "h12": {},
+          "h18": {},
+          "h24": {},
+          "h5": {},
+          "h8": {},
+          "h15": {},
+          "h21": {}
+        }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "dog_n1",
+          6,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "every_a1",
+          14,
+          19
+        ],
+        [
+          "cat_n1",
+          20,
+          23
+        ],
+        [
+          "sleep_n1",
+          24,
+          31
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:31> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:31> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:31> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl PT: notpro ] ]  [ udef_q<0:23> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ udef_q<0:9> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ _every_a_1<0:5> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x15 ]  [ _dog_n_1<6:9> LBL: h18 ARG0: x15 ]  [ udef_q<10:23> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ _and_c<10:13> LBL: h24 ARG0: x10 ARG1: x15 ARG2: x21 ]  [ _every_a_1<14:19> LBL: h25 ARG0: e26 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x21 ]  [ _cat_n_1<20:23> LBL: h25 ARG0: x21 ]  [ _sleep_n_1<24:31> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h24 h16 qeq h18 h22 qeq h25 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "e19",
+              "ARG1": "x15"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h24",
+            "args": {
+              "ARG0": "x10",
+              "ARG1": "x15",
+              "ARG2": "x21"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h25",
+            "args": {
+              "ARG0": "e26",
+              "ARG1": "x21"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h25",
+            "args": {
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_sleep_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h24",
+          "h16": "h18",
+          "h22": "h25"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "pl",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e19": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "e26": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h24": {},
+          "h18": {},
+          "h25": {},
+          "h5": {},
+          "h11": {},
+          "h14": {},
+          "h20": {}
+        }
+      },
+      "lexical": [
+        [
+          "every_a1",
+          0,
+          5
+        ],
+        [
+          "dog_n1",
+          6,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "every_a1",
+          14,
+          19
+        ],
+        [
+          "cat_n1",
+          20,
+          23
+        ],
+        [
+          "sleep_n1",
+          24,
+          31
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 ] RSTR: h5 BODY: h6 ]  [ udef_q<6:9> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ id<6:23> LBL: h11 ARG0: i12 ARG1: x8 ARG2: x13 [ x PERS: 3 NUM: sg IND: + ] ]  [ _dog_n_1<6:9> LBL: h14 ARG0: x8 ]  [ udef_q<10:23> LBL: h15 ARG0: x13 RSTR: h16 BODY: h17 ]  [ _and_c<10:13> LBL: h11 ARG0: x3 ARG1: x8 ARG2: x13 ]  [ _every_a_1<14:19> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x13 ]  [ _cat_n_1<20:23> LBL: h18 ARG0: x13 ]  [ _sleep_v_1<24:31> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h11 h9 qeq h14 h16 qeq h18 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_every_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "id",
+            "label": "h11",
+            "args": {
+              "ARG0": "i12",
+              "ARG1": "x8",
+              "ARG2": "x13"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "x8"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h15",
+            "args": {
+              "ARG0": "x13",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h11",
+            "args": {
+              "ARG0": "x3",
+              "ARG1": "x8",
+              "ARG2": "x13"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "e19",
+              "ARG1": "x13"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "x13"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h11",
+          "h9": "h14",
+          "h16": "h18"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "i12": {},
+          "x13": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "e19": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h11": {},
+          "h14": {},
+          "h18": {},
+          "h4": {},
+          "h7": {},
+          "h15": {}
+        }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "dog_n1",
+          6,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "every_a1",
+          14,
+          19
+        ],
+        [
+          "cat_n1",
+          20,
+          23
+        ],
+        [
+          "sleep_v1",
+          24,
+          31
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:31> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ udef_q<0:31> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:31> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x IND: + PT: notpro ] ]  [ udef_q<0:23> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ _every_a_1<0:5> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x10 ]  [ compound<6:19> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i18 ARG2: x19 [ x IND: + ] ]  [ udef_q<6:19> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]  [ _dog_n_1<6:9> LBL: h16 ARG0: x19 ]  [ _and_c<10:13> LBL: h23 ARG0: e24 [ e SF: prop ] ARG1: e17 ARG2: e25 [ e SF: prop ] ]  [ _every_a_1<14:19> LBL: h23 ARG0: e25 ARG1: i18 ]  [ _cat_n_1<20:23> LBL: h14 ARG0: x10 ]  [ _sleep_n_1<24:31> LBL: h8 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h21 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h16",
+            "args": {
+              "ARG0": "e17",
+              "ARG1": "i18",
+              "ARG2": "x19"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x19",
+              "RSTR": "h21",
+              "BODY": "h22"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h16",
+            "args": {
+              "ARG0": "x19"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h23",
+            "args": {
+              "ARG0": "e24",
+              "ARG1": "e17",
+              "ARG2": "e25"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h23",
+            "args": {
+              "ARG0": "e25",
+              "ARG1": "i18"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "_sleep_n_1",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h21": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "e17": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i18": {},
+          "x19": {
+            "IND": "+"
+          },
+          "h21": {},
+          "h22": {},
+          "e24": {
+            "SF": "prop"
+          },
+          "e25": {
+            "SF": "prop"
+          },
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h16": {},
+          "h5": {},
+          "h11": {},
+          "h20": {},
+          "h23": {}
+        }
+      },
+      "lexical": [
+        [
+          "every_a1",
+          0,
+          5
+        ],
+        [
+          "dog_n1",
+          6,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "every_a1",
+          14,
+          19
+        ],
+        [
+          "cat_n1",
+          20,
+          23
+        ],
+        [
+          "sleep_n1",
+          24,
+          31
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:31> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]  [ _every_q<0:5> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ udef_q<6:9> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ _dog_n_1<6:9> LBL: h12 ARG0: x9 ]  [ udef_q<10:31> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: pl IND: + ] RSTR: h15 BODY: h16 ]  [ _and_c<10:13> LBL: h17 ARG0: x4 ARG1: x9 ARG2: x14 ]  [ compound<14:31> LBL: h18 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: x20 [ x IND: + PT: notpro ] ]  [ udef_q<14:23> LBL: h21 ARG0: x20 RSTR: h22 BODY: h23 ]  [ _every_a_1<14:19> LBL: h24 ARG0: e25 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x20 ]  [ _cat_n_1<20:23> LBL: h24 ARG0: x20 ]  [ _sleep_n_1<24:31> LBL: h18 ARG0: x14 ] > HCONS: < h0 qeq h1 h6 qeq h17 h10 qeq h12 h15 qeq h18 h22 qeq h24 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "_every_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h8",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_dog_n_1",
+            "label": "h12",
+            "args": {
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h17",
+            "args": {
+              "ARG0": "x4",
+              "ARG1": "x9",
+              "ARG2": "x14"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h18",
+            "args": {
+              "ARG0": "e19",
+              "ARG1": "x14",
+              "ARG2": "x20"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h21",
+            "args": {
+              "ARG0": "x20",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "_every_a_1",
+            "label": "h24",
+            "args": {
+              "ARG0": "e25",
+              "ARG1": "x20"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h24",
+            "args": {
+              "ARG0": "x20"
+            }
+          },
+          {
+            "pred": "_sleep_n_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "x14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h17",
+          "h10": "h12",
+          "h15": "h18",
+          "h22": "h24"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3"
+          },
+          "h6": {},
+          "h7": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "x14": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "e19": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x20": {
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h22": {},
+          "h23": {},
+          "e25": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "h0": {},
+          "h1": {},
+          "h17": {},
+          "h12": {},
+          "h18": {},
+          "h24": {},
+          "h5": {},
+          "h8": {},
+          "h13": {},
+          "h21": {}
+        }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "dog_n1",
+          6,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "every_a1",
+          14,
+          19
+        ],
+        [
+          "cat_n1",
+          20,
+          23
+        ],
+        [
+          "sleep_n1",
+          24,
+          31
+        ]
+      ]
+    }
+  ]
+}

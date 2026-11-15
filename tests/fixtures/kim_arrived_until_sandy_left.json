@@ -1,0 +1,832 @@
+{
+  "text": "Kim arrived until Sandy left.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _arrive_v_1<4:11> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _until_p<12:17> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: h10 ]  [ proper_q<18:23> LBL: h11 ARG0: x12 [ x PERS: 3 NUM: sg IND: + ] RSTR: h13 BODY: h14 ]  [ named<18:23> LBL: h15 CARG: \"Sandy\" ARG0: x12 ]  [ _leave_v_1<24:29> LBL: h17 ARG0: e18 [ e SF: prop TENSE: past MOOD: indicative ] ARG1: x12 ARG2: i19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h17 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_arrive_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_until_p",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "h10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x12"
+            }
+          },
+          {
+            "pred": "_leave_v_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "e18",
+              "ARG1": "x12",
+              "ARG2": "i19"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h17",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e18": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative"
+          },
+          "i19": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h17": {},
+          "h15": {},
+          "h4": {},
+          "h11": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "arrive_v1",
+          4,
+          11
+        ],
+        [
+          "until2",
+          12,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          23
+        ],
+        [
+          "leave_v1",
+          24,
+          29
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _arrive_v_1<4:11> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _until_p<12:17> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<18:23> LBL: h14 CARG: \"Sandy\" ARG0: x10 ]  [ loc_nonsp<24:29> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg ] ]  [ place_n<24:29> LBL: h18 ARG0: x17 ]  [ def_implicit_q<24:29> LBL: h19 ARG0: x17 RSTR: h20 BODY: h21 ]  [ _left_a_1<24:29> LBL: h18 ARG0: i22 ARG1: x17 ARG2: u23 ] > HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 h20 qeq h18 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_arrive_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_until_p",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e16",
+              "ARG1": "e2",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "place_n",
+            "label": "h18",
+            "args": {
+              "ARG0": "x17"
+            }
+          },
+          {
+            "pred": "def_implicit_q",
+            "label": "h19",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h20",
+              "BODY": "h21"
+            }
+          },
+          {
+            "pred": "_left_a_1",
+            "label": "h18",
+            "args": {
+              "ARG0": "i22",
+              "ARG1": "x17",
+              "ARG2": "u23"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h12": "h14",
+          "h20": "h18"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h12": {},
+          "h13": {},
+          "e16": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h20": {},
+          "h21": {},
+          "i22": {},
+          "u23": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h18": {},
+          "h4": {},
+          "h11": {},
+          "h19": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "arrive_v1",
+          4,
+          11
+        ],
+        [
+          "until",
+          12,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          23
+        ],
+        [
+          "left_n2",
+          24,
+          29
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _arrive_v_1<4:11> LBL: h9 ARG0: e2 ARG1: x3 ]  [ _until_p<12:17> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ named<18:23> LBL: h15 CARG: \"Sandy\" ARG0: x11 ]  [ subord<24:29> LBL: h1 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h18 ARG2: h19 ]  [ _leave_v_1<24:29> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i22 ARG2: i23 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 h18 qeq h9 h19 qeq h20 > ICONS: < e21 topic i23 > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_arrive_v_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_until_p",
+            "label": "h9",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "e2",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x11"
+            }
+          },
+          {
+            "pred": "subord",
+            "label": "h1",
+            "args": {
+              "ARG0": "e17",
+              "ARG1": "h18",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "_leave_v_1",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "i22",
+              "ARG2": "i23"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h15",
+          "h18": "h9",
+          "h19": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e17": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h18": {},
+          "h19": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "i22": {},
+          "i23": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h15": {},
+          "h9": {},
+          "h20": {},
+          "h4": {},
+          "h12": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "arrive_v1",
+          4,
+          11
+        ],
+        [
+          "until",
+          12,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          23
+        ],
+        [
+          "leave_v1",
+          24,
+          29
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _arrive_v_1<4:11> LBL: h9 ARG0: e2 ARG1: x3 ]  [ _until_p<12:17> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<18:23> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ named<18:23> LBL: h15 CARG: \"Sandy\" ARG0: x11 ]  [ subord<24:29> LBL: h1 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h18 ARG2: h19 ]  [ _leave_v_transfer<24:29> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i22 ARG2: i23 ARG3: i24 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 h18 qeq h9 h19 qeq h20 > ICONS: < e21 topic i24 > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_arrive_v_1",
+            "label": "h9",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_until_p",
+            "label": "h9",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "e2",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x11"
+            }
+          },
+          {
+            "pred": "subord",
+            "label": "h1",
+            "args": {
+              "ARG0": "e17",
+              "ARG1": "h18",
+              "ARG2": "h19"
+            }
+          },
+          {
+            "pred": "_leave_v_transfer",
+            "label": "h20",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "i22",
+              "ARG2": "i23",
+              "ARG3": "i24"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h15",
+          "h18": "h9",
+          "h19": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "e17": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h18": {},
+          "h19": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "i22": {},
+          "i23": {},
+          "i24": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h15": {},
+          "h9": {},
+          "h20": {},
+          "h4": {},
+          "h12": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "arrive_v1",
+          4,
+          11
+        ],
+        [
+          "until",
+          12,
+          17
+        ],
+        [
+          "sandy",
+          18,
+          23
+        ],
+        [
+          "leave_v4",
+          24,
+          29
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:3> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _arrive_v_1<4:11> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _until_p<12:17> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: e10 [ e SF: prop TENSE: untensed MOOD: indicative ] ]  [ _sandy_a_1<18:23> LBL: h1 ARG0: e10 ARG1: i11 ]  [ loc_nonsp<24:29> LBL: h1 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x13 [ x PERS: 3 NUM: sg ] ]  [ place_n<24:29> LBL: h14 ARG0: x13 ]  [ def_implicit_q<24:29> LBL: h15 ARG0: x13 RSTR: h16 BODY: h17 ]  [ _left_a_1<24:29> LBL: h14 ARG0: i18 ARG1: x13 ARG2: u19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h16 qeq h14 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_arrive_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_until_p",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "e2",
+              "ARG2": "e10"
+            }
+          },
+          {
+            "pred": "_sandy_a_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "i11"
+            }
+          },
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "e2",
+              "ARG2": "x13"
+            }
+          },
+          {
+            "pred": "place_n",
+            "label": "h14",
+            "args": {
+              "ARG0": "x13"
+            }
+          },
+          {
+            "pred": "def_implicit_q",
+            "label": "h15",
+            "args": {
+              "ARG0": "x13",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "_left_a_1",
+            "label": "h14",
+            "args": {
+              "ARG0": "i18",
+              "ARG1": "x13",
+              "ARG2": "u19"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h16": "h14"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "i11": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x13": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h16": {},
+          "h17": {},
+          "i18": {},
+          "u19": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h14": {},
+          "h4": {},
+          "h15": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "arrive_v1",
+          4,
+          11
+        ],
+        [
+          "until_p3",
+          12,
+          17
+        ],
+        [
+          "sandy_a1",
+          18,
+          23
+        ],
+        [
+          "left_n2",
+          24,
+          29
+        ]
+      ]
+    }
+  ]
+}

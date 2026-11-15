@@ -1,0 +1,215 @@
+{
+  "text": "Who is a zorp?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ _be_v_id<4:6> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg IND: + ] ARG2: x5 ]  [ _a_q<7:8> LBL: h9 ARG0: x3 RSTR: h10 BODY: h11 ]  [ _zorp/NN_u_unknown<9:14> LBL: h12 ARG0: x3 ] > HCONS: < h0 qeq h1 h7 qeq h4 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "person",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_zorp/nn_u_unknown",
+            "label": "h12",
+            "args": {
+              "ARG0": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h4",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h7": {},
+          "h8": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h12": {},
+          "h6": {},
+          "h9": {}
+        }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "be_id_is",
+          4,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "generic_mass_count_noun",
+          9,
+          14
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _be_v_id<4:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<7:8> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ _zorp/NN_u_unknown<9:14> LBL: h12 ARG0: x8 ] > HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "person",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "_zorp/nn_u_unknown",
+            "label": "h12",
+            "args": {
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h6": {},
+          "h7": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h12": {},
+          "h5": {},
+          "h9": {}
+        }
+      },
+      "lexical": [
+        [
+          "who1",
+          0,
+          3
+        ],
+        [
+          "be_id_is",
+          4,
+          6
+        ],
+        [
+          "a_det",
+          7,
+          8
+        ],
+        [
+          "generic_mass_count_noun",
+          9,
+          14
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "text": "Does Kim own a cat or a bird?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<5:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<5:8> LBL: h7 CARG: \"Kim\" ARG0: x3 ]  [ _own_v_1<9:12> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 ]  [ udef_q<13:29> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _a_q<13:14> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ _cat_n_1<15:18> LBL: h17 ARG0: x14 ]  [ _or_c<19:21> LBL: h18 ARG0: x9 ARG1: x14 ARG2: x19 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<22:23> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]  [ _bird_n_1<24:29> LBL: h23 ARG0: x19 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h18 h15 qeq h17 h21 qeq h23 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_own_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h17",
+            "args": {
+              "ARG0": "x14"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h18",
+            "args": {
+              "ARG0": "x9",
+              "ARG1": "x14",
+              "ARG2": "x19"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x19",
+              "RSTR": "h21",
+              "BODY": "h22"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h23",
+            "args": {
+              "ARG0": "x19"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h18",
+          "h15": "h17",
+          "h21": "h23"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {},
+          "h11": {},
+          "h12": {},
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "x19": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h21": {},
+          "h22": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h18": {},
+          "h17": {},
+          "h23": {},
+          "h4": {},
+          "h10": {},
+          "h13": {},
+          "h20": {}
+        }
+      },
+      "lexical": [
+        [
+          "does1_pos",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "own_v1",
+          9,
+          12
+        ],
+        [
+          "a_det",
+          13,
+          14
+        ],
+        [
+          "cat_n1",
+          15,
+          18
+        ],
+        [
+          "or_conj_1",
+          19,
+          21
+        ],
+        [
+          "a_det",
+          22,
+          23
+        ],
+        [
+          "bird_n1",
+          24,
+          29
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ appos<0:8> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 [ x PERS: 3 NUM: pl IND: + ] ARG2: x5 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:4> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]  [ named<0:4> LBL: h9 CARG: \"Does\" ARG0: x3 ]  [ proper_q<5:8> LBL: h11 ARG0: x5 RSTR: h12 BODY: h13 ]  [ named<5:8> LBL: h14 CARG: \"Kim\" ARG0: x5 ]  [ _own_v_1<9:12> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x16 ]  [ udef_q<13:29> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ _a_q<13:14> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ _cat_n_1<15:18> LBL: h24 ARG0: x21 ]  [ _or_c<19:21> LBL: h25 ARG0: x16 ARG1: x21 ARG2: x26 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<22:23> LBL: h27 ARG0: x26 RSTR: h28 BODY: h29 ]  [ _bird_n_1<24:29> LBL: h30 ARG0: x26 ] > HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h14 h18 qeq h25 h22 qeq h24 h28 qeq h30 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "appos",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "x3",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h9",
+            "args": {
+              "CARG": "Does",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_own_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h20",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "_cat_n_1",
+            "label": "h24",
+            "args": {
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h25",
+            "args": {
+              "ARG0": "x16",
+              "ARG1": "x21",
+              "ARG2": "x26"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h27",
+            "args": {
+              "ARG0": "x26",
+              "RSTR": "h28",
+              "BODY": "h29"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h30",
+            "args": {
+              "ARG0": "x26"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h9",
+          "h12": "h14",
+          "h18": "h25",
+          "h22": "h24",
+          "h28": "h30"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h7": {},
+          "h8": {},
+          "h12": {},
+          "h13": {},
+          "x16": {},
+          "h18": {},
+          "h19": {},
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "x26": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h28": {},
+          "h29": {},
+          "h0": {},
+          "h1": {},
+          "h9": {},
+          "h14": {},
+          "h25": {},
+          "h24": {},
+          "h30": {},
+          "h6": {},
+          "h11": {},
+          "h17": {},
+          "h20": {},
+          "h27": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          4
+        ],
+        [
+          "kim",
+          5,
+          8
+        ],
+        [
+          "own_v1",
+          9,
+          12
+        ],
+        [
+          "a_det",
+          13,
+          14
+        ],
+        [
+          "cat_n1",
+          15,
+          18
+        ],
+        [
+          "or_conj_1",
+          19,
+          21
+        ],
+        [
+          "a_det",
+          22,
+          23
+        ],
+        [
+          "bird_n1",
+          24,
+          29
+        ]
+      ]
+    }
+  ]
+}

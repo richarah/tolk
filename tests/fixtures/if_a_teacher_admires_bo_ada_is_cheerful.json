@@ -1,0 +1,844 @@
+{
+  "text": "If a teacher admires Bo, Ada is cheerful.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _if_x_then<0:2> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h5 ARG2: h6 ]  [ _a_q<3:4> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ _teacher_n_of<5:12> LBL: h11 ARG0: x8 ARG1: i12 ]  [ _admire_v_1<13:20> LBL: h13 ARG0: e14 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x8 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<21:24> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]  [ named<21:24> LBL: h19 CARG: \"Bo\" ARG0: x15 ]  [ proper_q<25:28> LBL: h21 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h22 BODY: h23 ]  [ named<25:28> LBL: h24 CARG: \"Ada\" ARG0: x3 ]  [ _cheerful_a_1<32:41> LBL: h26 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h26 h6 qeq h13 h9 qeq h11 h17 qeq h19 h22 qeq h24 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "h5",
+              "ARG2": "h6"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h11",
+            "args": {
+              "ARG0": "x8",
+              "ARG1": "i12"
+            }
+          },
+          {
+            "pred": "_admire_v_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "x8",
+              "ARG2": "x15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h17",
+              "BODY": "h18"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h19",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h21",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h22",
+              "BODY": "h23"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h24",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_cheerful_a_1",
+            "label": "h26",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h26",
+          "h6": "h13",
+          "h9": "h11",
+          "h17": "h19",
+          "h22": "h24"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "i12": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h17": {},
+          "h18": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h22": {},
+          "h23": {},
+          "h0": {},
+          "h1": {},
+          "h26": {},
+          "h13": {},
+          "h11": {},
+          "h19": {},
+          "h24": {},
+          "h7": {},
+          "h16": {},
+          "h21": {}
+        }
+      },
+      "lexical": [
+        [
+          "if_subconj_unspec",
+          0,
+          2
+        ],
+        [
+          "a_det",
+          3,
+          4
+        ],
+        [
+          "teacher_n1",
+          5,
+          12
+        ],
+        [
+          "admire_v1",
+          13,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          24
+        ],
+        [
+          "ada_n1",
+          25,
+          28
+        ],
+        [
+          "be_c_is",
+          29,
+          31
+        ],
+        [
+          "cheerful_a1",
+          32,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _if_x_then<0:2> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h5 ARG2: h6 ]  [ _a_q<3:4> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ _teacher_n_of<5:12> LBL: h11 ARG0: x8 ARG1: i12 ]  [ _admire_v_1<13:20> LBL: h13 ARG0: e14 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x8 ARG2: i15 ]  [ proper_q<21:28> LBL: h16 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h17 BODY: h18 ]  [ compound<21:28> LBL: h19 ARG0: e20 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x21 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<21:24> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]  [ named<21:24> LBL: h25 CARG: \"Bo\" ARG0: x21 ]  [ named<25:28> LBL: h19 CARG: \"Ada\" ARG0: x3 ]  [ _cheerful_a_1<32:41> LBL: h28 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h28 h6 qeq h13 h9 qeq h11 h17 qeq h19 h23 qeq h25 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "h5",
+              "ARG2": "h6"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h11",
+            "args": {
+              "ARG0": "x8",
+              "ARG1": "i12"
+            }
+          },
+          {
+            "pred": "_admire_v_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "x8",
+              "ARG2": "i15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h17",
+              "BODY": "h18"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h19",
+            "args": {
+              "ARG0": "e20",
+              "ARG1": "x3",
+              "ARG2": "x21"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h22",
+            "args": {
+              "ARG0": "x21",
+              "RSTR": "h23",
+              "BODY": "h24"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h25",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x21"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h19",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_cheerful_a_1",
+            "label": "h28",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h28",
+          "h6": "h13",
+          "h9": "h11",
+          "h17": "h19",
+          "h23": "h25"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "i12": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i15": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h17": {},
+          "h18": {},
+          "e20": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x21": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h23": {},
+          "h24": {},
+          "h0": {},
+          "h1": {},
+          "h28": {},
+          "h13": {},
+          "h11": {},
+          "h19": {},
+          "h25": {},
+          "h7": {},
+          "h16": {},
+          "h22": {}
+        }
+      },
+      "lexical": [
+        [
+          "if_subconj_unspec",
+          0,
+          2
+        ],
+        [
+          "a_det",
+          3,
+          4
+        ],
+        [
+          "teacher_n1",
+          5,
+          12
+        ],
+        [
+          "admire_v1",
+          13,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          24
+        ],
+        [
+          "ada_n1",
+          25,
+          28
+        ],
+        [
+          "be_c_is",
+          29,
+          31
+        ],
+        [
+          "cheerful_a1",
+          32,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _if_x_then<0:2> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h5 ARG2: h6 ]  [ _a_q<3:4> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ _teacher_n_of<5:12> LBL: h11 ARG0: x8 ARG1: i12 ]  [ _admire_v_1<13:20> LBL: h13 ARG0: e14 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x8 ARG2: i15 ]  [ addressee<21:24> LBL: h16 ARG0: i17 ARG1: x18 [ x PERS: 3 NUM: sg IND: + ] ARG2: e2 ]  [ proper_q<21:24> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]  [ named<21:24> LBL: h22 CARG: \"Bo\" ARG0: x18 ]  [ proper_q<25:28> LBL: h24 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h25 BODY: h26 ]  [ named<25:28> LBL: h27 CARG: \"Ada\" ARG0: x3 ]  [ _cheerful_a_1<32:41> LBL: h16 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h16 h6 qeq h13 h9 qeq h11 h20 qeq h22 h25 qeq h27 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "h5",
+              "ARG2": "h6"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h11",
+            "args": {
+              "ARG0": "x8",
+              "ARG1": "i12"
+            }
+          },
+          {
+            "pred": "_admire_v_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "x8",
+              "ARG2": "i15"
+            }
+          },
+          {
+            "pred": "addressee",
+            "label": "h16",
+            "args": {
+              "ARG0": "i17",
+              "ARG1": "x18",
+              "ARG2": "e2"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h19",
+            "args": {
+              "ARG0": "x18",
+              "RSTR": "h20",
+              "BODY": "h21"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h22",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x18"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h24",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h25",
+              "BODY": "h26"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h27",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_cheerful_a_1",
+            "label": "h16",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h16",
+          "h6": "h13",
+          "h9": "h11",
+          "h20": "h22",
+          "h25": "h27"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "i12": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i15": {},
+          "i17": {},
+          "x18": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h20": {},
+          "h21": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h25": {},
+          "h26": {},
+          "h0": {},
+          "h1": {},
+          "h16": {},
+          "h13": {},
+          "h11": {},
+          "h22": {},
+          "h27": {},
+          "h7": {},
+          "h19": {},
+          "h24": {}
+        }
+      },
+      "lexical": [
+        [
+          "if_subconj_unspec",
+          0,
+          2
+        ],
+        [
+          "a_det",
+          3,
+          4
+        ],
+        [
+          "teacher_n1",
+          5,
+          12
+        ],
+        [
+          "admire_v1",
+          13,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          24
+        ],
+        [
+          "ada_n1",
+          25,
+          28
+        ],
+        [
+          "be_c_is",
+          29,
+          31
+        ],
+        [
+          "cheerful_a1",
+          32,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _if_x_then<0:2> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h5 ARG2: h6 ]  [ _a_q<3:4> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]  [ _teacher_n_of<5:12> LBL: h11 ARG0: x8 ARG1: i12 ]  [ _admire_v_1<13:20> LBL: h13 ARG0: e14 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x8 ARG2: i15 ]  [ proper_q<21:24> LBL: h16 ARG0: x17 [ x PERS: 3 NUM: sg IND: + ] RSTR: h18 BODY: h19 ]  [ named<21:24> LBL: h20 CARG: \"Bo\" ARG0: x17 ]  [ proper_q<25:28> LBL: h22 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h23 BODY: h24 ]  [ named<25:28> LBL: h25 CARG: \"Ada\" ARG0: x3 ]  [ _be_v_id<29:31> LBL: h27 ARG0: e2 ARG1: x3 ARG2: x17 ]  [ subord<32:41> LBL: h28 ARG0: e29 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h30 ARG2: h31 ]  [ _cheerful_a_1<32:41> LBL: h32 ARG0: e33 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i34 ] > HCONS: < h0 qeq h1 h5 qeq h28 h6 qeq h13 h9 qeq h11 h18 qeq h20 h23 qeq h25 h30 qeq h27 h31 qeq h32 > ICONS: < e2 focus x17 > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_if_x_then",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "h5",
+              "ARG2": "h6"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h11",
+            "args": {
+              "ARG0": "x8",
+              "ARG1": "i12"
+            }
+          },
+          {
+            "pred": "_admire_v_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "x8",
+              "ARG2": "i15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h20",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x17"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h22",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h23",
+              "BODY": "h24"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h25",
+            "args": {
+              "CARG": "Ada",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_be_v_id",
+            "label": "h27",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "subord",
+            "label": "h28",
+            "args": {
+              "ARG0": "e29",
+              "ARG1": "h30",
+              "ARG2": "h31"
+            }
+          },
+          {
+            "pred": "_cheerful_a_1",
+            "label": "h32",
+            "args": {
+              "ARG0": "e33",
+              "ARG1": "i34"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h28",
+          "h6": "h13",
+          "h9": "h11",
+          "h18": "h20",
+          "h23": "h25",
+          "h30": "h27",
+          "h31": "h32"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h5": {},
+          "h6": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "i12": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i15": {},
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h18": {},
+          "h19": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h23": {},
+          "h24": {},
+          "e29": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h30": {},
+          "h31": {},
+          "e33": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "i34": {},
+          "h0": {},
+          "h1": {},
+          "h28": {},
+          "h13": {},
+          "h11": {},
+          "h20": {},
+          "h25": {},
+          "h27": {},
+          "h32": {},
+          "h7": {},
+          "h16": {},
+          "h22": {}
+        }
+      },
+      "lexical": [
+        [
+          "if_subconj_unspec",
+          0,
+          2
+        ],
+        [
+          "a_det",
+          3,
+          4
+        ],
+        [
+          "teacher_n1",
+          5,
+          12
+        ],
+        [
+          "admire_v1",
+          13,
+          20
+        ],
+        [
+          "bo_n1",
+          21,
+          24
+        ],
+        [
+          "ada_n1",
+          25,
+          28
+        ],
+        [
+          "be_id_is",
+          29,
+          31
+        ],
+        [
+          "cheerful_a1",
+          32,
+          41
+        ]
+      ]
+    }
+  ]
+}

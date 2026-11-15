@@ -1,0 +1,205 @@
+{
+  "text": "Pingu does not sing.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Pingu\" ARG0: x3 ]  [ neg<11:14> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _sing_v_1<15:20> LBL: h11 ARG0: e2 ARG1: x3 ARG2: i12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "i12": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h4": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "does1_pos",
+          6,
+          10
+        ],
+        [
+          "not",
+          11,
+          14
+        ],
+        [
+          "sing_v1",
+          15,
+          20
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:5> LBL: h7 CARG: \"Pingu\" ARG0: x3 ]  [ neg<11:14> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]  [ _sing_v_1<15:20> LBL: h11 ARG0: e2 ARG1: x3 ARG2: i12 ] > HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "neg",
+            "label": "h1",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "h10"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h11",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i12"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h10": "h11"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "h10": {},
+          "i12": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h11": {},
+          "h4": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "does1_pos",
+          6,
+          10
+        ],
+        [
+          "not",
+          11,
+          14
+        ],
+        [
+          "sing_v1",
+          15,
+          20
+        ]
+      ]
+    }
+  ]
+}

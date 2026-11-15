@@ -1,0 +1,151 @@
+# sentences the dialogue tests give Mind that are in no other file; recorded so the choice table has fixtures for every one
+Ada keeps a cat and a bird.
+Ali is a bird.
+Ali is a robin.
+Am I happy?
+Are you a robin?
+Bo admires a teacher.
+Bo is calm if Bo keeps a cat.
+Bo keeps a cat.
+Bo slept before Cy sang.
+Creatures do not fly.
+Did Ada sleep before Cy sang?
+Did Bo sleep before Ada slept?
+Did Kim arrive after Sandy left?
+Did Kim arrive before Sandy left?
+Did Kim believe that Rio flies?
+Did Lee sing before Kim arrived?
+Did Pingu fly?
+Did Sandy arrive?
+Does Ada glorb?
+Does Ada like Tom?
+Does Ada like me?
+Does Ada not like Bo?
+Does Bo admire a teacher?
+Does Bo admire three teachers?
+Does Bo admire two teachers?
+Does Kim believe that Pip flies?
+Does Kim believe that Rio flies?
+Does Kim believe that Rio sings?
+Does Kim dance?
+Does Kim like Lee?
+Does Kim like Nemo?
+Does Kim like Rex?
+Does Kim like Sandy or Bo?
+Does Kim like Sandy or Lee?
+Does Kim like Tweety?
+Does Kim not like Tweety?
+Does Kim not like fish?
+Does Kim own a cat or a bird?
+Does Pingu fly or sing?
+Does Pingu not fly?
+Does Pip fly?
+Does Pip sing?
+Does Rex bark?
+Does Rex sleep?
+Does Rio fly?
+Does Rio hum?
+Does Rio sing or dance?
+Does Sandy arrive?
+Does Sandy believe that Tweety swims?
+Does Sandy dance?
+Does Sandy fly?
+Does Tweety sing?
+Does Tweety swim?
+Does every penguin fly?
+Does it sing?
+Every bird is a creature.
+Every dog and every cat sleeps.
+Every dog barks.
+Every dog that flies is happy.
+Every robin is Tweety.
+He flies.
+He sleeps.
+How many cats does Zed own?
+How many dogs does Tom own?
+I am happy.
+I like Ada.
+If Ada keeps a cat, Ada is calm.
+If Kim does not own a dog, Kim is happy.
+If Kim is not a person, Kim is happy.
+If Kim owned a dog, Kim is happy.
+If Kim owns a dog, Kim is not happy.
+If Kim sleeps, is Kim happy?
+If a teacher admires Bo, Ada is cheerful.
+If it hums, Ada is calm.
+If it sleeps, Kim is happy.
+Is Ada a zorp?
+Is Ada calm?
+Is Ada cheerful?
+Is Ada happy?
+Is Kim a robin?
+Is Kim happy?
+Is Lee happy?
+Is Milo a bird?
+Is Milo a cat?
+Is Milo happy?
+Is Pip a bird?
+Is Pip a zorp?
+Is Pip floopy?
+Is Rio a sparrow?
+Is Tweety a robin?
+Is every bird a penguin?
+Is every robin a bird?
+It purrs.
+Kim arrived since 2019.
+Kim arrived until Sandy left.
+Kim believes that Pip is a bird.
+Kim believes that Rio is a sparrow.
+Kim is a bird.
+Kim is a robin.
+Kim is arriving.
+Kim is not a robin.
+Kim likes Lee.
+Kim lived in Bergen in 2021.
+Kim owns a cat.
+Kim owns most cats.
+Kim sings and Sandy dances or Lee sleeps.
+Kim sings or dances.
+Kim sings.
+Kim will arrive.
+Milo is a robin.
+No dog flies.
+No pet purrs.
+Pets do not fly.
+Pingu does not sing.
+Pingu is a bird.
+Pingu is a pet.
+Pip flies.
+Pip hums.
+Pip is a bird.
+Pip is a glorb.
+Rex is a bird.
+Rex is a mammal.
+Rex is a robin.
+Rio is a finch.
+Robins do not fly.
+Sandy dances.
+Sandy sings.
+Sparrow flies.
+Sparrow is a bird.
+Tom is a teacher.
+Tweety flies.
+Tweety is Zed.
+Tweety is a bird.
+Tweety is a dog.
+Tweety is a penguin.
+Was Tweety a robin?
+Where did Kim live in 2020?
+Where did Kim live in 2021?
+Which dog does not bark?
+Who believes that Rio flies?
+Who is Clark Kent?
+Who is a bird?
+Who is a sparrow?
+Who is a zorp?
+Who likes Ada?
+Who likes every dog?
+You are a robin.
+Zed flies.
+Zed is a bird.
+Zed is a dog.

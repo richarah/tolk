@@ -2,6 +2,7 @@
 
 import dataclasses
 import re
+from collections import Counter
 from typing import TYPE_CHECKING
 
 from tolk import lf
@@ -28,6 +29,16 @@ def known_as(pred: str) -> str | lf.Refusal:
         lemma = lemma[: -2] if lemma.endswith(("ches", "shes", "sses", "xes", "zes")) else lemma[: -1]
     return f"_{lemma}_{pos}_{lf.UNKNOWN_SENSE}"
 
+def expressed(values: list[str], usage: Counter) -> tuple[list[bool], int]:
+    """An unexpressed argument is an i-variable that nothing else mentions. The flags, and the index of the last expressed argument."""
+    flags = [not (v.startswith("i") and usage[v] == 1) for v in values]
+    return flags, max((n for n, e in enumerate(flags) if e), default=-1)
+
+
+def expressed_arity(ep: EP, usage: Counter) -> int:
+    return expressed([ep.args[k] for k in ROLES if k in ep.args], usage)[1] + 1
+
+
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if not ep.pred.startswith("_"):
         return None
@@ -44,13 +55,11 @@ def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
         return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
     if not values:
         return lf.Refusal("ARGUMENT_GAP", ep.pred)
-    # An unexpressed argument is an i-variable that nothing else mentions.
-    expressed = [not (v.startswith("i") and ctx.usage[v] == 1) for v in values]
-    last = max((n for n, e in enumerate(expressed) if e), default=-1)
-    if not all(expressed[: last + 1]):
+    flags, last = expressed(values, ctx.usage)
+    if not all(flags[: last + 1]):
         return lf.Refusal("ARGUMENT_GAP", ep.pred)
     is_event = values[0].startswith("e")
-    if is_event and len(values) > 1 and not expressed[1]:
+    if is_event and len(values) > 1 and not flags[1]:
         return lf.Refusal("UNEXPRESSED_SUBJECT", ep.pred)
     terms = [ctx.term(v) for v in values[: last + 1]]
     positive = ep.label not in ctx.negated

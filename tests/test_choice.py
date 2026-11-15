@@ -2,7 +2,7 @@
 and a sentence where it must not change the outcome. Readings come from recorded fixtures."""
 
 from helpers import readings_of
-from tolk import compile as comp, sem
+from tolk import choice, compile as comp, sem
 
 
 def readings(text: str) -> list[sem.Reading]:
@@ -55,3 +55,24 @@ def test_a_fallback_parse_is_a_reading_refusal_and_is_skipped() -> None:
     # Reading 1 of this sentence leaves a word unanalysed; reading 2 is the sentence.
     k, x = comp.choose(readings("Rio hums if Rio is a sparrow."), set())
     assert k == 1 and not hasattr(x, "code")
+
+
+# Part 2 of the audit changed the order to: generic entries, store overlap, swallowed words, parser order (compile only breaks a tie).
+def test_a_generic_entry_for_a_word_the_grammar_knows_loses_nobody_is_not_a_name() -> None:
+    assert choice.preferred(readings("Nobody flies."), set()) == [1]
+
+
+def test_generic_entries_change_nothing_when_every_reading_uses_one() -> None:
+    # Tweety is no word of the grammar, so no reading is worse for naming it.
+    assert chosen("Tweety flies.") == 3
+
+
+def test_overlap_comes_before_swallowed_words_a_stored_particle_verb_wins() -> None:
+    # The verb sense that takes "in" as a particle leaves the word "in" without a predication of its own; the store decides first.
+    assert choice.measures(readings("Sam works in Paris."), 1, {("_work_v_in", 3)})[2] == 1
+    assert chosen("Sam works in Paris.", {("_work_v_in", 3)}) == 2
+
+
+def test_only_the_readings_tied_on_every_measure_are_compiled() -> None:
+    assert choice.preferred(readings("Kim does not like fish."), set()) == [1, 2, 3, 4]
+    assert choice.preferred(readings("Does Kim know that Rio flies?"), {("_know_v_1", 3), ("_fly_v_1", 2)}) == [1, 2]

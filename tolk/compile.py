@@ -1,9 +1,9 @@
-"""Reading to logical form, and the choice among readings. The families in tolk/rules each map one predicate."""
+"""Reading to logical form. The families in tolk/rules each map one predicate; `choice` says which reading to compile."""
 
 import dataclasses
 from collections import Counter
 
-from tolk import lf
+from tolk import choice, lf
 from tolk.lf import Atom, Const, Var
 from tolk.rules import check, claims, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, quant, scope, temporal
 from tolk.rules.ctx import Ctx, Lookup
@@ -13,11 +13,6 @@ from tolk.sem import EP, Reading
 # subordinator, a modifier of nothing, an apposition. A reading that has one is unusable; it is not a meaning the store cannot hold.
 ARTIFACTS = {"ellipsis_ref", "place_n", "subord", "mod", "appos", "id"}
 FAMILIES = (names, pronouns, numbers, quant, neg, copula, conditional, coordination, temporal, claims, modifiers, content)
-
-
-def eventive(r: Reading) -> bool:
-    """A reading is about an event only if a predicate other than the unknown-word fallback takes the sentence event."""
-    return any(ep.args.get("ARG0") == r.index and ep.pred != "unknown" for ep in r.eps)
 
 
 def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.History | None = None) -> lf.LF:
@@ -255,32 +250,20 @@ def _mentions(r: Reading, ctx: Ctx, quants: list[EP], out: lf.LF) -> tuple[tuple
     return tuple(sorted(found))
 
 
-def choose(readings: list[Reading], store_preds: set[str], lookup: Lookup | None = None,
+def choose(readings: list[Reading], store_preds: set, lookup: Lookup | None = None,
            history: pronouns.History | None = None) -> tuple[int, lf.LF]:
-    """Choose one reading. The order of criteria is numbered in DECISIONS.md ("Reading choice") and is applied here and nowhere else.
-
-    0. Only eventive readings are candidates.
-    1. Refusals, in parser order: a reading refusal is skipped; a final refusal ends the search. If no reading compiled
-       before it, the sentence is refused with it; otherwise only the readings before it compete.
-    2. Store overlap: the most (predicate, arity) pairs already in the store.
-    3. Swallowed words: the fewest words that most compiled readings span and this one leaves out.
-    4. Parser order.
-    """
-    cands = [(i, compile_reading(r, lookup, history)) for i, r in enumerate(readings) if eventive(r)]
-    if not cands:
+    """Compile the reading `choice.preferred` puts first, and return what it gives, refusal or not. Only when readings are tied
+    on every measure does compile decide among them, in parser order: a reading refusal passes the tie to the next reading."""
+    tied = choice.preferred(readings, store_preds)
+    if not tied:
         return 0, _blame_unknown_word(readings, lf.Refusal("NO_EVENT_READING", "none of the readings has a predicate on the sentence event"))
-    ok = []
-    for i, x in cands:
-        if not isinstance(x, lf.Refusal):
-            ok.append((i, x))
-        elif lf.is_final(x):
-            if not ok:
-                return i, _blame_unknown_word(readings, x)
-            break
-    if not ok:
-        return cands[0][0], _blame_unknown_word(readings, cands[0][1])
-    voters = [readings[i] for i, _ in ok]
-    return max(ok, key=lambda t: (_overlap(t[1], store_preds), -_swallowed(readings[t[0]], voters), -t[0]))
+    first = None
+    for i in tied:
+        x = compile_reading(readings[i], lookup, history)
+        if not isinstance(x, lf.Refusal) or lf.is_final(x):
+            return i, _blame_unknown_word(readings, x) if isinstance(x, lf.Refusal) else x
+        first = first or (i, x)
+    return first[0], _blame_unknown_word(readings, first[1])
 
 
 def _blame_unknown_word(readings: list[Reading], refusal: lf.Refusal) -> lf.Refusal:
@@ -291,22 +274,3 @@ def _blame_unknown_word(readings: list[Reading], refusal: lf.Refusal) -> lf.Refu
             if m:
                 return lf.Refusal("UNKNOWN_WORD", m.group(1))
     return refusal
-
-
-def _swallowed(r: Reading, voters: list[Reading]) -> int:
-    """Words that most voting readings give a predication to and r leaves out. Auxiliaries are spanned by few readings, so they do not count.
-    Only readings that compile vote: a refused one may span a word with a predicate nothing can use, such as an ellipsis."""
-    spans = [{p for ep in v.eps if ep.cfrom >= 0 for p in range(ep.cfrom, ep.cto)} for v in voters]
-    mine = {p for ep in r.eps if ep.cfrom >= 0 for p in range(ep.cfrom, ep.cto)}
-    gone = sorted(p for p in set().union(*spans) - mine if 2 * sum(p in s for s in spans) > len(voters))
-    return sum(1 for n, p in enumerate(gone) if n == 0 or p - gone[n - 1] > 1)
-
-
-def _overlap(x: lf.LF, known: set) -> int:
-    """Predicates shared with what is known. Known may hold (predicate, arity) pairs, or bare predicate names that match any arity."""
-    return sum(1 for p in _preds(x) if p in known or p[0] in known)
-
-
-def _preds(x: lf.LF) -> set[tuple[str, int]]:
-    """Predicate and arity of each positive atom. Arity separates a verb's two-place use from its three-place use."""
-    return {(a.pred, len(a.args)) for a in check.atoms_of(x) if a.positive}

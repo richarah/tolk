@@ -1,0 +1,240 @@
+{
+  "text": "Bo admires a teacher.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ _admire_v_1<3:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ _teacher_n_of<13:21> LBL: h13 ARG0: x9 ARG1: i14 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_admire_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h13",
+            "args": {
+              "ARG0": "x9",
+              "ARG1": "i14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "i14": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      },
+      "lexical": [
+        [
+          "bo_n1",
+          0,
+          2
+        ],
+        [
+          "admire_v1",
+          3,
+          10
+        ],
+        [
+          "a_det",
+          11,
+          12
+        ],
+        [
+          "teacher_n1",
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<0:2> LBL: h7 CARG: \"Bo\" ARG0: x3 ]  [ _admire_v_1<3:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ]  [ mod<11:21> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<11:12> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ _teacher_n_of<13:21> LBL: h15 ARG0: x11 ARG1: i16 ] > HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Bo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_admire_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i9"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "e2",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "_teacher_n_of",
+            "label": "h15",
+            "args": {
+              "ARG0": "x11",
+              "ARG1": "i16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "i9": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "i16": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h15": {},
+          "h4": {},
+          "h12": {}
+        }
+      },
+      "lexical": [
+        [
+          "bo_n1",
+          0,
+          2
+        ],
+        [
+          "admire_v1",
+          3,
+          10
+        ],
+        [
+          "a_det",
+          11,
+          12
+        ],
+        [
+          "teacher_n1",
+          13,
+          21
+        ]
+      ]
+    }
+  ]
+}

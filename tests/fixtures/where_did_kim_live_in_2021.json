@@ -1,0 +1,861 @@
+{
+  "text": "Where did Kim live in 2021?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ loc_nonsp<0:5> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x5 [ x PERS: 3 NUM: sg ] ]  [ place_n<0:5> LBL: h6 ARG0: x5 ]  [ which_q<0:5> LBL: h7 ARG0: x5 RSTR: h8 BODY: h9 ]  [ proper_q<10:13> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]  [ named<10:13> LBL: h13 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<14:18> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_temp<19:21> LBL: h1 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<22:27> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ yofc<22:27> LBL: h20 CARG: \"2021\" ARG0: x16 ] > HCONS: < h0 qeq h1 h8 qeq h6 h11 qeq h13 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "e2",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "place_n",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_temp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "e2",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "yofc",
+            "label": "h20",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h6",
+          "h11": "h13",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h8": {},
+          "h9": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h18": {},
+          "h19": {},
+          "h0": {},
+          "h1": {},
+          "h6": {},
+          "h13": {},
+          "h20": {},
+          "h7": {},
+          "h10": {},
+          "h17": {}
+        }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "did1_pos",
+          6,
+          9
+        ],
+        [
+          "kim",
+          10,
+          13
+        ],
+        [
+          "live_v2",
+          14,
+          18
+        ],
+        [
+          "in_temp",
+          19,
+          21
+        ],
+        [
+          "generic_year_ne",
+          22,
+          27
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ loc_nonsp<0:5> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x5 [ x PERS: 3 NUM: sg ] ]  [ place_n<0:5> LBL: h6 ARG0: x5 ]  [ which_q<0:5> LBL: h7 ARG0: x5 RSTR: h8 BODY: h9 ]  [ proper_q<10:13> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]  [ named<10:13> LBL: h13 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<14:18> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_temp<19:21> LBL: h1 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<22:27> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ yofc<22:27> LBL: h20 CARG: \"2021\" ARG0: x16 ] > HCONS: < h0 qeq h1 h8 qeq h6 h11 qeq h13 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "e2",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "place_n",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_temp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "e2",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "yofc",
+            "label": "h20",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h6",
+          "h11": "h13",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h8": {},
+          "h9": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h18": {},
+          "h19": {},
+          "h0": {},
+          "h1": {},
+          "h6": {},
+          "h13": {},
+          "h20": {},
+          "h7": {},
+          "h10": {},
+          "h17": {}
+        }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "did1_pos",
+          6,
+          9
+        ],
+        [
+          "kim",
+          10,
+          13
+        ],
+        [
+          "live_v2",
+          14,
+          18
+        ],
+        [
+          "in_temp",
+          19,
+          21
+        ],
+        [
+          "generic_year_ne",
+          22,
+          27
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ place_n<0:5> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg ] ]  [ which_q<0:5> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]  [ proper_q<10:13> LBL: h9 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h10 BODY: h11 ]  [ named<10:13> LBL: h12 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<14:18> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x5 ]  [ _in_p_temp<19:21> LBL: h1 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<22:27> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]  [ yofc<22:27> LBL: h19 CARG: \"2021\" ARG0: x15 ] > HCONS: < h0 qeq h1 h7 qeq h4 h10 qeq h12 h17 qeq h19 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "place_n",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h7",
+              "BODY": "h8"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h12",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "_in_p_temp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e14",
+              "ARG1": "e2",
+              "ARG2": "x15"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h16",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h17",
+              "BODY": "h18"
+            }
+          },
+          {
+            "pred": "yofc",
+            "label": "h19",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x15"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h7": "h4",
+          "h10": "h12",
+          "h17": "h19"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h7": {},
+          "h8": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "e14": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h17": {},
+          "h18": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h12": {},
+          "h19": {},
+          "h6": {},
+          "h9": {},
+          "h16": {}
+        }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "did1_pos",
+          6,
+          9
+        ],
+        [
+          "kim",
+          10,
+          13
+        ],
+        [
+          "live_v1",
+          14,
+          18
+        ],
+        [
+          "in_temp",
+          19,
+          21
+        ],
+        [
+          "generic_year_ne",
+          22,
+          27
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ loc_nonsp<0:5> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x5 [ x PERS: 3 NUM: sg ] ]  [ place_n<0:5> LBL: h6 ARG0: x5 ]  [ which_q<0:5> LBL: h7 ARG0: x5 RSTR: h8 BODY: h9 ]  [ proper_q<10:13> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]  [ named<10:13> LBL: h13 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<14:18> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_loc<19:21> LBL: h1 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x16 [ x PERS: 3 NUM: sg ] ]  [ number_q<22:27> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ card<22:27> LBL: h20 CARG: \"2021\" ARG0: x16 ARG1: i22 ] > HCONS: < h0 qeq h1 h8 qeq h6 h11 qeq h13 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "e2",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "place_n",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_loc",
+            "label": "h1",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "e2",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "number_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h20",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x16",
+              "ARG1": "i22"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h6",
+          "h11": "h13",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h8": {},
+          "h9": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h18": {},
+          "h19": {},
+          "i22": {},
+          "h0": {},
+          "h1": {},
+          "h6": {},
+          "h13": {},
+          "h20": {},
+          "h7": {},
+          "h10": {},
+          "h17": {}
+        }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "did1_pos",
+          6,
+          9
+        ],
+        [
+          "kim",
+          10,
+          13
+        ],
+        [
+          "live_v2",
+          14,
+          18
+        ],
+        [
+          "in",
+          19,
+          21
+        ],
+        [
+          "generic_card_ne",
+          22,
+          27
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ loc_nonsp<0:5> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x5 [ x PERS: 3 NUM: sg ] ]  [ place_n<0:5> LBL: h6 ARG0: x5 ]  [ which_q<0:5> LBL: h7 ARG0: x5 RSTR: h8 BODY: h9 ]  [ proper_q<10:13> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]  [ named<10:13> LBL: h13 CARG: \"Kim\" ARG0: x3 ]  [ _live_v_1<14:18> LBL: h1 ARG0: e2 ARG1: x3 ]  [ _in_p_temp<19:21> LBL: h1 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<22:27> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ yofc<22:27> LBL: h20 CARG: \"2021\" ARG0: x16 ] > HCONS: < h0 qeq h1 h8 qeq h6 h11 qeq h13 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "loc_nonsp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e4",
+              "ARG1": "e2",
+              "ARG2": "x5"
+            }
+          },
+          {
+            "pred": "place_n",
+            "label": "h6",
+            "args": {
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "which_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_live_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          },
+          {
+            "pred": "_in_p_temp",
+            "label": "h1",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "e2",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "yofc",
+            "label": "h20",
+            "args": {
+              "CARG": "2021",
+              "ARG0": "x16"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h6",
+          "h11": "h13",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e4": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h8": {},
+          "h9": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h11": {},
+          "h12": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h18": {},
+          "h19": {},
+          "h0": {},
+          "h1": {},
+          "h6": {},
+          "h13": {},
+          "h20": {},
+          "h7": {},
+          "h10": {},
+          "h17": {}
+        }
+      },
+      "lexical": [
+        [
+          "where_nom",
+          0,
+          5
+        ],
+        [
+          "did1_pos",
+          6,
+          9
+        ],
+        [
+          "kim",
+          10,
+          13
+        ],
+        [
+          "live_v2",
+          14,
+          18
+        ],
+        [
+          "in_temp",
+          19,
+          21
+        ],
+        [
+          "generic_year_ne",
+          22,
+          27
+        ]
+      ]
+    }
+  ]
+}

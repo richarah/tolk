@@ -4,8 +4,10 @@ The expected strings were written from the printed-form shapes in SPEC.md and th
 predicate names in the fixtures, not from the output of compile.py.
 """
 
+import io
 import json
 import re
+import tokenize
 
 import pytest
 
@@ -84,13 +86,30 @@ def content_lemmas() -> set[str]:
     return out - FUNCTION_LEMMAS
 
 
+def code_words(source: str) -> set[str]:
+    """Words in the code of a module: comments and docstrings are prose, and rule 3 is about what the rules key on."""
+    out: set[str] = set()
+    previous = tokenize.NEWLINE
+    for tok in tokenize.generate_tokens(io.StringIO(source).readline):
+        docstring = tok.type == tokenize.STRING and previous in (tokenize.NEWLINE, tokenize.INDENT, tokenize.DEDENT, tokenize.NL)
+        if tok.type not in (tokenize.COMMENT, tokenize.NL) and not docstring:
+            out |= set(re.split(r"[^a-z]+", tok.string.lower()))
+        if tok.type != tokenize.COMMENT:
+            previous = tok.type
+    return out
+
+
+def test_the_scan_ignores_comments_and_docstrings_but_not_code() -> None:
+    source = '"""Docstring about robins."""\n\n\ndef f():\n    """Another about birds."""\n    x = "sparrow"  # a comment about finches\n    return x\n'
+    assert code_words(source) >= {"sparrow", "def", "return"} and not code_words(source) & {"robins", "birds", "finches", "docstring", "comment"}
+
+
 def test_source_has_no_content_lemma() -> None:
     lemmas = content_lemmas()
     assert lemmas, "no lemmas found in fixtures"
     offenders = []
     for path in (ROOT / "tolk").rglob("*.py"):
-        words = set(re.split(r"[^a-z]+", path.read_text().lower()))
-        offenders += [f"{path.relative_to(ROOT)}: {w}" for w in sorted(words & lemmas)]
+        offenders += [f"{path.relative_to(ROOT)}: {w}" for w in sorted(code_words(path.read_text()) & lemmas)]
     assert offenders == []
 
 

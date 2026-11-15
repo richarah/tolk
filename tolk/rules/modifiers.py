@@ -1,6 +1,7 @@
 """Prepositions that modify an event attach to that event. Their event argument is not used."""
 
 import re
+from collections import Counter
 from typing import TYPE_CHECKING
 
 from tolk import lf
@@ -17,6 +18,16 @@ ANY_LOCATIVE = "_*_p_[ls]*"
 UNTIMED = re.compile(r"_(since|until|till|during)_p(_.*)?")
 
 
+def modifies(ep: EP, usage: Counter) -> bool:
+    """A modifier event used nowhere else means the modifier is an atom on the event it modifies."""
+    return (ep.pred.startswith("_") and ep.args.get("ARG1", "").startswith("e") and ep.args.get("ARG0", "").startswith("e")
+            and usage[ep.args["ARG0"]] == 1)
+
+
+def attached_arity(ep: EP) -> int:
+    return 1 + ("ARG2" in ep.args)
+
+
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if UNTIMED.fullmatch(ep.pred):
         return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
@@ -24,11 +35,7 @@ def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
         if ctx.mode == "tell":
             return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
         return (Atom(ANY_LOCATIVE, (ctx.term(ep.args["ARG1"]), ctx.term(ep.args["ARG2"]))),)
-    if not ep.pred.startswith("_") or "ARG1" not in ep.args or not ep.args["ARG1"].startswith("e"):
-        return None
-    # A modifier event used nowhere else means the modifier is an atom on the event it modifies.
-    mod_event = ep.args.get("ARG0", "")
-    if not mod_event.startswith("e") or ctx.usage[mod_event] != 1:
+    if not modifies(ep, ctx.usage):
         return None
     event = ep.args["ARG1"]
     rest = [ep.args[k] for k in ("ARG2",) if k in ep.args]

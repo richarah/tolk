@@ -1,0 +1,1197 @@
+{
+  "text": "Kim sings and Sandy dances or Lee sleeps.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ named<0:3> LBL: h8 CARG: \"Kim\" ARG0: x5 ]  [ _sing_v_1<4:9> LBL: h1 ARG0: e10 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: i11 ]  [ _and_c<10:13> LBL: h1 ARG0: e2 ARG1: e10 ARG2: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ udef_q<14:33> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg ] RSTR: h15 BODY: h16 ]  [ udef_q<14:26> LBL: h17 ARG0: x18 [ x PERS: 3 NUM: pl IND: + ] RSTR: h19 BODY: h20 ]  [ _sandy_a_1<14:19> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x18 ]  [ _dance_n_1<20:26> LBL: h21 ARG0: x18 ]  [ _or_c<27:29> LBL: h23 ARG0: x14 ARG1: x18 ARG2: x24 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<30:33> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]  [ named<30:33> LBL: h28 CARG: \"Lee\" ARG0: x24 ]  [ _sleep_v_1<34:41> LBL: h1 ARG0: e12 ARG1: x14 ] > HCONS: < h0 qeq h1 h6 qeq h8 h15 qeq h23 h19 qeq h21 h26 qeq h28 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "x5",
+              "ARG2": "i11"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e10",
+              "ARG2": "e12"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x18",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "_sandy_a_1",
+            "label": "h21",
+            "args": {
+              "ARG0": "e22",
+              "ARG1": "x18"
+            }
+          },
+          {
+            "pred": "_dance_n_1",
+            "label": "h21",
+            "args": {
+              "ARG0": "x18"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h23",
+            "args": {
+              "ARG0": "x14",
+              "ARG1": "x18",
+              "ARG2": "x24"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h25",
+            "args": {
+              "ARG0": "x24",
+              "RSTR": "h26",
+              "BODY": "h27"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h28",
+            "args": {
+              "CARG": "Lee",
+              "ARG0": "x24"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "x14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h15": "h23",
+          "h19": "h21",
+          "h26": "h28"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i11": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h15": {},
+          "h16": {},
+          "x18": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "e22": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "bool",
+            "PERF": "-"
+          },
+          "x24": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h26": {},
+          "h27": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h23": {},
+          "h21": {},
+          "h28": {},
+          "h4": {},
+          "h13": {},
+          "h17": {},
+          "h25": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy_a1",
+          14,
+          19
+        ],
+        [
+          "dance_n1",
+          20,
+          26
+        ],
+        [
+          "or_conj_1",
+          27,
+          29
+        ],
+        [
+          "lee",
+          30,
+          33
+        ],
+        [
+          "sleep_v1",
+          34,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ named<0:3> LBL: h8 CARG: \"Kim\" ARG0: x5 ]  [ _sing_v_1<4:9> LBL: h1 ARG0: e10 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: i11 ]  [ _and_c<10:13> LBL: h1 ARG0: e2 ARG1: e10 ARG2: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ udef_q<14:33> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg ] RSTR: h15 BODY: h16 ]  [ udef_q<14:26> LBL: h17 ARG0: x18 [ x PERS: 3 NUM: pl IND: + ] RSTR: h19 BODY: h20 ]  [ compound<14:26> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x18 ARG2: x23 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<14:19> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]  [ named<14:19> LBL: h27 CARG: \"Sandy\" ARG0: x23 ]  [ _dance_n_1<20:26> LBL: h21 ARG0: x18 ]  [ _or_c<27:29> LBL: h29 ARG0: x14 ARG1: x18 ARG2: x30 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<30:33> LBL: h31 ARG0: x30 RSTR: h32 BODY: h33 ]  [ named<30:33> LBL: h34 CARG: \"Lee\" ARG0: x30 ]  [ _sleep_v_1<34:41> LBL: h1 ARG0: e12 ARG1: x14 ] > HCONS: < h0 qeq h1 h6 qeq h8 h15 qeq h29 h19 qeq h21 h25 qeq h27 h32 qeq h34 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "x5",
+              "ARG2": "i11"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e10",
+              "ARG2": "e12"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x18",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h21",
+            "args": {
+              "ARG0": "e22",
+              "ARG1": "x18",
+              "ARG2": "x23"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h24",
+            "args": {
+              "ARG0": "x23",
+              "RSTR": "h25",
+              "BODY": "h26"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h27",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x23"
+            }
+          },
+          {
+            "pred": "_dance_n_1",
+            "label": "h21",
+            "args": {
+              "ARG0": "x18"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h29",
+            "args": {
+              "ARG0": "x14",
+              "ARG1": "x18",
+              "ARG2": "x30"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h31",
+            "args": {
+              "ARG0": "x30",
+              "RSTR": "h32",
+              "BODY": "h33"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h34",
+            "args": {
+              "CARG": "Lee",
+              "ARG0": "x30"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "x14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h15": "h29",
+          "h19": "h21",
+          "h25": "h27",
+          "h32": "h34"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i11": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h15": {},
+          "h16": {},
+          "x18": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "e22": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x23": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h25": {},
+          "h26": {},
+          "x30": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h32": {},
+          "h33": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h29": {},
+          "h21": {},
+          "h27": {},
+          "h34": {},
+          "h4": {},
+          "h13": {},
+          "h17": {},
+          "h24": {},
+          "h31": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy",
+          14,
+          19
+        ],
+        [
+          "dance_n1",
+          20,
+          26
+        ],
+        [
+          "or_conj_1",
+          27,
+          29
+        ],
+        [
+          "lee",
+          30,
+          33
+        ],
+        [
+          "sleep_v1",
+          34,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ named<0:3> LBL: h8 CARG: \"Kim\" ARG0: x5 ]  [ _sing_v_1<4:9> LBL: h1 ARG0: e10 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: i11 ]  [ _and_c<10:13> LBL: h1 ARG0: e2 ARG1: e10 ARG2: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ udef_q<14:33> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg ] RSTR: h15 BODY: h16 ]  [ proper_q<14:19> LBL: h17 ARG0: x18 [ x PERS: 3 NUM: sg IND: + ] RSTR: h19 BODY: h20 ]  [ named<14:19> LBL: h21 CARG: \"Sandy\" ARG0: x18 ]  [ udef_q<20:33> LBL: h23 ARG0: x24 [ x PERS: 3 NUM: sg ] RSTR: h25 BODY: h26 ]  [ implicit_conj<20:33> LBL: h27 ARG0: x14 ARG1: x18 ARG2: x24 ]  [ udef_q<20:26> LBL: h28 ARG0: x29 [ x PERS: 3 NUM: pl IND: + ] RSTR: h30 BODY: h31 ]  [ _dance_n_1<20:26> LBL: h32 ARG0: x29 ]  [ _or_c<27:29> LBL: h33 ARG0: x24 ARG1: x29 ARG2: x34 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<30:33> LBL: h35 ARG0: x34 RSTR: h36 BODY: h37 ]  [ named<30:33> LBL: h38 CARG: \"Lee\" ARG0: x34 ]  [ _sleep_v_1<34:41> LBL: h1 ARG0: e12 ARG1: x14 ] > HCONS: < h0 qeq h1 h6 qeq h8 h15 qeq h27 h19 qeq h21 h25 qeq h33 h30 qeq h32 h36 qeq h38 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "x5",
+              "ARG2": "i11"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e10",
+              "ARG2": "e12"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x18",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h21",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x18"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h23",
+            "args": {
+              "ARG0": "x24",
+              "RSTR": "h25",
+              "BODY": "h26"
+            }
+          },
+          {
+            "pred": "implicit_conj",
+            "label": "h27",
+            "args": {
+              "ARG0": "x14",
+              "ARG1": "x18",
+              "ARG2": "x24"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h28",
+            "args": {
+              "ARG0": "x29",
+              "RSTR": "h30",
+              "BODY": "h31"
+            }
+          },
+          {
+            "pred": "_dance_n_1",
+            "label": "h32",
+            "args": {
+              "ARG0": "x29"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h33",
+            "args": {
+              "ARG0": "x24",
+              "ARG1": "x29",
+              "ARG2": "x34"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h35",
+            "args": {
+              "ARG0": "x34",
+              "RSTR": "h36",
+              "BODY": "h37"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h38",
+            "args": {
+              "CARG": "Lee",
+              "ARG0": "x34"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "x14"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h15": "h27",
+          "h19": "h21",
+          "h25": "h33",
+          "h30": "h32",
+          "h36": "h38"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i11": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h15": {},
+          "h16": {},
+          "x18": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "x24": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h25": {},
+          "h26": {},
+          "x29": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "h30": {},
+          "h31": {},
+          "x34": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h36": {},
+          "h37": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h27": {},
+          "h21": {},
+          "h33": {},
+          "h32": {},
+          "h38": {},
+          "h4": {},
+          "h13": {},
+          "h17": {},
+          "h23": {},
+          "h28": {},
+          "h35": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy",
+          14,
+          19
+        ],
+        [
+          "dance_n1",
+          20,
+          26
+        ],
+        [
+          "or_conj_1",
+          27,
+          29
+        ],
+        [
+          "lee",
+          30,
+          33
+        ],
+        [
+          "sleep_v1",
+          34,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ named<0:3> LBL: h8 CARG: \"Kim\" ARG0: x5 ]  [ _sing_v_1<4:9> LBL: h1 ARG0: e10 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: i11 ]  [ _and_c<10:13> LBL: h1 ARG0: e2 ARG1: e10 ARG2: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ proper_q<14:19> LBL: h13 ARG0: x14 [ x PERS: 3 NUM: sg IND: + ] RSTR: h15 BODY: h16 ]  [ named<14:19> LBL: h17 CARG: \"Sandy\" ARG0: x14 ]  [ _dance_v_1<20:26> LBL: h1 ARG0: e19 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: i20 ]  [ _or_c<27:29> LBL: h1 ARG0: e12 ARG1: e19 ARG2: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ proper_q<30:33> LBL: h22 ARG0: x23 [ x PERS: 3 NUM: sg IND: + ] RSTR: h24 BODY: h25 ]  [ named<30:33> LBL: h26 CARG: \"Lee\" ARG0: x23 ]  [ _sleep_v_1<34:41> LBL: h1 ARG0: e21 ARG1: x23 ] > HCONS: < h0 qeq h1 h6 qeq h8 h15 qeq h17 h24 qeq h26 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "x5",
+              "ARG2": "i11"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e10",
+              "ARG2": "e12"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x14",
+              "RSTR": "h15",
+              "BODY": "h16"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h17",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x14"
+            }
+          },
+          {
+            "pred": "_dance_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e19",
+              "ARG1": "x14",
+              "ARG2": "i20"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "e19",
+              "ARG2": "e21"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h22",
+            "args": {
+              "ARG0": "x23",
+              "RSTR": "h24",
+              "BODY": "h25"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h26",
+            "args": {
+              "CARG": "Lee",
+              "ARG0": "x23"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x23"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h15": "h17",
+          "h24": "h26"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i11": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x14": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h15": {},
+          "h16": {},
+          "e19": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i20": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x23": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h24": {},
+          "h25": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h17": {},
+          "h26": {},
+          "h4": {},
+          "h13": {},
+          "h22": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy",
+          14,
+          19
+        ],
+        [
+          "dance_v1",
+          20,
+          26
+        ],
+        [
+          "or_conj_1",
+          27,
+          29
+        ],
+        [
+          "lee",
+          30,
+          33
+        ],
+        [
+          "sleep_v1",
+          34,
+          41
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:3> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ named<0:3> LBL: h8 CARG: \"Kim\" ARG0: x5 ]  [ _sing_v_1<4:9> LBL: h1 ARG0: e10 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: i11 ]  [ _and_c<10:13> LBL: h1 ARG0: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: e10 ARG2: e13 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ proper_q<14:19> LBL: h14 ARG0: x15 [ x PERS: 3 NUM: sg IND: + ] RSTR: h16 BODY: h17 ]  [ named<14:19> LBL: h18 CARG: \"Sandy\" ARG0: x15 ]  [ _dance_v_1<20:26> LBL: h1 ARG0: e13 ARG1: x15 ARG2: i20 ]  [ _or_c<27:29> LBL: h1 ARG0: e2 ARG1: e12 ARG2: e21 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]  [ proper_q<30:33> LBL: h22 ARG0: x23 [ x PERS: 3 NUM: sg IND: + ] RSTR: h24 BODY: h25 ]  [ named<30:33> LBL: h26 CARG: \"Lee\" ARG0: x23 ]  [ _sleep_v_1<34:41> LBL: h1 ARG0: e21 ARG1: x23 ] > HCONS: < h0 qeq h1 h6 qeq h8 h16 qeq h18 h24 qeq h26 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Kim",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "_sing_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "x5",
+              "ARG2": "i11"
+            }
+          },
+          {
+            "pred": "_and_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e12",
+              "ARG1": "e10",
+              "ARG2": "e13"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h14",
+            "args": {
+              "ARG0": "x15",
+              "RSTR": "h16",
+              "BODY": "h17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h18",
+            "args": {
+              "CARG": "Sandy",
+              "ARG0": "x15"
+            }
+          },
+          {
+            "pred": "_dance_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e13",
+              "ARG1": "x15",
+              "ARG2": "i20"
+            }
+          },
+          {
+            "pred": "_or_c",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e12",
+              "ARG2": "e21"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h22",
+            "args": {
+              "ARG0": "x23",
+              "RSTR": "h24",
+              "BODY": "h25"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h26",
+            "args": {
+              "CARG": "Lee",
+              "ARG0": "x23"
+            }
+          },
+          {
+            "pred": "_sleep_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e21",
+              "ARG1": "x23"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h16": "h18",
+          "h24": "h26"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i11": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e13": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x15": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h16": {},
+          "h17": {},
+          "i20": {},
+          "e21": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x23": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h24": {},
+          "h25": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h18": {},
+          "h26": {},
+          "h4": {},
+          "h14": {},
+          "h22": {}
+        }
+      },
+      "lexical": [
+        [
+          "kim",
+          0,
+          3
+        ],
+        [
+          "sing_v1",
+          4,
+          9
+        ],
+        [
+          "and_conj",
+          10,
+          13
+        ],
+        [
+          "sandy",
+          14,
+          19
+        ],
+        [
+          "dance_v1",
+          20,
+          26
+        ],
+        [
+          "or_conj_1",
+          27,
+          29
+        ],
+        [
+          "lee",
+          30,
+          33
+        ],
+        [
+          "sleep_v1",
+          34,
+          41
+        ]
+      ]
+    }
+  ]
+}

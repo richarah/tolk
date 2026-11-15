@@ -1,0 +1,80 @@
+{
+  "text": "Did Pingu fly?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<4:9> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]  [ named<4:9> LBL: h7 CARG: \"Pingu\" ARG0: x3 ]  [ _fly_v_1<10:14> LBL: h1 ARG0: e2 ARG1: x3 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h7",
+            "args": {
+              "CARG": "Pingu",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_fly_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "past",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h5": {},
+          "h6": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      },
+      "lexical": [
+        [
+          "did1_pos",
+          0,
+          3
+        ],
+        [
+          "generic_proper_ne",
+          4,
+          9
+        ],
+        [
+          "fly_v1",
+          10,
+          14
+        ]
+      ]
+    }
+  ]
+}

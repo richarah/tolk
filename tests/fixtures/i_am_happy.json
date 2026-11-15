@@ -1,0 +1,82 @@
+{
+  "text": "I am happy.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]  [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _happy_a_with<5:11> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ] > HCONS: < h0 qeq h1 h6 qeq h4 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pron",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_happy_a_with",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "1",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h6": {},
+          "h7": {},
+          "i8": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h5": {}
+        }
+      },
+      "lexical": [
+        [
+          "i",
+          0,
+          1
+        ],
+        [
+          "be_c_am",
+          2,
+          4
+        ],
+        [
+          "happy_a1",
+          5,
+          11
+        ]
+      ]
+    }
+  ]
+}

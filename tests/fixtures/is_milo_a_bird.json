@@ -1,0 +1,700 @@
+{
+  "text": "Is Milo a bird?",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg IND: + ] ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<3:7> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ named<3:7> LBL: h8 CARG: \"Milo\" ARG0: x3 ]  [ _a_q<8:9> LBL: h10 ARG0: x4 RSTR: h11 BODY: h12 ]  [ _bird_n_1<10:15> LBL: h13 ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Milo",
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h13",
+            "args": {
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h13": {},
+          "h5": {},
+          "h10": {}
+        }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "milo_n1",
+          3,
+          7
+        ],
+        [
+          "a_det",
+          8,
+          9
+        ],
+        [
+          "bird_n1",
+          10,
+          15
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:7> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:7> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:2> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:2> LBL: h14 CARG: \"Is\" ARG0: x10 ]  [ named<3:7> LBL: h8 CARG: \"Milo\" ARG0: x4 ]  [ mod<8:15> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<8:9> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _bird_n_1<10:15> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Is",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Milo",
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e2",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h18",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h21",
+            "args": {
+              "ARG0": "x17"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h19": "h21"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h21": {},
+          "h5": {},
+          "h11": {},
+          "h18": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "milo_n1",
+          3,
+          7
+        ],
+        [
+          "a_det",
+          8,
+          9
+        ],
+        [
+          "bird_n1",
+          10,
+          15
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:7> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:7> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: pl IND: + PT: notpro ] ]  [ udef_q<0:2> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ named<0:2> LBL: h14 CARG: \"Is\" ARG0: x10 ]  [ named<3:7> LBL: h8 CARG: \"Milo\" ARG0: x4 ]  [ mod<8:15> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<8:9> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _bird_n_1<10:15> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h19 qeq h21 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h14",
+            "args": {
+              "CARG": "Is",
+              "ARG0": "x10"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Milo",
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e2",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h18",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h21",
+            "args": {
+              "ARG0": "x17"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h19": "h21"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h21": {},
+          "h5": {},
+          "h11": {},
+          "h18": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "milo_n1",
+          3,
+          7
+        ],
+        [
+          "a_det",
+          8,
+          9
+        ],
+        [
+          "bird_n1",
+          10,
+          15
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<3:7> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ named<3:7> LBL: h8 CARG: \"Milo\" ARG0: x4 ]  [ mod<8:15> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<8:9> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ _bird_n_1<10:15> LBL: h15 ARG0: x11 ] > HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_be_v_id",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "i3",
+              "ARG2": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Milo",
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e10",
+              "ARG1": "e2",
+              "ARG2": "x11"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h15",
+            "args": {
+              "ARG0": "x11"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "i3": {},
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h15": {},
+          "h5": {},
+          "h12": {}
+        }
+      },
+      "lexical": [
+        [
+          "be_id_is",
+          0,
+          2
+        ],
+        [
+          "milo_n1",
+          3,
+          7
+        ],
+        [
+          "a_det",
+          8,
+          9
+        ],
+        [
+          "bird_n1",
+          10,
+          15
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: ques ] RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]  [ appos<0:7> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:2> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]  [ named<0:2> LBL: h10 CARG: \"Is\" ARG0: x4 ]  [ proper_q<3:7> LBL: h12 ARG0: x6 RSTR: h13 BODY: h14 ]  [ named<3:7> LBL: h15 CARG: \"Milo\" ARG0: x6 ]  [ mod<8:15> LBL: h1 ARG0: e2 ARG1: e2 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]  [ _a_q<8:9> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]  [ _bird_n_1<10:15> LBL: h21 ARG0: x17 ] > HCONS: < h0 qeq h1 h8 qeq h10 h13 qeq h15 h19 qeq h21 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "appos",
+            "label": "h1",
+            "args": {
+              "ARG0": "e5",
+              "ARG1": "x4",
+              "ARG2": "x6"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h7",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h8",
+              "BODY": "h9"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h10",
+            "args": {
+              "CARG": "Is",
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x6",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Milo",
+              "ARG0": "x6"
+            }
+          },
+          {
+            "pred": "mod",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "e2",
+              "ARG2": "x17"
+            }
+          },
+          {
+            "pred": "_a_q",
+            "label": "h18",
+            "args": {
+              "ARG0": "x17",
+              "RSTR": "h19",
+              "BODY": "h20"
+            }
+          },
+          {
+            "pred": "_bird_n_1",
+            "label": "h21",
+            "args": {
+              "ARG0": "x17"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h8": "h10",
+          "h13": "h15",
+          "h19": "h21"
+        },
+        "props": {
+          "e2": {
+            "SF": "ques"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "pl",
+            "IND": "+"
+          },
+          "e5": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x6": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h8": {},
+          "h9": {},
+          "h13": {},
+          "h14": {},
+          "x17": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h19": {},
+          "h20": {},
+          "h0": {},
+          "h1": {},
+          "h10": {},
+          "h15": {},
+          "h21": {},
+          "h7": {},
+          "h12": {},
+          "h18": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          2
+        ],
+        [
+          "milo_n1",
+          3,
+          7
+        ],
+        [
+          "a_det",
+          8,
+          9
+        ],
+        [
+          "bird_n1",
+          10,
+          15
+        ]
+      ]
+    }
+  ]
+}

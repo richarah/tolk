@@ -1,0 +1,2723 @@
+[
+ {
+  "text": "Batman swims.",
+  "known": [],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Batman swims.",
+  "known": [
+   [
+    "_admire_v_1",
+    3
+   ],
+   [
+    "_calm_a_1",
+    2
+   ],
+   [
+    "_cat_n_1",
+    1
+   ],
+   [
+    "_cheerful_a_1",
+    2
+   ],
+   [
+    "_creature_n_1",
+    1
+   ],
+   [
+    "_finch_n_1",
+    1
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_hum_v_1",
+    2
+   ],
+   [
+    "_keep_v_unspec",
+    3
+   ],
+   [
+    "_master_n_1",
+    1
+   ],
+   [
+    "_puffin_n_1",
+    1
+   ],
+   [
+    "_sparrow_n_1",
+    1
+   ],
+   [
+    "_swim_v_1",
+    2
+   ],
+   [
+    "_teacher_n_of",
+    1
+   ]
+  ],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Cats sleep.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Did Kim arrive after Sandy left?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   }
+  ]
+ },
+ {
+  "text": "Did Kim arrive after Sandy left?",
+  "known": [
+   [
+    "_arrive_v_1",
+    2
+   ],
+   [
+    "_leave_v_1",
+    2
+   ],
+   [
+    "before",
+    2
+   ],
+   [
+    "tense",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   }
+  ]
+ },
+ {
+  "text": "Did Kim arrive before Sandy left?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Did Kim arrive before Sandy left?",
+  "known": [
+   [
+    "_arrive_v_1",
+    2
+   ],
+   [
+    "_leave_v_1",
+    2
+   ],
+   [
+    "before",
+    2
+   ],
+   [
+    "tense",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Did Kim live in Oslo?",
+  "known": [
+   [
+    "_in_p_loc",
+    2
+   ],
+   [
+    "_live_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNEXPRESSED_SUBJECT"
+   }
+  ]
+ },
+ {
+  "text": "Did Kim live in Oslo?",
+  "known": [
+   [
+    "_in_p_loc",
+    2
+   ],
+   [
+    "_live_v_1",
+    2
+   ],
+   [
+    "tense",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNEXPRESSED_SUBJECT"
+   }
+  ]
+ },
+ {
+  "text": "Does Kim know that Rio flies?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "DEMONSTRATIVE"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "DEMONSTRATIVE"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "DEMONSTRATIVE"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_PREDICATE"
+   }
+  ]
+ },
+ {
+  "text": "Does Kim know that Rio flies?",
+  "known": [
+   [
+    "_fly_v_1",
+    2
+   ],
+   [
+    "_know_v_1",
+    3
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "DEMONSTRATIVE"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "DEMONSTRATIVE"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "DEMONSTRATIVE"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_PREDICATE"
+   }
+  ]
+ },
+ {
+  "text": "Does Kim live in Bergen?",
+  "known": [
+   [
+    "_in_p_loc",
+    2
+   ],
+   [
+    "_live_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Does Kim live in Oslo?",
+  "known": [
+   [
+    "_in_p_loc",
+    2
+   ],
+   [
+    "_live_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Does Kim live in Oslo?",
+  "known": [
+   [
+    "_in_p_loc",
+    2
+   ],
+   [
+    "_live_v_1",
+    2
+   ],
+   [
+    "tense",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Does Pip glorb?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "UNKNOWN_WORD",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Does Pip glorb?",
+  "known": [
+   [
+    "_glorb_v_unknown",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "UNKNOWN_WORD",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Does Tweety flibber?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "UNKNOWN_WORD",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Does Tweety flibber?",
+  "known": [
+   [
+    "_blorp_n_unknown",
+    1
+   ],
+   [
+    "_glorpy_a_unknown",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "UNKNOWN_WORD",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Every bird flies.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every bird flies.",
+  "known": [
+   [
+    "_animal_n_1",
+    1
+   ],
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_dog_n_1",
+    1
+   ],
+   [
+    "_happy_a_with",
+    2
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_like_v_1",
+    3
+   ],
+   [
+    "_own_v_1",
+    3
+   ],
+   [
+    "_owner_n_of",
+    1
+   ],
+   [
+    "_penguin_n_1",
+    1
+   ],
+   [
+    "_person_n_1",
+    1
+   ],
+   [
+    "_robin_n_1",
+    1
+   ],
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every bird flies.",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_penguin_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every bird flies.",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_robin_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every cat purrs.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every cat purrs.",
+  "known": [
+   [
+    "_cat_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every dog and every cat sleeps.",
+  "known": [],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "GRAMMAR_ARTIFACT",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Every dog barks and sleeps.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "Every finch swims.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every finch swims.",
+  "known": [
+   [
+    "_finch_n_1",
+    1
+   ],
+   [
+    "_sparrow_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Every pet purrs.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "Fish do not fly.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 1,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "EMPTY_RULE_BODY"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "EMPTY_RULE_BODY"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ },
+ {
+  "text": "If Rio hums, Ada is calm.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "FALLBACK_PARSE"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNCONSUMED"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNCONSUMED"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "FALLBACK_PARSE"
+   }
+  ]
+ },
+ {
+  "text": "Kim does not like fish.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 1,
+    "status": "Tell"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   }
+  ]
+ },
+ {
+  "text": "No dog flies.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_FORCE"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_TENSE"
+   }
+  ]
+ },
+ {
+  "text": "No penguin flies.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "No penguin flies.",
+  "known": [
+   [
+    "_animal_n_1",
+    1
+   ],
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_dog_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ],
+   [
+    "_happy_a_with",
+    2
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_like_v_1",
+    3
+   ],
+   [
+    "_own_v_1",
+    3
+   ],
+   [
+    "_owner_n_of",
+    1
+   ],
+   [
+    "_penguin_n_1",
+    1
+   ],
+   [
+    "_person_n_1",
+    1
+   ],
+   [
+    "_robin_n_1",
+    1
+   ],
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "No penguin flies.",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ],
+   [
+    "_penguin_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "status": "cannot be read"
+   }
+  ]
+ },
+ {
+  "text": "No pet purrs.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_FORCE"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_TENSE"
+   }
+  ]
+ },
+ {
+  "text": "No pet purrs.",
+  "known": [
+   [
+    "_cat_n_1",
+    1
+   ],
+   [
+    "_pet_n_1",
+    1
+   ],
+   [
+    "_purr_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_FORCE"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_TENSE"
+   }
+  ]
+ },
+ {
+  "text": "No puffin swims.",
+  "known": [],
+  "chosen": 4,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_ASPECT"
+   }
+  ]
+ },
+ {
+  "text": "No puffin swims.",
+  "known": [
+   [
+    "_admire_v_1",
+    3
+   ],
+   [
+    "_calm_a_1",
+    2
+   ],
+   [
+    "_cat_n_1",
+    1
+   ],
+   [
+    "_cheerful_a_1",
+    2
+   ],
+   [
+    "_creature_n_1",
+    1
+   ],
+   [
+    "_finch_n_1",
+    1
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_hum_v_1",
+    2
+   ],
+   [
+    "_keep_v_unspec",
+    3
+   ],
+   [
+    "_master_n_1",
+    1
+   ],
+   [
+    "_puffin_n_1",
+    1
+   ],
+   [
+    "_sparrow_n_1",
+    1
+   ],
+   [
+    "_swim_v_1",
+    2
+   ],
+   [
+    "_teacher_n_of",
+    1
+   ]
+  ],
+  "chosen": 4,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_ASPECT"
+   }
+  ]
+ },
+ {
+  "text": "Nobody flies.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "UNSUPPORTED_PREDICATE",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_PREDICATE"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Pip flies.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Pip flies.",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Pip hums.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Pip hums.",
+  "known": [
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Rio hums if Rio is a sparrow.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "FALLBACK_PARSE"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Rule"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "GRAMMAR_ARTIFACT"
+   }
+  ]
+ },
+ {
+  "text": "Rio hums.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Rio hums.",
+  "known": [
+   [
+    "_creature_n_1",
+    1
+   ],
+   [
+    "_finch_n_1",
+    1
+   ],
+   [
+    "_sparrow_n_1",
+    1
+   ],
+   [
+    "_swim_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Sam works in Paris.",
+  "known": [
+   [
+    "_work_v_in",
+    3
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 1,
+    "status": "Tell"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "FALLBACK_PARSE"
+   }
+  ]
+ },
+ {
+  "text": "Sandy dances.",
+  "known": [],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Sandy dances.",
+  "known": [
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Sparrow flies.",
+  "known": [],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Sparrow flies.",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ]
+  ],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 1,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Superman flies.",
+  "known": [],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Superman flies.",
+  "known": [
+   [
+    "_animal_n_1",
+    1
+   ],
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_dog_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ],
+   [
+    "_happy_a_with",
+    2
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_like_v_1",
+    3
+   ],
+   [
+    "_own_v_1",
+    3
+   ],
+   [
+    "_owner_n_of",
+    1
+   ],
+   [
+    "_penguin_n_1",
+    1
+   ],
+   [
+    "_person_n_1",
+    1
+   ],
+   [
+    "_robin_n_1",
+    1
+   ],
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Tweety flies.",
+  "known": [],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Tweety flies.",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ]
+  ],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Tweety flies.",
+  "known": [
+   [
+    "_dog_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ],
+   [
+    "_happy_a_with",
+    2
+   ]
+  ],
+  "chosen": 3,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Tell"
+   }
+  ]
+ },
+ {
+  "text": "Two cats sleep.",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Tell",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Tell"
+   },
+   {
+    "rank": 3,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 4,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 5,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNSUPPORTED_PREDICATE"
+   }
+  ]
+ },
+ {
+  "text": "Which sparrow hums?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Which sparrow hums?",
+  "known": [
+   [
+    "_admire_v_1",
+    3
+   ],
+   [
+    "_calm_a_1",
+    2
+   ],
+   [
+    "_cat_n_1",
+    1
+   ],
+   [
+    "_cheerful_a_1",
+    2
+   ],
+   [
+    "_creature_n_1",
+    1
+   ],
+   [
+    "_finch_n_1",
+    1
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_hum_v_1",
+    2
+   ],
+   [
+    "_keep_v_unspec",
+    3
+   ],
+   [
+    "_master_n_1",
+    1
+   ],
+   [
+    "_sparrow_n_1",
+    1
+   ],
+   [
+    "_swim_v_1",
+    2
+   ],
+   [
+    "_teacher_n_of",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who is a bird?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNCONSTRAINED_WANTED"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who is a bird?",
+  "known": [
+   [
+    "_bird_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "UNCONSTRAINED_WANTED"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who is a sparrow?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNCONSTRAINED_WANTED"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who is a sparrow?",
+  "known": [
+   [
+    "_believe_v_1",
+    3
+   ],
+   [
+    "_sparrow_n_1",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "UNCONSTRAINED_WANTED"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who is a zorp?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "UNCONSTRAINED_WANTED"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who is a zorp?",
+  "known": [
+   [
+    "_floopy_a_unknown",
+    2
+   ],
+   [
+    "_zorp_n_unknown",
+    1
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "refusal passed the tie",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "UNCONSTRAINED_WANTED"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 1,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who sings or dances?",
+  "known": [],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 0,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "Who sings or dances?",
+  "known": [
+   [
+    "_dance_v_1",
+    2
+   ],
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Ask",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 3,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   },
+   {
+    "rank": 4,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Ask"
+   }
+  ]
+ },
+ {
+  "text": "every bird flies.",
+  "known": [
+   [
+    "_animal_n_1",
+    1
+   ],
+   [
+    "_bird_n_1",
+    1
+   ],
+   [
+    "_dog_n_1",
+    1
+   ],
+   [
+    "_fly_v_1",
+    2
+   ],
+   [
+    "_happy_a_with",
+    2
+   ],
+   [
+    "_have_v_1",
+    3
+   ],
+   [
+    "_like_v_1",
+    3
+   ],
+   [
+    "_own_v_1",
+    3
+   ],
+   [
+    "_owner_n_of",
+    1
+   ],
+   [
+    "_penguin_n_1",
+    1
+   ],
+   [
+    "_person_n_1",
+    1
+   ],
+   [
+    "_robin_n_1",
+    1
+   ],
+   [
+    "_sing_v_1",
+    2
+   ]
+  ],
+  "chosen": 2,
+  "decided_by": "criteria",
+  "outcome": "Rule",
+  "readings": [
+   {
+    "rank": 1,
+    "status": "cannot be read"
+   },
+   {
+    "rank": 2,
+    "generic": 0,
+    "overlap": 2,
+    "swallowed": 0,
+    "status": "Rule"
+   }
+  ]
+ }
+]
