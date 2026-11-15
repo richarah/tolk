@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # code -> (sentences told first, the sentence that is refused with that code)
 FINAL = {
+    "POSSIBLE_TYPO": (["Tweety is a robin."], "Twety sings."),
     "COORDINATION": ([], "Kim sings or dances."),
     "DEFINITE_MATCHES": ([], "The dog barks."),
     "IDENTITY_NOT_YET": ([], "Every robin is Tweety."),

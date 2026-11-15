@@ -37,6 +37,7 @@ CREATE TABLE revision(sentence INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE morph(word TEXT PRIMARY KEY, base TEXT NOT NULL, affix TEXT NOT NULL);  -- an unknown word split into an affix and a base the store has
 CREATE TABLE word(lemma TEXT NOT NULL, pos TEXT NOT NULL, sentence INTEGER NOT NULL, PRIMARY KEY(lemma, pos));  -- a class an unknown word was used as, from its first accepted use of that class
+CREATE TABLE spelling(word TEXT NOT NULL, kind TEXT NOT NULL, maps_to TEXT NOT NULL, PRIMARY KEY(word, kind));  -- every name and surface word accepted, and what it mapped to
 CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
 INSERT INTO entity(id, kind) VALUES ('user', 'named'), ('tolk', 'named');
 INSERT INTO name(entity, text) VALUES ('user', 'user'), ('tolk', 'tolk');

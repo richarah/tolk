@@ -183,3 +183,15 @@ adjective in that order), used for this description only, and shown as "(widened
 or other question uses it. No predicate in any class: Unknown. Not exported from `tolk/__init__.py` (the public-names test lists the exports).
 Found on the way, not fixed: "Kay is a zorp." is refused UNKNOWN_WORD because the grammar has Kay as `okay`, and the generic name loses
 on the generic-entry measure to a reading that is then refused as final. The same class of name ("Kay") in the own-word cases was replaced by "Lou".
+
+## Housekeeping item 6: spelling
+`tolk/spelling.py`. Table `spelling(word, kind, maps_to)`: every single word a predication of an accepted sentence spans, lower case, as a name (maps to the
+name) or a word (maps to the predicate); recorded only when the sentence was not refused. Before storing or answering, each word the chosen reading takes
+for a name the store does not have, or for a word the grammar lacks (`_x/TAG_u_unknown`), of four letters or more, is compared with every known word (the
+table and the `name` table) by `spelling.distance` (insert, delete, replace, adjacent swap = 1; the one place it is written). Exactly one known word within
+one edit, two for a word of eight letters or more: refused POSSIBLE_TYPO ("twety: did you mean tweety?"), nothing stored, nothing recorded. The same
+text as the very next input is accepted as written. Exempt, so that earlier behaviour holds: a word that is a form of a word the store remembers (glorbs after
+glorb), and a word the morphology table already splits (unglorpy). tolk never rewrites a word. One earlier test changed: test_refusals lists every final code,
+so POSSIBLE_TYPO is added to it. Known limit: a name one edit from an accepted word is refused once even if meant (that is the design); a word the grammar
+knows is never checked, so a typo that is another English word ("Tweet" for "Tweety"? 5 letters, name) passes only if it is a name the store lacks and no
+unique near word exists.

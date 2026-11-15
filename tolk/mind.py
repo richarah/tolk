@@ -4,7 +4,7 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, comparison, defaults, diagnosis, engine, forget, generate, history, lf, morph, negation, ordering, proposals, questions, reading, say, settings, statements, store, words
+from tolk import compile as comp, comparison, defaults, diagnosis, engine, forget, generate, history, lf, morph, negation, ordering, proposals, questions, reading, say, settings, spelling, statements, store, words
 from tolk.diagnosis import Diagnosis
 from tolk.rules import claims
 from tolk.rules.comparatives import PREFIX
@@ -35,6 +35,7 @@ class Mind:
         self.db.execute("INSERT INTO meta(key, value) VALUES ('auto_revise', ?)", (str(int(auto_revise)),))
         settings.put(self.db, "closed_world", str(int(closed_world)))
         settings.put(self.db, "wording", wording)
+        self._typo: str | None = None  # the sentence last refused as a possible typo; the same sentence next is accepted as written
         self.ctx = "world"  # the current context: "world", or a supposition's name
         self._suppositions = 0
         self._ran: list[tuple[int, int | None]] = []
@@ -75,7 +76,10 @@ class Mind:
     def hear(self, text: str, trust: int = 0, observation: bool = False) -> Result:
         with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot store half a rule
             before = self._conflicts()
+            self._chosen = None
             result = self._hear(text, trust, observation)
+            if self._chosen and not result.outcome.startswith("refused"):
+                spelling.record(self.db, *self._chosen)
             fresh = self._conflicts() - before
             if not fresh:
                 return result
@@ -131,6 +135,11 @@ class Mind:
         head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):
             return Result(*head, outcome="refused")
+        confirmed, self._typo = self._typo == text, None
+        if not confirmed and (typo := spelling.check(self.db, text, readings[k])):
+            self._typo = text
+            return Result(k + 1, len(readings), lf.show(typo), outcome="refused")
+        self._chosen = (text, readings[k])
         asked = questions.answer_to(self, x, head, Result)
         if asked is not None:
             return asked
