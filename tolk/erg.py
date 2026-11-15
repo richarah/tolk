@@ -1,3 +1,4 @@
+import os
 import re
 from pathlib import Path
 from typing import NamedTuple
@@ -5,8 +6,10 @@ from typing import NamedTuple
 from delphin import ace, derivation
 
 ROOT = Path(__file__).resolve().parent.parent
-ACE = ROOT / "erg" / "ace"
-GRAMMAR = ROOT / "erg" / "erg-2018.dat"
+# The parser and grammar are in erg/ of a checkout (scripts/setup_erg.sh). A copy installed without its checkout names the directory.
+ERG_DIR = Path(os.environ.get("TOLK_ERG_DIR", ROOT / "erg"))
+ACE = ERG_DIR / "ace"
+GRAMMAR = ERG_DIR / "erg-2018.dat"
 
 READINGS = 5  # how many readings the parser returns by default
 WIDE = 25  # and how many when the first five gave nothing that can be stored
