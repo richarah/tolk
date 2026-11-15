@@ -119,3 +119,31 @@ turning that into No would be wrong. Repl: TOLK_CLOSED_WORLD=1.
 The rule that skipped any string literal with a space is gone. Every string in `tolk/` is scanned. The one exact wording that holds a
 lemma ("(among those I know)") is `say.AMONG_THOSE`, in `say.WORDING`, the explicit list, which exists only in say.py; a test checks that no
 other file contains an entry of it, and that the scan skips only exact entries.
+
+## Finish, item 5: the three narrow refusal codes
+
+Each was removed in turn (scripts/code_removal.py) and the choice table rebuilt. Every one changes rows, so every one stays. The fixtures that need each (rows whose chosen reading, outcome or reading status changes; one fixture can need a code at an empty store and at a populated one):
+
+### FALLBACK_PARSE
+
+- `if_rio_hums_ada_is_calm.json` (If Rio hums, Ada is calm.)
+- `rio_hums_if_rio_is_a_sparrow.json` (Rio hums if Rio is a sparrow.)
+- `sam_works_in_paris.json` (Sam works in Paris.)
+
+### GRAMMAR_ARTIFACT
+
+- `did_kim_arrive_after_sandy_left.json` (Did Kim arrive after Sandy left?)
+- `did_kim_arrive_before_sandy_left.json` (Did Kim arrive before Sandy left?)
+- `did_kim_live_in_oslo.json` (Did Kim live in Oslo?)
+- `does_kim_live_in_bergen.json` (Does Kim live in Bergen?)
+- `does_kim_live_in_oslo.json` (Does Kim live in Oslo?)
+- `does_pingu_flibber.json` (Does Pingu flibber?)
+- `does_pip_glorb.json` (Does Pip glorb?)
+- `does_tweety_flibber.json` (Does Tweety flibber?)
+- `every_dog_and_every_cat_sleeps.json` (Every dog and every cat sleeps.)
+- `kim_does_not_like_fish.json` (Kim does not like fish.)
+- `rio_hums_if_rio_is_a_sparrow.json` (Rio hums if Rio is a sparrow.)
+
+### DEMONSTRATIVE
+
+- `does_kim_know_that_rio_flies.json` (Does Kim know that Rio flies?)
