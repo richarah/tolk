@@ -12,6 +12,7 @@ from tolk.sem import EP
 if TYPE_CHECKING:
     from tolk.rules.ctx import Ctx
 
+CONNECTIVE = re.compile(r"_[^_]+_c(_.*)?")
 ROLES = ("ARG0", "ARG1", "ARG2")
 # A word the grammar does not recognise comes as _surface/TAG_u_unknown, TAG being a rough part of speech from the tagger it uses.
 UNKNOWN = re.compile(r"_(.+)/([a-z]+)_u_unknown")
@@ -42,6 +43,8 @@ def expressed_arity(ep: EP, usage: Counter) -> int:
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:
     if not ep.pred.startswith("_"):
         return None
+    if CONNECTIVE.fullmatch(ep.pred):  # a conjunction other than and, or ("not" as one) joins two things; no atom holds it
+        return lf.Refusal("UNSUPPORTED_PREDICATE", ep.pred)
     if "/" in ep.pred:
         renamed = known_as(ep.pred)
         if isinstance(renamed, lf.Refusal):

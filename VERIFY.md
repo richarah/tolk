@@ -1,0 +1,126 @@
+# VERIFY: tolk (branch housekeeping, 73c605d) and SQUID (branch tolk-backend, 79e263f)
+
+Everything below was run by me in `work/` from clean `git clone`s of the two local repositories. Nothing in either repository was changed. Raw outputs: `work/d/` (dialogues), `work/c_out.txt` (part c and d), my expectations `expected.md` (written, with a UTC timestamp, before any part c run).
+Dialogue driver `work/drv.py` calls `Mind.hear` exactly as `scripts/repl.py` does and adds `suppose`, `drop`, `observe`, `diagnose`, `propose`, `read`; plain tier dialogues were also run through `scripts/repl.py` itself (`work/d/specAll.out`).
+
+## Section a: install and tests
+
+tolk:
+```
+git clone -b housekeeping /home/richarah/tolk tolk
+cd tolk && uv venv --python 3.12 .venv && . .venv/bin/activate
+sh scripts/setup_erg.sh          # ACE version 0.9.34, erg-2018.dat 283401864 bytes: downloaded fine
+uv pip install -e '.[test]'      # `pip` is not present in a uv venv, so `uv pip` was used instead of `pip`
+python -m pytest -q
+  ...
+  832 passed in 43.25s
+```
+SQUID:
+```
+git clone -b tolk-backend /home/richarah/squid squid
+cd squid && uv venv --python 3.12 .venv && . .venv/bin/activate
+uv pip install -e '.[dev]'       # README: pip install -e '.[dev]'; pulled tolk from git+https://github.com/richarah/tolk.git@housekeeping
+                                 # (resolved to tolk==0.1.0 @ 73c605d3463c567442b6931b34dd9821cdf669aa = my tolk clone's HEAD; credentials worked)
+export TOLK_ERG_DIR=<tolk clone>/erg
+python -m pytest tests -q
+  113 passed, 5 xfailed in 3.11s
+python scripts/differential_tolk.py | tail -1
+  15 questions, 0 disagreements
+```
+Matches the README numbers (113 passed, 5 expected failures; 15 questions, 0 disagreements). I did not rerun the Spider benchmark (needs the Spider data set, not on hand). Other checks: no module in tolk/ over 300 lines (largest 250); LICENSE and .github/workflows/tests.yml exist; `scripts/choice_table.py`, `code_removal.py`, `coverage.py` run without error.
+
+Mismatches in section a: none.
+
+## Section b: SPEC.md and SPEC2.md dialogues
+
+Run in fresh stores in the spec's order. Lines not listed here matched.
+
+### SPEC.md
+Tier A dialogue (all 10 rows): match. "Does Tweety fly?" gives Yes with a 3-node proof (fly by rule 2, bird by rule 1, robin told). "Who is happy?" gives "Kim and Tweety". "Is Sandy happy?" Unknown. "Does Rex have an owner?" Yes (`have(rex, sk:6:x8:rex)`).
+Tier B dialogue (all 11 rows): match. Pingu: No; after "Every penguin is a bird." a conflict is recorded and reported in the reply; "Does Pingu fly?" Conflict with both proofs; "Clark Kent is Superman." one thing, two names; "Does Clark Kent fly?" Yes; "Is the robin happy?" Yes; "The dog barks." `DEFINITE_MATCHES: 2 known things match`; "Tweety does not fly." refused, contradicts, proof shown.
+Tier C dialogue (all 5 rows): match (past tense fact `tense(e1, past)` on Sandy's event).
+Phase 6 (suppose "Tweety is a penguin." after tier B): Conflict inside, Yes outside, fact count 22 before and 22 after drop. This only holds with "No penguin flies." told as well (it is in the tier B sentence list, not in the dialogue table); without it, tier B has no rule giving a penguin a negative "flies", and the supposition does not conflict.
+Phase 8: see item 1 below.
+
+### Where a later phase changed a SPEC.md result (deliberate; I do not judge)
+- SPEC.md tier A: "Birds are animals." is a strict rule. SPEC2 phase 18 says it becomes a default. Actual: `default _animal_n_1(X) :- _bird_n_1(X)`. Dialogue answers unchanged.
+- SPEC.md tier C: "Does Kim live in Oslo?" etc unchanged. SPEC2 phase 20 adds "Sandy arrived." then "Does Sandy arrive?" Unknown: actual Unknown; "Did Sandy arrive?" Yes.
+- SPEC.md "Choosing a reading" (refusals, then overlap, then parser order) and SPEC2 9.5 (refusals, store overlap, swallowed words, parser order). DECISIONS.md says the order was changed after an audit; the code (`tolk/choice.py`) is: eventive readings only; fewest generic-entry words; most store overlap; fewest swallowed words; then compile tied readings in parser order, where a `final` refusal ends the search. Refusal is therefore not a ranking criterion before overlap. (Effect: see item 7.)
+- SPEC.md phase 4 / REVIEW: negated question was refused in the review, now answered (SPEC2 12): matches SPEC2.
+
+### SPEC2.md dialogues (all rows run; differences only)
+- Phase 10 "Who is Tweety?", "What is Kim?" list told then derived facts; "Who is Zed?" Unknown: match.
+- Phase 11 three sentences stored as ground/variable rules and answer correctly: match. ("If Luna paints, Bruno is happy." fails: item 7.)
+- Phase 12 dialogue (5 questions): match (No with proof, Unknown, Yes, Unknown).
+- Phase 13: "Am I a person?" Yes, "Are you a cat?" Unknown, "It sings." stores `sing(tweety)` with `it = tweety` shown, "She is happy." after "Kim likes Sandy." refused `AMBIGUOUS_PRONOUN: sandy or kim`: match.
+- Phase 14: 2, Yes, Unknown, 3; digits ("Kim owns 4 birds." gives 4); "most", "more than two" refused. "Kim owns half of the cats." is refused, but as `DEFINITE_MATCHES: 3 known things match`, not as a fraction (spec: fractions are refused; it is refused, reason differs).
+- Phase 15: "Kim and Sandy are happy." 2 facts; "Or" in a statement refused; "Does Kim sing or dance?" works: match.
+- Phase 16: "Tweety is a blorp." `_blorp_n_unknown`; "Every blorp flibbers."; "Does Tweety flibber?" Yes: pass (first alternative).
+- Phase 17: `tolk.read("Does Kim own a dog?")` returns the Ask; `tolk.read("Kim can sing.")` returns `refuse UNSUPPORTED_PREDICATE: _can_v_modal`: match.
+- Phase 18 dialogue: Tweety Yes; Pingu "No ... defeated "Birds fly." (rule 1) by specific"; `TOLK_POLICY=` empty: Conflict; "Tweety does not fly." stored, then No: match. Universal questions: "Is every penguin a bird?" Yes; "Does every bird fly?" "Yes, by default"; "Is every robin a bird?" Unknown (no rule told). See item 2.
+- Phase 19: diagnose lists "Every penguin is a bird.", "Every bird flies.", "Pingu does not fly.", "Pingu is a penguin."; "Forget that every bird flies." then Pingu No and Tweety Unknown: match. Observation `Pingu does not fly.` stays, conflict reported with 3 candidates, none an observation; with `TOLK_AUTO_REVISE=1` retracts "Every bird flies.": match.
+- Phase 20: lived/live Unknown, did Yes; before chain Yes, reverse No; "Where did Kim live in 2019?" Oslo; future/perfect/progressive refused: match.
+- Phase 21: Unknown, Yes, Unknown; "Who believes ..." Kim; "What does Kim believe?" lists; nested claim refused: match.
+- Phase 22: Yes, No, Unknown, "Kim (among those I know)"; "as tall as" refused: match.
+- Phase 23: "Rex is unglorpy." / "Is Rex glorpy?" No; "Pingu is a flibberer." / "Does Pingu flibber?" Yes; "Tweety is flibberable." stored with `flibberable = able + flibber`, no rule: match.
+- Phase 24 (`TOLK_WORDING=generated`, tier A): one-place verb and "is a" facts are generated ("Tweety flies.", "Tweety is a bird."); `own(kim, a1)`, `sk:6:x8:rex is an owner` fall back to the template. Match with the spec (at least those two patterns).
+
+### PROMPT.md items
+1. "If Rio hums, Pip hums." becomes a rule (reading 6 of 25): match.
+2. closed_world on: "Does Tweety fly?" No, "Who flies?" Nothing; off: Unknown; "Is every robin a bird?" Unknown either way: match.
+3. Unknown words: see item 4.
+6. "Kim sings and Sandy dances." two statements: match. 7: generated wording per fact with template fallback: match.
+Housekeeping: "What is a robin/bird/dog?" give rules, "Known: n: ..." with names; "What is a fish?" / "a zebra" Unknown; "I love Veronika." "What is love?" gives `(widened: love (noun) matched as love (verb))` and `love(you, veronika)`; spelling: "Twety sings." refused POSSIBLE_TYPO suggesting tweety, sent again stored; "Tweety is a robbin." refused suggesting robin; "Tweedy sings." refused; "Kim sings." stored: all match. LICENSE and CI file exist.
+SQUID items (README-level): legacy not called from anywhere (grep); invented table names `blorp`, `quux`, `frob` compile ("Which quuxes does Kim frob?" returns the right row; verified by executing the SQL); differential script 15/15: match, except item 12.
+
+### Mismatches found in section b
+1. Phase 8, "four things that share two predicates yields exactly one proposal." With four things each told "X is a robin." and "X is a bird." (identical extensions), `Mind.propose()` returns `[]`. Cause: `tolk/proposals.py` also requires Q to have a member P lacks. `tests/test_propose.py` passes only because it adds a fifth bird ("Zed"). Command: tell Tweety, Pip, Rio, Kim each robin and bird, then `!propose`: no output.
+2. Phase 18 universal questions: spec says "If its opposite follows, `No`." Actual for "Do all penguins fly?" (store: Birds fly. Every penguin is a bird. Penguins do not fly.): `No, by default`.
+3. Phase 5 "where" questions: "Bob is in Paris." then "Where is Bob?" gives `Unknown` (the question atom `_*_p_[ls]*(bob, X)` has two arguments, the copular fact `_in_p_loc(e1, bob, paris)` three). "Is Bob in Paris?" is Yes. DECISIONS.md records this as "Not fixed". Where-questions with a verb ("Where does Kim live?") work.
+4. PROMPT item 3: "Tweety is a blips." (and "Rex is a blips.") is not stored and not refused UNKNOWN_WORD: `reading 1 of 0 / refuse NO_EVENT_READING: none of the readings has a predicate on the sentence event`. ("Tweety blips." stores `_blip_v_unknown`. "Tweety toves.", "Tweety is a tove." are refused UNKNOWN_WORD, which the item allows. The other eight words store with a class.)
+5. Hard rule 5 / SPEC2 9 ("a refusal is a normal return value, not an exception"): `Mind.hear("List the section_name in reversed lexicographical order.")` raises `delphin.mrs._exceptions.MRSSyntaxError: expected: a feature` (the parser's MRS contains `_section_name/NN_u_unknown`). The repl survives it as specified (prints "internal error, see stderr; continuing", traceback on stderr, exit 0). The library call raises. (SQUID's README notes the same case.)
+
+## Section c: my 40 sentences
+
+`expected.md` was saved first. Each sentence run alone on a fresh Mind, on E (empty) and A (the 12 tier A statements). Result tables: `work/c_out.txt`. Everything not mentioned below matched my expectation on both stores (W1-W6, W8-W16 except noted, W18, W19, W21-W25; R1-R6, R8, R9, R10 (E stored, A POSSIBLE_TYPO), R11 (E stored, A refused with proof), R12-R15).
+
+Mismatches:
+6. W7 "If Luna paints, Bruno is happy." expected a ground rule. Actual, E and A: `reading 1 of 5 / refuse UNSUPPORTED_PREDICATE: _if_x / refused`. Same for "If Luna paints, Bruno sings." and "Bruno is happy if Luna paints."; "If Luna sings, Bruno is happy." and "If Kim sings, Sandy dances." work. Reading 2 compiles to the right rule (`rule _happy_a_with(E!, bruno) :- _paint_v_1(E1, luna)`); see section d.
+7. W20 "Ola and Mina are teachers." expected two facts (like "Ola and Mina are happy.", which does give 2). Actual: `refuse UNCONSUMED: no atom uses x20`. Same for "Ola and Mina are otters."
+8. W17 "I am a teacher." expected `_teacher_n_1(user)`; actual `tell _teacher_n_of(user)` (the grammar's sense for "teacher"; my expectation of the sense name was a guess, the fact is stored correctly with `I = user`). Expectation-level mismatch only.
+9. R7 "Ola owns more than two cellos." refused as expected, but with code `UNKNOWN_WORD: cellos` instead of `UNSUPPORTED_PREDICATE more_comp` (the refusal of reading 1 is relabelled because the word `cellos` is unknown; "Ola owns three cellos." is stored with `_cello_n_unknown`, so the word is accepted without "more than"). With a known noun ("Kim owns more than two cats.") the code is `more_comp`. Latent: reading 3 of that sentence compiles to a Tell that drops "more than" (`_own_v_1(e1, ola, a1)`, `a2`, `_more+than_a_1(e2)`), which stays unused only because reading 1's refusal is final.
+10. Found while probing (outside the 40): `Every dog that does not bark is quiet.` is stored (reading 9 of 17, via the 25-reading wide search) as `default _quiet_a_1(E!, X) :- _dog_n_1(Y), _do_v_1(E1, Y), _not_c(X, Y, Z), _bark_n_1(Z)` and replies "rule stored". The rule is wrong (a default, with a noun "bark" and a grammar predicate `_not_c` in the body); "Rex is a dog." then "Is Rex quiet?" is Unknown. "Every cat that does not purr is grumpy." likewise (`... _not_c(X, Y, Z), _purr_n_1(Z)`). Hard rule 5 (never guessed at).
+11. SQUID (extra, schema from section b test): `squid.compile("Does Kim not frob Yo?", schema)` raises `SquidCompileError UNKNOWN_WORD: frob`, while "Does Kim frob Zed?" and "Which quuxes does Kim frob?" compile with the same schema (invented verb-table `frob`). The README says "Does Kim not own Fido?" compiles; the invented-table negated case does not.
+
+## Section d: sentences with more than one reading
+
+For each of my 40 sentences (run on E, with the same ties on A) I listed every reading with `tolk.erg.parse`-level readings (`words.parse`, `sem.read`), its compile result, the measures (generic, overlap, swallowed) and the set tied by `choice.preferred`. Full listing: `work/c_out.txt` (lines starting `readings=` / `R1 ...`). Verdicts (chosen reading vs the right one):
+
+- Right reading chosen: W3 (verb "paints", R2; R1 is the grammar's fallback), W5, W6, W11 (R1; R2/R5 are the identity sense, refused), W13 (`in_p_loc`; R4 is the `in_p_state` sense), W14 (`in_p_loc` plus `in_p_temp` on e1; R4/R5 attach "in 2015" to a second event), W15 (R1 and R2 give the same facts), W16, W19 (R1; R2-R4 demonstrative "that"), W21, W22, W12 (R1 and R2 give the same Describe), and every refused sentence R1-R6, R8, R9, R10, R11, R13-R15 (all readings refuse, or the compiling ones are the right one).
+- Wrong reading chosen: W7 "If Luna paints, Bruno is happy." Tied set [1, 2, 3]. R1 reads "if" as a preposition and "paints" as a noun (`_if_x`, `_paint_n_1`) and gives the final refusal `UNSUPPORTED_PREDICATE: _if_x`, which ends the search; R2 (`_if_x_then`, `_paint_v_1`) compiles to the correct rule and is never tried. Same on A.
+- R7: right reading is one of the refusing ones (R1/R2); chosen R1; R3 (compiles to a Tell without "more than") is not chosen (see 9).
+- W20: one reading only; refused UNCONSUMED (not a choice problem).
+
+Mismatches in section d: 1 (W7, same defect as item 6; counted once in the list below).
+
+## Final list of mismatches
+
+Section a: 0.
+Section b: 5 (items 1-5).
+Section c: 6 (items 6-11; items 10 and 11 were found outside the 40 sentences, 8 is expectation-level only).
+Section d: 1 (W7 wrong reading; the same root as item 6, so the total below counts it once).
+
+1. Phase 8: identical extensions give no proposal (`propose()` returns []).
+2. Phase 18: "Do all penguins fly?" gives "No, by default"; spec says "No".
+3. Phase 5: "Where is Bob?" after "Bob is in Paris." is Unknown (documented as open in DECISIONS.md).
+4. PROMPT 3: "Tweety is a blips." is neither stored nor refused UNKNOWN_WORD (NO_EVENT_READING, 0 readings).
+5. Hard rule 5: `Mind.hear` raises `MRSSyntaxError` on "List the section_name in reversed lexicographical order."
+6. "If Luna paints, Bruno is happy." refused `_if_x`; the correct reading 2 compiles but a final refusal on reading 1 ends the search (also section d).
+7. "Ola and Mina are teachers." / "... are otters." refused UNCONSUMED (noun complement under coordination).
+8. "I am a teacher." stores `_teacher_n_of`, my expectation `_teacher_n_1` (expectation-level).
+9. "Ola owns more than two cellos." refused with UNKNOWN_WORD: cellos instead of more_comp; a compiling reading drops "more than".
+10. "Every dog that does not bark is quiet." and "Every cat that does not purr is grumpy." store a wrong default/rule with `_not_c` and a noun in the body.
+11. SQUID: "Does Kim not frob Yo?" refused UNKNOWN_WORD: frob for an invented table.
+
+Not counted (deliberate, documented changes): "Birds are animals." default; "Does Sandy arrive?" Unknown; reading-choice order replaced (DECISIONS.md, SPEC2 9.5 criteria order not followed literally).
+Could not run: Spider benchmark (data set absent).
