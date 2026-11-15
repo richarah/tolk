@@ -166,3 +166,9 @@ conflict reports and diagnosis stay template: they are compared as keys. Answers
 route that gives a Mind the classes it remembers. It is a hint, not a limit: if the tagged parse has no reading the parser's own tagging
 stands, and a word the grammar took for a name is still offered its classes. `tolk.read` now goes through `tolk/reading.py`, as a Mind does, so
 the wide parse and the offering of classes apply to it too. A class other than n, v, a raises ValueError.
+
+## Finish, item 12: the closed world and negation
+The differential test found tolk wrong, not SQUID: with the world closed, "Does Kim not own Fido?" answered No, but nothing says Kim owns Fido, so
+the negation holds. Negation as failure now (`tolk/closed.py`): a negated atom holds when no positive fact matches it, for yes/no and for
+wh questions ("Which dogs does Kim not own?"). A told negative fact or a positive fact still answers as before. Item 2's sentence "a yes or
+no question with no supporting fact is No" holds for positive questions; for negated ones the support is the absence.

@@ -1,15 +1,15 @@
 """What a Mind answers to a sentence that asks: a question, a question about every thing, the extreme, a description."""
 
 from tolk import comparison, defaults, lf, report
-from tolk.ask import Answer, answer, close_world
+from tolk.ask import Answer, answer
+from tolk.closed import answer_closed, close_world
 
 
 def answer_to(mind, x: lf.LF, head: tuple, result):
     """The Result for a sentence that asks, or None for a statement. `result` is the Result class of the mind."""
     if isinstance(x, lf.Ask):
         x = report.bind_claims(mind.db, x) if x.claims else x
-        a = x if isinstance(x, Answer) else answer(mind.db, x, mind.ctx)
-        a = close_world(a, x) if mind.closed_world else a
+        a = x if isinstance(x, Answer) else (answer_closed if mind.closed_world else answer)(mind.db, x, mind.ctx)
         return result(*head, outcome=report.answer_text(mind.db, a), answer=a)
     if isinstance(x, lf.Every):
         value, by_default = defaults.universal(mind.db, x, mind.policy)

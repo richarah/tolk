@@ -40,13 +40,6 @@ def answer(db: sqlite3.Connection, q: lf.Ask, ctx: str = "world") -> Answer:
     return _widening(db, q, ctx)
 
 
-def close_world(a: Answer, q: lf.Ask) -> Answer:
-    """With the world closed, what no fact supports is not so: a yes or no question is No, and a question for things finds none."""
-    if a.value != UNKNOWN:
-        return a
-    return Answer(NOTHING if q.wanted and q.count is None else NO, (), ())
-
-
 def _any(q: lf.Ask, parts: list[Answer]) -> Answer:
     """An or: Yes if either side is, with that side's proof. Otherwise No if every side is No, else Unknown."""
     yes = [p for p in parts if p.value == YES]

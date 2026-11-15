@@ -40,3 +40,22 @@ def test_a_negative_fact_is_still_no_with_its_proof_and_a_conflict_stays_a_confl
     m = Mind(closed_world=True)
     m.tell("Tweety does not sing.")
     assert m.ask("Does Tweety sing?").outcome.startswith("No\n")
+
+
+def test_a_negated_question_with_no_fact_either_way_is_yes_when_the_world_is_closed() -> None:
+    m = Mind(closed_world=True)
+    m.tell("Kim owns Rex.")
+    assert m.ask("Does Kim not own Fido?").outcome == "Yes"
+    assert m.ask("Does Kim not own Rex?").outcome.startswith("No")
+    open_ = Mind()
+    open_.tell("Kim owns Rex.")
+    assert open_.ask("Does Kim not own Fido?").outcome == "Unknown"
+
+
+def test_a_wh_question_with_a_negation_finds_the_things_with_no_such_fact() -> None:
+    m = Mind(closed_world=True)
+    for s in ("Rex is a dog.", "Fido is a dog.", "Spot is a dog.", "Kim owns Rex."):
+        m.tell(s)
+    r = m.ask("Which dogs does Kim not own?")
+    assert r.answer.solutions == (("fido",), ("spot",))
+    assert r.outcome.splitlines()[0] == "Fido and Spot"
