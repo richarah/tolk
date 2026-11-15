@@ -28,7 +28,7 @@ _SPAN = re.compile(r'\+FROM \\"(\d+)\\" \+TO \\"(\d+)\\"')
 
 
 def lexical_entries(udf: str) -> tuple[tuple[str, int, int], ...]:
-    """(entry, from, to) per token of a derivation. An entry the grammar guessed for a word it does not know is named generic_*."""
+    """(entry, from, to) per token of a derivation. An entry the grammar guessed for a word it lacks is named generic_*."""
     found = []
 
     def walk(node) -> None:
