@@ -4,7 +4,7 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, defaults, engine, erg, lf, say, sem, store
+from tolk import compile as comp, defaults, engine, lf, say, sem, store, words
 from tolk.ask import Answer, answer, prove
 from tolk.lf import Atom, Var
 
@@ -147,8 +147,7 @@ class Mind:
         return "\n".join(lines)
 
     def _forget(self, target: str) -> Result:
-        readings = [sem.read(p.mrs, p.lex) for p in erg.parse(target)]
-        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
+        readings, k, x = self._read(target)
         head = (k + 1, len(readings), lf.show(x))
         if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every)):
             return Result(*head, outcome="refused: only a statement can be forgotten")
@@ -160,6 +159,17 @@ class Mind:
         self._retract(found[0], f'forget that {target}')
         return Result(*head, outcome=f'forgot "{found[1]}"')
 
+    def _read(self, text: str) -> tuple[list, int, lf.LF]:
+        """Parse, and choose a reading. A sentence refused for a word the grammar does not know gets one more try with every class offered."""
+        readings = [sem.read(p.mrs, p.lex) for p in words.parse(self.db, text)]
+        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
+        if isinstance(x, lf.Refusal) and x.code == "UNKNOWN_WORD":
+            again = [sem.read(p.mrs, p.lex) for p in words.offered(text, readings)]
+            k2, x2 = comp.choose(again, store.known_preds(self.db), self._lookup, self._history) if again else (k, x)
+            if not isinstance(x2, lf.Refusal):
+                return again, k2, x2
+        return readings, k, x
+
     def _derive(self) -> None:
         defaults.refresh(self.db, self.ctx, self.policy)
 
@@ -167,8 +177,7 @@ class Mind:
         forgetting = FORGET.fullmatch(text.strip())
         if forgetting:
             return self._forget(forgetting.group(1) + ".")
-        readings = [sem.read(p.mrs, p.lex) for p in erg.parse(text)]
-        k, x = comp.choose(readings, store.known_preds(self.db), self._lookup, self._history)
+        readings, k, x = self._read(text)
         printed = lf.show(x)
         head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):
@@ -202,6 +211,7 @@ class Mind:
                 return Result(*head, outcome=lf.show(refusal))
             sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
             store.add_rule(self.db, x, sid)
+            words.remember(self.db, x, sid)
             store.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
             self._derive()
             return Result(*head, outcome="rule stored")
@@ -217,6 +227,7 @@ class Mind:
         if isinstance(stored, lf.Refusal):
             opposite = prove(self.db, int(stored.detail))
             return Result(*head, outcome=f"refused, contradicts:\n{say.proof_text(self.db, opposite)}")
+        words.remember(self.db, x, sid)
         for claim_id, (ref, content) in zip(store.fresh_of_kind(self.db, "claim")[len(claims_before):], x.claims):
             # The clause holds in a context apart that the world does not inherit and the engine does not derive in.
             inner = store.tell(self.db, lf.Tell(content), sid, claim_id, allow_conflict=True)

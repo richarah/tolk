@@ -1,0 +1,308 @@
+{
+  "text": "Every blorp flibbers.",
+  "tags": {
+    "blorp": [
+      "NN"
+    ],
+    "flibbers": [
+      "VBZ"
+    ]
+  },
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ _every_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h5 BODY: h6 ]  [ _blorp/NN_u_unknown<6:11> LBL: h7 ARG0: x3 ]  [ _flibbers/VBZ_u_unknown<12:21> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ] > HCONS: < h0 qeq h1 h5 qeq h7 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "_every_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "_blorp/nn_u_unknown",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_flibbers/vbz_u_unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h5": {},
+          "h6": {},
+          "i8": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h4": {}
+        }
+      },
+      "lexical": [
+        [
+          "every",
+          0,
+          5
+        ],
+        [
+          "generic_mass_count_noun",
+          6,
+          11
+        ],
+        [
+          "generic_trans_verb_pres3sg",
+          12,
+          21
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ udef_q<0:11> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h5 BODY: h6 ]  [ compound<0:11> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:5> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]  [ named<0:5> LBL: h13 CARG: \"Every\" ARG0: x9 ]  [ _blorp/NN_u_unknown<6:11> LBL: h7 ARG0: x3 ]  [ _flibbers/VBZ_u_unknown<12:21> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i15 ] > HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "udef_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h5",
+              "BODY": "h6"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h7",
+            "args": {
+              "ARG0": "e8",
+              "ARG1": "x3",
+              "ARG2": "x9"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x9",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h13",
+            "args": {
+              "CARG": "Every",
+              "ARG0": "x9"
+            }
+          },
+          {
+            "pred": "_blorp/nn_u_unknown",
+            "label": "h7",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_flibbers/vbz_u_unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "i15"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h5": "h7",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h5": {},
+          "h6": {},
+          "e8": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x9": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h11": {},
+          "h12": {},
+          "i15": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "generic_mass_count_noun",
+          6,
+          11
+        ],
+        [
+          "generic_trans_verb_pres3sg",
+          12,
+          21
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ proper_q<0:5> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]  [ named<0:5> LBL: h8 CARG: \"Every\" ARG0: x5 ]  [ udef_q<6:11> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h11 BODY: h12 ]  [ _blorp/NN_u_unknown<6:11> LBL: h13 ARG0: x3 ]  [ _flibbers/VBZ_u_unknown<12:21> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x5 ] > HCONS: < h0 qeq h1 h6 qeq h8 h11 qeq h13 > ICONS: < e2 focus x5 > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "proper_q",
+            "label": "h4",
+            "args": {
+              "ARG0": "x5",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Every",
+              "ARG0": "x5"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h10",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h11",
+              "BODY": "h12"
+            }
+          },
+          {
+            "pred": "_blorp/nn_u_unknown",
+            "label": "h13",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "_flibbers/vbz_u_unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x5"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h11": "h13"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x5": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "x3": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "h11": {},
+          "h12": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h13": {},
+          "h4": {},
+          "h10": {}
+        }
+      },
+      "lexical": [
+        [
+          "generic_proper_ne",
+          0,
+          5
+        ],
+        [
+          "generic_mass_count_noun",
+          6,
+          11
+        ],
+        [
+          "generic_trans_verb_pres3sg",
+          12,
+          21
+        ]
+      ]
+    }
+  ]
+}

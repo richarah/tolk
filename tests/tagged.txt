@@ -1,0 +1,8 @@
+# sentence | word=TAG,TAG: what the parser's tagged input is given. A remembered class is one tag; a first use offers every tag that fits.
+Tweety is a blorp. | blorp=NN
+Tweety flibbers. | flibbers=NNS,VBZ
+Does Tweety flibber? | flibber=VB
+Is Tweety a blorp? | blorp=NN
+Every blorp flibbers. | blorp=NN flibbers=VBZ
+Tweety is glorpy. | glorpy=JJ
+Is Tweety glorpy? | glorpy=JJ

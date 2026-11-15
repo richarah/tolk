@@ -17,8 +17,8 @@ def test_the_four_sentences(mind: Mind) -> None:
     r = mind.hear("Every blorp flibbers.")
     assert r.outcome == "refused"  # no reading at all: two words are unknown to the grammar
     assert mind.tell("Tweety is glorpy.").printed.startswith("tell   _glorpy_a_unknown(e1, tweety)")
-    r = mind.hear("Does Tweety flibber?")
-    assert r.outcome == "refused" and r.printed == "refuse UNKNOWN_WORD: flibber"
+    # Audit 2B: the verb question is read with the verb class offered, so it is understood; nothing says Tweety flibbers.
+    assert mind.ask("Does Tweety flibber?").answer.value == UNKNOWN
     # Nothing that was stored is wrong, and nothing was invented.
     assert {p for (p,) in mind.db.execute("SELECT DISTINCT pred FROM fact")} == {"_blorp_n_unknown", "_glorpy_a_unknown"}
 
@@ -32,10 +32,11 @@ def test_an_unknown_noun_and_adjective_behave_like_known_ones(mind: Mind) -> Non
     assert mind.ask("Is Ada a zorp?").answer.value == UNKNOWN
 
 
-def test_the_adjective_a_question_reads_as_a_noun_is_matched_and_the_widening_is_shown(mind: Mind) -> None:
+def test_the_adjective_is_asked_as_an_adjective_because_its_class_is_remembered(mind: Mind) -> None:
+    # Before audit 2B the tagger read it as a noun in the question and the match was widened; now the first use's class is given to the parser.
     mind.tell("Ada is floopy.")
     r = mind.ask("Is Ada floopy?")
-    assert r.answer.value == YES and "_floopy_n_unknown matched as _floopy_a_unknown" in r.outcome
+    assert r.answer.value == YES and "widened" not in r.outcome
 
 
 def test_a_derived_adjective_answers_a_question(mind: Mind) -> None:
@@ -49,11 +50,10 @@ def test_an_unknown_verb_in_a_statement_is_stored_and_found_by_who(mind: Mind) -
     assert mind.ask("Who glorbs?").outcome.splitlines()[0] == "Pip"
 
 
-def test_an_unknown_verb_in_a_yes_no_question_is_refused_by_name(mind: Mind) -> None:
+def test_an_unknown_verb_in_a_yes_no_question_is_answered_from_its_remembered_class(mind: Mind) -> None:
     mind.tell("Pip glorbs.")
-    for q in ("Does Pip glorb?", "Does Ada glorb?"):
-        r = mind.hear(q)
-        assert r.outcome == "refused" and r.printed == "refuse UNKNOWN_WORD: glorb"
+    assert mind.ask("Does Pip glorb?").answer.value == YES
+    assert mind.ask("Does Ada glorb?").answer.value == UNKNOWN
 
 
 def test_an_unknown_word_is_not_a_known_word(mind: Mind) -> None:

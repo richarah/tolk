@@ -19,7 +19,7 @@ FINAL = {
     "NO_EVENT_READING": ([], "Kim"),
     "SCOPE_AMBIGUOUS": ([], "Every dog does not bark."),
     "UNIVERSAL_QUESTION": ([], "Who likes every dog?"),
-    "UNKNOWN_WORD": ([], "Does Pip glorb?"),
+    "UNKNOWN_WORD": ([], "Tweety flibbered."),  # was "Does Pip glorb?", which phase 16 audit (2B) now answers: a past tense is the class the parser cannot be given
     "UNSUPPORTED_ASPECT": ([], "Kim is singing."),
     "UNSUPPORTED_FORCE": ([], "Sing!"),
     "UNSUPPORTED_PREDICATE": ([], "Kim can sing."),
