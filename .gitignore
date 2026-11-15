@@ -3,3 +3,12 @@ erg/
 __pycache__/
 *.egg-info/
 .pytest_cache/
+*.dat
+*.dat.bz2
+spider/
+*.db
+*.sqlite
+.env
+venv/
+dist/
+build/
