@@ -673,3 +673,93 @@ Fragile, most likely to bite first:
 5. Morphology splits only on a base that is a two-argument predicate in the store; a base used only in a rule is not found.
 6. Comparatives: a comparison needs a named second thing; "Who is the tallest?" is about adjectives alone, not "the tallest cat".
 7. `tests/choice.txt` and `tests/choice_contexts.json` are recorded from the suite; a new dialogue test with a new sentence needs `scripts/choice_table.py --record` and a re-record of fixtures, or the table test fails.
+
+## Phases 25 and 26: SQUID
+
+`SQUID_REPORT.md`. Phase 25: SQUID cannot be installed as packaged (the mypyc build fails), 84 of its 89 tests pass, none starts the parser, and `squid.compile` fails on every question because ACE has no `--extra-lexicon` option and SQUID cannot read ACE's output; 3 of 10 questions give correct SQL through the stages after the parser. Phase 26: a tolk back end on branch `tolk-backend` of the SQUID clone (commit ab9f34e, not pushed): 12 of 15 questions agree with tolk, the 3 that do not are one cause (absence is Unknown to tolk and false to a database).
+
+## Finish
+
+Every test and every dialogue rerun in both repositories.
+
+```
+tolk:   $ .venv/bin/pytest -q                                   746 passed, 1 xfailed in 26.95s
+        the nine repl dialogues of phases 10 to 21, byte for byte against the run before the audit, except phase 16, changed on purpose
+squid:  $ PYTHONPATH=/home/richarah/tolk:. pytest -q tests      5 failed, 103 passed   (the same 5 failed before any change; 84 passed before)
+        $ python scripts/differential_tolk.py                   15 questions, 3 disagreements
+```
+
+### Phase table
+
+| Phase | What | State |
+|---|---|---|
+| 0 to 8 | SPEC.md | built before this session |
+| 9 | eight debts | built; audit restored two deleted tests and the one-home join |
+| 10 to 15 | Describe, conditionals, negated questions, pronouns, numbers, coordination | built |
+| 16 | unknown words | built; acceptance now met by the class table and tagged input (audit 2B) |
+| 17 | public interface | built |
+| 18 to 21 | defaults, revision, time, claims | built |
+| 22 | comparatives | built, this session |
+| 23 | morphology of unknown words | built |
+| 24 | wording through the grammar | built; proofs keep the template wording (see below) |
+| 25 | SQUID report | written |
+| 26 | tolk back end for SQUID | built on a branch, not pushed |
+
+### Coverage (`scripts/coverage.py tests/sentences.txt tests/extra.txt tests/round1.txt tests/round2.txt`)
+
+Before (REVIEW.md, the start of SPEC2): `compiled 71 of 86 (82.6%)`. After: `compiled 125 of 149 (83.9%)`. The files grew with each phase's sentences, so the two denominators differ.
+
+### Refusal codes and what triggers each
+
+Final means the search for a reading ends there; reading means the next reading is tried only among readings tied on every measure (`lf.REFUSALS`).
+
+| Code | Class | Trigger |
+|---|---|---|
+| AMBIGUOUS_PRONOUN | final | the two most recent things that agree were mentioned in one sentence |
+| ARGUMENT_GAP | reading | an unexpressed argument before an expressed one |
+| CONTRADICTS | final | a told fact whose opposite is stored or derived at level 1 or 2 |
+| COORDINATION | final | an or in a statement; a group or an or in a rule; and with or in one list |
+| DEFINITE_MATCHES | final | a definite that matches none or several known things |
+| DEFINITE_NEEDS_STORE | final | a definite read with no store (`tolk.read`) |
+| DEMONSTRATIVE | reading | this, that, these, those as a demonstrative |
+| EMPTY_RULE_BODY | reading | a universal over a name, with nothing to range over |
+| FALLBACK_PARSE | reading | the grammar's `unknown` fallback for a word it did not analyse |
+| GRAMMAR_ARTIFACT | reading | the grammar's bookkeeping predicates (ellipsis, implied place, subordinator, appositive, id) |
+| IDENTITY_NOT_YET | final | the identity copula with a named complement and a non-name subject |
+| NEGATED_INDEFINITE | final | a negated clause in a rule body that introduces its own indefinite |
+| NEGATION_CYCLE | final | a rule set with a cycle through negation |
+| NO_ANTECEDENT | final | a third-person pronoun with nothing agreeing mentioned |
+| NO_EVENT_READING | final | no reading has a predicate on the sentence event |
+| SCOPE_AMBIGUOUS | final | every under negation |
+| TOO_MANY_ARGUMENTS | reading | a predication with more than three role arguments |
+| UNBOUND_VARIABLE | reading | a variable no quantifier binds |
+| UNCONSTRAINED_WANTED | reading | a wanted variable in no positive atom |
+| UNCONSUMED | reading | a predication, negation or quantified variable that no atom uses |
+| UNEXPRESSED_OBJECT, UNEXPRESSED_SUBJECT | reading | a preposition without its object; an event predicate without its subject |
+| UNIVERSAL_QUESTION | final | a question that asks for or counts things over every thing |
+| UNKNOWN_WORD | final | a word the grammar guessed that the store cannot hold (a past form, or no class that fits) |
+| UNSAFE_NEGATION | final | a negated body atom with an unbound variable, or no positive body atom |
+| UNSUPPORTED_ASPECT, UNSUPPORTED_TENSE | final | perfect or progressive; future, or past anywhere a past is not stored (inside a claim, a comparison, a subordinate clause) |
+| UNSUPPORTED_FORCE | final | anything but a statement or a question |
+| UNSUPPORTED_PREDICATE | final | modals, control verbs, durations, `pron` readings that cannot be used, a cardinal in a rule or two in a question, `comp_equal`, `_less_x_comp` and every other part-of-speech-x word, a measure, a claim in a rule or in a claim, an ordering in a rule, a superlative that is not "Who is the tallest?" |
+| UNSUPPORTED_QUANTIFIER | final | most, and any quantifier outside the table |
+| WH_BOUND_TO_CONSTANT | reading | a wh word that resolved to a name |
+
+### Built-in axioms (sentences whose text begins "[axiom]"; proofs say "by built-in axiom")
+
+- `before` is transitive; `before` is asymmetric; an event in an earlier year is before an event in a later year (made when the first ordering or year is told).
+- For each adjective compared: `comp:<adjective>` is transitive and asymmetric (made when the adjective is first compared).
+- For each split unknown word: for un and non, the word holding derives the base's negation and the base holding derives the word's negation; for er, being one gives the verb and doing the verb gives being one (made when the split is first told; able adds none).
+
+### Wording, generated against template
+
+Tier A derived facts: 9 in all, 5 generated and round-tripped, 4 from the template (`tests/test_phase24.py`). The proofs and answers that earlier dialogues print still use the template, because those dialogues are permanent tests; `Mind.word` gives the generated wording.
+
+### What I would do next
+
+1. Decide whether proofs should print the generated wording, which changes every earlier dialogue's proof text on purpose.
+2. Raise the parser's reading count past five, or give a sentence whose right reading is the sixth a better refusal; "If Rio hums, Pip hums." is the known case.
+3. Give an unknown word the benefit of the tagged parse when the untagged parse has no reading at all ("Every blorp flibbers.").
+4. Make the three narrow reading refusals unnecessary by finding a measure that separates the readings they separate; the table shows exactly which rows need them.
+5. Settle the open-world against closed-world question for the SQUID back end: either tolk tells negative facts for rows absent from a closed table, or the back end answers only questions both systems can answer.
+6. Report the SQUID findings to its owner: the `--extra-lexicon` option, the output parser, the failing build, the five failing tests.
