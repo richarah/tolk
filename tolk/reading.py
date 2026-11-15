@@ -1,12 +1,18 @@
 """Parse a sentence and choose its reading. The first five readings are tried; a refusal there with the parser's cap reached gets one
 wider parse, chosen by the same order, and the wider result stands only if it is not a refusal."""
 
+import re
+
 from tolk import compile as comp, erg, lf, sem, words
+
+UNDERSCORED = re.compile(r"\w*_\w*")  # the parser names such a word with an underscore its meaning structure cannot carry
 
 
 def read(known: set, tags: dict, text: str, lookup=None, history=None) -> tuple[list, int, lf.LF]:
     """(readings, index of the chosen one, what it compiles to). `known` is the predicates in the store, `tags` the classes of the words
     the caller remembers."""
+    if found := UNDERSCORED.search(text):
+        return [], 0, lf.Refusal("UNKNOWN_WORD", found.group(0))
     readings = [sem.read(p.mrs, p.lex) for p in words.parse(tags, text)]
     k, x = comp.choose(readings, known, lookup, history)
     names = words.lowercase_names(text, readings[k:k + 1])

@@ -195,3 +195,8 @@ glorb), and a word the morphology table already splits (unglorpy). tolk never re
 so POSSIBLE_TYPO is added to it. Known limit: a name one edit from an accepted word is refused once even if meant (that is the design); a word the grammar
 knows is never checked, so a typo that is another English word ("Tweet" for "Tweety"? 5 letters, name) passes only if it is a name the store lacks and no
 unique near word exists.
+
+## Found by the Spider run: underscores
+"List the section_name in reversed lexicographical order." raised MRSSyntaxError: PyDelphin cannot decode the grammar's predicate for a word with an
+underscore (`_section_name/NN_u_unknown`). A text with such a word is refused UNKNOWN_WORD, naming it, before parsing (`tolk/reading.py`); no error is raised.
+The word is not rewritten: a column name is not English.
