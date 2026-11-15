@@ -787,3 +787,22 @@ Fix (rule family, not the words): a small-letter word the chosen reading takes f
 Workflow `.github/workflows/tests.yml` (push and pull request): checkout, Python 3.12, cache of `erg/` keyed on `scripts/setup_erg.sh`, `sh scripts/setup_erg.sh`, `pip install -e '.[test]'`, `python -m pytest -q`.
 Branch `housekeeping` pushed to origin (https://github.com/richarah/tolk.git, read with `git remote -v`); main not pushed.
 Run 43718826041 on commit 134d1e8: **success**, `789 passed in 18.46s`, https://github.com/richarah/tolk/actions/runs/43718826041. First run, no workflow fix needed. (It also warns that Node 20 actions are deprecated.)
+
+## Housekeeping, items 1 to 6, and the Finish prompt, parts 1 to 4
+Items done in order, each committed: licence; CI (run 43718826041, success, 789 passed); SQUID's dependency on tolk's git address (clean install, its suite run); Spider
+development set run (0 of 1034 produced SQL; output saved in the SQUID repository, `benchmarks/`); describing a kind (`DescribeKind`, ten own-word cases); spelling
+(`POSSIBLE_TYPO`, ten own-word cases). Finish prompt: wider search, closed world (with negation as failure), the ten invented words, content-word scan, the three codes
+(kept), clause and, wording; SQUID packaging, tolk path default with the old pipeline in `squid/legacy.py`, vocabulary through tagged input, the five failing tests (all legacy), differential
+test (15 of 15 with the closed world), README. Two verification rounds: `VERIFY.md`; open items are in `STATUS.md`.
+
+## Final run from clean clones (2026-11-15)
+tolk: `git clone -b housekeeping` at c4d4fee, `sh scripts/setup_erg.sh`, `uv pip install -e '.[test]'`, `python -m pytest -q`:
+```
+...................................................                      [100%]
+843 passed in 43.80s
+```
+SQUID: `git clone -b tolk-backend` at 79e263f (not pushed), `uv pip install -e '.[dev]'` (tolk from its git address), `TOLK_ERG_DIR=<tolk clone>/erg python -m pytest -q tests`:
+```
+..............................................                           [100%]
+113 passed, 5 xfailed in 2.89s
+```
