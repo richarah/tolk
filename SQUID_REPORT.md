@@ -73,3 +73,23 @@ Three of ten give correct SQL, all three are "how many X are there" over one tab
 ## What this means for phase 26
 
 SQUID's entry point does not run against any ACE and grammar this session could get, so SQUID's existing pipeline cannot be the behaviour to preserve: there is none to preserve beyond its unit tests (84 passing, which phase 26 must keep passing). The compiler stage and the linker work on DMRS from a different parser. The schema linking is reusable (`link` takes a DMRS and a schema, and does not need the parser). The SQL back end phase 26 asks for takes tolk's logical forms, not DMRS, so it does not depend on the compiler's join logic, which the table above shows to be wrong for every multi-table question.
+
+## Phase 26: the back end
+
+Branch `tolk-backend` in `/home/richarah/squid`, commit ab9f34e, not pushed. Three files added, nothing else changed; the old pipeline and its entry point are as they were.
+
+- `squid/tolk_backend.py`: `to_sql(logical_form, schema)` turns a tolk `Ask` or `Describe` into SQL with sqlglot; `predicates(schema)` gives the set to pass to `tolk.read` as `known_predicates`. A statement, rule, claim, comparison, universal question or any predicate the schema lacks gives a tolk `Refusal`. The mapping from predicate to table is SQUID's `linker.match_table` (reused, not rewritten); the relation shape (a table with two or more foreign keys, its first foreign key the subject) and the choice of column for each role are new, since SQUID's linker works on DMRS and links only words to tables and columns. A role that more than one column could fill (a name that might be a dog or a cat) gives the union over each column.
+- `scripts/differential_tolk.py` and `tests/test_tolk_backend.py`: the differential test. Seventeen rows were told to tolk as nineteen sentences ("Kim is a person.", "Kim owns Rex." and so on, generated from the rows), and fifteen questions asked of both.
+- SQUID's own tests: 84 passed, 5 failed before and after (the same five, listed above). With tolk on the path the new file adds 19 passing tests (103 passed). Without tolk the new file is skipped at collection (`importorskip`), because tolk is not a dependency of SQUID.
+
+Result: **12 of 15 agree. 3 disagree, and all three are one cause.**
+
+| Question | tolk | rows |
+|---|---|---|
+| Does Kim own Fido? | Unknown | none |
+| Does Kim not own Fido? | Unknown | one |
+| Which dogs does Kim not own? | Unknown | Fido, Spot |
+
+tolk never answers No from the absence of a fact (SPEC.md: "Absence of a fact is Unknown, never No"); a database reads the absence of a row as false. Neither is a bug: the two systems hold different assumptions, and a question with no stored answer or a negation over a missing row has no answer both can give. The twelve that agree are the three counts and the who and which questions, and the three yes-or-no questions and the one negated question whose rows exist. "Does Kim not own Rex?" agrees: tolk says No (the fact is told), the query returns no rows.
+
+Found on the way: tolk reads "How many dogs are there?" as a refusal (`GRAMMAR_ARTIFACT: place_n`), so it is not among the fifteen; SQUID's own pipeline cannot take the same sentence in either case (above).
