@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from tolk import engine, lf
 from tolk.lf import Atom, Var
 
-YES, NO, UNKNOWN, CONFLICT = "Yes", "No", "Unknown", "Conflict"
+YES, NO, UNKNOWN, CONFLICT, NOTHING = "Yes", "No", "Unknown", "Conflict", "Nothing"
 # For Conflict, proofs holds the positive proof set, then the negative one.
 
 
@@ -38,6 +38,13 @@ def answer(db: sqlite3.Connection, q: lf.Ask, ctx: str = "world") -> Answer:
     if q.alternatives:
         return _any(q, [_widening(db, dataclasses.replace(q, body=alt, alternatives=()), ctx) for alt in q.alternatives])
     return _widening(db, q, ctx)
+
+
+def close_world(a: Answer, q: lf.Ask) -> Answer:
+    """With the world closed, what no fact supports is not so: a yes or no question is No, and a question for things finds none."""
+    if a.value != UNKNOWN:
+        return a
+    return Answer(NOTHING if q.wanted and q.count is None else NO, (), ())
 
 
 def _any(q: lf.Ask, parts: list[Answer]) -> Answer:

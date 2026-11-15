@@ -4,12 +4,12 @@ import dataclasses
 import re
 from dataclasses import dataclass
 
-from tolk import compile as comp, comparison, defaults, diagnosis, engine, generate, history, lf, morph, negation, ordering, proposals, reading, report, say, store, words
+from tolk import compile as comp, comparison, defaults, diagnosis, engine, forget, generate, history, lf, morph, negation, ordering, proposals, reading, report, say, settings, store, words
 from tolk.diagnosis import Diagnosis
 from tolk.rules import claims
 from tolk.rules.comparatives import PREFIX
 from tolk.proposals import Proposal
-from tolk.ask import Answer, answer, prove
+from tolk.ask import Answer, answer, close_world, prove
 from tolk.lf import Atom, Var
 
 
@@ -28,10 +28,13 @@ class Result:
 
 
 class Mind:
-    def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",), auto_revise: bool = False) -> None:
+    def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",), auto_revise: bool = False, closed_world: bool = False,
+                 wording: str = "template") -> None:
         self.db = store.open_store(path)
         self.set_policy(policy)
         self.db.execute("INSERT INTO meta(key, value) VALUES ('auto_revise', ?)", (str(int(auto_revise)),))
+        settings.put(self.db, "closed_world", str(int(closed_world)))
+        settings.put(self.db, "wording", wording)
         self.ctx = "world"  # the current context: "world", or a supposition's name
         self._suppositions = 0
         self._ran: list[tuple[int, int | None]] = []
@@ -54,6 +57,20 @@ class Mind:
     @property
     def auto_revise(self) -> bool:
         return self.db.execute("SELECT value FROM meta WHERE key = 'auto_revise'").fetchone()[0] == "1"
+
+    @property
+    def closed_world(self) -> bool:
+        return settings.get(self.db, "closed_world") == "1"
+
+    def set_closed_world(self, on: bool) -> None:
+        settings.put(self.db, "closed_world", str(int(on)))
+
+    @property
+    def wording(self) -> str:
+        return settings.get(self.db, "wording")
+
+    def set_wording(self, value: str) -> None:
+        settings.put(self.db, "wording", value)
 
     def hear(self, text: str, trust: int = 0, observation: bool = False) -> Result:
         with self.db:  # an error part way through rolls the whole sentence back, so a bug cannot store half a rule
@@ -97,17 +114,7 @@ class Mind:
         return diagnosis.diagnose(self.db)
 
     def _forget(self, target: str) -> Result:
-        readings, k, x = self._read(target)
-        head = (k + 1, len(readings), lf.show(x))
-        if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every, lf.Extreme)):
-            return Result(*head, outcome="refused: only a statement can be forgotten")
-        found = history.latest_told(self.db, lf.show(x), self.ctx)
-        if found is None:
-            return Result(*head, outcome="nothing that was told means that")
-        if self.db.execute("SELECT 1 FROM merge WHERE sentence = ?", (found[0],)).fetchone():
-            return Result(*head, outcome="refused: an identity cannot be forgotten")
-        self._retract(found[0], f'forget that {target}')
-        return Result(*head, outcome=f'forgot "{found[1]}"')
+        return forget.forget(self, target, Result)
 
     def _read(self, text: str) -> tuple[list, int, lf.LF]:
         return reading.read(self.db, text, self._lookup, self._history)
@@ -127,6 +134,7 @@ class Mind:
         if isinstance(x, lf.Ask):
             x = report.bind_claims(self.db, x) if x.claims else x
             a = x if isinstance(x, Answer) else answer(self.db, x, self.ctx)
+            a = close_world(a, x) if self.closed_world else a
             return Result(*head, outcome=report.answer_text(self.db, a), answer=a)
         if isinstance(x, lf.Every):
             value, by_default = defaults.universal(self.db, x, self.policy)
@@ -134,6 +142,7 @@ class Mind:
             return Result(*head, outcome=value + (", by default" if by_default and value != "Unknown" else ""), answer=a)
         if isinstance(x, lf.Extreme):
             a = comparison.extreme(self.db, self.ctx, x.pred)
+            a = close_world(a, lf.Ask((), ("x",))) if self.closed_world else a
             return Result(*head, outcome=report.extreme_text(self.db, a), answer=a)
         if isinstance(x, lf.Describe):
             return Result(*head, outcome=report.describe(self.db, self.ctx, x.entity.id))

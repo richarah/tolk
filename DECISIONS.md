@@ -108,3 +108,9 @@ readings after them are compiled, and any refusal passes the tie on. My first ve
 that stored "Kim owns more than two cats." through a reading that was already among the first five and had been declined as final.
 The wide result stands only if it is not a refusal. `tests/choice_table.json` is unchanged. `tests/test_generalise.py` no longer lists
 "If Rio hums, Pip hums." as refused: the item names it. Wide fixtures: `tests/fixtures/wide/`, recorded by `record.py --wide tests/wide.txt`.
+
+## Finish, item 2: closed world
+`Mind(closed_world=...)`, kept in meta (`tolk/settings.py`, which also holds `wording`). Default off; no earlier test changed. On: a yes/no
+question that would be Unknown is No (no proof), a question for things that would be Unknown answers "Nothing" with no solutions, the
+extreme question likewise. A Conflict stays a Conflict. "Is every X a Y?" is left alone: with no X known it is vacuously true, and
+turning that into No would be wrong. Repl: TOLK_CLOSED_WORLD=1.

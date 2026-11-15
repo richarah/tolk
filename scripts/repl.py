@@ -27,10 +27,12 @@ def run(lines: Iterable[str], mind: Mind, out: TextIO, err: TextIO) -> None:
 
 
 def main() -> None:
-    # The repl is the only place that reads the environment. TOLK_POLICY is a comma-separated list from specific, trusted, recent; TOLK_AUTO_REVISE is 0 or 1.
+    # The repl is the only place that reads the environment. TOLK_POLICY is a comma-separated list from specific, trusted, recent; TOLK_AUTO_REVISE, TOLK_CLOSED_WORLD are 0 or 1; TOLK_WORDING is template or generated.
     policy = tuple(p for p in os.environ.get("TOLK_POLICY", "specific").split(",") if p)
     revise = os.environ.get("TOLK_AUTO_REVISE", "0") == "1"
-    run(sys.stdin, Mind(policy=policy, auto_revise=revise), sys.stdout, sys.stderr)
+    mind = Mind(policy=policy, auto_revise=revise, closed_world=os.environ.get("TOLK_CLOSED_WORLD", "0") == "1",
+                wording=os.environ.get("TOLK_WORDING", "template"))
+    run(sys.stdin, mind, sys.stdout, sys.stderr)
     erg.close()
 
 
