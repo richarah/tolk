@@ -12,7 +12,6 @@ from tolk.proposals import Proposal
 from tolk.ask import Answer, prove
 from tolk.lf import Atom, Var
 
-
 # A sentence told as an observation has this trust, the highest, and is never a candidate for removal.
 OBSERVED = 1_000_000
 FORGET = re.compile(r"forget that (.+?)\.?", re.IGNORECASE)
