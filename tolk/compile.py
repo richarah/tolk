@@ -65,6 +65,9 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         described = describe.entity(r, main, bound, const)
         if described is not None:
             return lf.Describe(Const(described))
+        asked_kind = describe.kind(r, main)
+        if asked_kind is not None:
+            return lf.DescribeKind(asked_kind) if isinstance(asked_kind, str) else asked_kind
     for ep in main:
         if copula.is_copula(ep) and ep.args["ARG1"] in const and ep.args["ARG2"] in const and sf == "prop":
             return lf.Same(Const(const[ep.args["ARG1"]], "named"), Const(const[ep.args["ARG2"]], "named"))

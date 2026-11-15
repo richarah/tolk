@@ -1,0 +1,685 @@
+{
+  "text": "I love Veronika.",
+  "readings": [
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]  [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _love_v_1<2:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<7:16> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]  [ named<7:16> LBL: h12 CARG: \"Veronika\" ARG0: x8 ] > HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h12 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pron",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_love_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "x8"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h9",
+            "args": {
+              "ARG0": "x8",
+              "RSTR": "h10",
+              "BODY": "h11"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h12",
+            "args": {
+              "CARG": "Veronika",
+              "ARG0": "x8"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h10": "h12"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "1",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h6": {},
+          "h7": {},
+          "x8": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h10": {},
+          "h11": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h12": {},
+          "h5": {},
+          "h9": {}
+        }
+      },
+      "lexical": [
+        [
+          "i",
+          0,
+          1
+        ],
+        [
+          "love_v1",
+          2,
+          6
+        ],
+        [
+          "generic_proper_ne",
+          7,
+          16
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]  [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]  [ _love_v_1<2:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ]  [ unknown<7:16> LBL: h9 ARG0: e10 [ e SF: prop ] ARG: x11 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<7:16> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]  [ named<7:16> LBL: h15 CARG: \"Veronika\" ARG0: x11 ] > HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h9 h13 qeq h15 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "pron",
+            "label": "h4",
+            "args": {
+              "ARG0": "x3"
+            }
+          },
+          {
+            "pred": "pronoun_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x3",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "_love_v_1",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG1": "x3",
+              "ARG2": "h8"
+            }
+          },
+          {
+            "pred": "unknown",
+            "label": "h9",
+            "args": {
+              "ARG0": "e10",
+              "ARG": "x11"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h12",
+            "args": {
+              "ARG0": "x11",
+              "RSTR": "h13",
+              "BODY": "h14"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h15",
+            "args": {
+              "CARG": "Veronika",
+              "ARG0": "x11"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h4",
+          "h8": "h9",
+          "h13": "h15"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop",
+            "TENSE": "pres",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x3": {
+            "PERS": "1",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "std"
+          },
+          "h6": {},
+          "h7": {},
+          "h8": {},
+          "e10": {
+            "SF": "prop"
+          },
+          "x11": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h13": {},
+          "h14": {},
+          "h0": {},
+          "h1": {},
+          "h4": {},
+          "h9": {},
+          "h15": {},
+          "h5": {},
+          "h12": {}
+        }
+      },
+      "lexical": [
+        [
+          "i",
+          0,
+          1
+        ],
+        [
+          "love_v4",
+          2,
+          6
+        ],
+        [
+          "generic_proper_ne",
+          7,
+          16
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:16> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ proper_q<0:16> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ compound<0:16> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg PT: notpro ] ]  [ udef_q<0:6> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]  [ compound<0:6> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: sg IND: + PT: notpro ] ]  [ proper_q<0:1> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]  [ named<0:1> LBL: h20 CARG: \"I\" ARG0: x16 ]  [ _love_n_of-for<2:6> LBL: h14 ARG0: x10 ARG1: i22 ]  [ named<7:16> LBL: h8 CARG: \"Veronika\" ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e9",
+              "ARG1": "x4",
+              "ARG2": "x10"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h11",
+            "args": {
+              "ARG0": "x10",
+              "RSTR": "h12",
+              "BODY": "h13"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h14",
+            "args": {
+              "ARG0": "e15",
+              "ARG1": "x10",
+              "ARG2": "x16"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h17",
+            "args": {
+              "ARG0": "x16",
+              "RSTR": "h18",
+              "BODY": "h19"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h20",
+            "args": {
+              "CARG": "I",
+              "ARG0": "x16"
+            }
+          },
+          {
+            "pred": "_love_n_of-for",
+            "label": "h14",
+            "args": {
+              "ARG0": "x10",
+              "ARG1": "i22"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Veronika",
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h12": "h14",
+          "h18": "h20"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e9": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x10": {
+            "PERS": "3",
+            "NUM": "sg",
+            "PT": "notpro"
+          },
+          "h12": {},
+          "h13": {},
+          "e15": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x16": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+",
+            "PT": "notpro"
+          },
+          "h18": {},
+          "h19": {},
+          "i22": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h14": {},
+          "h20": {},
+          "h5": {},
+          "h11": {},
+          "h17": {}
+        }
+      },
+      "lexical": [
+        [
+          "i_pn_np1",
+          0,
+          1
+        ],
+        [
+          "love_n2",
+          2,
+          6
+        ],
+        [
+          "generic_proper_ne",
+          7,
+          16
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:16> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]  [ udef_q<0:1> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]  [ card<0:1> LBL: h8 CARG: \"I\" ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ]  [ compound<2:16> LBL: h8 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x12 [ x PERS: 3 NUM: sg PT: notpro ] ]  [ udef_q<2:6> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]  [ _love_n_of-for<2:6> LBL: h16 ARG0: x12 ARG1: i17 ]  [ named<7:16> LBL: h8 CARG: \"Veronika\" ARG0: x4 ] > HCONS: < h0 qeq h1 h6 qeq h8 h14 qeq h16 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h5",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h6",
+              "BODY": "h7"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h8",
+            "args": {
+              "CARG": "I",
+              "ARG0": "e10",
+              "ARG1": "x4"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h8",
+            "args": {
+              "ARG0": "e11",
+              "ARG1": "x4",
+              "ARG2": "x12"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x12",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "_love_n_of-for",
+            "label": "h16",
+            "args": {
+              "ARG0": "x12",
+              "ARG1": "i17"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h8",
+            "args": {
+              "CARG": "Veronika",
+              "ARG0": "x4"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h6": "h8",
+          "h14": "h16"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h6": {},
+          "h7": {},
+          "e10": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "e11": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x12": {
+            "PERS": "3",
+            "NUM": "sg",
+            "PT": "notpro"
+          },
+          "h14": {},
+          "h15": {},
+          "i17": {},
+          "h0": {},
+          "h1": {},
+          "h8": {},
+          "h16": {},
+          "h5": {},
+          "h13": {}
+        }
+      },
+      "lexical": [
+        [
+          "one_roman",
+          0,
+          1
+        ],
+        [
+          "love_n2",
+          2,
+          6
+        ],
+        [
+          "generic_proper_ne",
+          7,
+          16
+        ]
+      ]
+    },
+    {
+      "simplemrs": "[ LTOP: h0 INDEX: e2 [ e SF: prop ] RELS: < [ unknown<0:16> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]  [ appos<0:16> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]  [ generic_entity<0:1> LBL: h7 ARG0: x4 ]  [ udef_q<0:1> LBL: h8 ARG0: x4 RSTR: h9 BODY: h10 ]  [ card<0:1> LBL: h7 CARG: \"I\" ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x4 ]  [ proper_q<2:16> LBL: h13 ARG0: x6 RSTR: h14 BODY: h15 ]  [ compound<2:16> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x18 [ x PERS: 3 NUM: sg PT: notpro ] ]  [ udef_q<2:6> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]  [ _love_n_of-for<2:6> LBL: h22 ARG0: x18 ARG1: i23 ]  [ named<7:16> LBL: h16 CARG: \"Veronika\" ARG0: x6 ] > HCONS: < h0 qeq h1 h9 qeq h7 h14 qeq h16 h20 qeq h22 > ICONS: < > ]",
+      "neutral": {
+        "top": "h0",
+        "index": "e2",
+        "eps": [
+          {
+            "pred": "unknown",
+            "label": "h1",
+            "args": {
+              "ARG0": "e2",
+              "ARG": "x4"
+            }
+          },
+          {
+            "pred": "appos",
+            "label": "h1",
+            "args": {
+              "ARG0": "e5",
+              "ARG1": "x4",
+              "ARG2": "x6"
+            }
+          },
+          {
+            "pred": "generic_entity",
+            "label": "h7",
+            "args": {
+              "ARG0": "x4"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h8",
+            "args": {
+              "ARG0": "x4",
+              "RSTR": "h9",
+              "BODY": "h10"
+            }
+          },
+          {
+            "pred": "card",
+            "label": "h7",
+            "args": {
+              "CARG": "I",
+              "ARG0": "e12",
+              "ARG1": "x4"
+            }
+          },
+          {
+            "pred": "proper_q",
+            "label": "h13",
+            "args": {
+              "ARG0": "x6",
+              "RSTR": "h14",
+              "BODY": "h15"
+            }
+          },
+          {
+            "pred": "compound",
+            "label": "h16",
+            "args": {
+              "ARG0": "e17",
+              "ARG1": "x6",
+              "ARG2": "x18"
+            }
+          },
+          {
+            "pred": "udef_q",
+            "label": "h19",
+            "args": {
+              "ARG0": "x18",
+              "RSTR": "h20",
+              "BODY": "h21"
+            }
+          },
+          {
+            "pred": "_love_n_of-for",
+            "label": "h22",
+            "args": {
+              "ARG0": "x18",
+              "ARG1": "i23"
+            }
+          },
+          {
+            "pred": "named",
+            "label": "h16",
+            "args": {
+              "CARG": "Veronika",
+              "ARG0": "x6"
+            }
+          }
+        ],
+        "qeq": {
+          "h0": "h1",
+          "h9": "h7",
+          "h14": "h16",
+          "h20": "h22"
+        },
+        "props": {
+          "e2": {
+            "SF": "prop"
+          },
+          "x4": {
+            "PERS": "3",
+            "NUM": "sg"
+          },
+          "e5": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x6": {
+            "PERS": "3",
+            "NUM": "sg",
+            "IND": "+"
+          },
+          "h9": {},
+          "h10": {},
+          "e12": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative"
+          },
+          "h14": {},
+          "h15": {},
+          "e17": {
+            "SF": "prop",
+            "TENSE": "untensed",
+            "MOOD": "indicative",
+            "PROG": "-",
+            "PERF": "-"
+          },
+          "x18": {
+            "PERS": "3",
+            "NUM": "sg",
+            "PT": "notpro"
+          },
+          "h20": {},
+          "h21": {},
+          "i23": {},
+          "h0": {},
+          "h1": {},
+          "h7": {},
+          "h16": {},
+          "h22": {},
+          "h8": {},
+          "h13": {},
+          "h19": {}
+        }
+      },
+      "lexical": [
+        [
+          "one_roman",
+          0,
+          1
+        ],
+        [
+          "love_n2",
+          2,
+          6
+        ],
+        [
+          "generic_proper_ne",
+          7,
+          16
+        ]
+      ]
+    }
+  ]
+}

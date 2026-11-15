@@ -1,6 +1,6 @@
 """What a Mind answers to a sentence that asks: a question, a question about every thing, the extreme, a description."""
 
-from tolk import comparison, defaults, lf, report
+from tolk import comparison, defaults, kinds, lf, report
 from tolk.ask import Answer, answer
 from tolk.closed import answer_closed, close_world
 
@@ -21,4 +21,6 @@ def answer_to(mind, x: lf.LF, head: tuple, result):
         return result(*head, outcome=report.extreme_text(mind.db, a), answer=a)
     if isinstance(x, lf.Describe):
         return result(*head, outcome=report.describe(mind.db, mind.ctx, x.entity.id))
+    if isinstance(x, lf.DescribeKind):
+        return result(*head, outcome=kinds.describe(mind.db, mind.ctx, x.pred))
     return None

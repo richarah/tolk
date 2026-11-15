@@ -7,7 +7,7 @@ def forget(mind, target: str, result):
     """`result` is the Result class of the mind; it is passed in so this module does not import mind."""
     readings, k, x = mind._read(target)
     head = (k + 1, len(readings), lf.show(x))
-    if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.Every, lf.Extreme)):
+    if isinstance(x, (lf.Refusal, lf.Ask, lf.Describe, lf.DescribeKind, lf.Every, lf.Extreme)):
         return result(*head, outcome="refused: only a statement can be forgotten")
     found = history.latest_told(mind.db, lf.show(x), mind.ctx)
     if found is None:

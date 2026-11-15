@@ -1,0 +1,28 @@
+# Item 5, own-word cases.
+Every zorp is a wug.
+Pip is a zorp.
+What is a zorp?
+What are wugs?
+What is a quux?
+Pip flibbers.
+What is a flibber?
+Pip is mimsy.
+What is a mimsy?
+Dogs bark.
+Every dog is an animal.
+What are dogs?
+What is a dog?
+No cat barks.
+What is a cat?
+Ada is a zorp.
+Bo is a zorp.
+Cy is a zorp.
+Di is a zorp.
+Ed is a zorp.
+Flo is a zorp.
+Gus is a zorp.
+Hal is a zorp.
+Ian is a zorp.
+Jo is a zorp.
+Lou is a zorp.
+Forget that every dog is an animal.

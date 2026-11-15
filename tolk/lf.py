@@ -103,6 +103,11 @@ class Describe:
 
 
 @dataclass(frozen=True)
+class DescribeKind:
+    pred: str  # What is a fish? What is fish? What are birds?: the predicate of the noun asked about
+
+
+@dataclass(frozen=True)
 class Extreme:
     pred: str  # the adjective a superlative question is about: Who is the tallest?
 
@@ -113,7 +118,7 @@ class Refusal:
     detail: str
 
 
-LF = Tell | Rule | Ask | Every | Same | Describe | Extreme | Refusal
+LF = Tell | Rule | Ask | Every | Same | Describe | DescribeKind | Extreme | Refusal
 
 # The one home of refusal codes. "final": the sentence was understood and the store cannot hold what it means,
 # so the reading search ends. "reading": this reading is unusable, so the next one is tried.
@@ -153,6 +158,8 @@ def _show(x: LF) -> str:
         return f"{'same':<6} {x.a.id} = {x.b.id}"
     if isinstance(x, Describe):
         return f"describe {x.entity.id}"
+    if isinstance(x, DescribeKind):
+        return f"describe kind {x.pred}"
     if isinstance(x, Extreme):
         return f"extreme {x.pred}"
     names = _namer(x)

@@ -172,3 +172,14 @@ The differential test found tolk wrong, not SQUID: with the world closed, "Does 
 the negation holds. Negation as failure now (`tolk/closed.py`): a negated atom holds when no positive fact matches it, for yes/no and for
 wh questions ("Which dogs does Kim not own?"). A told negative fact or a positive fact still answers as before. Item 2's sentence "a yes or
 no question with no supporting fact is No" holds for positive questions; for negated ones the support is the absence.
+
+## Housekeeping item 5: describing a kind
+`lf.DescribeKind(pred)`, printed `describe kind _fish_n_1`: the copula between `which_q` over `thing` (What, not Who: "Who is a bird?" still asks for the birds)
+and a noun with an indefinite or no determiner (`rules/describe.py: kind`). "What is the robin?" stays a definite. `tolk/kinds.py` answers:
+`Rules:` (each rule that mentions the predicate, by its source sentence, defaults marked "(default)"), `Known: n: ...` (the things with a positive fact
+of that predicate, derived ones included, ten at most; for a verb or adjective the told facts), `Facts about it:` (facts about an entity named like the
+word). Each part is left out when empty. A word with no predicate in the class asked is looked up by lemma in the other classes (noun, verb,
+adjective in that order), used for this description only, and shown as "(widened: love (noun) matched as love (verb))". Nothing stored by it, no rule
+or other question uses it. No predicate in any class: Unknown. Not exported from `tolk/__init__.py` (the public-names test lists the exports).
+Found on the way, not fixed: "Kay is a zorp." is refused UNKNOWN_WORD because the grammar has Kay as `okay`, and the generic name loses
+on the generic-entry measure to a reading that is then refused as final. The same class of name ("Kay") in the own-word cases was replaced by "Lou".
