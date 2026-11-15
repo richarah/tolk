@@ -18,3 +18,11 @@ def test_10_a_relative_clause_with_not_is_never_stored_as_a_rule_with_a_conjunct
 def test_6_if_read_as_a_preposition_does_not_end_the_search_for_the_reading_where_it_is_a_conjunction(text: str, rule: str) -> None:
     r = Mind().hear(text)
     assert r.printed == rule and r.outcome == "rule stored"
+
+
+@pytest.mark.parametrize("text, want", [
+    ("Ola and Mina are teachers.", "tell   _teacher_n_of(ola)\ntell   _teacher_n_of(mina)"),
+    ("Ola and Mina are otters.", "tell   _otter_n_1(ola)\ntell   _otter_n_1(mina)"),
+])
+def test_7_a_group_subject_with_a_noun_complement_is_two_facts(text: str, want: str) -> None:
+    assert Mind().hear(text).printed == want

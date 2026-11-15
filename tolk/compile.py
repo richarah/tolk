@@ -164,7 +164,7 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
                          alternatives=tuple(alts) if len(alts) > 1 else ())
     probe = lf.Ask(tuple(a for alt in out.alternatives for a in alt), out.wanted) if isinstance(out, lf.Ask) and out.alternatives else out
     groups = {c.group for c in conjs if c.nominal}
-    unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1]) and q.args["ARG0"] not in groups], probe, mode)
+    unconsumed = check.unconsumed(ctx, [q for q in quants if not (many and q.args["ARG0"] == many[1]) and q.args["ARG0"] not in groups and alias.get(q.args["ARG0"]) not in groups], probe, mode)
     if unconsumed:
         return unconsumed
     if isinstance(out, (lf.Tell, lf.Rule)):
