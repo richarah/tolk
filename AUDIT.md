@@ -112,3 +112,41 @@ Severity first. A finding has a fix in Part 2 unless stated.
 - **F9. Clause-and.** Phase 15's list names names, noun phrases and verb phrases. "Rio hums and Ada sings." (two clauses) was moved from refused to stored on the strength of the section's first sentence. A reading of SPEC2, not a violation; noted.
 - **F10. "Is Lee happy or Kim happy?"** is refused `UNCONSUMED`, while "Is Lee happy or is Kim happy?" and "Is Kim happy or sad?" are answered. A grammar elision shape not handled. Not fixed; no SPEC2 sentence requires it.
 - **F11. Phase 16 stores a pseudo-predicate shape and widens by part of speech.** DECISIONS.md documents it. Part 2B tests whether the parser can take part-of-speech tags instead.
+
+## Part 2: what was fixed
+
+Each item was committed on its own. A caveat on method: for 2A and 2B the failing test came with, not before, the code that makes it pass (the table test needs the table, which needs the code); the acceptance test for 2B did fail first (`tests/test_unknown_words.py`, at "Tweety flibbers." stored).
+
+- **F4** fixed: both deleted tests restored (`test_negation.py`); the `Fish do not fly.` one now expects `default`, which phase 18 authorises. Both passed on restoring.
+- **F7** fixed: `tests/test_review.py::test_the_join_that_pairs_a_fact_with_its_opposite_has_one_home` failed first; the join now lives in `engine.CLASH` and `defaults` uses it. The single-atom lookup in `store._opposite` is a different query that applies the same rule to one ground atom; it stays and is noted, not counted as a duplicate.
+- **F5** partly fixed: the lemma scan now reads code only (`code_words`, with a test that a comment and a docstring are ignored). The `"i"` exemption stays. The scan still covers only the lemmas of `tests/sentences.txt`; widening it to every fixture's lemmas finds only function words and Python names (section 7), so it is left alone. The `if`/`before`/`after` keys are left as a judgement call.
+- **F6** fixed (2C): `wc -l` now gives `compile.py` 220, `mind.py` 230, `store.py` 246, `engine.py` 198, `lf.py` 250. Pure moves into `rules/post.py`, `negation.py`, `ordering.py`, `history.py`, `report.py`, `proposals.py`, `diagnosis.py`. Suite output identical (the same 651 passed, 1 xfailed that preceded it), the nine dialogues rerun through the repl unchanged, and every (sentence, store) choice unchanged.
+- **F2 corrected.** My first reading, that it was a reading-choice failure, was wrong. "If Rio hums, Pip hums." is refused because the parser returns five readings and the one that is the sentence is the sixth (`ace -n 30` shows it at rank 6). No order of the four criteria can pick a reading that is not there. Not fixed: raising the parser's reading count would change every `reading k of n` and is a decision for the owner. The refusal stays correct as a refusal, though its code (`UNCONSUMED`) is not informative. `test_generalise.REFUSED` therefore stays as it is.
+
+### 2A: reading choice
+
+The three narrow refusal codes added to steer the choice: `FALLBACK_PARSE`, `GRAMMAR_ARTIFACT`, `DEMONSTRATIVE`. None is added now.
+
+The table is `tests/choice_table.json` (70 rows), built by `scripts/choice_table.py` from the fixtures and from the 473 (sentence, store) contexts the dialogue tests choose in (`tests/choice_contexts.json`, recorded by `--record`). It is a test (`tests/test_choice_table.py`, 131 cases). 150 sentences the dialogue tests give to `Mind` were in no sentence file; they are in `tests/choice.txt` and have recorded fixtures. Per reading it lists parser rank, generic-entry count, store overlap, swallowed-word count and whether it compiles, refuses or "cannot be read" (not eventive).
+
+The order that fits every row: **generic entries, store overlap, swallowed words, parser rank**, with compile used only among readings tied on all three. Checked against the earlier compile-first choice on all 716 (sentence, store) pairs: identical choice and identical logical form in every one. Orders tried, with the number of pairs that differ from the earlier choice:
+
+| order | tie among equals decided by | pairs wrong |
+|---|---|---|
+| generic, overlap, swallowed (chosen) | compile, reading refusals passed on | 0 |
+| overlap, generic, swallowed; overlap, swallowed, generic | compile | 0 |
+| generic, swallowed, overlap (the one the task started from) | compile | 1: "Sam works in Paris." with the particle verb stored; that reading swallows "in" |
+| swallowed first, any order | compile | 1 (same) |
+| generic, overlap, swallowed | parser rank alone | 11, all in rows the table marks "refusal passed the tie" |
+
+So no row fails under the chosen order. Two things the table makes visible: the three narrow codes each still decide a tie at an empty store (`FALLBACK_PARSE` 2 rows, `GRAMMAR_ARTIFACT` 2, `DEMONSTRATIVE` 1, `UNCONSTRAINED_WANTED` 3; each fails if made final), so they stay; and `EMPTY_RULE_BODY`, `UNCONSUMED`, `ARGUMENT_GAP` now decide no row, so they are dead weight but harmless.
+
+Measures, defined from the parser's output alone: "generic" uses the lexical entries of the parser's derivation (a new field in each fixture, additive; `erg.parse` now returns them); the earlier attempt from the predications alone was wrong, because the grammar's real entry for the name "Sandy" also gives `named`. The identity copula is not counted as a content word for the swallowed measure (without that "Who is calm?" in an empty store changed).
+
+### 2B: unknown words
+
+- The option exists: ACE's `-y` (tagged, pre-tokenised input). It is not in the ACE web documentation (`options.wiki` lists no `-y`; the manual page says only "built-in part-of-speech tagging and unknown word handling"). Its only description is the binary's own message, "provide input pre-tokenized in YY format (-y)", and the form `(id, from, to, <chars>, 1, "form", 0, "null", "TAG" 1.0 ...)`, found by experiment. Fixtures: `tests/tagged.txt`, `tests/fixtures/tagged/`, `tests/test_tagged.py`.
+- It works, but is not a drop-in replacement: for all 417 fixture sentences, tagged input with capitalised words as proper nouns gave the same readings as the parser's own tokenizer for 315 and different ones for 102. So it is used only for a sentence that uses a remembered word, and a first use that fails.
+- A `word(lemma, pos, sentence)` table keeps each class of an unknown word from its first accepted statement. A later sentence with that word (the lemma, or the lemma with a plural or third-person s) is parsed again with the class as the tag. A sentence refused for an unknown word is parsed once more with every tag that fits the word's ending offered. Offering a verb tag for a word ending in "ed" or "ing" stored "Tweety flibbered." as a present-tense verb of a lemma "flibbered"; the test for that failed, the tags now have to fit the ending, and the sentence is refused `UNKNOWN_WORD`.
+- Acceptance met: after "Tweety is a blorp." and "Tweety flibbers.", "Does Tweety flibber?" and "Is Tweety a blorp?" are Yes. Four earlier phase 16 tests changed with it (SPEC2 phase 16 names "Does Tweety flibber? is Yes" as an accepted outcome): the verb question is answered, not refused; the adjective is asked as an adjective with no widening; `UNKNOWN_WORD`'s motivating sentence is now "Tweety flibbered.".
+- Not covered: "Every blorp flibbers." has no reading from the parser's own parse, so there is no unknown word to offer classes for. With tags the parser does read it (tagged fixture), but `Mind` has no way to know the tags. Left refused. `tolk.read` has no store and does no retry.
