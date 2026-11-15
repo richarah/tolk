@@ -154,3 +154,9 @@ tell atoms under one sentence; now it is two statements: `tolk/statements.py` sp
 anonymous thing (a name does not join them), and each is stored with its own sentence row (text: the whole sentence), all or none (a
 savepoint). "Forget that Kim sings." then removes that statement alone. "Kim sings and dances." is two as well. Moved on the way to keep
 mind.py under 250 lines: question answering to `tolk/questions.py`, `forget` to `tolk/forget.py`. Written code-first, test beside it; no test failed first.
+
+## Finish, item 7: wording
+`Mind(wording="template"|"generated")`, kept in meta. Default template; every earlier test ran with it and none changed. "generated": every
+fact line in a proof and in a description goes through `generate.word`, which gives the grammar's sentence when parsing it back gives exactly
+the fact, and the template otherwise, fact by fact (`say.fact_line`). The generator's sentence is its own: "Rio doesn't sing." The words of
+conflict reports and diagnosis stay template: they are compared as keys. Answers themselves (Yes, No, names) are unchanged.

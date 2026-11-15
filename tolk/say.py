@@ -1,6 +1,7 @@
 """Plain wording for facts and proofs. Stiff by design: a fact is shown as its predicate and arguments, never inflected."""
 
 import sqlite3
+from tolk import settings
 from tolk.ask import Answer, Proof
 
 
@@ -30,6 +31,15 @@ def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
     return f"{neg}{lemma}({', '.join(things)})"
 
 
+def fact_line(db: sqlite3.Connection, fact_id: int) -> str:
+    """A fact as a proof or an answer shows it: through the grammar when the wording setting says so, and per fact the template when
+    the grammar does not give the fact back."""
+    if settings.get(db, "wording") == "generated":
+        from tolk import generate  # generate words with the template as its fallback, so it imports this module
+        return generate.word(db, fact_id).text
+    return fact_text(db, fact_id)
+
+
 def claim_text(db: sqlite3.Connection, claim: str) -> str:
     """What a claim holds, worded, as it stands in the context of the claim."""
     ids = [i for (i,) in db.execute("SELECT id FROM fact WHERE ctx = ? ORDER BY id", (claim,))]
@@ -40,11 +50,11 @@ def proof_text(db: sqlite3.Connection, p: Proof, depth: int = 0) -> str:
     pad = "  " * depth
     if p.sentence is not None:
         (text,) = db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()
-        line = f'{pad}{fact_text(db, p.fact)}  (told: "{text}")'
+        line = f'{pad}{fact_line(db, p.fact)}  (told: "{text}")'
     else:
         (source,) = db.execute("SELECT s.text FROM rule r JOIN sentence s ON s.id = r.sentence WHERE r.id = ?", (p.rule,)).fetchone()
         by = f"by built-in axiom: {source[len('[axiom] '):]}" if source.startswith("[axiom] ") else f"by rule {p.rule}"
-        line = f"{pad}{fact_text(db, p.fact)}  ({by})"
+        line = f"{pad}{fact_line(db, p.fact)}  ({by})"
     return "\n".join([line] + [proof_text(db, q, depth + 1) for q in p.premises])
 
 

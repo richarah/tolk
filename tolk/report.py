@@ -17,7 +17,7 @@ def describe(db: sqlite3.Connection, ctx: str, entity: str) -> str:
     for fid, told in facts:
         p = prove(db, fid)
         source = f'told: "{db.execute("SELECT text FROM sentence WHERE id = ?", (p.sentence,)).fetchone()[0]}"' if told and p.sentence else f"by rule {p.rule}"
-        lines.append(f"{say.fact_text(db, fid)}  ({source})")
+        lines.append(f"{say.fact_line(db, fid)}  ({source})")
     preds = [p for (p,) in db.execute(f"SELECT DISTINCT pred FROM fact WHERE id IN ({', '.join('?' * len(facts))})", [f for f, _ in facts])]
     for word, base, affix in db.execute(f"SELECT word, base, affix FROM morph WHERE word IN ({', '.join('?' * len(preds))})", preds):
         lines.append(f"({morph.shown(word, base, affix)})")
