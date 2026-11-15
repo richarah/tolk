@@ -119,8 +119,8 @@ class Mind:
     def _forget(self, target: str) -> Result:
         return forget.forget(self, target, Result)
 
-    def _read(self, text: str) -> tuple[list, int, lf.LF]:
-        return reading.read(store.known_preds(self.db), words.tags_for(self.db, text), text, self._lookup, self._history)
+    def _read(self, text: str) -> tuple[str, list, int, lf.LF]:
+        return reading.read_as(store.known_preds(self.db), words.tags_for(self.db, text), text, self._lookup, self._history)
 
     def _derive(self) -> None:
         defaults.refresh(self.db, self.ctx, self.policy)
@@ -129,7 +129,7 @@ class Mind:
         forgetting = FORGET.fullmatch(text.strip())
         if forgetting:
             return self._forget(forgetting.group(1) + ".")
-        readings, k, x = self._read(text)
+        text, readings, k, x = self._read(text)  # the text the readings are of, which a question read again with its auxiliary repeated changes
         printed = lf.show(x)
         head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):

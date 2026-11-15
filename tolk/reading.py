@@ -8,9 +8,37 @@ from tolk import compile as comp, erg, lf, sem, words
 UNDERSCORED = re.compile(r"\w*_\w*")  # the parser names such a word with an underscore its meaning structure cannot carry
 
 
+AUXILIARY = re.compile(r"(?P<aux>is|are|was|were|does|do|did|can|will|could|would|should|may|might)\s+(?P<first>.+?)\s+or\s+"
+                       r"(?P<second>\S+\s+\S.*?)\s*\?", re.IGNORECASE)
+AUXILIARIES = {"is", "are", "was", "were", "does", "do", "did", "can", "will", "could", "would", "should", "may", "might"}
+
+
+def with_auxiliary(text: str) -> str | None:
+    """"Is Kim happy or Lee happy?" with the auxiliary written out in the second clause, which the grammar needs to read two clauses
+    ("Lee" is otherwise taken to modify "happy"). None when the text is not a question of that shape."""
+    m = AUXILIARY.fullmatch(text.strip())
+    if m is None or m.group("second").split()[0].lower() in AUXILIARIES:
+        return None
+    return f"{m.group('aux')} {m.group('first')} or {m.group('aux').lower()} {m.group('second')}?"
+
+
 def read(known: set, tags: dict, text: str, lookup=None, history=None) -> tuple[list, int, lf.LF]:
     """(readings, index of the chosen one, what it compiles to). `known` is the predicates in the store, `tags` the classes of the words
     the caller remembers."""
+    return read_as(known, tags, text, lookup, history)[1:]
+
+
+def read_as(known: set, tags: dict, text: str, lookup=None, history=None) -> tuple[str, list, int, lf.LF]:
+    """The same, with the text the readings are of: the question read again with its auxiliary repeated is a different string."""
+    readings, k, x = read_text(known, tags, text, lookup, history)
+    if isinstance(x, lf.Refusal) and (again := with_auxiliary(text)):
+        readings2, k2, x2 = read_text(known, tags, again, lookup, history)
+        if isinstance(x2, lf.Ask) and x2.alternatives:
+            return again, readings2, k2, x2
+    return text, readings, k, x
+
+
+def read_text(known: set, tags: dict, text: str, lookup=None, history=None) -> tuple[list, int, lf.LF]:
     if found := UNDERSCORED.search(text):
         return [], 0, lf.Refusal("UNKNOWN_WORD", found.group(0))
     readings = [sem.read(p.mrs, p.lex) for p in words.parse(tags, text)]
