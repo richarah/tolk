@@ -22,6 +22,22 @@ def with_auxiliary(text: str) -> str | None:
     return f"{m.group('aux')} {m.group('first')} or {m.group('aux').lower()} {m.group('second')}?"
 
 
+def _word_that_stops_it(text: str) -> str | None:
+    """For a sentence the parser cannot read at all: the small-letter word whose replacement by a capitalised name makes it read, and
+    compile, as a sentence. That word is the one the grammar lacks, or the one in the wrong place. None when no single replacement helps."""
+    for m in re.finditer(r"\b[a-z]+\b", text):
+        candidate = text[:m.start()] + "Zed" + text[m.end():]
+        readings = [sem.read(p.mrs, p.lex) for p in words.parse({}, candidate)]
+        if not readings:
+            continue
+        x = comp.choose(readings, set())[1]
+        # The stand-in must be the whole of what replaces the word: a reading that takes the word into a compound name does not count.
+        shown = lf.show(x)
+        if not isinstance(x, lf.Refusal) and "zed" in shown.lower() and m.group(0) not in shown.lower():
+            return m.group(0)
+    return None
+
+
 def read(known: set, tags: dict, text: str, lookup=None, history=None) -> tuple[list, int, lf.LF]:
     """(readings, index of the chosen one, what it compiles to). `known` is the predicates in the store, `tags` the classes of the words
     the caller remembers."""
@@ -42,6 +58,8 @@ def read_text(known: set, tags: dict, text: str, lookup=None, history=None) -> t
     if found := UNDERSCORED.search(text):
         return [], 0, lf.Refusal("UNKNOWN_WORD", found.group(0))
     readings = [sem.read(p.mrs, p.lex) for p in words.parse(tags, text)]
+    if not readings and (word := _word_that_stops_it(text)):
+        return [], 0, lf.Refusal("UNKNOWN_WORD", word)
     k, x = comp.choose(readings, known, lookup, history)
     names = words.lowercase_names(text, readings[k:k + 1])
     if names or not readings or (isinstance(x, lf.Refusal) and x.code == "UNKNOWN_WORD"):

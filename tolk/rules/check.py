@@ -2,7 +2,7 @@
 
 from tolk import lf
 from tolk.lf import Atom, Var
-from tolk.rules import temporal
+from tolk.rules import coordination, temporal
 from tolk.rules.ctx import Ctx
 from tolk.sem import EP, Reading
 
@@ -11,6 +11,8 @@ def tense(r: Reading) -> lf.Refusal | None:
     """Only present, and past on the main event, are stored. Anything else would be dropped without a trace.
     A reading with before or after relates two clauses, and the past of both is stored."""
     ordered = bool(temporal.find(r))
+    # The clauses joined by and or or are main events too: each is stored with its own tense.
+    clauses = {ep.args[k] for ep in r.eps if coordination.CONJUNCTION.fullmatch(ep.pred) for k in ("ARG1", "ARG2") if k in ep.args}
     for ep in r.eps:
         v = ep.args.get("ARG0", "")
         if not (ep.pred.startswith("_") and v.startswith("e")):
@@ -18,7 +20,8 @@ def tense(r: Reading) -> lf.Refusal | None:
         p = r.props.get(v, {})
         if p.get("PERF") == "+" or p.get("PROG") == "+":
             return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)
-        if p.get("TENSE") not in (None, "untensed", "pres") and not (p["TENSE"] == "past" and (v == r.index or ordered)):
+        main = v == r.index or ordered or v in clauses
+        if p.get("TENSE") not in (None, "untensed", "pres") and not (p["TENSE"] == "past" and main):
             return lf.Refusal("UNSUPPORTED_TENSE", f"{p['TENSE']} on {ep.pred}")
     return None
 

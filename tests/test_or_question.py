@@ -55,8 +55,9 @@ def test_a_question_that_was_already_read_is_not_read_again() -> None:
     assert Mind().ask("Is Kim happy or sad?").answer.value == UNKNOWN
 
 
-def test_a_past_tense_question_keeps_the_refusal_it_had() -> None:
-    assert Mind().ask("Was Kim happy or Lee sad?").printed == "refuse UNSUPPORTED_TENSE: past on _happy_a_with"
+def test_a_past_tense_question_with_an_or_is_answered_as_its_sides_are() -> None:
+    # Changed in the open-items pass (STATUS.md item 5): each side of an or may be past, as each clause of an and may be.
+    assert Mind().ask("Was Kim happy or Lee sad?").answer.value == UNKNOWN
 
 
 def test_a_sentence_that_still_does_not_read_keeps_its_first_refusal() -> None:

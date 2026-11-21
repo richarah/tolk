@@ -89,10 +89,15 @@ def _split(atoms: tuple[Atom, ...], whole: Term | None, terms: list[Term], op: s
         for a in atoms:
             if whole is not None and whole in a.args:
                 alt.append(Atom(a.pred, tuple(term if x == whole else x for x in a.args), a.positive))
-            elif not any(o in a.args for o in others):
+            elif not any(_about(a, o) for o in others):
                 alt.append(a)
         out.append(tuple(alt))
     return out
+
+
+def _about(a: Atom, side: Var) -> bool:
+    """Whether an atom is about a side of an or: its event, or a copy of that event that an and made for one member (e4c1)."""
+    return any(isinstance(x, Var) and (x.key == side.key or re.fullmatch(re.escape(side.key) + r"c\d+", x.key)) for x in a.args)
 
 
 def map_ep(ctx: "Ctx", ep: EP) -> tuple | lf.Refusal | None:

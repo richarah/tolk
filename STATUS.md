@@ -82,17 +82,15 @@ tried). The table is `tolk/lf.py` REFUSALS; its contents are printed by `scripts
 (see the end of this file once the verification rounds are in)
 
 ## Open items from VERIFY.md (after two rounds, and after the release session)
-Round 1 found 11 mismatches: 5 fixed (Where is Bob?, underscored word, preposition "if", group subject with a noun complement, `_not_c` stored in a rule), 1 not a defect, 1 confounded (SQUID), 4 open. Round 2 found 4, not fixed by instruction. The release session fixed or decided the following:
-- Identical extensions of two predicates now give one proposal (in one direction, none once a rule links them either way).
-- "A blips sleeps." no longer raises: `reading.read` returned the readings it had set aside with a choice made among others. `tests/test_error_class.py` and a fuzz of 511 sentences with four mutations each found no other exception.
-- "Is Kim happy or Lee happy?" is a question of two alternatives (the auxiliary is written out for the grammar when the sentence is refused otherwise). "Or" in a statement stays refused.
-- The wider search runs only when no first reading was usable: a final refusal ends the search.
-- "Do all penguins fly?" answering "No, by default" is intended (DECISIONS.md).
-- SQUID: a value in a row is read as that value (the SQUID repo, `squid/values.py`).
+Round 1 found 11 mismatches: 5 fixed (Where is Bob?, underscored word, preposition "if", group subject with a noun complement, `_not_c` stored in a rule), 1 not a defect, 1 confounded (SQUID), 4 open. Round 2 found 4. The open-items pass (branch `open-items`, DECISIONS.md "Open-items pass") settled every item listed after the release:
+- Identical extensions of two predicates give one proposal (in one direction, none once a rule links them either way).
+- "A blips sleeps." refused UNKNOWN_WORD: the IndexError is gone; a fuzz of 511 sentences with four mutations each finds no other exception.
+- "Is Kim happy or Lee happy?" and "Are Kim and Lee happy or is Sam happy?" answer per side; "or" in a statement stays refused.
+- Past tense on each side of an or question, and on each clause of an and, is stored and asked.
+- A sentence with no reading at all is refused for the word whose replacement makes it read: "Tweety is a blips." names blips.
+- "No, by default" for a universal question is intended.
+- "Quorl is a thing." is a name (decision, DECISIONS.md).
+- "Ola owns more than two cellos." names the unknown word, by the policy in DECISIONS.md.
+- SQUID: a value in a row is read as that value (repo SQUID, `squid/values.py`).
 
-Still open:
-1. "Tweety is a blips." (ungrammatical) is refused NO_EVENT_READING, not UNKNOWN_WORD; "Blips are things." is refused EMPTY_RULE_BODY.
-2. "Ola owns more than two cellos." is refused UNKNOWN_WORD, not more_comp.
-3. "Quorl is a thing." stores the invented word as a name (arguable).
-4. "Are Kim and Lee happy or is Sam happy?": the second alternative also asks whether Lee is happy, so a store that says only that Sam is happy answers Unknown, not Yes.
-5. A past-tense question with an "or" is refused UNSUPPORTED_TENSE like any past-tense question.
+The rest of the project is in REMAINING.md.

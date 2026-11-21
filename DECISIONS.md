@@ -213,3 +213,18 @@ Phase 18 writes "No"; this is a deliberate difference, and it is the intended be
 kind, not what the known things do. When the opposite follows only through a default rule, it is true unless something defeats it, and a bare "No" would
 say it cannot be defeated. When it follows through a strict rule or a told fact the answer is a bare "No" (tested in `tests/test_phase18.py`). "Yes" is
 treated the same way ("Does every bird fly?" is `Yes, by default`). `Answer.by_default` carries the distinction, and the proof lines name the rule.
+
+## Open-items pass (after the v0.1.0 release)
+- Or between two clauses, one a conjunction ("Are Kim and Lee happy or is Sam happy?"): the alternative for each side keeps the atoms about that side
+  and its copies (an and makes one copy per member, named by the event with a `c<n>` suffix). Before, the Lee atom went into the Sam alternative.
+- Tense: the clauses joined by and or or are main events, so past is stored and asked on each. Before, only the conjunction's own event was main.
+  Side effect, recorded in `tests/test_wide.py`: "Kim told Lee that Rio sings or hums." is now refused TOO_MANY_ARGUMENTS on a reading that
+  takes "told" for an or-clause; the sentence is still refused with a final code, and the first refusal is the one kept.
+- A sentence with no reading at all: the small-letter word whose replacement by a capitalised name ("Zed") makes a sentence that compiles, and
+  does not survive inside a compound name, is named as UNKNOWN_WORD. "Tweety is a blips." names "blips". Before: NO_EVENT_READING.
+- "Ola owns more than two cellos." is refused UNKNOWN_WORD: cellos, and "Ola owns more than two dogs." UNSUPPORTED_PREDICATE: more_comp. The
+  rule that a word the grammar does not know is named first is kept on purpose (the sentence cannot be stored either way). The two labels differ
+  because "cellos" is unknown and "dogs" is known.
+- "Quorl is a thing.": a capitalised word at the start is a name, so Quorl is a thing and that is stored. Read it as a fact about a thing called
+  Quorl, which is what the sentence says. A word that should be a class is told with the article: "Tweety is a quorl." stores quorl as a noun.
+- "Blips are things." is a default rule about blips (a bare plural is a default, as in "Birds fly."). Not a defect.
