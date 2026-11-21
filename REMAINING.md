@@ -40,7 +40,6 @@ Measured figures are from the commands named; older figures are not repeated her
 ## Proofs and wording
 - Proofs print the template wording, not the generated wording, in every earlier dialogue (PROGRESS.md, "What I would do next", item 1). Generated
   wording exists for tier A facts only (`tests/test_phase24.py`).
-- Proof lines for "Yes, by default" and "No, by default" name the rule but not the defeat that made it default-only, except through `defeated`.
 
 ## Parser and grammar
 - ACE 0.9.34 and ERG 2018 only, Linux x86-64 (scripts/setup_erg.sh). Other platforms need their own ACE build.
