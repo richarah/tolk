@@ -6,7 +6,7 @@ on:
 
 jobs:
   suite:
-    runs-on: ubuntu-22.04
+    runs-on: [self-hosted, local]  # the hosted runner is blocked by billing; this machine runs the same steps
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
