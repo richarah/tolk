@@ -237,3 +237,10 @@ treated the same way ("Does every bird fly?" is `Yes, by default`). `Answer.by_d
 
 ## Repeat by meaning
 A statement whose atoms are the same as a told statement's, up to the order of the atoms and the names of fresh things, adds no facts: "A dog is owned by Kim." after "Kim owns a dog." reports `already told: "Kim owns a dog."`. The form is `store.meaning`, computed over every order of up to six atoms and taken at its least. A statement with a claim, or with more than six atoms, is not compared by meaning, only by printed form. A forgotten statement does not count.
+
+## Held-out check of reading choice
+`tests/heldout.py`: 26 sentences in no file the choice table was built from. Expectations were written before the first run.
+First run: 21 of 26. Corrections after that run, each logged in the file: "Mia walks in the park." was a setup error (refused, "the park" needs a store), now "in Paris"; "Kim saw Lee ..." expected Yes, corrected to Unknown (a past told and a present question: the tense rule). After the corrections: 24 of 26.
+The two misses are kept as known (`tests/test_heldout.py`):
+- "Bo bakes bread." then "Does Bo bake?": the parser's causative sense of "bake" is chosen; the intransitive question does not match. A parser-sense problem.
+- "A penguin is a bird." then "Pingu is a penguin.": "a penguin" is read as an existential, so Pingu is not known to be a bird. Generic or existential is a design question.
