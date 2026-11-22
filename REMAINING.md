@@ -19,9 +19,9 @@ Measured figures are from the commands named; older figures are not repeated her
 - Counting and numbers beyond the stated forms: "more than two" over a known noun is refused (more_comp). Cardinals in a rule and two numbers in a
   question are refused. (`scripts/coverage.py` lists the refusals; the largest in the four corpus files is `card`.)
 - Modals, control verbs, durations, "most" and most quantifiers: refused as UNSUPPORTED_*.
-- Future, perfect and progressive tense: refused. Past is stored only on the main event and on the clauses of an and or or.
-- Rules and identity merges inside a supposition: refused, because the rule and merge tables have no context column.
-- Negation as failure is evaluated round by round; a strata-by-strata evaluation is not built (PROGRESS.md, Open).
+- Progressive, past perfect and future perfect: refused (UNSUPPORTED_ASPECT). Past, future and present perfect are stored on the main event and on the clauses of an and or or; a past or future inside a claim is refused.
+- A fact told in a supposition does not defeat a default derived in the world; the answer is `Conflict`. Defeats are not kept per context (DECISIONS.md, medium-items pass). Fixing it means per-context defeat rows and hiding defeated world facts inside the supposition.
+- Suppositions are one level deep.
 - Repeated statements are recognised only when the text is identical. Two wordings of one meaning add facts.
 - Definite referents that are anonymous are recorded with kind `named`.
 - The reading choice does not rank parser senses ("Jo writes letters." reads `write_v_to`).
@@ -47,8 +47,8 @@ Measured figures are from the commands named; older figures are not repeated her
 - Words the grammar has as names only ("tove") can be refused rather than learned.
 
 ## Continuous integration
-- The workflow uses actions/cache@v4, actions/checkout@v4 and actions/setup-python@v5, which run on Node 20 and print a deprecation warning
-  (run 43737163813 on master). Upgrading them is needed before the runner removes Node 20.
+- Moved to Node 24 action versions on branch `ci-node24` (checkout v7, setup-python v7, cache v6). Confirm the run before merging. The old workflow ran on Node 20 and printed a deprecation warning
+  a deprecation warning (run 43737163813 on master).
 - The erg cache is restored but not saved on a hit ("not saving cache" in the logs). That is correct, but a cache miss rebuilds it from the
   download address, which depends on sweaglesw.org being reachable.
 
