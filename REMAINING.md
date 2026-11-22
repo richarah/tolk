@@ -20,7 +20,6 @@ Measured figures are from the commands named; older figures are not repeated her
   question are refused. (`scripts/coverage.py` lists the refusals; the largest in the four corpus files is `card`.)
 - Modals, control verbs, durations, "most" and most quantifiers: refused as UNSUPPORTED_*.
 - Progressive, past perfect and future perfect: refused (UNSUPPORTED_ASPECT). Past, future and present perfect are stored on the main event and on the clauses of an and or or; a past or future inside a claim is refused.
-- A fact told in a supposition does not defeat a default derived in the world; the answer is `Conflict`. Defeats are not kept per context (DECISIONS.md, medium-items pass). Fixing it means per-context defeat rows and hiding defeated world facts inside the supposition.
 - Suppositions are one level deep.
 - Repeated statements are recognised only when the text is identical. Two wordings of one meaning add facts.
 - Definite referents that are anonymous are recorded with kind `named`.

@@ -41,7 +41,7 @@
 - Where: `loc_nonsp` in a question becomes the pattern `_*_p_loc`. A star in a predicate means GLOB in SQL. The pattern matches any locative preposition by sense suffix, so "Where does Kim live?" finds `_in_p_loc`. A statement that uses `loc_nonsp` is refused, since a pattern cannot be stored.
 - Tense: `tense(e, past)` only for a told past event. Its object is a constant of kind `value`, which is not an entity.
 - Reading overlap counts (predicate, arity) pairs, not predicate names. The arity of a stored fact excludes the empty event column.
-- Suppositions: one level only. Rules and identity merges are stored in the supposition's context (a `ctx` column on `rule` and `merge`) and `drop()` removes them. A world rule applies inside a supposition; a supposed rule does not outlive drop. Known limit: a fact told in a supposition does not defeat a default derived in the world (the answer is `Conflict`, not Yes), because defeats are not kept per context. `tests/test_suppose_rules.py` documents the limit.
+- Suppositions: one level only. Rules and identity merges are stored in the supposition's context (a `ctx` column on `rule` and `merge`) and `drop()` removes them. A world rule applies inside a supposition; a supposed rule does not outlive drop. A fact told in a supposition defeats a world default inside the supposition (defeat rows carry a `ctx`; a world fact a supposition sees only if one of its proofs still stands there). Dropping the supposition removes its defeats. Done in the defeat-per-context item (`tests/test_defeat_ctx.py`).
 - Drop removes orphan fresh entities (kinds event, anon, skolem) that no remaining fact mentions.
 - Definites inside a supposition see the world's things and the supposition's.
 - Sentence identity (a repeated statement adds nothing) is per context: the same sentence in another supposition is stored again.
@@ -234,4 +234,3 @@ treated the same way ("Does every bird fly?" is `Yes, by default`). `Answer.by_d
 - M4: confirmed built (phase 9.6). The notes that said it was "round by round" were out of date.
 - S1: a definite's constant is tagged named by the reading; the store keeps the thing's own kind, so an anonymous thing gets no name row.
 - S2: the workflow's actions move to Node 24 versions: checkout v7, setup-python v7, cache v6.
-- Limit: an identity inside a supposition with a world default that it contradicts is reported as a conflict (see M1 above).

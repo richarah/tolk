@@ -30,8 +30,8 @@ CREATE TABLE rule(
 );
 CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER NOT NULL, ctx TEXT NOT NULL DEFAULT 'world');
 CREATE TABLE conflict(positive_fact INTEGER NOT NULL, negative_fact INTEGER NOT NULL);
-CREATE TABLE defeat(rule INTEGER NOT NULL, bindings TEXT NOT NULL, by_fact INTEGER NOT NULL, reason TEXT NOT NULL);
-CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings);
+CREATE TABLE defeat(rule INTEGER NOT NULL, bindings TEXT NOT NULL, by_fact INTEGER NOT NULL, reason TEXT NOT NULL, ctx TEXT NOT NULL DEFAULT 'world');
+CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings, ctx);
 CREATE TABLE claim(id TEXT PRIMARY KEY, printed TEXT NOT NULL, sentence INTEGER NOT NULL);
 CREATE TABLE revision(sentence INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -186,6 +186,7 @@ def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
     db.execute("DELETE FROM fact WHERE ctx = ?", (ctx,))
     db.execute("DELETE FROM rule WHERE ctx = ?", (ctx,))
     db.execute("DELETE FROM merge WHERE ctx = ?", (ctx,))
+    db.execute("DELETE FROM defeat WHERE ctx = ?", (ctx,))
     db.execute(
         "DELETE FROM sentence WHERE id NOT IN (SELECT sentence FROM why WHERE sentence IS NOT NULL "
         "UNION SELECT sentence FROM rule UNION SELECT sentence FROM merge)"

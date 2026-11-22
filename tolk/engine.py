@@ -52,6 +52,12 @@ def _year_order(db: sqlite3.Connection, ctx: str, rnd: int) -> None:
                f"NULL, ?, json_array(f.id, g.id), f.a1 || ',' || g.a1 {pairs}", (ctx, row[0], *marks))
 
 
+# For the defaults: the same clash, and also a world fact against a supposition's fact, which the supposition's view must settle.
+CROSS = (
+    "FROM fact p JOIN fact n ON n.pred = p.pred AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
+    "WHERE p.positive = 1 AND n.positive = 0 AND (n.ctx = p.ctx OR p.ctx = 'world' OR n.ctx = 'world')"
+)
+
 # A positive fact p and a negative fact n clash when they differ only in sign. A negative fact has no event, so its empty one matches any.
 CLASH = (
     "FROM fact p JOIN fact n ON n.pred = p.pred AND n.ctx = p.ctx AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
@@ -92,6 +98,9 @@ class Match:
             froms.append(f"fact AS f{i}")
             conds += [f"f{i}.pred {_pred_op(atom.pred)} ?", f"f{i}.positive = ?", f"f{i}.ctx IN ('world', ?)"]
             params += [atom.pred, pol[i], ctx]
+            if ctx != "world":
+                conds.append(_visible(f"f{i}"))
+                params.append(ctx)
             for k in range(3):
                 col = f"f{i}.a{k}"
                 if k >= len(atom.args):
@@ -124,6 +133,9 @@ class Match:
         local: dict[Var, str] = {}
         conds = [f"n{i}.pred {_pred_op(atom.pred)} ?", f"n{i}.positive = 1", f"n{i}.ctx IN ('world', ?)"]
         params += [atom.pred, ctx]
+        if ctx != "world":
+            conds.append(_visible(f"n{i}"))
+            params.append(ctx)
         for k in range(3):
             col = f"n{i}.a{k}"
             if k >= len(atom.args):
@@ -149,6 +161,13 @@ class Match:
         return ", ".join(self.ids_list)
 
 
+def _visible(alias: str) -> str:
+    """A world fact a supposition sees only if one of its proofs is still standing there: a default instance defeated inside the
+    supposition is not in force in it, however the fact was derived in the world. A fact that was told is always in force."""
+    return (f"EXISTS (SELECT 1 FROM why w WHERE w.fact = {alias}.id AND (w.rule IS NULL OR NOT EXISTS ("
+            "SELECT 1 FROM defeat d WHERE d.rule = w.rule AND d.bindings = w.bindings AND d.ctx = ?)))")
+
+
 def rule_sql(rule: lf.Rule, rule_id: int, ctx: str, delta: int | None, rnd: int) -> list[Statement]:
     """Statements for one rule in one round. delta limits matches to facts from that round on, once the rule has run."""
     if not rule.body:
@@ -157,8 +176,8 @@ def rule_sql(rule: lf.Rule, rule_id: int, ctx: str, delta: int | None, rnd: int)
     bindings = " || ',' || ".join(m.column(v) for v in m.first) or "''"
     if rule.kind == "default":
         # A default instance that was defeated is not used again; the bindings name the instance.
-        m.src += f" AND NOT EXISTS (SELECT 1 FROM defeat d WHERE d.rule = ? AND d.bindings = {bindings})"
-        m.params += (rule_id,)
+        m.src += f" AND NOT EXISTS (SELECT 1 FROM defeat d WHERE d.rule = ? AND d.bindings = {bindings} AND d.ctx IN ('world', ?))"
+        m.params += (rule_id, ctx)
     # A fact is as strong as its weakest premise, and a default makes it the weakest kind.
     levels = ", ".join(f"{i[:-3]}.level" for i in m.ids_list)
     level = "3" if rule.kind == "default" else f"MAX(2, {levels})" if levels else "2"

@@ -46,9 +46,9 @@ def rebuild(db: sqlite3.Connection, ctx: str, policy: tuple[str, ...]) -> None:
             engine.run(db, c, ("strict", "default"))
         if not _decide(db, policy, winners):
             break
-    for (rule, bindings), sig in winners.items():
+    for (rule, bindings, dctx), sig in winners.items():
         db.execute("UPDATE defeat SET by_fact = (SELECT id FROM fact WHERE pred = ? AND a0 = ? AND a1 = ? AND a2 = ? AND positive = ? AND ctx = ?) "
-                   "WHERE rule = ? AND bindings = ?", (*sig, rule, bindings))
+                   "WHERE rule = ? AND bindings = ? AND ctx = ?", (*sig, rule, bindings, dctx))
     engine.record_conflicts(db)
 
 
@@ -59,8 +59,10 @@ def _reset(db: sqlite3.Connection) -> None:
 def _decide(db: sqlite3.Connection, policy: tuple[str, ...], winners: dict) -> bool:
     """Defeat the loser of each clash that has one. True if that defeated something new."""
     grew = False
-    clashes = db.execute(f"SELECT p.id, n.id, p.level, n.level, p.pred {engine.CLASH} AND (p.level = 3 OR n.level = 3)").fetchall()
-    for pid, nid, lp, ln, pred in clashes:
+    clashes = db.execute(f"SELECT p.id, n.id, p.level, n.level, p.pred, p.ctx, n.ctx {engine.CROSS} AND (p.level = 3 OR n.level = 3)").fetchall()
+    for pid, nid, lp, ln, pred, pctx, nctx in clashes:
+        # A clash between the world and a supposition is decided for the supposition: the defeat belongs to it.
+        dctx = nctx if pctx == "world" else pctx
         if lp != ln:
             win, lose = (pid, nid) if lp < ln else (nid, pid)
             reason = "told fact" if min(lp, ln) == 1 else "strict rules"
@@ -76,10 +78,11 @@ def _decide(db: sqlite3.Connection, policy: tuple[str, ...], winners: dict) -> b
             win, lose = (pid, nid) if first_wins else (nid, pid)
             blocked = [b if first_wins else a]
         for rule, bindings in blocked:
-            cur = db.execute("INSERT OR IGNORE INTO defeat(rule, bindings, by_fact, reason) VALUES (?, ?, ?, ?)", (rule, bindings, win, reason))
+            cur = db.execute("INSERT OR IGNORE INTO defeat(rule, bindings, by_fact, reason, ctx) VALUES (?, ?, ?, ?, ?)",
+                             (rule, bindings, win, reason, dctx))
             if cur.rowcount:
                 grew = True
-                winners[(rule, bindings)] = db.execute("SELECT pred, a0, a1, a2, positive, ctx FROM fact WHERE id = ?", (win,)).fetchone()
+                winners[(rule, bindings, dctx)] = db.execute("SELECT pred, a0, a1, a2, positive, ctx FROM fact WHERE id = ?", (win,)).fetchone()
     return grew
 
 

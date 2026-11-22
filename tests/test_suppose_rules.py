@@ -92,13 +92,12 @@ def test_a_universal_question_inside_a_supposition_sees_the_supposed_rule() -> N
     assert m.ask("Does every bird fly?").answer.value == UNKNOWN
 
 
-def test_a_supposed_fact_against_a_world_default_is_reported_as_a_conflict_not_answered_yes() -> None:
-    # Known limit (REMAINING.md): a default derived in the world is not defeated by a fact told in a supposition, because defeats are
-    # not kept per context. The answer is the conflict, not a Yes. Change this test when defeats are per context.
+def test_a_supposed_fact_against_a_world_default_is_answered_no_inside_and_yes_after_drop() -> None:
+    # Was the known limit "reported as a conflict"; a fact told in the supposition now defeats the world default there (tests/test_defeat_ctx.py).
     m = Mind()
     m.tell("Birds fly.")
     m.tell("Tweety is a bird.")
     m.suppose("Tweety does not fly.")
-    assert m.ask("Does Tweety fly?").answer.value == "Conflict"
+    assert m.ask("Does Tweety fly?").answer.value == NO
     m.drop()
     assert m.ask("Does Tweety fly?").answer.value == YES
