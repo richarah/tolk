@@ -21,7 +21,6 @@ Measured figures are from the commands named; older figures are not repeated her
 - Modals, control verbs, durations, "most" and most quantifiers: refused as UNSUPPORTED_*.
 - Progressive, past perfect and future perfect: refused (UNSUPPORTED_ASPECT). Past, future and present perfect are stored on the main event and on the clauses of an and or or; a past or future inside a claim is refused.
 - Suppositions are one level deep.
-- Repeated statements are recognised only when the text is identical. Two wordings of one meaning add facts.
 - Definite referents that are anonymous are recorded with kind `named`.
 - The reading choice does not rank parser senses ("Jo writes letters." reads `write_v_to`).
 - "Kay" reads as "okay" (the grammar's word) and is refused UNKNOWN_WORD. Use another name.

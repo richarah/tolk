@@ -150,6 +150,8 @@ class Mind:
         if isinstance(x, lf.Tell) and self.ctx == "world" and len(parts := statements.split(x)) > 1:
             return statements.each(self, text, parts, head, trust, observation, Result)
         prior = store.repeat_of(self.db, printed, self.ctx)
+        if prior is None and isinstance(x, lf.Tell):
+            prior = store.repeat_by_meaning(self.db, x, self.ctx)  # the same statement in other words: adds nothing
         if prior:
             return Result(*head, outcome=f'already told: "{prior[1]}"')
         splits = []
@@ -181,6 +183,7 @@ class Mind:
             ordering.ensure_time_axioms(self.db)
             x = ordering.reuse_events(self.db, x, self.ctx)
         sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
+        store.add_meaning(self.db, sid, x) if isinstance(x, lf.Tell) else None
         anon_before = store.fresh_of_kind(self.db, "anon")
         claims_before = store.fresh_of_kind(self.db, "claim")
         stored = store.tell(self.db, x, sid, self.ctx, allow_conflict=observation)

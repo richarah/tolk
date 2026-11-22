@@ -17,7 +17,7 @@
 - `Reading` gained `top` (the LTOP handle). It is needed to find the main clause.
 - Store schema deviations: `rule` has two columns the spec does not list. `lf` holds the rule as JSON so the engine can run it again, and `ran` is the round in which the rule last ran (NULL before its first run). `why` has a unique index over `IFNULL(sentence, 0)` and `IFNULL(rule, 0)` because SQLite treats NULLs as distinct. The spec does not say so, but a unique row per premise set is what keeps a second run from adding why rows.
 - Fresh constants: compile gives local ids `e1`, `a1`. The store renames each to an id no earlier sentence used, so `e1` in one sentence never means the same event as `e1` in another.
-- Repeated statements: a sentence whose text is already stored adds no facts. Two sentences with different wording that mean the same thing still add facts, because each gets fresh events. Open: identity of events by content.
+- Repeated statements (updated in the repeat-by-meaning item): a statement that means what a told statement means adds no facts. Meaning is the atoms, up to order and the names of fresh things (`store.meaning`). Before that item only identical printed forms were caught, so two sentences with different wording that mean the same thing still add facts, because each gets fresh events. Open: identity of events by content.
 - Round semantics: told facts take round max+1. A rule's first run has no round constraint. Later runs require at least one body atom from the previous round, as the spec says. Stopping: a round that adds nothing ends the run.
 - Skolem guard: a body binding whose value starts with `sk:<rule id>:` blocks the match, so a rule never reuses its own skolems.
 - `tests/helpers.tell_text` tells one sentence through compile and store. It is test scaffolding and will be replaced by `Mind.tell` in phase 3, which removes it.
@@ -234,3 +234,6 @@ treated the same way ("Does every bird fly?" is `Yes, by default`). `Answer.by_d
 - M4: confirmed built (phase 9.6). The notes that said it was "round by round" were out of date.
 - S1: a definite's constant is tagged named by the reading; the store keeps the thing's own kind, so an anonymous thing gets no name row.
 - S2: the workflow's actions move to Node 24 versions: checkout v7, setup-python v7, cache v6.
+
+## Repeat by meaning
+A statement whose atoms are the same as a told statement's, up to the order of the atoms and the names of fresh things, adds no facts: "A dog is owned by Kim." after "Kim owns a dog." reports `already told: "Kim owns a dog."`. The form is `store.meaning`, computed over every order of up to six atoms and taken at its least. A statement with a claim, or with more than six atoms, is not compared by meaning, only by printed form. A forgotten statement does not count.

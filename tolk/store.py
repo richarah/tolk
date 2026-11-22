@@ -1,5 +1,6 @@
 """SQLite store: schema, writing told facts and rules, and identity of fresh constants."""
 
+import itertools
 import json
 import sqlite3
 
@@ -38,6 +39,8 @@ CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE morph(word TEXT PRIMARY KEY, base TEXT NOT NULL, affix TEXT NOT NULL);  -- an unknown word split into an affix and a base the store has
 CREATE TABLE word(lemma TEXT NOT NULL, pos TEXT NOT NULL, sentence INTEGER NOT NULL, PRIMARY KEY(lemma, pos));  -- a class an unknown word was used as, from its first accepted use of that class
 CREATE TABLE spelling(word TEXT NOT NULL, kind TEXT NOT NULL, maps_to TEXT NOT NULL, PRIMARY KEY(word, kind));  -- every name and surface word accepted, and what it mapped to
+CREATE TABLE meaning(sentence INTEGER NOT NULL, form TEXT NOT NULL);
+CREATE INDEX meaning_form ON meaning(form);
 CREATE TABLE mention(sentence INTEGER NOT NULL, position INTEGER NOT NULL, entity TEXT NOT NULL, number TEXT NOT NULL);
 INSERT INTO entity(id, kind) VALUES ('user', 'named'), ('tolk', 'named');
 INSERT INTO name(entity, text) VALUES ('user', 'user'), ('tolk', 'tolk');
@@ -64,6 +67,47 @@ def repeat_of(db: sqlite3.Connection, printed: str, ctx: str) -> tuple[int, str]
         "OR EXISTS (SELECT 1 FROM merge WHERE sentence = sentence.id)) ORDER BY id LIMIT 1",
         (printed, ctx),
     ).fetchone()
+
+
+def meaning(t: lf.Tell) -> str | None:
+    """The form of a statement's atoms that does not depend on the order of the atoms or on the names of fresh things: a passive and its
+    active, or a sentence and its repeat with different fresh names, have the same form. None for a statement too large to canonise."""
+    if t.claims or len(t.atoms) > 6:
+        return None
+    best = None
+    for perm in itertools.permutations(t.atoms):
+        names: dict[str, str] = {}
+        out = []
+        for a in perm:
+            args = []
+            for c in a.args:
+                if isinstance(c, Const) and c.kind in ("anon", "event"):
+                    args.append((c.kind, names.setdefault(c.id, f"v{len(names)}")))
+                elif isinstance(c, Const):
+                    args.append((c.kind, c.id))
+                else:
+                    args.append(("var", c.key))
+            out.append((a.pred, a.positive, tuple(args)))
+        form = repr(tuple(out))
+        best = form if best is None or form < best else best
+    return best
+
+
+def add_meaning(db: sqlite3.Connection, sentence: int, t: lf.Tell) -> None:
+    form = meaning(t)
+    if form is not None:
+        db.execute("INSERT INTO meaning(sentence, form) VALUES (?, ?)", (sentence, form))
+
+
+def repeat_by_meaning(db: sqlite3.Connection, t: lf.Tell, ctx: str) -> tuple[int, str] | None:
+    """An earlier statement still in force that means what this one means: its id and text."""
+    form = meaning(t)
+    if form is None:
+        return None
+    return db.execute(
+        "SELECT s.id, s.text FROM meaning m JOIN sentence s ON s.id = m.sentence WHERE m.form = ? AND s.ctx IN ('world', ?) AND ("
+        "EXISTS (SELECT 1 FROM why WHERE sentence = s.id) OR EXISTS (SELECT 1 FROM merge WHERE sentence = s.id)) ORDER BY s.id LIMIT 1",
+        (form, ctx)).fetchone()
 
 
 def current_round(db: sqlite3.Connection) -> int:
@@ -187,6 +231,7 @@ def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
     db.execute("DELETE FROM rule WHERE ctx = ?", (ctx,))
     db.execute("DELETE FROM merge WHERE ctx = ?", (ctx,))
     db.execute("DELETE FROM defeat WHERE ctx = ?", (ctx,))
+    db.execute("DELETE FROM meaning WHERE sentence NOT IN (SELECT id FROM sentence)")
     db.execute(
         "DELETE FROM sentence WHERE id NOT IN (SELECT sentence FROM why WHERE sentence IS NOT NULL "
         "UNION SELECT sentence FROM rule UNION SELECT sentence FROM merge)"
