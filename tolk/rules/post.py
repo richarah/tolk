@@ -8,14 +8,19 @@ from tolk.sem import EP, Reading
 
 
 def tenses(ctx: Ctx, r: Reading, atoms: tuple[Atom, ...]) -> tuple[Atom, ...]:
-    """tense(event, past) for each past event that the atoms mention. Present is not stored: it is what an event is by default."""
+    """tense(event, past) or tense(event, fut) for each event that the atoms mention and that is past or future. A present perfect is
+    a past event. Present is not stored: it is what an event is by default."""
     used = {t for a in atoms for t in a.args}
     found: list[Atom] = []
     for ep in r.eps:
         v = ep.args.get("ARG0", "")
-        if ep.pred.startswith("_") and v.startswith("e") and r.props.get(v, {}).get("TENSE") == "past":
+        if not (ep.pred.startswith("_") and v.startswith("e")):
+            continue
+        props = r.props.get(v, {})
+        value = "fut" if props.get("TENSE") == "fut" else "past" if props.get("TENSE") == "past" or props.get("PERF") == "+" else None
+        if value:
             t = ctx.term(v)
-            atom = Atom(lf.TENSE, (t, Const("past", "value")))
+            atom = Atom(lf.TENSE, (t, Const(value, "value")))
             if t in used and atom not in found:
                 found.append(atom)
     return tuple(found)
@@ -28,7 +33,9 @@ def asked_tenses(ctx: Ctx, r: Reading, out: lf.Ask) -> tuple[tuple[Var, str], ..
     for ep in r.eps:
         v = ep.args.get("ARG0", "")
         tense = r.props.get(v, {}).get("TENSE")
-        if ep.pred.startswith("_") and v.startswith("e") and tense in ("past", "pres"):
+        if r.props.get(v, {}).get("PERF") == "+" and tense == "pres":
+            tense = "past"  # a present perfect asks for a past event
+        if ep.pred.startswith("_") and v.startswith("e") and tense in ("past", "pres", "fut"):
             t = ctx.term(v)
             if isinstance(t, Var) and t in used and (t, tense) not in found:
                 found.append((t, tense))

@@ -8,8 +8,8 @@ from tolk.sem import EP, Reading
 
 
 def tense(r: Reading) -> lf.Refusal | None:
-    """Only present, and past on the main event, are stored. Anything else would be dropped without a trace.
-    A reading with before or after relates two clauses, and the past of both is stored."""
+    """Past, future, and present perfect are stored on the main event (or a clause of an and or or): tense(e, past) or tense(e, fut).
+    A present perfect is stored as a past event. Anything else would be dropped without a trace, so it is refused."""
     ordered = bool(temporal.find(r))
     # The clauses joined by and or or are main events too: each is stored with its own tense.
     clauses = {ep.args[k] for ep in r.eps if coordination.CONJUNCTION.fullmatch(ep.pred) for k in ("ARG1", "ARG2") if k in ep.args}
@@ -18,11 +18,19 @@ def tense(r: Reading) -> lf.Refusal | None:
         if not (ep.pred.startswith("_") and v.startswith("e")):
             continue
         p = r.props.get(v, {})
-        if p.get("PERF") == "+" or p.get("PROG") == "+":
-            return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)
         main = v == r.index or ordered or v in clauses
-        if p.get("TENSE") not in (None, "untensed", "pres") and not (p["TENSE"] == "past" and main):
-            return lf.Refusal("UNSUPPORTED_TENSE", f"{p['TENSE']} on {ep.pred}")
+        if p.get("PROG") == "+":
+            return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)
+        if p.get("PERF") == "+":
+            if p.get("TENSE") != "pres" or not main:
+                return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)  # past perfect, future perfect, or a perfect that is not a main event
+            continue
+        tense_value = p.get("TENSE")
+        if tense_value in (None, "untensed", "pres"):
+            continue
+        if tense_value in ("past", "fut") and main:
+            continue
+        return lf.Refusal("UNSUPPORTED_TENSE", f"{tense_value} on {ep.pred}")
     return None
 
 

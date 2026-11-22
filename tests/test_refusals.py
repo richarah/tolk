@@ -27,7 +27,7 @@ FINAL = {
     "NO_ANTECEDENT": ([], "She swims."),
     "AMBIGUOUS_PRONOUN": (["Kim likes Sandy."], "She is happy."),
     "UNSUPPORTED_QUANTIFIER": ([], "Most cats purr."),
-    "UNSUPPORTED_TENSE": ([], "Kim will sing."),
+    "UNSUPPORTED_TENSE": ([], "Kim believes Lee sang."),  # a past inside a claim is not stored; future and past as main events are
 }
 
 

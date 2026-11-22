@@ -255,7 +255,9 @@ def _entities(db: sqlite3.Connection, atom: Atom) -> None:
         if c.kind == lf.NO_EVENT:
             continue
         db.execute("INSERT OR IGNORE INTO entity(id, kind) VALUES (?, ?)", (c.id, c.kind))
-        if c.kind == "named":
+        # A definite's constant is tagged by the reading, not by the store: the thing keeps the kind it was stored with.
+        (kind,) = db.execute("SELECT kind FROM entity WHERE id = ?", (c.id,)).fetchone()
+        if kind == "named":
             db.execute("INSERT OR IGNORE INTO name(entity, text) VALUES (?, ?)", (c.id, c.id))
 
 

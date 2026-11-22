@@ -110,7 +110,8 @@ def test_a_store_that_never_mentions_time_has_no_axioms() -> None:
     assert m.db.execute("SELECT COUNT(*) FROM rule").fetchone()[0] == 0
 
 
-@pytest.mark.parametrize("text", ["Kim will arrive.", "Kim has arrived.", "Kim is arriving.", "Kim arrived since 2019.", "Kim arrived until Sandy left."])
+# Future and present perfect are stored since M3 (tests/test_tense.py); progressive and the rest stay refused.
+@pytest.mark.parametrize("text", ["Kim is arriving.", "Kim arrived since 2019.", "Kim arrived until Sandy left.", "Kim had arrived."])
 def test_what_stays_refused(text: str) -> None:
     assert Mind().hear(text).outcome == "refused"
 

@@ -135,6 +135,15 @@ def _polarities(q: lf.Ask) -> tuple[tuple[int, ...], tuple[int, ...]]:
     return claim, (1,) * len(claim)
 
 
+def _tense_test(col: str, tense: str) -> str:
+    """SQL that holds when the event in `col` carries the tense asked for, as the tense facts record it (a ctx parameter each)."""
+    def has(value: str) -> str:
+        return f"EXISTS (SELECT 1 FROM fact t WHERE t.pred = '{lf.TENSE}' AND t.a0 = {col} AND t.a1 = '{value}' AND t.ctx IN ('world', ?))"
+    if tense == "pres":
+        return f"NOT {has('past')} AND NOT {has('fut')}"
+    return has(tense)
+
+
 def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: tuple[int, ...], ctx: str) -> dict[tuple[str, ...], tuple[Proof, ...]]:
     """For each distinct value of the wanted variables, one proof per body atom of the first matching row."""
     flat = tuple(Atom(a.pred, a.args) for a in q.body)
@@ -142,12 +151,11 @@ def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: tuple[int, ...], ctx
     src, params = m.src, m.params
     for var, tense in q.tenses:
         if var in m.first:
-            # A fact about an event matches a past question only if the event is past, and a present one only if it is not.
-            # A fact with no event is tenseless and matches either.
+            # A fact about an event matches a past question only if the event is past, a future one only if it is future, and a
+            # present one only if it is neither. A fact with no event is tenseless and matches any.
             col = m.column(var)
-            past = f"EXISTS (SELECT 1 FROM fact t WHERE t.pred = '{lf.TENSE}' AND t.a0 = {col} AND t.a1 = 'past' AND t.ctx IN ('world', ?))"
-            src += f" AND ({col} = '' OR {'' if tense == 'past' else 'NOT '}{past})"
-            params += (ctx,)
+            src += f" AND ({col} = '' OR {_tense_test(col, tense)})"
+            params += (ctx,) * (2 if tense == "pres" else 1)
     wanted = [m.column(v) for v in q.wanted]
     rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {src} ORDER BY {m.ids()}", params).fetchall()
     n = len(wanted)

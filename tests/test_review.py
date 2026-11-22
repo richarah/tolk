@@ -38,7 +38,7 @@ def test_and_between_clauses_stores_each_clause_and_no_fact_about_events(mind: M
     assert {p for (p,) in mind.db.execute("SELECT pred FROM fact")} == {"_sing_v_1", "_dance_v_1"}
 
 
-@pytest.mark.parametrize("text", ["Kim will sing.", "Kim is singing.", "Kim has arrived."])
+@pytest.mark.parametrize("text", ["Kim is singing.", "Kim had arrived.", "Kim will have sung."])  # future and present perfect are stored (M3)
 def test_tense_and_aspect_that_are_not_stored_are_refused(mind: Mind, text: str) -> None:
     r = mind.tell(text)
     assert r.outcome == "refused" and ("TENSE" in r.printed or "ASPECT" in r.printed)
