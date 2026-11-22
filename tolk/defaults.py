@@ -133,11 +133,13 @@ def _rule(db: sqlite3.Connection, rule_id: int) -> lf.Rule:
     return lf.decode_rule(db.execute("SELECT lf FROM rule WHERE id = ?", (rule_id,)).fetchone()[0])
 
 
-def scratch(db: sqlite3.Connection, body: tuple[Atom, ...], kinds: tuple[str, ...]) -> tuple[sqlite3.Connection, dict[Var, Const]]:
-    """A store with only the rules of the given kinds, and the body asserted about fresh things."""
+def scratch(db: sqlite3.Connection, body: tuple[Atom, ...], kinds: tuple[str, ...], ctx: str = "world") -> tuple[sqlite3.Connection, dict[Var, Const]]:
+    """A store with only the rules of the given kinds that apply in this context, and the body asserted about fresh things."""
     other = store.open_store()
     sid = store.add_sentence(other, "scratch")
-    for kind, text, sentence in db.execute("SELECT kind, lf, sentence FROM rule WHERE kind IN ({}) ORDER BY id".format(", ".join("?" * len(kinds))), kinds):
+    rows = db.execute("SELECT kind, lf, sentence FROM rule WHERE kind IN ({}) AND ctx IN ('world', ?) ORDER BY id".format(", ".join("?" * len(kinds))),
+                      (*kinds, ctx))
+    for kind, text, sentence in rows:
         other.execute("INSERT INTO rule(sentence, printed, lf, ran, kind) VALUES (?, '', ?, NULL, ?)", (sid, text, kind))
     things: dict[Var, Const] = {}
     for a in body:
@@ -163,10 +165,10 @@ def _holds(other: sqlite3.Connection, goal: tuple[Atom, ...], things: dict[Var, 
     return other.execute(f"SELECT 1 {m.src} LIMIT 1", m.params).fetchone() is not None
 
 
-def universal(db: sqlite3.Connection, every: lf.Every, policy: tuple[str, ...]) -> tuple[str, bool]:
+def universal(db: sqlite3.Connection, every: lf.Every, policy: tuple[str, ...], ctx: str = "world") -> tuple[str, bool]:
     """Is every one of these so? Assert the restriction about a fresh thing, derive with every rule, and see what follows.
     Returns (Yes, No, Unknown or Conflict, by default). Known instances are never evidence."""
-    other, things = scratch(db, every.body, ("strict", "default"))
+    other, things = scratch(db, every.body, ("strict", "default"), ctx)
     rebuild(other, "world", policy)
     claim = _strength(other, every.head, things, flip=False)
     against = _strength(other, every.head, things, flip=True)

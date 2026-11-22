@@ -26,9 +26,9 @@ CREATE TABLE why(
 CREATE UNIQUE INDEX why_u ON why(fact, IFNULL(sentence, 0), IFNULL(rule, 0), premises);
 CREATE TABLE rule(
     id INTEGER PRIMARY KEY, sentence INTEGER NOT NULL, printed TEXT NOT NULL,
-    lf TEXT NOT NULL, ran INTEGER, kind TEXT NOT NULL DEFAULT 'strict'
+    lf TEXT NOT NULL, ran INTEGER, kind TEXT NOT NULL DEFAULT 'strict', ctx TEXT NOT NULL DEFAULT 'world'
 );
-CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER NOT NULL);
+CREATE TABLE merge(kept TEXT NOT NULL, dropped TEXT NOT NULL, sentence INTEGER NOT NULL, ctx TEXT NOT NULL DEFAULT 'world');
 CREATE TABLE conflict(positive_fact INTEGER NOT NULL, negative_fact INTEGER NOT NULL);
 CREATE TABLE defeat(rule INTEGER NOT NULL, bindings TEXT NOT NULL, by_fact INTEGER NOT NULL, reason TEXT NOT NULL);
 CREATE UNIQUE INDEX defeat_u ON defeat(rule, bindings);
@@ -100,26 +100,36 @@ def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world", 
     return added
 
 
-def merge(db: sqlite3.Connection, a: Const, b: Const, sentence: int) -> None:
-    """Two names for one thing. The older entity is kept; the other's facts move onto it."""
+def merge(db: sqlite3.Connection, a: Const, b: Const, sentence: int, ctx: str = "world") -> None:
+    """Two names for one thing. The older entity is kept; the other's facts move onto it. In a supposition the move is the
+    supposition's own: the world's facts are copied with the names replaced, and drop() removes the copies and the merge."""
     for c in (a, b):
         db.execute("INSERT OR IGNORE INTO entity(id, kind) VALUES (?, ?)", (c.id, c.kind))
     older = db.execute("SELECT id FROM entity WHERE id IN (?, ?) ORDER BY rowid LIMIT 1", (a.id, b.id)).fetchone()[0]
     dropped = b.id if older == a.id else a.id
     if dropped == older:
         return
-    db.execute("INSERT INTO merge(kept, dropped, sentence) VALUES (?, ?, ?)", (older, dropped, sentence))
-    db.execute("INSERT OR IGNORE INTO name(entity, text) VALUES (?, ?)", (older, dropped))
-    db.execute("INSERT OR IGNORE INTO name(entity, text) VALUES (?, ?)", (older, older))
-    for fid, pred, a0, a1, a2, positive, ctx, rnd in db.execute(
-        "SELECT id, pred, a0, a1, a2, positive, ctx, round FROM fact "
-        "WHERE a0 = ? OR a1 = ? OR a2 = ?", (dropped, dropped, dropped),
+    db.execute("INSERT INTO merge(kept, dropped, sentence, ctx) VALUES (?, ?, ?, ?)", (older, dropped, sentence, ctx))
+    if ctx == "world":
+        db.execute("INSERT OR IGNORE INTO name(entity, text) VALUES (?, ?)", (older, dropped))
+        db.execute("INSERT OR IGNORE INTO name(entity, text) VALUES (?, ?)", (older, older))
+    scope = "('world', ?)" if ctx != "world" else "('world')"
+    for fid, pred, a0, a1, a2, positive, fctx, rnd, level in db.execute(
+        f"SELECT id, pred, a0, a1, a2, positive, ctx, round, level FROM fact "
+        f"WHERE (a0 = ? OR a1 = ? OR a2 = ?) AND ctx IN {scope}", (dropped, dropped, dropped, ctx) if ctx != "world" else (dropped, dropped, dropped),
     ).fetchall():
         moved = [older if x == dropped else x for x in (a0, a1, a2)]
         twin = db.execute(
             "SELECT id FROM fact WHERE pred = ? AND a0 = ? AND a1 = ? AND a2 = ? AND positive = ? AND ctx = ?",
             (pred, *moved, positive, ctx),
         ).fetchone()
+        if fctx != ctx:
+            # A world fact seen from a supposition: copied into it, with its proof as the merge's sentence.
+            if not twin:
+                copied = db.execute("INSERT INTO fact(pred, a0, a1, a2, positive, ctx, round, level) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                                    (pred, *moved, positive, ctx, rnd, level)).lastrowid
+                db.execute("INSERT INTO why(fact, sentence, rule, premises) VALUES (?, ?, NULL, '[]')", (copied, sentence))
+            continue
         if twin:
             db.execute("UPDATE why SET fact = ? WHERE fact = ?", (twin[0], fid))
             for why_id, premises in db.execute("SELECT rowid, premises FROM why").fetchall():
@@ -136,6 +146,20 @@ def canon(db: sqlite3.Connection, ident: str) -> str:
     """The entity an identifier now stands for, following merges."""
     row = db.execute("SELECT kept FROM merge WHERE dropped = ?", (ident,)).fetchone()
     return canon(db, row[0]) if row else ident
+
+
+def canon_form(db: sqlite3.Connection, x):
+    """A question with each name replaced by the thing it now stands for, following merges (in the world or the supposition)."""
+    import dataclasses
+
+    def atoms(group):
+        return tuple(dataclasses.replace(a, args=tuple(Const(canon(db, t.id), t.kind) if isinstance(t, Const) and t.kind in ("named", "anon") else t
+                                                       for t in a.args)) for a in group)
+    if isinstance(x, lf.Ask):
+        return dataclasses.replace(x, body=atoms(x.body), alternatives=tuple(atoms(alt) for alt in x.alternatives))
+    if isinstance(x, lf.Describe) and x.entity.kind in ("named", "anon"):
+        return dataclasses.replace(x, entity=Const(canon(db, x.entity.id), x.entity.kind))
+    return x
 
 
 def derived_pairs(db: sqlite3.Connection) -> set[tuple[str, str]]:
@@ -155,26 +179,31 @@ def things_with(db: sqlite3.Connection, pred: str, ctx: str = "world") -> set[st
 
 
 def drop_ctx(db: sqlite3.Connection, ctx: str) -> None:
-    """Remove a supposition's facts, their proofs and conflicts, and the fresh things nothing else uses."""
+    """Remove a supposition's facts, rules and identities, their proofs and conflicts, and the fresh things nothing else uses."""
     ids = "SELECT id FROM fact WHERE ctx = ?"
     db.execute(f"DELETE FROM conflict WHERE positive_fact IN ({ids}) OR negative_fact IN ({ids})", (ctx, ctx))
     db.execute(f"DELETE FROM why WHERE fact IN ({ids})", (ctx,))
     db.execute("DELETE FROM fact WHERE ctx = ?", (ctx,))
+    db.execute("DELETE FROM rule WHERE ctx = ?", (ctx,))
+    db.execute("DELETE FROM merge WHERE ctx = ?", (ctx,))
     db.execute(
         "DELETE FROM sentence WHERE id NOT IN (SELECT sentence FROM why WHERE sentence IS NOT NULL "
         "UNION SELECT sentence FROM rule UNION SELECT sentence FROM merge)"
     )
     db.execute("DELETE FROM mention WHERE sentence NOT IN (SELECT id FROM sentence)")
-    db.execute(
-        "DELETE FROM entity WHERE kind IN ('event', 'anon', 'skolem') AND id NOT IN ("
-        "SELECT a0 FROM fact UNION SELECT a1 FROM fact UNION SELECT a2 FROM fact)"
-    )
+    used = ("SELECT a0 FROM fact UNION SELECT a1 FROM fact UNION SELECT a2 FROM fact UNION SELECT entity FROM mention "
+            "UNION SELECT kept FROM merge UNION SELECT dropped FROM merge")
+    db.execute(f"DELETE FROM entity WHERE kind IN ('event', 'anon', 'skolem') AND id NOT IN ({used})")
+    # A name the supposition introduced: a named thing that nothing in the world uses any more.
+    db.execute(f"DELETE FROM entity WHERE kind = 'named' AND id NOT IN ('user', 'tolk') AND id NOT IN ({used})")
+    db.execute("DELETE FROM name WHERE entity NOT IN (SELECT id FROM entity)")
 
 
-def add_rule(db: sqlite3.Connection, rule: lf.Rule, sentence: int) -> int:
+def add_rule(db: sqlite3.Connection, rule: lf.Rule, sentence: int, ctx: str = "world") -> int:
+    """A rule of the world (ctx "world"), or of a supposition, which applies only inside it and is removed by drop()."""
     return db.execute(
-        "INSERT INTO rule(sentence, printed, lf, ran, kind) VALUES (?, ?, ?, NULL, ?)",
-        (sentence, lf.show(rule), lf.encode_rule(rule), rule.kind),
+        "INSERT INTO rule(sentence, printed, lf, ran, kind, ctx) VALUES (?, ?, ?, NULL, ?, ?)",
+        (sentence, lf.show(rule), lf.encode_rule(rule), rule.kind, ctx),
     ).lastrowid
 
 

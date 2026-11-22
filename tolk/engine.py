@@ -12,7 +12,7 @@ def run(db: sqlite3.Connection, ctx: str = "world", kinds: tuple[str, ...] = ("s
     """Run the rules of the given kinds stratum by stratum, each to fixpoint. Returns the number of facts added."""
     marks = ", ".join("?" * len(kinds))
     rules = [(rid, lf.decode_rule(text), ran) for rid, text, ran in
-             db.execute(f"SELECT id, lf, ran FROM rule WHERE kind IN ({marks}) ORDER BY id", kinds)]
+             db.execute(f"SELECT id, lf, ran FROM rule WHERE kind IN ({marks}) AND ctx IN ('world', ?) ORDER BY id", (*kinds, ctx))]
     level = negation.strata([r for _, r, _ in rules])
     total = 0
     rnd = store.current_round(db)

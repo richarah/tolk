@@ -12,7 +12,7 @@ def answer_to(mind, x: lf.LF, head: tuple, result):
         a = x if isinstance(x, Answer) else (answer_closed if mind.closed_world else answer)(mind.db, x, mind.ctx)
         return result(*head, outcome=report.answer_text(mind.db, a), answer=a)
     if isinstance(x, lf.Every):
-        value, by_default = defaults.universal(mind.db, x, mind.policy)
+        value, by_default = defaults.universal(mind.db, x, mind.policy, mind.ctx)
         a = Answer(value, (), (), by_default=by_default)
         return result(*head, outcome=value + (", by default" if by_default and value != "Unknown" else ""), answer=a)
     if isinstance(x, lf.Extreme):

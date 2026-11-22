@@ -130,6 +130,7 @@ class Mind:
         if forgetting:
             return self._forget(forgetting.group(1) + ".")
         text, readings, k, x = self._read(text)  # the text the readings are of, which a question read again with its auxiliary repeated changes
+        x = store.canon_form(self.db, x)  # a question names the thing a merge made of a name, in the world or the supposition
         printed = lf.show(x)
         head = (k + 1, len(readings), printed)
         if isinstance(x, lf.Refusal):
@@ -156,21 +157,17 @@ class Mind:
             x, splits = morph.annotate(self.db, x)
             head = (*head[:2], lf.show(x))
         if isinstance(x, lf.Same):
-            if self.ctx != "world":
-                return Result(*head, outcome="refused: identity inside a supposition is not stored yet")
             sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
-            store.merge(self.db, x.a, x.b, sid)
+            store.merge(self.db, x.a, x.b, sid, self.ctx)
             history.add_mentions(self.db, sid, [(0, x.a.id, "sg"), (1, x.b.id, "sg")])
             self._derive()
             return Result(*head, outcome=f"one thing: {x.a.id} and {x.b.id}")
         if isinstance(x, lf.Rule):
-            if self.ctx != "world":
-                return Result(*head, outcome="refused: a rule inside a supposition is not stored yet")
             refusal = negation.check(self.db, x)
             if refusal is not None:
                 return Result(*head, outcome=lf.show(refusal))
             sid = store.add_sentence(self.db, text, printed, self.ctx, trust, observation)
-            store.add_rule(self.db, x, sid)
+            store.add_rule(self.db, x, sid, self.ctx)
             words.remember(self.db, x, sid)
             morph.record(self.db, splits)
             history.add_mentions(self.db, sid, [m for m in x.mentions if not m[1].startswith("~")])
