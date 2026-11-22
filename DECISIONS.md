@@ -35,13 +35,13 @@
 - "No X V": a top-level `_no_q` makes a universal rule whose head clause is negated. "No penguin flies" is `rule not fly(_, X) :- penguin(X)`.
 - Unexpressed subject: an event predicate whose first non-event argument is unexpressed is refused `UNEXPRESSED_SUBJECT`. Reading 2 of "Is Sandy happy?" was otherwise stored as `happy(E)`, a silent drop.
 - Unbound variable: a variable that no quantifier binds and that is not an event is refused `UNBOUND_VARIABLE`, instead of being ignored.
-- Negation as failure is evaluated in rounds, so a negated predicate that an earlier round derives may be missed until the round that derives it. The spec's stratification check (no negated predicate depends on the rule's head) is enforced, but a full strata-by-strata evaluation is not built. Open.
+- Negation as failure is stratified (see SPEC2 phase 9.6 below). A negated predicate is settled in a lower stratum before a rule that negates it runs. `tests/test_strata.py` checks a three-step chain whose negated rule is listed first. Resolved in the medium-items pass.
 - `choose` takes a `lookup`, and `compile_reading` uses it only for definites.
 - Prepositions: `_in_p_loc(e9, e2, oslo)` becomes `in(e2, oslo)`. The preposition's own event argument is dropped, and its object attaches to the event it modifies.
 - Where: `loc_nonsp` in a question becomes the pattern `_*_p_loc`. A star in a predicate means GLOB in SQL. The pattern matches any locative preposition by sense suffix, so "Where does Kim live?" finds `_in_p_loc`. A statement that uses `loc_nonsp` is refused, since a pattern cannot be stored.
 - Tense: `tense(e, past)` only for a told past event. Its object is a constant of kind `value`, which is not an entity.
 - Reading overlap counts (predicate, arity) pairs, not predicate names. The arity of a stored fact excludes the empty event column.
-- Suppositions: one level only. Rules and identity merges are refused inside a supposition, because the store has no context on rules or merges and drop must remove exactly what the supposition added. Both are open items.
+- Suppositions: one level only. Rules and identity merges are stored in the supposition's context (a `ctx` column on `rule` and `merge`) and `drop()` removes them. A world rule applies inside a supposition; a supposed rule does not outlive drop. Known limit: a fact told in a supposition does not defeat a default derived in the world (the answer is `Conflict`, not Yes), because defeats are not kept per context. `tests/test_suppose_rules.py` documents the limit.
 - Drop removes orphan fresh entities (kinds event, anon, skolem) that no remaining fact mentions.
 - Definites inside a supposition see the world's things and the supposition's.
 - Sentence identity (a repeated statement adds nothing) is per context: the same sentence in another supposition is stored again.
@@ -63,7 +63,7 @@
 - A rule whose restriction gives no atom is refused `EMPTY_RULE_BODY`. It arises when the grammar reads a capitalised bare plural ("Fish do not fly.", "Every robin is a bird." reading 2) as a name: the quantifier then ranges over one constant and the body is empty, and the engine cannot run it.
 - A refusal ends the reading search when it says the store cannot hold the parser's preferred meaning (`MALFORMED` lists the refusals that mean the reading is not a sensible analysis, and these are skipped). Without this, "Nobody flies." was stored as a fact about a thing named Nobody, and "Which dog does not bark?" was answered from a reading where `dog` is a verb. This changes the spec's "among those that are not refusals": only readings ranked above the first such refusal compete. "Fish do not fly." still works: its name reading is malformed, not unsupported.
 - Coordination: a conjunction predication (part of speech `c`: and, or, but) is refused `COORDINATION`. It was stored as a fact joining two events that exist nowhere else, and "or" was stored as "and". The pieces of a conjunction are not stored separately: that would drop the connective.
-- Tense and aspect: only present, and past on the main event, are stored (past as `tense(e, past)`). Future, perfect and progressive on any event, and past on a subordinate event, are refused `UNSUPPORTED_TENSE` or `UNSUPPORTED_ASPECT`. They were silently dropped, so "Kim will sing." stored `sing(kim)`, and a rule over "who owned a dog" applied to present owners.
+- Tense and aspect (medium-items pass, M3): past and future are stored on the main event (or a clause of an and or or) as `tense(e, past)` and `tense(e, fut)`. A present perfect ("Kim has sung.") is stored as a past event, because the store has no "now". A question asks the tense it has: "Does Kim sing?" matches neither past nor future events. Refused `UNSUPPORTED_ASPECT`: past perfect, future perfect, progressive. Refused `UNSUPPORTED_TENSE`: a past or future inside a claim. The earlier refusals of future and present perfect ("They were silently dropped") are no longer needed: they are stored now.
 - Universal question ("Is every dog a mammal?"): refused `UNIVERSAL_QUESTION`. The ask machinery makes every quantified variable existential, so it answered "is some dog a mammal". An exact answer needs a counterexample search, which is not built.
 - Merge rewrites premises: when a moved fact has a twin and is deleted, `why` rows that listed it as a premise now list the twin. A proof must never name a fact that is gone.
 - Drop restores the state: it also deletes the supposition's sentence rows that nothing refers to, and `Mind` puts back each rule's `ran` round as it was when the supposition began.
@@ -228,3 +228,10 @@ treated the same way ("Does every bird fly?" is `Yes, by default`). `Answer.by_d
 - "Quorl is a thing.": a capitalised word at the start is a name, so Quorl is a thing and that is stored. Read it as a fact about a thing called
   Quorl, which is what the sentence says. A word that should be a class is told with the article: "Tweety is a quorl." stores quorl as a noun.
 - "Blips are things." is a default rule about blips (a bare plural is a default, as in "Birds fly."). Not a defect.
+
+## Medium-items pass (after v0.1.1)
+- M1, M2: rules and identity merges inside a supposition are stored with the supposition's context. A merge in a supposition copies the world's facts that mention the dropped name into the supposition, with the merge sentence as their proof; world facts are not rewritten. Names the supposition introduced are removed by drop() if nothing else uses them. Questions follow merges (`store.canon_form`), in the world as well: a merged name asked about now finds the thing it became.
+- M4: confirmed built (phase 9.6). The notes that said it was "round by round" were out of date.
+- S1: a definite's constant is tagged named by the reading; the store keeps the thing's own kind, so an anonymous thing gets no name row.
+- S2: the workflow's actions move to Node 24 versions: checkout v7, setup-python v7, cache v6.
+- Limit: an identity inside a supposition with a world default that it contradicts is reported as a conflict (see M1 above).
