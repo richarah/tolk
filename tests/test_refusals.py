@@ -21,9 +21,9 @@ FINAL = {
     "SCOPE_AMBIGUOUS": ([], "Every dog does not bark."),
     "UNIVERSAL_QUESTION": ([], "Who likes every dog?"),
     "UNKNOWN_WORD": ([], "Tweety flibbered."),  # was "Does Pip glorb?", which phase 16 audit (2B) now answers: a past tense is the class the parser cannot be given
-    "UNSUPPORTED_ASPECT": ([], "Kim is singing."),
+    "UNSUPPORTED_ASPECT": ([], "Kim had sung."),
     "UNSUPPORTED_FORCE": ([], "Sing!"),
-    "UNSUPPORTED_PREDICATE": ([], "Lee wants Kim to sing."),
+    "UNSUPPORTED_PREDICATE": ([], "Kim owns more than two cats."),
     "NO_ANTECEDENT": ([], "She swims."),
     "AMBIGUOUS_PRONOUN": (["Kim likes Sandy."], "She is happy."),
     "UNSUPPORTED_QUANTIFIER": ([], "Most cats purr."),

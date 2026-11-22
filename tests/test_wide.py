@@ -30,7 +30,7 @@ def test_a_refused_sentence_with_fewer_than_five_readings_is_not_parsed_again() 
     real = erg.parse
     erg.parse = lambda text, tags=None, limit=erg.READINGS: (calls.append(limit), real(text, tags, limit))[1]
     try:
-        r = Mind().tell("Lee wants Kim to sing.")
+        r = Mind().tell("Lee wants Kim to sing or dance.")
     finally:
         erg.parse = real
     assert r.outcome == "refused" and calls == [erg.READINGS]

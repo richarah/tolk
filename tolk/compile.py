@@ -101,13 +101,13 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
     mode = "rule" if universal_top or cond is not None else "ask" if sf == "ques" else "tell"
-    if modal.find(r):
+    if modal.find(r) or any(p.get("PROG") == "+" for p in r.props.values()):
         # A modal over a generic (every, all, a bare plural) is a claim about a kind, which the store does not hold as a rule with a modal.
         generic = mode == "rule" or any(q.pred in quant.UNIVERSAL or q.pred == "udef_q" for q in quants)
         if generic:
             return lf.Refusal("UNSUPPORTED_PREDICATE", "a modal in a rule, or over a generic")
         if any(ep.pred == "neg" for ep in r.eps):
-            return lf.Refusal("UNSUPPORTED_PREDICATE", "a negated modal")
+            return lf.Refusal("UNSUPPORTED_PREDICATE", "a negated modal" if modal.find(r) else "a negated progressive")
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
         return lf.Refusal("COORDINATION", "a group or an or in a rule")
     if mode == "rule" and temporal.find(r):
@@ -164,7 +164,11 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         if isinstance(alts, lf.Refusal):
             return alts
         if mode == "tell":
-            out = lf.Tell(alts[0], notes=notes, claims=tuple((ctx.claim[verb.args["ARG2"]], content_atoms) for verb, _ in held))
+            split = _split_conjoined_claim(alts[0], held, ctx, content_atoms, r) if held else None
+            if split is not None:
+                out = lf.Tell(split[0], notes=notes, claims=split[1])
+            else:
+                out = lf.Tell(alts[0], notes=notes, claims=tuple((ctx.claim[verb.args["ARG2"]], content_atoms) for verb, _ in held))
         else:
             counted, at_least = (Var(many[0]), 0) if many else next(((Var(v), n) for v, n in cards.items()), (None, 0))
             out = lf.Ask(alts[0], wanted, notes, counted, at_least, claims=tuple((ctx.claim[verb.args["ARG2"]], content_atoms) for verb, _ in held),
@@ -237,6 +241,39 @@ def choose(readings: list[Reading], store_preds: set, lookup: Lookup | None = No
     if first is None:
         return 0, lf.Refusal("NO_EVENT_READING", "no reading beyond the first ones")
     return first[0], _blame_unknown_word(readings, first[1])
+
+
+def _split_conjoined_claim(atoms, held, ctx: Ctx, content: tuple, r: Reading):
+    """A claim whose content joins events with and is one claim per event: "Kim wants to sing and dance." is a claim that Kim wants to
+    sing and a claim that Kim wants to dance. Each event's atoms are a claim's content, and the verb is repeated for each claim. None
+    when the content is not split this way (one event, or an atom about two events, or a conjunction that is not and)."""
+    if len(held) != 1 or not any(c.op == "and" for c in coordination.find(r)):
+        return None
+    verb, _ = held[0]
+    term = ctx.claim[verb.args["ARG2"]]
+    events = []
+    def is_event(t) -> bool:
+        return (isinstance(t, Var) and t.event) or (isinstance(t, Const) and t.kind == "event")
+
+    for a in content:
+        ev = [t for t in a.args if is_event(t)]
+        if len(ev) != 1 or not a.args or a.args[0] != ev[0]:
+            return None
+        if ev[0] not in events:
+            events.append(ev[0])
+    if len(events) < 2:
+        return None
+    verbs = [a for a in atoms if a.pred == verb.pred and a.args and a.args[-1] == term]
+    if len(verbs) != 1:
+        return None
+    base = verbs[0]
+    rest = tuple(a for a in atoms if a is not base)
+    claims, verb_atoms = [], []
+    for i, ev in enumerate(events):
+        claim = Const(lf.fresh_id("claim", i + 1), "claim")
+        claims.append((claim, tuple(a for a in content if a.args[0] == ev)))
+        verb_atoms.append(Atom(base.pred, base.args[:-1] + (claim,), base.positive))
+    return rest + tuple(verb_atoms), tuple(claims)
 
 
 def _blame_unknown_word(readings: list[Reading], refusal: lf.Refusal) -> lf.Refusal:

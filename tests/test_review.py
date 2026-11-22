@@ -38,7 +38,7 @@ def test_and_between_clauses_stores_each_clause_and_no_fact_about_events(mind: M
     assert {p for (p,) in mind.db.execute("SELECT pred FROM fact")} == {"_sing_v_1", "_dance_v_1"}
 
 
-@pytest.mark.parametrize("text", ["Kim is singing.", "Kim had arrived.", "Kim will have sung."])  # future and present perfect are stored (M3)
+@pytest.mark.parametrize("text", ["Kim will be singing.", "Kim had arrived.", "Kim will have sung."])  # future and present perfect are stored (M3)
 def test_tense_and_aspect_that_are_not_stored_are_refused(mind: Mind, text: str) -> None:
     r = mind.tell(text)
     assert r.outcome == "refused" and ("TENSE" in r.printed or "ASPECT" in r.printed)
@@ -76,12 +76,6 @@ def test_dropping_a_supposition_restores_every_table(mind: Mind) -> None:
     mind.suppose("Tweety is a penguin.")
     mind.drop()
     assert dump() == before
-
-
-@pytest.mark.parametrize("text, pred", [("Lee wants Kim to sing.", "_want_v_1")])
-def test_object_control_is_refused_by_name_not_as_a_variable(mind: Mind, text: str, pred: str) -> None:
-    r = mind.tell(text)
-    assert r.outcome == "refused" and r.printed == f"refuse UNSUPPORTED_PREDICATE: {pred}"
 
 
 def test_a_repeat_is_by_meaning_not_by_text(mind: Mind) -> None:

@@ -20,8 +20,8 @@ def tense(r: Reading) -> lf.Refusal | None:
             continue  # a modal's own predication carries a tense of its own; the event it modifies is checked
         p = r.props.get(v, {})
         main = v == r.index or ordered or v in clauses
-        if p.get("PROG") == "+":
-            return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)
+        if p.get("PROG") == "+" and (p.get("TENSE") not in ("pres", "past") or not main or p.get("PERF") == "+"):
+            return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)  # a progressive is stored in the present or past, on a main event
         if p.get("PERF") == "+":
             if p.get("TENSE") != "pres" or not main:
                 return lf.Refusal("UNSUPPORTED_ASPECT", ep.pred)  # past perfect, future perfect, or a perfect that is not a main event

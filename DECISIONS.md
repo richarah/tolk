@@ -271,3 +271,9 @@ A store file can be reopened. `store.open_store` creates the schema only when th
 
 ## Verification round 3 (VERIFY.md, last section)
 A modal over a generic (every, all, a bare plural) is refused UNSUPPORTED_PREDICATE, as a modal in a rule. Before, "Birds can fly." was stored as one unnamed bird. Open items from the round are listed in VERIFY3.md.
+
+## Conjoined infinitives, object control, progressive (the three-items round)
+- A control claim whose content joins events with "and" is one claim per event: "Kim wants to sing and dance." is a claim that Kim wants to sing and a claim that Kim wants to dance; each asks on its own. The split is in `compile._split_conjoined_claim` and applies to statements only; a question about a conjunction is not split (open).
+- Object control: any infinitive under a control verb is a claim of the verb's subject, whoever the infinitive's subject is. "Lee wants Kim to sing." is a claim Lee has, about Kim's singing. Limit: every control verb is taken this way, including verbs like "persuade" that a claim may not fit.
+- Progressive: stored as `modal(event, prog)`, the same mark a modal uses, on a present or past main event. "Is Kim singing?" asks for it; "Does Kim sing?" does not match it. A perfect progressive ("has been singing"), a future progressive ("will be singing") and a negated progressive ("is not singing") stay refused. The negated one is refused under the negated-modal guard, with the label "a negated progressive".
+- Checked, and not a defect: "Kim believes Lee sings and dances." attaches "dances" to the believing verb, so `dance(kim)` is a world fact. That is what the reading says ("Kim believes Lee sings, and Kim dances").

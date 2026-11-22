@@ -52,7 +52,7 @@ def test_a_present_perfect_is_asked_as_a_past(told: list[str], question: str, an
 @pytest.mark.parametrize("text, code", [
     ("Kim had sung.", "UNSUPPORTED_ASPECT"),
     ("Kim will have sung.", "UNSUPPORTED_ASPECT"),
-    ("Kim is singing.", "UNSUPPORTED_ASPECT"),
+    ("Kim will be singing.", "UNSUPPORTED_ASPECT"),  # a progressive is stored now (tests/test_control_conj_object_prog.py)
 ])
 def test_past_perfect_future_perfect_and_progressive_stay_refused(text: str, code: str) -> None:
     r = Mind().tell(text)

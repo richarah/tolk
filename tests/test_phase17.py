@@ -29,7 +29,7 @@ def test_read_gives_the_logical_form_without_a_store(text: str, form: str) -> No
 
 
 def test_read_returns_a_refusal_and_does_not_raise() -> None:
-    x = tolk.read("Lee wants Kim to sing.")  # object control: a control verb with its own subject is refused (subject control is a claim)
+    x = tolk.read("Kim owns more than two cats.")  # counting over a known noun is refused
     assert isinstance(x, tolk.Refusal) and x.code == "UNSUPPORTED_PREDICATE"
     assert isinstance(tolk.read(""), tolk.Refusal)
 

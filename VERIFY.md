@@ -255,6 +255,7 @@ An independent agent re-checked the features of the v0.1.3 work against their do
 - "Every bird can fly." was refused with the quantifier label. Now the same modal refusal.
 
 ## Open, recorded (not fixed)
+- Fixed in the three-items round: conjoined infinitives ("Kim wants to sing and dance.") and object control ("Lee wants Kim to sing."); see DECISIONS.md.
 - Control with a verb the grammar reads as a noun: "Lee tries to dance." reads "dance" as a noun, so no claim is stored (a reading choice limit; the grammar offers the noun reading).
 - Conjoined infinitives: "Kim wants to sing and dance." stores one claim with the conjunction in its content, so "Does Kim want to sing?" is Unknown. Expected: Yes. Open.
 - Robustness: a second `suppose` while one is open raises ValueError, and `drop()` with nothing open raises ValueError. These are API errors for the caller, documented as one level of supposition; they are not raised by any sentence.

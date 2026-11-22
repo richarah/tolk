@@ -34,8 +34,9 @@ def test_a_control_statement_is_stored_as_a_claim() -> None:
 
 
 @pytest.mark.parametrize("text", ["Lee wants Kim to sing."])
-def test_object_control_stays_refused(text: str) -> None:
-    assert Mind().tell(text).outcome == "refused"
+def test_object_control_is_a_claim_now(text: str) -> None:
+    # Changed by the object-control item (tests/test_control_conj_object_prog.py): the infinitive's own subject does not matter.
+    assert Mind().tell(text).outcome.startswith("stored")
 
 
 def test_a_negated_control_verb_is_a_negated_claim_as_a_negated_belief_is() -> None:
