@@ -268,3 +268,6 @@ A store file can be reopened. `store.open_store` creates the schema only when th
 ## Kept on the owner's instruction (after the SQUID removal)
 - "Quorl is a thing." stores Quorl as a name, and "Ola owns more than two cellos." is refused for the unknown word. Both kept as decided in the open-items pass.
 - SQUID's legacy pipeline removed from `main` (70cb408): the audit found only its two error classes in use, moved to `squid/errors.py`. 62 tests remain in SQUID, down from 128 because the legacy rule and lexicon tests went with it.
+
+## Verification round 3 (VERIFY3.md)
+A modal over a generic (every, all, a bare plural) is refused UNSUPPORTED_PREDICATE, as a modal in a rule. Before, "Birds can fly." was stored as one unnamed bird. Open items from the round are listed in VERIFY3.md.

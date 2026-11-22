@@ -102,8 +102,10 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
     mode = "rule" if universal_top or cond is not None else "ask" if sf == "ques" else "tell"
     if modal.find(r):
-        if mode == "rule":
-            return lf.Refusal("UNSUPPORTED_PREDICATE", "a modal in a rule")
+        # A modal over a generic (every, all, a bare plural) is a claim about a kind, which the store does not hold as a rule with a modal.
+        generic = mode == "rule" or any(q.pred in quant.UNIVERSAL or q.pred == "udef_q" for q in quants)
+        if generic:
+            return lf.Refusal("UNSUPPORTED_PREDICATE", "a modal in a rule, or over a generic")
         if any(ep.pred == "neg" for ep in r.eps):
             return lf.Refusal("UNSUPPORTED_PREDICATE", "a negated modal")
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
