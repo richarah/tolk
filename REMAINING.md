@@ -21,14 +21,14 @@ Measured figures are from the commands named; older figures are not repeated her
 - Modals, control verbs, durations, "most" and most quantifiers: refused as UNSUPPORTED_*.
 - Progressive, past perfect and future perfect: refused (UNSUPPORTED_ASPECT). Past, future and present perfect are stored on the main event and on the clauses of an and or or; a past or future inside a claim is refused.
 - Suppositions are one level deep.
-- The reading choice does not rank parser senses ("Jo writes letters." reads `write_v_to`).
+- The reading choice does not rank parser senses ("Jo writes letters." reads `write_v_to`; "Bo bakes bread." reads the causative `bake`, the held-out miss). Needs a principled sense measure from the grammar, not a word list.
 - "Kay" reads as "okay" (the grammar's word) and is refused UNKNOWN_WORD. Use another name.
 - A name one edit from an accepted word is refused POSSIBLE_TYPO once, even when meant (the design; the user must resend it).
 
 ## Testing gaps
 - Coverage of the grammar's own test suite and of its predicate inventory is not measured. Only the corpus files are measured:
   `scripts/coverage.py tests/sentences.txt tests/extra.txt tests/round1.txt tests/round2.txt` compiled 125 of 149 (83.9%) at the time of writing.
-- The held-out check of the reading choice (stores the tests never build) is not done. The choice table in `tests/choice_table.json` is the
+- Held-out check: 26 new sentences, 24 match (tests/heldout.py, DECISIONS.md). Two known misses: "Bo bakes bread." (sense) and "A penguin is a bird." (existential or generic).
   only measured set.
 - The fuzz of 511 sentences with four mutations each (run during the open-items pass, not a committed test) is not in the suite. Its result is in
   the open-items commit message.
