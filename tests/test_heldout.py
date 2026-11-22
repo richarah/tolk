@@ -3,7 +3,7 @@
 from heldout import run
 
 KNOWN_MISSES = {
-    ("Does Bo bake?",),  # reading choice: "bakes" with an object is read as the causative sense (parser senses, REMAINING.md)
+    ("Does Bo bake?",),  # grammar lexicon, not choice: the only reading that compiles is the causative sense; the others fall back (DECISIONS.md)
     ("Is Pingu a bird?",),  # "A penguin is a bird." is read as an existential, so Pingu is not known to be one (design; see DECISIONS.md)
 }
 

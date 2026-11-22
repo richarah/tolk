@@ -252,3 +252,6 @@ A statement that compiles to something with a variable in it is now refused UNSU
 
 ## Proofs print generated wording (the proofs item)
 The wording setting's default is now `generated`: proofs and answers word each fact through the grammar, and keep a sentence only if it gives back exactly the fact (`tolk/generate.py`). Otherwise the template is used, and the fallback is marked in debug output. Six tests changed, each to check the same fact in its generated wording: `tests/test_dialogue_b.py`, `tests/test_phase10.py`, `tests/test_phase12.py`, and the default in `tests/test_wording.py`. A derived negative fact keeps its template wording, because its generated sentence has an event the fact does not (`not like(kim, nemo)`). Cost: the suite takes about 30 percent longer.
+
+## Parser senses (the parser-senses item): a grammar limit, not a choice limit
+"Bo bakes bread." has five readings: one is `_bake_v_cause` and compiles; the other four are FALLBACK_PARSE (the grammar does not analyse them). "Jo writes letters." has three readings, all `_write_v_to`. The choice can only rank readings the grammar gives it, so there is no sense for it to prefer here. A ranking of senses needs sense frequencies or the grammar's own sense preference, which ACE does not report. Left as a grammar limit; the held-out cases stay as known misses.

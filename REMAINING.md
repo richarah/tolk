@@ -21,7 +21,7 @@ Measured figures are from the commands named; older figures are not repeated her
 - Control verbs ("wants to", "tries to"), durations, "most" and most quantifiers: refused as UNSUPPORTED_*. Modals are stored now (DECISIONS.md, modals). A negated modal ("cannot") and a modal in a rule are refused.
 - Progressive, past perfect and future perfect: refused (UNSUPPORTED_ASPECT). Past, future and present perfect are stored on the main event and on the clauses of an and or or; a past or future inside a claim is refused.
 - Suppositions are one level deep.
-- The reading choice does not rank parser senses ("Jo writes letters." reads `write_v_to`; "Bo bakes bread." reads the causative `bake`, the held-out miss). Needs a principled sense measure from the grammar, not a word list.
+- Parser senses are the grammar's, not the choice's: "Bo bakes bread." offers only the causative sense that compiles; "Jo writes letters." offers only `write_v_to` (DECISIONS.md, parser senses). Nothing for the choice to rank.
 - "Kay" reads as "okay" (the grammar's word) and is refused UNKNOWN_WORD. Use another name.
 - A name one edit from an accepted word is refused POSSIBLE_TYPO once, even when meant (the design; the user must resend it).
 
