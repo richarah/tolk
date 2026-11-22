@@ -28,7 +28,7 @@ class Result:
 
 class Mind:
     def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",), auto_revise: bool = False, closed_world: bool = False,
-                 wording: str = "template") -> None:
+                 wording: str = "generated") -> None:
         self.db = store.open_store(path)
         self.set_policy(policy)
         self.db.execute("INSERT INTO meta(key, value) VALUES ('auto_revise', ?)", (str(int(auto_revise)),))

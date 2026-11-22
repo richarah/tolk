@@ -33,7 +33,8 @@ def test_the_no_answer_has_a_proof() -> None:
     for s in FISH:
         m.tell(s)
     out = m.ask("Does Kim like Nemo?").outcome
-    assert "not like(kim, nemo)  (by rule 1)" in out and "nemo is a fish  (told:" in out
+    # The derived negative fact keeps its template wording: its generated sentence has an event the fact does not, so it is not accepted.
+    assert "not like(kim, nemo)  (by rule 1)" in out and "Nemo is a fish.  (told:" in out
 
 
 @pytest.mark.parametrize("told, question, answer", [

@@ -24,7 +24,7 @@ def test_told_facts_come_before_derived_ones(mind: Mind) -> None:
     told = [i for i, l in enumerate(lines) if "(told:" in l]
     derived = [i for i, l in enumerate(lines) if "(by rule" in l]
     assert len(told) == 2 and len(derived) == 1 and max(told) < min(derived)
-    assert any(l.startswith("rio is a sparrow") for l in lines) and any("rio is a bird" in l for l in lines)
+    assert any(l.startswith("Rio is a sparrow") for l in lines) and any("Rio is a bird" in l for l in lines)
 
 
 def test_what_is_and_who_is_say_the_same(mind: Mind) -> None:
@@ -33,11 +33,11 @@ def test_what_is_and_who_is_say_the_same(mind: Mind) -> None:
 
 def test_a_negative_fact_and_an_event_modifier_belong_to_the_description(mind: Mind) -> None:
     out = mind.hear("What is Ada?").outcome
-    assert "not like(ada, bo)" in out and "own(ada, a1)" in out and "a1 is a cat" not in out
+    assert "Ada doesn't like Bo." in out and "own(ada, a1)" in out and "a1 is a cat" not in out
 
 
 def test_a_name_that_only_appears_in_a_negative_fact_is_known(mind: Mind) -> None:
-    assert "not like(ada, bo)" in mind.hear("Who is Bo?").outcome
+    assert "Ada doesn't like Bo." in mind.hear("Who is Bo?").outcome
 
 
 def test_an_unknown_name_is_unknown(mind: Mind) -> None:

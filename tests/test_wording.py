@@ -15,10 +15,11 @@ def mind(wording: str) -> Mind:
     return m
 
 
-def test_the_default_is_template_and_is_kept_in_meta() -> None:
+def test_the_default_is_generated_and_is_kept_in_meta() -> None:
+    # Changed in the proofs item: generated wording is the default (DECISIONS.md, proofs). The template stays as the fallback.
     m = Mind()
-    assert m.wording == "template"
-    assert m.db.execute("SELECT value FROM meta WHERE key = 'wording'").fetchone() == ("template",)
+    assert m.wording == "generated"
+    assert m.db.execute("SELECT value FROM meta WHERE key = 'wording'").fetchone() == ("generated",)
 
 
 def test_an_unknown_wording_is_refused() -> None:

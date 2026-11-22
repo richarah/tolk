@@ -79,7 +79,7 @@ def test_the_dog_barks_is_refused_with_count(mind: Mind) -> None:
 def test_tweety_does_not_fly_is_refused_with_proof(mind: Mind) -> None:
     r = mind.tell("Tweety does not fly.")
     assert r.outcome.startswith("refused, contradicts")
-    assert "fly(tweety)" in r.outcome
+    assert "Tweety flies." in r.outcome  # the generated wording of the fact (the default; tests/test_wording.py)
 
 
 def test_negation_as_failure_in_a_rule_body() -> None:

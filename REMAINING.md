@@ -35,7 +35,7 @@ Measured figures are from the commands named; older figures are not repeated her
 - Two verification rounds were the only independent checks; they are in VERIFY.md. Nothing has verified the open-items pass independently.
 
 ## Proofs and wording
-- Proofs print the template wording, not the generated wording, in every earlier dialogue (PROGRESS.md, "What I would do next", item 1). Generated
+- Generated wording is the default now (DECISIONS.md, proofs). Derived negative facts still use the template: their generated sentence has an event the fact does not.
   wording exists for tier A facts only (`tests/test_phase24.py`).
 
 ## Parser and grammar
