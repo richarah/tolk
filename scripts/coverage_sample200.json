@@ -1,0 +1,22 @@
+{
+  "sentences": 200,
+  "compiled": 2,
+  "percent": 1.0,
+  "refusals": {
+    "UNSUPPORTED_ASPECT": 36,
+    "NO_EVENT_READING": 34,
+    "DEFINITE_NEEDS_STORE": 30,
+    "UNSUPPORTED_PREDICATE": 24,
+    "UNKNOWN_WORD": 20,
+    "UNSUPPORTED_TENSE": 16,
+    "UNSUPPORTED_FORCE": 12,
+    "DEMONSTRATIVE": 10,
+    "NO_ANTECEDENT": 8,
+    "FALLBACK_PARSE": 2,
+    "TOO_MANY_ARGUMENTS": 2,
+    "ARGUMENT_GAP": 1,
+    "AMBIGUOUS_PRONOUN": 1,
+    "UNEXPRESSED_SUBJECT": 1,
+    "UNCONSUMED": 1
+  }
+}

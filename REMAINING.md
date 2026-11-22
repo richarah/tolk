@@ -37,7 +37,7 @@ item says what is missing and why. Figures are from the commands named.
 
 ## Coverage of the grammar's own test items
 - The ERG's gold test items are in the delph-in/erg repository (`tsdb/gold/*/item.gz`, about 45,000 sentences in the profiles fetched).
-  `scripts/grammar_coverage.py` measures tolk on them. Sample of 1,000 (random, seed 7): see DECISIONS.md "Grammar coverage".
+  `scripts/grammar_coverage.py` measures tolk on them. 200 random items: 2 compile (1.0%). See DECISIONS.md "Grammar coverage" and benchmarks/erg_items_sample200.json.
 - A full run over all items takes hours at the measured speed; it is not in the suite.
 - The predicate inventory of the grammar is not measured: the grammar's own predicate list is not in the repository.
 
