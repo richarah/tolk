@@ -3,10 +3,10 @@
 Written after the open-items pass (branch `open-items`, on top of the `v0.1.0` release). Each line says what is missing and why it matters.
 Measured figures are from the commands named; older figures are not repeated here.
 
-## Not released
-- The open-items pass is on the `open-items` branch. It is not merged to `master` and not tagged. A release needs a tag (`v0.1.1`, say) and
-  SQUID's dependency moved from `v0.1.0` to that tag. SQUID's `tolk-backend` branch and tests were run against `v0.1.0`, not against this pass.
-- CI on `open-items` has not run yet at the time of writing (see the commit message and PROGRESS.md for the result if it has).
+## Release state
+- `v0.1.1` is tagged at `35bb73c` on `master`, which is the open-items pass. CI on `master` at that commit passed: 913 tests collected, 913 passed.
+- SQUID is pinned to `v0.1.1` (commit `da93f47` on `tolk-backend` and `main`). From a fresh clone: 128 passed, 5 xfailed; the differential test agrees on 15 of 15. SQUID's tests need `TOLK_ERG_DIR` set to a checkout's `erg/`.
+- tolk's `pyproject.toml` still says version 0.1.0 at the `v0.1.1` tag. Fixing it needs a new tag.
 
 ## Decisions the owner may want to reverse (DECISIONS.md, "Open-items pass")
 - "Quorl is a thing." stores Quorl as a name. A word that should be a class needs the article.
@@ -15,7 +15,7 @@ Measured figures are from the commands named; older figures are not repeated her
 - "Kim told Lee that Rio sings or hums." is refused TOO_MANY_ARGUMENTS, a message that does not say the sentence is about a claim. It was
   UNSUPPORTED_TENSE. The new tense rule lets a wrong reading through to a refusal that reads badly.
 
-## Known limits, by design or by SPEC scope
+## Known limits (by design, or out of the SPEC's scope at the time; not all are permanent)
 - Counting and numbers beyond the stated forms: "more than two" over a known noun is refused (more_comp). Cardinals in a rule and two numbers in a
   question are refused. (`scripts/coverage.py` lists the refusals; the largest in the four corpus files is `card`.)
 - Modals, control verbs, durations, "most" and most quantifiers: refused as UNSUPPORTED_*.
