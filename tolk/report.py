@@ -44,14 +44,37 @@ def defeated(db: sqlite3.Connection, proofs: list) -> str:
     return "\n".join(f'  defeated "{text}" (rule {rule}) by {reason}' for rule, reason, _, text in rows)
 
 
+def _held(db: sqlite3.Connection, content) -> list[str]:
+    return [i for (i,) in db.execute("SELECT id FROM claim WHERE printed = ?", (claims.claim_key(content),))]
+
+
+def _bind(atoms, var, claim: str) -> tuple[Atom, ...]:
+    return tuple(Atom(a.pred, tuple(lf.Const(claim, "claim") if t == var else t for t in a.args), a.positive) for a in atoms)
+
+
 def bind_claims(db: sqlite3.Connection, x: lf.Ask) -> lf.Ask | Answer:
-    """A question about what someone believes: the claims whose content is exactly the asked content stand in for the claim variable."""
-    (var, content), = x.claims
-    ids = [i for (i,) in db.execute("SELECT id FROM claim WHERE printed = ?", (claims.claim_key(content),))]
-    if not ids:
+    """A question about what someone believes: the claims whose content is exactly the asked content stand in for the claim variable.
+    Several claims joined by and need each to be held (any choice of held claims for them); joined by or, any one of them."""
+    if len(x.claims) == 1:
+        (var, content), = x.claims
+        ids = _held(db, content)
+        if not ids:
+            return Answer("Unknown", (), ())
+        bodies = tuple(_bind(x.body, var, c) for c in ids)
+        return dataclasses.replace(x, body=bodies[0], claims=(), alternatives=bodies if len(bodies) > 1 else ())
+    found = [(var, _held(db, content)) for var, content in x.claims]
+    if x.claims_join == "and":
+        if any(not ids for _, ids in found):
+            return Answer("Unknown", (), ())
+        bodies = [tuple(a for a in x.body)]
+        for var, ids in found:
+            bodies = [_bind(body, var, c) for body in bodies for c in ids]
+        return dataclasses.replace(x, body=bodies[0], claims=(), alternatives=tuple(bodies) if len(bodies) > 1 else ())
+    # or: the alternative for each part, bound to each claim held for it
+    bodies = [_bind(alt, var, c) for alt, (var, ids) in zip(x.alternatives, found) for c in ids]
+    if not bodies:
         return Answer("Unknown", (), ())
-    bodies = tuple(tuple(Atom(a.pred, tuple(lf.Const(c, "claim") if t == var else t for t in a.args), a.positive) for a in x.body) for c in ids)
-    return dataclasses.replace(x, body=bodies[0], claims=(), alternatives=bodies if len(bodies) > 1 else ())
+    return dataclasses.replace(x, body=bodies[0], claims=(), alternatives=tuple(bodies) if len(bodies) > 1 else ())
 
 
 def word_claims(db: sqlite3.Connection, a: Answer) -> Answer:

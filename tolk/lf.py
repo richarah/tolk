@@ -84,6 +84,7 @@ class Ask:
     tenses: tuple[tuple[Var, str], ...] = ()  # events of the question that must be past, or present; a fact without an event is either
     modals: tuple[tuple[Var, str], ...] = ()  # per event of the question, the modal it must have ("can", ...), or "" for none
     alternatives: tuple[tuple[Atom, ...], ...] = ()  # an or: the question is answered by each alternative body, and any Yes wins
+    claims_join: str = ""  # with several claims: "and" (each claim must be held) or "or" (any one of them); "" for one claim
 
 
 @dataclass(frozen=True)

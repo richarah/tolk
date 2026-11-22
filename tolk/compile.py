@@ -107,6 +107,7 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         if generic:
             return lf.Refusal("UNSUPPORTED_PREDICATE", "a modal in a rule, or over a generic")
         if any(ep.pred == "neg" for ep in r.eps):
+            # A negated fact is stored without an event, so a modal or a progressive on it has nothing to attach to.
             return lf.Refusal("UNSUPPORTED_PREDICATE", "a negated modal" if modal.find(r) else "a negated progressive")
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
         return lf.Refusal("COORDINATION", "a group or an or in a rule")
@@ -163,7 +164,11 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         alts = coordination.distribute(ctx, (post.expand(ctx, atoms, cards) if mode == "tell" else atoms) + ordered, conjs)
         if isinstance(alts, lf.Refusal):
             return alts
-        if mode == "tell":
+        split_question = _split_question(r, held, ctx, content_atoms, alts[0]) if mode == "ask" and held else None
+        if split_question is not None:
+            out = lf.Ask(split_question[0], wanted, notes, claims=split_question[1], claims_join=split_question[2],
+                         alternatives=split_question[3])
+        elif mode == "tell":
             split = _split_conjoined_claim(alts[0], held, ctx, content_atoms, r) if held else None
             if split is not None:
                 out = lf.Tell(split[0], notes=notes, claims=split[1])
@@ -243,37 +248,74 @@ def choose(readings: list[Reading], store_preds: set, lookup: Lookup | None = No
     return first[0], _blame_unknown_word(readings, first[1])
 
 
-def _split_conjoined_claim(atoms, held, ctx: Ctx, content: tuple, r: Reading):
-    """A claim whose content joins events with and is one claim per event: "Kim wants to sing and dance." is a claim that Kim wants to
-    sing and a claim that Kim wants to dance. Each event's atoms are a claim's content, and the verb is repeated for each claim. None
-    when the content is not split this way (one event, or an atom about two events, or a conjunction that is not and)."""
-    if len(held) != 1 or not any(c.op == "and" for c in coordination.find(r)):
-        return None
-    verb, _ = held[0]
-    term = ctx.claim[verb.args["ARG2"]]
-    events = []
-    def is_event(t) -> bool:
-        return (isinstance(t, Var) and t.event) or (isinstance(t, Const) and t.kind == "event")
+def _is_event(t) -> bool:
+    return (isinstance(t, Var) and t.event) or (isinstance(t, Const) and t.kind == "event")
 
+
+def _parts_by_event(content: tuple) -> list | None:
+    """The events of a claim's content, each with the atoms about it, when every atom is about exactly one event that is its first
+    argument. None otherwise (one event, an atom about two events, or an atom with no event first)."""
+    events: list = []
     for a in content:
-        ev = [t for t in a.args if is_event(t)]
+        ev = [t for t in a.args if _is_event(t)]
         if len(ev) != 1 or not a.args or a.args[0] != ev[0]:
             return None
         if ev[0] not in events:
             events.append(ev[0])
     if len(events) < 2:
         return None
+    return [(ev, tuple(a for a in content if a.args[0] == ev)) for ev in events]
+
+
+def _claim_verb(atoms, held, ctx: Ctx):
+    """The one atom of the claim's verb in these atoms, with its claim argument, or None."""
+    verb, _ = held[0]
+    term = ctx.claim[verb.args["ARG2"]]
     verbs = [a for a in atoms if a.pred == verb.pred and a.args and a.args[-1] == term]
-    if len(verbs) != 1:
+    return (verbs[0], [a for a in atoms if a is not verbs[0]]) if len(verbs) == 1 else None
+
+
+def _split_conjoined_claim(atoms, held, ctx: Ctx, content: tuple, r: Reading):
+    """A statement whose claim joins events with and is one claim per event: "Kim wants to sing and dance." is a claim that Kim wants to
+    sing and a claim that Kim wants to dance. The verb is repeated for each claim. None when the content is not split this way."""
+    if len(held) != 1 or not any(c.op == "and" for c in coordination.find(r)):
         return None
-    base = verbs[0]
-    rest = tuple(a for a in atoms if a is not base)
+    parts = _parts_by_event(content)
+    found = _claim_verb(atoms, held, ctx)
+    if parts is None or found is None:
+        return None
+    base, rest = found
     claims, verb_atoms = [], []
-    for i, ev in enumerate(events):
+    for i, (_, part) in enumerate(parts):
         claim = Const(lf.fresh_id("claim", i + 1), "claim")
-        claims.append((claim, tuple(a for a in content if a.args[0] == ev)))
+        claims.append((claim, part))
         verb_atoms.append(Atom(base.pred, base.args[:-1] + (claim,), base.positive))
-    return rest + tuple(verb_atoms), tuple(claims)
+    return tuple(rest) + tuple(verb_atoms), tuple(claims)
+
+
+def _split_question(r: Reading, held, ctx: Ctx, content: tuple, atoms):
+    """A question whose claim joins events with and or or asks each claim: "Does Kim want to sing and dance?" needs both claims held,
+    "... sing or dance?" either. Returns (body, claims, join, alternatives), or None."""
+    if len(held) != 1:
+        return None
+    ops = {c.op for c in coordination.find(r)}
+    if len(ops) != 1 or not ops <= {"and", "or"}:
+        return None
+    join = ops.pop()
+    parts = _parts_by_event(content)
+    found = _claim_verb(atoms, held, ctx)
+    if parts is None or found is None:
+        return None
+    base, rest = found
+    claims, copies = [], []
+    for i, (_, part) in enumerate(parts):
+        var = Var(f"claim{i + 1}")
+        claims.append((var, part))
+        copies.append(Atom(base.pred, base.args[:-1] + (var,), base.positive))
+    if join == "and":
+        return tuple(rest) + tuple(copies), tuple(claims), "and", ()
+    alternatives = tuple(tuple(rest) + (c,) for c in copies)
+    return alternatives[0], tuple(claims), "or", alternatives
 
 
 def _blame_unknown_word(readings: list[Reading], refusal: lf.Refusal) -> lf.Refusal:
