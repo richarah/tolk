@@ -264,3 +264,7 @@ A store file can be reopened. `store.open_store` creates the schema only when th
 
 ## Grammar coverage (the coverage item)
 `scripts/grammar_coverage.py` on 200 of the ERG's gold test items (a random 200 of 1,000 drawn with seed 7 from the 45,490 items of the profiles wsj00-10, ws201-214, vm6, vm13, vm31, vm32, ps): **2 of 200 compile (1.0%)**. Refusals: UNSUPPORTED_ASPECT 36, NO_EVENT_READING 34, DEFINITE_NEEDS_STORE 30, UNSUPPORTED_PREDICATE 24, UNKNOWN_WORD 20, UNSUPPORTED_TENSE 16, UNSUPPORTED_FORCE 12, DEMONSTRATIVE 10, NO_ANTECEDENT 8. The figure is saved in `benchmarks/erg_items_sample200.json`. These items are mostly newspaper sentences, long, and with definites and imperatives, which tolk does not read without a store; so the figure is a measure of scope, not of quality. A 1,000 run was stopped after 30 minutes with no progress output; a full run is not practical as it is.
+
+## Kept on the owner's instruction (after the SQUID removal)
+- "Quorl is a thing." stores Quorl as a name, and "Ola owns more than two cellos." is refused for the unknown word. Both kept as decided in the open-items pass.
+- SQUID's legacy pipeline removed from `main` (70cb408): the audit found only its two error classes in use, moved to `squid/errors.py`. 62 tests remain in SQUID, down from 128 because the legacy rule and lexicon tests went with it.

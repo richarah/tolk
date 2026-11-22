@@ -54,7 +54,7 @@ item says what is missing and why. Figures are from the commands named.
 - The erg cache is restored but not saved on a hit; a miss downloads from sweaglesw.org.
 
 ## SQUID
-- The legacy pipeline (`squid/legacy.py`) stays, as SPEC2 says ("leave the legacy module in place"). Its five tests are expected failures.
+- The legacy pipeline was removed from SQUID's `main` (`70cb408`), after the audit showed that only its two error classes were used. This overrides SPEC2's "leave the legacy module in place", on the owner's instruction. Its history is in git.
 - Spider development set: 0 of 1034 questions produced SQL (benchmarks/spider_dev_2026-11-15.txt). A scope result; nothing was tuned.
 - Values are read from the database only when the schema comes from SQLite.
-- SQUID depends on tolk by git address; the tolk repository is private, so only its owner can install SQUID.
+- SQUID is pinned to v0.1.3. SQUID depends on tolk by git address; the tolk repository is private, so only its owner can install SQUID.
