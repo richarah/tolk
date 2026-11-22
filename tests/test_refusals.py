@@ -23,7 +23,7 @@ FINAL = {
     "UNKNOWN_WORD": ([], "Tweety flibbered."),  # was "Does Pip glorb?", which phase 16 audit (2B) now answers: a past tense is the class the parser cannot be given
     "UNSUPPORTED_ASPECT": ([], "Kim is singing."),
     "UNSUPPORTED_FORCE": ([], "Sing!"),
-    "UNSUPPORTED_PREDICATE": ([], "Kim wants to sing."),
+    "UNSUPPORTED_PREDICATE": ([], "Lee wants Kim to sing."),
     "NO_ANTECEDENT": ([], "She swims."),
     "AMBIGUOUS_PRONOUN": (["Kim likes Sandy."], "She is happy."),
     "UNSUPPORTED_QUANTIFIER": ([], "Most cats purr."),

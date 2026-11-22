@@ -74,8 +74,9 @@ def test_a_claim_inside_a_claim_is_refused(mind: Mind) -> None:
     assert mind.hear("Sandy says that Kim believes that Rio flies.").outcome == "refused"
 
 
-def test_a_clause_without_a_tense_is_not_a_claim(mind: Mind) -> None:
-    assert mind.hear("Kim wants to sleep.").outcome == "refused"
+def test_an_infinitive_with_another_subject_is_not_a_claim(mind: Mind) -> None:
+    # Subject control ("Kim wants to sleep.") is a claim now (tests/test_control.py); object control is refused.
+    assert mind.hear("Lee wants Kim to sleep.").outcome == "refused"
 
 
 def test_the_same_claim_told_twice_is_a_repeat(mind: Mind) -> None:

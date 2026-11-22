@@ -26,8 +26,8 @@ TIER_C = [
     ("Where does Ann sleep?", "Rome"), ("Does Ann sleep in Rome?", "Yes"), ("Does Ann sleep in Paris?", "Unknown"),
 ]
 REFUSED = [
-    "Most cats purr.", "She swims.", "Ada tries to swim.",
-    "Sing!", "Ada wants to sleep.",
+    "Most cats purr.", "She swims.", "Lee wants Kim to sing.",
+    "Sing!", "Ada wants Lee to sleep.",
     "Every finch that swims quickly is cheerful or calm.",
 ]
 

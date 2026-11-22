@@ -255,3 +255,6 @@ The wording setting's default is now `generated`: proofs and answers word each f
 
 ## Parser senses (the parser-senses item): a grammar limit, not a choice limit
 "Bo bakes bread." has five readings: one is `_bake_v_cause` and compiles; the other four are FALLBACK_PARSE (the grammar does not analyse them). "Jo writes letters." has three readings, all `_write_v_to`. The choice can only rank readings the grammar gives it, so there is no sense for it to prefer here. A ranking of senses needs sense frequencies or the grammar's own sense preference, which ACE does not report. Left as a grammar limit; the held-out cases stay as known misses.
+
+## Control verbs (the control item)
+Subject control is a claim of the subject: "Kim wants to sing." is a claim Kim has, that Kim sings (`claims.find` accepts an untensed clause whose subject is the verb's own). The world does not hold that Kim sings. "Does Kim want to sing?" is Yes; "Does Kim sing?" is Unknown. A negated control verb is a negated claim, as a negated belief is: "Kim does not want to sing." answers "Does Kim want to sing?" with No. Object control ("Lee wants Kim to sing.") stays refused UNSUPPORTED_PREDICATE: the infinitive's subject is another thing. Claims inside a supposition stay refused, as before.
