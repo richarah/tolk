@@ -10,6 +10,7 @@ UNKNOWN_SENSE = "unknown"
 UNKNOWN_PRED = re.compile(rf"_(.+)_([nav])_{UNKNOWN_SENSE}")
 # Built-in predicates the system itself states: the tense of an event, and the order of two events.
 TENSE = "tense"
+MODAL = "modal"
 BEFORE = "before"
 # Constant standing for the missing event of a negated predication; its event column is empty.
 NO_EVENT = "empty"
@@ -81,6 +82,7 @@ class Ask:
     atleast: int = 0  # with count: 0 asks how many; n asks whether there are at least n
     claims: tuple[tuple["Var", tuple["Atom", ...]], ...] = ()  # (the claim asked about, the content it must hold exactly)
     tenses: tuple[tuple[Var, str], ...] = ()  # events of the question that must be past, or present; a fact without an event is either
+    modals: tuple[tuple[Var, str], ...] = ()  # per event of the question, the modal it must have ("can", ...), or "" for none
     alternatives: tuple[tuple[Atom, ...], ...] = ()  # an or: the question is answered by each alternative body, and any Yes wins
 
 
@@ -174,7 +176,7 @@ def _show(x: LF) -> str:
         return f"{x.kind if x.kind == 'default' else 'rule':<6} {head} :- {body}"
     body = " | ".join(", ".join(_atom(a, names) for a in alt) for alt in (x.alternatives or (x.body,)))
     past = "".join(f"  [{names(v)} past]" for v, t in x.tenses if t == "past")
-    body += past
+    body += past + "".join(f"  [{names(v)} {k}]" for v, k in x.modals if k)
     if x.count is not None:
         kind = "count" if not x.atleast else f"ask >={x.atleast}"
         return f"{kind} {names(x.count)}  {body}"

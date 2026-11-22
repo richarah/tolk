@@ -3,6 +3,7 @@
 from tolk import lf
 from tolk.lf import Atom, Var
 from tolk.rules import coordination, temporal
+from tolk.rules.modal import MODAL
 from tolk.rules.ctx import Ctx
 from tolk.sem import EP, Reading
 
@@ -15,8 +16,8 @@ def tense(r: Reading) -> lf.Refusal | None:
     clauses = {ep.args[k] for ep in r.eps if coordination.CONJUNCTION.fullmatch(ep.pred) for k in ("ARG1", "ARG2") if k in ep.args}
     for ep in r.eps:
         v = ep.args.get("ARG0", "")
-        if not (ep.pred.startswith("_") and v.startswith("e")):
-            continue
+        if not (ep.pred.startswith("_") and v.startswith("e")) or MODAL.fullmatch(ep.pred):
+            continue  # a modal's own predication carries a tense of its own; the event it modifies is checked
         p = r.props.get(v, {})
         main = v == r.index or ordered or v in clauses
         if p.get("PROG") == "+":

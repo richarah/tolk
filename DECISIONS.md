@@ -244,3 +244,8 @@ First run: 21 of 26. Corrections after that run, each logged in the file: "Mia w
 The two misses are kept as known (`tests/test_heldout.py`):
 - "Bo bakes bread." then "Does Bo bake?": the parser's causative sense of "bake" is chosen; the intransitive question does not match. A parser-sense problem.
 - "A penguin is a bird." then "Pingu is a penguin.": "a penguin" is read as an existential, so Pingu is not known to be a bird. Generic or existential is a design question.
+
+## Modals (the modals item)
+can, must, might, should, may, could, would are stored as `modal(event, kind)` on each event the modal modifies (the verb events its handle resolves to; a coordinated verb phrase gets one per verb). A question asks, per event, for the modal it has, or for none: "Does Kim sing?" does not match "Kim can sing."; "Can Kim sing?" does not match "Kim sings.". A modal inside a rule, or with a negation ("cannot", "must not"), is refused UNSUPPORTED_PREDICATE. The modal's own tense is not checked; the event it modifies is.
+Control verbs ("wants to", "tries to") are still refused (UNSUPPORTED_PREDICATE): they need an intensional content like a claim, which is a separate design.
+A statement that compiles to something with a variable in it is now refused UNSUPPORTED_QUANTIFIER before it reaches the store (it used to raise ValueError in `store._ground`; found while testing "Every bird can fly.").

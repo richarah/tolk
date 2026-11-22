@@ -29,7 +29,7 @@ def test_read_gives_the_logical_form_without_a_store(text: str, form: str) -> No
 
 
 def test_read_returns_a_refusal_and_does_not_raise() -> None:
-    x = tolk.read("Kim can sing.")
+    x = tolk.read("Kim wants to sing.")  # a control verb: a modal is stored since the modals item, a control verb is not
     assert isinstance(x, tolk.Refusal) and x.code == "UNSUPPORTED_PREDICATE"
     assert isinstance(tolk.read(""), tolk.Refusal)
 

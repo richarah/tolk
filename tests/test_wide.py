@@ -30,7 +30,7 @@ def test_a_refused_sentence_with_fewer_than_five_readings_is_not_parsed_again() 
     real = erg.parse
     erg.parse = lambda text, tags=None, limit=erg.READINGS: (calls.append(limit), real(text, tags, limit))[1]
     try:
-        r = Mind().tell("Rio might swim.")
+        r = Mind().tell("Kim tries to sing.")
     finally:
         erg.parse = real
     assert r.outcome == "refused" and calls == [erg.READINGS]
@@ -45,7 +45,7 @@ UNDERSTOOD_AND_DECLINED = [
     ("Kim sings, Lee dances, or Rio hums.", "COORDINATION"),
     ("Kim gave Lee a book and Pip a pen.", "UNSUPPORTED_PREDICATE"),
     ("Most dogs bark.", "UNSUPPORTED_QUANTIFIER"),
-    ("Kim can sing and Lee can dance or hum.", "UNSUPPORTED_PREDICATE"),
+    ("Kim can sing and Lee can dance or hum.", "COORDINATION"),
     ("Few dogs bark loudly at night.", "UNSUPPORTED_QUANTIFIER"),
 ]
 

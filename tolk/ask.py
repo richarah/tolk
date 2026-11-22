@@ -156,6 +156,17 @@ def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: tuple[int, ...], ctx
             col = m.column(var)
             src += f" AND ({col} = '' OR {_tense_test(col, tense)})"
             params += (ctx,) * (2 if tense == "pres" else 1)
+    for var, kind in q.modals:
+        if var in m.first:
+            # A plain question matches an event that has no modal; a modal question one that has that modal.
+            col = m.column(var)
+            has = f"EXISTS (SELECT 1 FROM fact m WHERE m.pred = '{lf.MODAL}' AND m.a0 = {col} AND m.ctx IN ('world', ?)"
+            if kind:
+                src += f" AND ({col} = '' OR {has} AND m.a1 = ?))"
+                params += (ctx, kind)
+            else:
+                src += f" AND ({col} = '' OR NOT {has}))"
+                params += (ctx,)
     wanted = [m.column(v) for v in q.wanted]
     rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {src} ORDER BY {m.ids()}", params).fetchall()
     n = len(wanted)

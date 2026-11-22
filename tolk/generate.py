@@ -67,4 +67,4 @@ def _gives_back(sentence: str, pred: str, things: list[str], positive: bool, kno
         return False
     event = [] if CLASS.fullmatch(pred).group(1) == "n" else [Const("", lf.NO_EVENT) if not positive else Const("e1", "event")]
     fact = Atom(pred, tuple(event + [Const(t) for t in things]), positive)
-    return {claims.claim_key((a,)) for a in x.atoms if a.pred != lf.TENSE} == {claims.claim_key((fact,))}
+    return {claims.claim_key((a,)) for a in x.atoms if a.pred not in (lf.TENSE, lf.MODAL)} == {claims.claim_key((fact,))}

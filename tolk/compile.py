@@ -5,7 +5,7 @@ from collections import Counter
 
 from tolk import choice, lf
 from tolk.lf import Atom, Const, Var
-from tolk.rules import check, claims, comparatives, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, post, quant, scope, temporal
+from tolk.rules import modal, check, claims, comparatives, conditional, content, coordination, copula, describe, modifiers, names, neg, numbers, pronouns, post, quant, scope, temporal
 from tolk.rules.ctx import Ctx, Lookup
 from tolk.sem import EP, Reading
 
@@ -101,6 +101,11 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         # "No X V" negates the whole head: the verb, and any complement the copula moved onto the subject.
         negated |= {ep.label for i, ep in enumerate(r.eps) if i not in body}
     mode = "rule" if universal_top or cond is not None else "ask" if sf == "ques" else "tell"
+    if modal.find(r):
+        if mode == "rule":
+            return lf.Refusal("UNSUPPORTED_PREDICATE", "a modal in a rule")
+        if any(ep.pred == "neg" for ep in r.eps):
+            return lf.Refusal("UNSUPPORTED_PREDICATE", "a negated modal")
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
         return lf.Refusal("COORDINATION", "a group or an or in a rule")
     if mode == "rule" and temporal.find(r):
@@ -170,18 +175,25 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     if isinstance(out, (lf.Tell, lf.Rule)):
         out = dataclasses.replace(out, mentions=post.mentions(r, ctx, [q for q in quants if q.args["ARG0"] not in cards], out))
     if mode == "tell":
-        out = dataclasses.replace(out, atoms=out.atoms + post.tenses(ctx, r, out.atoms))
+        out = dataclasses.replace(out, atoms=out.atoms + post.tenses(ctx, r, out.atoms) + modal.atoms(ctx, r, tuple(t for a in out.atoms for t in a.args)))
     elif isinstance(out, lf.Rule):
         out = dataclasses.replace(out, head=out.head + post.tenses(ctx, r, out.head))
     elif isinstance(out, lf.Ask):
-        out = dataclasses.replace(out, tenses=post.asked_tenses(ctx, r, out))
+        out = dataclasses.replace(out, tenses=post.asked_tenses(ctx, r, out), modals=modal.asked(ctx, r, out.body))
     unbound = check.unbound(out, bound)
-    return lf.Refusal("UNBOUND_VARIABLE", unbound) if unbound else out
+    if unbound:
+        return lf.Refusal("UNBOUND_VARIABLE", unbound)
+    if isinstance(out, lf.Tell) and any(isinstance(t, Var) for a in out.atoms for t in a.args):
+        # A statement holds things, not variables: a quantifier the reading did not turn into a rule cannot be stored as one.
+        return lf.Refusal("UNSUPPORTED_QUANTIFIER", "a quantifier over a statement that is not a rule")
+    return out
 
 
 def _map(ctx: Ctx, eps: list[EP]) -> tuple[Atom, ...] | lf.Refusal:
     atoms: list[Atom] = []
     for ep in eps:
+        if modal.MODAL.fullmatch(ep.pred):
+            continue  # a modal is stored on the event it modifies, by compile_reading
         if ep.pred == "unknown":
             # The grammar's fallback for words it could not analyse in this reading; another reading may do better.
             return lf.Refusal("FALLBACK_PARSE", "a word was not analysed by the grammar")

@@ -18,7 +18,7 @@ Measured figures are from the commands named; older figures are not repeated her
 ## Known limits (by design, or out of the SPEC's scope at the time; not all are permanent)
 - Counting and numbers beyond the stated forms: "more than two" over a known noun is refused (more_comp). Cardinals in a rule and two numbers in a
   question are refused. (`scripts/coverage.py` lists the refusals; the largest in the four corpus files is `card`.)
-- Modals, control verbs, durations, "most" and most quantifiers: refused as UNSUPPORTED_*.
+- Control verbs ("wants to", "tries to"), durations, "most" and most quantifiers: refused as UNSUPPORTED_*. Modals are stored now (DECISIONS.md, modals). A negated modal ("cannot") and a modal in a rule are refused.
 - Progressive, past perfect and future perfect: refused (UNSUPPORTED_ASPECT). Past, future and present perfect are stored on the main event and on the clauses of an and or or; a past or future inside a claim is refused.
 - Suppositions are one level deep.
 - The reading choice does not rank parser senses ("Jo writes letters." reads `write_v_to`; "Bo bakes bread." reads the causative `bake`, the held-out miss). Needs a principled sense measure from the grammar, not a word list.

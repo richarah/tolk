@@ -78,8 +78,8 @@ def test_dropping_a_supposition_restores_every_table(mind: Mind) -> None:
     assert dump() == before
 
 
-@pytest.mark.parametrize("text, pred", [("Kim can sing.", "_can_v_modal"), ("Kim must sing.", "_must_v_modal")])
-def test_a_modal_is_refused_by_name_not_as_a_variable(mind: Mind, text: str, pred: str) -> None:
+@pytest.mark.parametrize("text, pred", [("Kim tries to sing.", "_try_v_1"), ("Kim wants to sing.", "_want_v_1")])
+def test_a_control_verb_is_refused_by_name_not_as_a_variable(mind: Mind, text: str, pred: str) -> None:
     r = mind.tell(text)
     assert r.outcome == "refused" and r.printed == f"refuse UNSUPPORTED_PREDICATE: {pred}"
 
