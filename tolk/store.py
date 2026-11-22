@@ -47,9 +47,23 @@ INSERT INTO name(entity, text) VALUES ('user', 'user'), ('tolk', 'tolk');
 """
 
 
-def open_store(path: str = ":memory:") -> sqlite3.Connection:
+def has_store(path: str) -> bool:
+    """Whether the file already holds a store (so that it is reopened, not created)."""
+    if path == ":memory:":
+        return False
     db = sqlite3.connect(path)
-    db.executescript(SCHEMA)
+    try:
+        return db.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'sentence'").fetchone() is not None
+    finally:
+        db.close()
+
+
+def open_store(path: str = ":memory:") -> sqlite3.Connection:
+    """The store at this path, created with the schema if the file holds none. A reopened store keeps its facts, rules, sentences
+    and settings."""
+    db = sqlite3.connect(path)
+    if not has_store(path):
+        db.executescript(SCHEMA)
     return db
 
 

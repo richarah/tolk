@@ -258,3 +258,6 @@ The wording setting's default is now `generated`: proofs and answers word each f
 
 ## Control verbs (the control item)
 Subject control is a claim of the subject: "Kim wants to sing." is a claim Kim has, that Kim sings (`claims.find` accepts an untensed clause whose subject is the verb's own). The world does not hold that Kim sings. "Does Kim want to sing?" is Yes; "Does Kim sing?" is Unknown. A negated control verb is a negated claim, as a negated belief is: "Kim does not want to sing." answers "Does Kim want to sing?" with No. Object control ("Lee wants Kim to sing.") stays refused UNSUPPORTED_PREDICATE: the infinitive's subject is another thing. Claims inside a supposition stay refused, as before.
+
+## Persistent stores (the persistence item)
+A store file can be reopened. `store.open_store` creates the schema only when the file holds none (`store.has_store`); `Mind(path)` on an existing file keeps its facts, rules, sentences, merges and settings, and does not re-insert the settings. A supposition left open in the file is dropped when the file is reopened, because it is not in force in a new session. Before this item, a second `Mind(path)` raised "table sentence already exists", so a file could be written but never read again (`tests/test_persist.py`).

@@ -29,15 +29,22 @@ class Result:
 class Mind:
     def __init__(self, path: str = ":memory:", policy: tuple[str, ...] = ("specific",), auto_revise: bool = False, closed_world: bool = False,
                  wording: str = "generated") -> None:
+        reopened = store.has_store(path)
         self.db = store.open_store(path)
-        self.set_policy(policy)
-        self.db.execute("INSERT INTO meta(key, value) VALUES ('auto_revise', ?)", (str(int(auto_revise)),))
-        settings.put(self.db, "closed_world", str(int(closed_world)))
-        settings.put(self.db, "wording", wording)
+        if not reopened:
+            self.set_policy(policy)
+            self.db.execute("INSERT INTO meta(key, value) VALUES ('auto_revise', ?)", (str(int(auto_revise)),))
+            settings.put(self.db, "closed_world", str(int(closed_world)))
+            settings.put(self.db, "wording", wording)
         self._typo: str | None = None  # the sentence last refused as a possible typo; the same sentence next is accepted as written
         self.ctx = "world"  # the current context: "world", or a supposition's name
         self._suppositions = 0
         self._ran: list[tuple[int, int | None]] = []
+        if reopened:
+            # A supposition left open in the file is not in force in a new session: its facts, rules and identities go.
+            for (open_ctx,) in self.db.execute("SELECT DISTINCT ctx FROM fact WHERE ctx != 'world' UNION SELECT DISTINCT ctx FROM rule WHERE ctx != 'world'").fetchall():
+                store.drop_ctx(self.db, open_ctx)
+            self._suppositions = max((int(c[1:]) for (c,) in self.db.execute("SELECT DISTINCT ctx FROM sentence WHERE ctx != 'world'")), default=0)
 
     @property
     def policy(self) -> tuple[str, ...]:
