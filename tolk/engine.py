@@ -2,7 +2,7 @@
 
 import sqlite3
 
-from tolk import lf, negation, store
+from tolk import aspect, lf, negation, store
 from tolk.lf import Atom, Const, Var
 
 Statement = tuple[str, tuple]
@@ -52,16 +52,21 @@ def _year_order(db: sqlite3.Connection, ctx: str, rnd: int) -> None:
                f"NULL, ?, json_array(f.id, g.id), f.a1 || ',' || g.a1 {pairs}", (ctx, row[0], *marks))
 
 
+# A negative fact n and a positive fact p are about the same thing, or about events with the same tense, modal and progressive (see aspect).
+SAME_EVENT = f"(n.a0 = p.a0 OR ({aspect.EVENT_FIRST.format(alias='n')} AND {aspect.sql('n.a0')} = {aspect.sql('p.a0')}))"
+
+# The negative facts drive the join (CROSS JOIN fixes the order): they are few, and each looks up the positive facts of its predicate.
 # For the defaults: the same clash, and also a world fact against a supposition's fact, which the supposition's view must settle.
 CROSS = (
-    "FROM fact p JOIN fact n ON n.pred = p.pred AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
-    "WHERE p.positive = 1 AND n.positive = 0 AND (n.ctx = p.ctx OR p.ctx = 'world' OR n.ctx = 'world')"
+    "FROM fact n CROSS JOIN fact p ON p.pred = n.pred AND p.a1 = n.a1 AND p.a2 = n.a2 "
+    "WHERE p.positive = 1 AND n.positive = 0 AND (n.ctx = p.ctx OR p.ctx = 'world' OR n.ctx = 'world') AND " + SAME_EVENT
 )
 
-# A positive fact p and a negative fact n clash when they differ only in sign. A negative fact has no event, so its empty one matches any.
+# A positive fact p and a negative fact n clash when they differ only in sign. Their events differ, so they clash when the events have the
+# same tense, modal and progressive (see aspect): "Kim did not sing." clashes with "Kim sang." and not with "Kim sings.".
 CLASH = (
-    "FROM fact p JOIN fact n ON n.pred = p.pred AND n.ctx = p.ctx AND n.a1 = p.a1 AND n.a2 = p.a2 AND (n.a0 = p.a0 OR n.a0 = '') "
-    "WHERE p.positive = 1 AND n.positive = 0"
+    "FROM fact n CROSS JOIN fact p ON p.pred = n.pred AND p.ctx = n.ctx AND p.a1 = n.a1 AND p.a2 = n.a2 "
+    "WHERE p.positive = 1 AND n.positive = 0 AND " + SAME_EVENT
 )
 
 

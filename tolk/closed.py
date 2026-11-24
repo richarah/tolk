@@ -28,7 +28,8 @@ def answer_closed(db: sqlite3.Connection, q: lf.Ask, ctx: str) -> Answer:
     for values, proofs in candidates.items():
         fill = {v.key: lf.Const(x) for v, x in zip(wanted, values)}
         asked = tuple(lf.Atom(a.pred, tuple(fill.get(t.key, t) if isinstance(t, lf.Var) else t for t in a.args)) for a in negated)
-        if answer(db, lf.Ask(asked, ()), ctx).value != YES:
+        # The negated atom keeps the tense and modal it was asked with: "Did Kim not sing?" is not answered by "Kim sings.".
+        if answer(db, lf.Ask(asked, (), tenses=q.tenses, modals=q.modals), ctx).value != YES:
             kept[values] = proofs
     if not q.wanted:
         return Answer(YES, (), tuple(kept.values())[:1]) if kept else Answer(NO, (), ())

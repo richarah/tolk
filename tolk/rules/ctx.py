@@ -25,6 +25,7 @@ class Ctx:
     counts: Counter = field(default_factory=Counter)
     compared: dict[str, EP] = field(default_factory=dict)  # an adjective's event to the more_comp that compares it
     claim: dict[str, "lf.Const | lf.Var"] = field(default_factory=dict)  # a clause-verb's hole to the claim it stands for
+    marked: set[str] = field(default_factory=set)  # events with a tense, a modal or a progressive of their own: past, future, can, prog
 
     def term(self, var: str) -> Const | Var:
         while var in self.alias:
@@ -40,7 +41,12 @@ class Ctx:
         return Var(var)
 
     def no_event(self, ep: EP) -> Const | Var:
-        # A negated event is empty in a stored fact, and unknown in a body where it must match any event.
-        if self.side in ("tell", "head"):
-            return Const("", lf.NO_EVENT)
+        """The event of a negated predication. A told or asked one is an event like any other, so that its tense, modal and progressive
+        are kept on it and asked of it. In a rule body it is unknown, so negation as failure matches any event. In a rule's conclusion it
+        is empty, which stands for a present event with no modal, unless the event has a tense, modal or progressive of its own: then the
+        rule makes an event for it, which carries them."""
+        if self.side in ("tell", "ask"):
+            return self.term(ep.args["ARG0"])
+        if self.side == "head":
+            return self.term(ep.args["ARG0"]) if ep.args["ARG0"] in self.marked else Const("", lf.NO_EVENT)
         return Var(f"e{ep.args['ARG0']}n")

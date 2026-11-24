@@ -87,7 +87,8 @@ def test_a_negated_question_is_not_answered_from_absence(mind: Mind) -> None:
 
 def test_an_auxiliary_is_not_a_swallowed_word(mind: Mind) -> None:
     # Reading 4 of this sentence makes "does" the main verb; the plain negation must still win.
-    assert mind.tell("Kim does not like Sandy.").printed == "tell   not _like_v_1(_, kim, sandy)"
+    # A told negative fact has an event of its own since the negated-events item, so that it keeps its tense and modal.
+    assert mind.tell("Kim does not like Sandy.").printed == "tell   not _like_v_1(e1, kim, sandy)"
 
 
 def test_a_bare_plural_read_as_a_name_gives_no_empty_rule(mind: Mind) -> None:

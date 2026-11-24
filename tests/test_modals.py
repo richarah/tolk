@@ -41,8 +41,9 @@ def test_a_modal_statement_is_stored() -> None:
     assert m.db.execute("SELECT COUNT(*) FROM fact WHERE pred = 'modal' AND a1 = 'can'").fetchone()[0] == 1
 
 
-@pytest.mark.parametrize("text", ["Kim cannot sing.", "Kim must not sing.", "Every bird can fly.", "Kim can sing and dance or Lee sings."])
-def test_negated_and_rule_modals_stay_refused(text: str) -> None:
+# Negated modals ("Kim cannot sing.", "Kim must not sing.") are stored since the negated-events item: see tests/test_negated_events.py.
+@pytest.mark.parametrize("text", ["Every bird can fly.", "Kim can sing and dance or Lee sings."])
+def test_rule_modals_stay_refused(text: str) -> None:
     assert Mind().tell(text).outcome == "refused"
 
 

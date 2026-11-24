@@ -106,9 +106,6 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
         generic = mode == "rule" or any(q.pred in quant.UNIVERSAL or q.pred == "udef_q" for q in quants)
         if generic:
             return lf.Refusal("UNSUPPORTED_PREDICATE", "a modal in a rule, or over a generic")
-        if any(ep.pred == "neg" for ep in r.eps):
-            # A negated fact is stored without an event, so a modal or a progressive on it has nothing to attach to.
-            return lf.Refusal("UNSUPPORTED_PREDICATE", "a negated modal" if modal.find(r) else "a negated progressive")
     if mode == "rule" and any(c.nominal or c.op == "or" for c in conjs):
         return lf.Refusal("COORDINATION", "a group or an or in a rule")
     if mode == "rule" and temporal.find(r):
@@ -118,6 +115,8 @@ def compile_reading(r: Reading, lookup: Lookup | None = None, history: pronouns.
     if len(cards) > 1 and mode == "ask":
         return lf.Refusal("UNSUPPORTED_PREDICATE", "card: one number per question")
     ctx = Ctx(mode, mode, bound, alias, const, negated, Counter(v for ep in r.eps for v in ep.args.values()), compared=compared)
+    ctx.marked = {v for v, p in r.props.items() if v.startswith("e") and (
+        p.get("TENSE") in ("past", "fut") or p.get("PERF") == "+" or p.get("PROG") == "+")}
     held = claims.find(r)
     inside: set[int] = set()
     if held:

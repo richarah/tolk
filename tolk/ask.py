@@ -152,20 +152,20 @@ def _solutions(db: sqlite3.Connection, q: lf.Ask, polarity: tuple[int, ...], ctx
     for var, tense in q.tenses:
         if var in m.first:
             # A fact about an event matches a past question only if the event is past, a future one only if it is future, and a
-            # present one only if it is neither. A fact with no event is tenseless and matches any.
+            # present one only if it is neither. This holds for a negative fact too; one with an empty event is present.
             col = m.column(var)
-            src += f" AND ({col} = '' OR {_tense_test(col, tense)})"
+            src += f" AND {_tense_test(col, tense)}"
             params += (ctx,) * (2 if tense == "pres" else 1)
     for var, kind in q.modals:
         if var in m.first:
-            # A plain question matches an event that has no modal; a modal question one that has that modal.
+            # A plain question matches an event that has no modal; a modal question one that has that modal. An empty event has none.
             col = m.column(var)
             has = f"EXISTS (SELECT 1 FROM fact m WHERE m.pred = '{lf.MODAL}' AND m.a0 = {col} AND m.ctx IN ('world', ?)"
             if kind:
-                src += f" AND ({col} = '' OR {has} AND m.a1 = ?))"
+                src += f" AND {has} AND m.a1 = ?)"
                 params += (ctx, kind)
             else:
-                src += f" AND ({col} = '' OR NOT {has}))"
+                src += f" AND NOT {has})"
                 params += (ctx,)
     wanted = [m.column(v) for v in q.wanted]
     rows = db.execute(f"SELECT {', '.join(wanted + [m.ids()])} {src} ORDER BY {m.ids()}", params).fetchall()

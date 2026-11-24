@@ -12,7 +12,8 @@ UNKNOWN_PRED = re.compile(rf"_(.+)_([nav])_{UNKNOWN_SENSE}")
 TENSE = "tense"
 MODAL = "modal"
 BEFORE = "before"
-# Constant standing for the missing event of a negated predication; its event column is empty.
+# Constant standing for the missing event of a negated rule conclusion (present, no modal); its event column is empty. A told negated
+# predication has an event of its own (see aspect.py).
 NO_EVENT = "empty"
 
 

@@ -4,7 +4,7 @@ import itertools
 import json
 import sqlite3
 
-from tolk import lf
+from tolk import aspect, lf
 from tolk.lf import Atom, Const, Var
 
 SCHEMA = """
@@ -134,7 +134,7 @@ def tell(db: sqlite3.Connection, t: lf.Tell, sentence: int, ctx: str = "world", 
     ids = _fresh_ids(db, t)
     grounds = [_ground(db, atom, ids) for atom in t.atoms]
     for g in grounds:
-        opposite = _opposite(db, g, ctx)
+        opposite = _opposite(db, g, ctx, grounds)
         if opposite is not None and not allow_conflict:
             return lf.Refusal("CONTRADICTS", str(opposite))
     rnd = current_round(db) + 1
@@ -268,9 +268,10 @@ def add_rule(db: sqlite3.Connection, rule: lf.Rule, sentence: int, ctx: str = "w
 
 
 def known_preds(db: sqlite3.Connection) -> set[tuple[str, int]]:
-    """Predicate and arity of each stored positive fact; the empty event column is not counted."""
+    """Predicate and arity of each stored fact. A negative fact counts too: its event is an event like any other (the empty event of
+    a negative fact a rule derives is counted as an event)."""
     return {(pred, n) for pred, n in db.execute(
-        "SELECT DISTINCT pred, (a0 != '') + (a1 != '') + (a2 != '') FROM fact WHERE positive = 1")}
+        "SELECT DISTINCT pred, (a0 != '' OR positive = 0) + (a1 != '') + (a2 != '') FROM fact")}
 
 
 def _fresh_ids(db: sqlite3.Connection, t: lf.Tell) -> dict[str, str]:
@@ -299,13 +300,20 @@ def _ground(db: sqlite3.Connection, atom: Atom, ids: dict[str, str]) -> Atom:
     return Atom(atom.pred, tuple(args), atom.positive)
 
 
-def _opposite(db: sqlite3.Connection, g: Atom, ctx: str) -> int | None:
-    """A stored or derived fact that says the opposite of ground atom g. An empty event matches any event."""
+def _opposite(db: sqlite3.Connection, g: Atom, ctx: str, grounds: list[Atom]) -> int | None:
+    """A stored or derived fact that says the opposite of ground atom g. An event is compared by its mark (aspect): the tense and modal
+    the statement gives it, against those stored for the other fact's event."""
     a0, a1, a2 = (g.args + (Const(""),) * 3)[:3]
+    if aspect.takes_event(g.pred):
+        about = [a for a in grounds if a.pred in (lf.TENSE, lf.MODAL) and a.args and a.args[0] == a0]
+        same, value = aspect.sql("f.a0") + " = ?", aspect.mark([a.args[1].id for a in about if a.pred == lf.TENSE],
+                                                             [a.args[1].id for a in about if a.pred == lf.MODAL])
+    else:
+        same, value = "f.a0 = ?", a0.id
     row = db.execute(
-        "SELECT id FROM fact WHERE pred = ? AND positive = ? AND ctx = ? AND a1 = ? AND a2 = ? "
-        "AND (a0 = ? OR a0 = '' OR ? = '') AND level <= 2 LIMIT 1",
-        (g.pred, int(not g.positive), ctx, a1.id, a2.id, a0.id, a0.id),
+        "SELECT f.id FROM fact f WHERE f.pred = ? AND f.positive = ? AND f.ctx = ? AND f.a1 = ? AND f.a2 = ? "
+        f"AND (f.a0 = ? OR {same}) AND f.level <= 2 LIMIT 1",
+        (g.pred, int(not g.positive), ctx, a1.id, a2.id, a0.id, value),
     ).fetchone()
     return row[0] if row else None
 

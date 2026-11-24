@@ -38,11 +38,12 @@ def test_a_fact_with_no_event_is_tenseless() -> None:
     assert first(m, "Was Tweety a robin?") == "Yes"
 
 
-def test_a_negative_fact_has_no_event_and_matches_any_tense() -> None:
+def test_a_negative_fact_keeps_its_tense() -> None:
+    # Changed by the negated-events item: a negative fact had no event and matched any tense. It now has the tense it was told in.
     m = Mind()
     m.tell("Pingu does not fly.")
     assert first(m, "Does Pingu fly?") == "No"
-    assert first(m, "Did Pingu fly?") == "No"
+    assert first(m, "Did Pingu fly?") == "Unknown"
 
 
 def test_a_derived_event_takes_the_tense_of_the_conclusion() -> None:

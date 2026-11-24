@@ -19,8 +19,8 @@ item says what is missing and why. Figures are from the commands named.
 ## Refused by design or out of scope
 - Object control: "Lee wants Kim to sing." is refused (UNSUPPORTED_PREDICATE): the infinitive has another subject.
 - Claims inside a supposition: refused, as before (tests/test_phase21.py).
-- Progressive, past perfect, future perfect: refused (UNSUPPORTED_ASPECT). A past or future inside a claim is refused (UNSUPPORTED_TENSE).
-- A negated modal ("cannot", "must not") and a modal in a rule: refused.
+- Past perfect, future perfect: refused (UNSUPPORTED_ASPECT). A past or future inside a claim is refused (UNSUPPORTED_TENSE).
+- A modal in a rule: refused. A negated modal ("cannot", "must not"), a negated progressive and a negated tense are stored with their own event, so they keep their tense, modal and progressive (DECISIONS.md, negated events).
 - "Most cats purr.": refused. A proportion cannot be a Horn rule; a sound treatment needs counting, which SPEC.md puts out of scope.
 - Counting and numbers: "more than two cats" over a known noun is refused (more_comp); cardinals in a rule, and two numbers in a question.
 - Durations ("slept for two hours"): refused. They need a measure, which goes with counting.

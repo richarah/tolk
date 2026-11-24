@@ -58,10 +58,10 @@ def test_the_one_place_verb_and_is_a_patterns_generate() -> None:
     ("Ada admires Bo.", "_admire_v_1", ("e1", "ada", "bo"), "Ada admires Bo."),
     ("Pip is a finch.", "_finch_n_1", ("pip",), "Pip is a finch."),
     ("Ada is cheerful.", "_cheerful_a_1", ("e1", "ada"), "Ada is cheerful."),
-    ("Ada does not like Bo.", "_like_v_1", ("", "ada", "bo"), "Ada doesn't like Bo."),
-    ("Pip does not swim.", "_swim_v_1", ("", "pip"), "Pip doesn't swim."),
+    ("Ada does not like Bo.", "_like_v_1", ("e1", "ada", "bo"), "Ada doesn't like Bo."),
+    ("Pip does not swim.", "_swim_v_1", ("e1", "pip"), "Pip doesn't swim."),
     ("Pip is not a bird.", "_bird_n_1", ("pip",), "Pip isn't a bird."),
-    ("Ada is not cheerful.", "_cheerful_a_1", ("", "ada"), "Ada isn't cheerful."),
+    ("Ada is not cheerful.", "_cheerful_a_1", ("e1", "ada"), "Ada isn't cheerful."),
     ("Bo sleeps.", "_sleep_v_1", ("e1", "bo"), "Bo sleeps."),
     ("Cy owns Rex.", "_own_v_1", ("e1", "cy", "rex"), "Cy owns Rex."),
 ])

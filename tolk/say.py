@@ -26,9 +26,18 @@ def fact_text(db: sqlite3.Connection, fact_id: int) -> str:
             article = "an" if lemma[0] in "aeiou" else "a"
             return f"{things[0]} {COPULA.get(things[0], 'is')} {article} {lemma}"
         return f"{neg}{lemma}({', '.join(things)})"
-    # Verbs, adjectives and prepositions take their event first; the event is not shown.
+    # Verbs, adjectives and prepositions take their event first; the event is not shown. A negative fact shows the tense, modal and
+    # progressive of its event, because it denies only that: "not sing(kim) [past]" does not deny that Kim sings.
     things = [a for a in (a1, a2) if a]
-    return f"{neg}{lemma}({', '.join(things)})"
+    return f"{neg}{lemma}({', '.join(things)}){'' if positive else _marks(db, a0)}"
+
+
+def _marks(db: sqlite3.Connection, event: str) -> str:
+    if not event:
+        return ""
+    marks = [v for (v,) in db.execute("SELECT a1 FROM fact WHERE pred = 'tense' AND a0 = ? AND positive = 1 ORDER BY a1", (event,))]
+    marks += [v for (v,) in db.execute("SELECT a1 FROM fact WHERE pred = 'modal' AND a0 = ? AND positive = 1 ORDER BY a1", (event,))]
+    return f" [{', '.join(dict.fromkeys(marks))}]" if marks else ""
 
 
 def fact_line(db: sqlite3.Connection, fact_id: int) -> str:

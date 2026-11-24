@@ -6,7 +6,7 @@ import re
 import sqlite3
 
 from tolk import lf, store
-from tolk.lf import Atom, Const, Var
+from tolk.lf import Atom, Var
 
 # affix -> (where it attaches, class of the new word, class of its base, what it means in the store)
 #   opposite: the word holds exactly when the base does not, as two strict rules that derive negative facts, one each way.
@@ -80,8 +80,8 @@ def record(db: sqlite3.Connection, splits: list[tuple[str, str, str]]) -> None:
         meaning = AFFIXES[affix][3]
 
         if meaning == "opposite":
-            none = Const("", lf.NO_EVENT)
-            rules = [lf.Rule((Atom(base, (none, x), False),), (Atom(word, (e, x)),)), lf.Rule((Atom(word, (none, x), False),), (Atom(base, (e, x)),))]
+            # The negative fact is about the same event, so it has the event's tense and modal: "was unhappy" denies "was happy".
+            rules = [lf.Rule((Atom(base, (e, x), False),), (Atom(word, (e, x)),)), lf.Rule((Atom(word, (e, x), False),), (Atom(base, (e, x)),))]
         elif meaning == "agent":
             rules = [lf.Rule((Atom(base, (e, x)),), (Atom(word, (x,)),)), lf.Rule((Atom(word, (x,)),), (Atom(base, (e, x)),))]
         else:
